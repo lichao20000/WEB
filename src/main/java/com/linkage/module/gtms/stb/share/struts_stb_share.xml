@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name ="stbFileUploadDemo" extends = "jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/stb/share"> 
+        <action name ="fileUpload" class ="FileUploadAction"> 
+            <interceptor-ref name ="fileUploadStack"/> 
+            <result name ="success">/gtms/stb/share/ShowUpload.jsp</result> 
+            <result name="toExport" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="contentDisposition">attachment;filename="httpTestSpeedTemplate.txt"</param>
+				<param name="inputName">exportTxtStream</param>
+			</result>
+        </action> 
+    </package>
+	<package name="gtms_stb_share" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/stb/share">
+		<action name="shareDeviceQuery" class="ShareDeviceQueryACT">
+			<result name="success">/gtms/stb/share/gwDeviceQuery.jsp</result>
+			<result name="shareList0">/gtms/stb/share/gwShareDeviceList0.jsp</result>
+			<result name="shareList">/gtms/stb/share/gwShareDeviceList.jsp</result>
+			<result name="shareList2">/gtms/stb/share/gwShareDeviceList2.jsp</result>
+			<result name="shareList3">/gtms/stb/share/gwShareDeviceList3.jsp</result>
+			<result name="shareList4">/gtms/stb/share/gwShareDeviceList4.jsp</result>
+			<result name="shareListForSxlt">/gtms/stb/share/gwShareDeviceListForSxlt.jsp</result>
+			<result name="stbInst">/gtms/stb/resource/stbInst.jsp</result>
+			<result name="stbRelease">/gtms/stb/resource/stbRelease.jsp</result>
+			<result name="stbServiceDone">/gtms/stb/resource/stbServiceDone.jsp</result>
+			<result name="stbDevicePingTest">/gtms/stb/diagnostic/StbDevicePingTest.jsp</result>
+			<result name="stbDeviceTraceRouteTest">/gtms/stb/diagnostic/StbDeviceTraceRouteTest.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

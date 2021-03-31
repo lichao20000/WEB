@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="netWarnQueryDAO" class="dao.report.NetWarnQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="devA">
+			<ref bean="devA" />
+		</property>
+	</bean>
+	
+	<bean id="EventLevelLefDAO"
+		class="com.linkage.module.gwms.dao.gw.EventLevelLefDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="NetWarnQueryAction"
+		class="action.report.NetWarnQueryAction" scope="prototype">
+		<property name="nwqd">
+			<ref bean="netWarnQueryDAO" />
+		</property>
+		<property name="wqb">
+			<ref local="netWarnQueryBIO" />
+		</property>
+		<property name="eventLevelLefDao">
+			<ref bean="EventLevelLefDAO" />
+		</property>
+	</bean>
+	<bean id="netWarnQueryBIO" class="bio.report.NetWarnQueryBIO"
+		scope="prototype">
+		<property name="netWarnQueryDAO">
+			<ref bean="netWarnQueryDAO" />
+		</property>
+	</bean>
+
+
+	
+</beans>

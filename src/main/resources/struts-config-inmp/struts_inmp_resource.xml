@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="resource_inmp" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/inmp/resource">
+		<!-- resource -->
+		<action name="itmsInst" class="ItmsInstACT">
+			<result name="device">/inmp/resource/deviceInfo.jsp</result>
+			<result name="userInst">/inmp/resource/itmsInstUserInfo.jsp</result>
+			<result name="userRelease">/inmp/resource/itmsReleaseUserInfo.jsp</result>
+			<result name="success">/inmp/resource/itmsInstMessage.jsp</result>
+			<result name="init">/inmp/resource/itmsInst.jsp</result>
+		</action>
+		<action name="updateDevCityByIP" class="UpdateDevCityByIPACT">
+			<result name="device">/inmp/resource/CityIPDevInfo.jsp</result>
+			<result name="result">/inmp/resource/UpdateDevCityByIPMes.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 以上为新增 -->
+		
+		<action name="hgwByMac" class="HgwByMacACT">
+			<result name="list">/itms/resource/selectUserByMac.jsp</result>
+		</action>
+		<action name="deviceToUsername" class="DeviceToUsernameACT">
+			<result name="list">/itms/resource/deviceToUsernameList.jsp</result>
+			<result name="init">/itms/resource/deviceToUsername.jsp</result>
+		</action>
+		<action name="ePonSNQuery" class="EPonSNQueryACT">
+			<result name="list">/itms/resource/ePonSNQueryList.jsp</result>
+		</action>
+		<action name="deviceTypeInfo" class="DeviceTypeInfoACT">
+			<result name="ajax" type="ajax"/>
+			<result name="itms">/itms/resource/DeviceType_info_new.jsp</result>
+			<result name="bbms">/Resource/DeviceType_info.jsp</result>
+			<result name="queryList">/itms/resource/DeviceType_info_list.jsp</result>
+			<result name="detail">/itms/resource/DeviceType_info_detail.jsp</result>
+		</action>
+		<action name="deviceTypeExpInfo" class="DeviceTypeInfoExpACT">
+			<result name="ajax" type="ajax"/>
+			<result name="excel" type="excel"/>
+			<result name="itms">/itms/resource/DeviceType_info_Exp.jsp</result>
+			<result name="bbms">/Resource/DeviceType_Expinfo.jsp</result>
+			<result name="queryList">/itms/resource/DeviceType_info_Explist.jsp</result>
+			<result name="detail">/itms/resource/DeviceType_info_Expdetail.jsp</result>
+		</action>
+		<action name="cardInfo" class="CardInfoACT">
+			<result name="ajax" type="ajax"/>
+			<result name="query">/inmp/resource/cardInfo_list.jsp</result>
+		</action>
+		<action name="countFtthACT" class="CountFtthACT">
+			<result name="init1" >/itms/resource/countUnbindFTTH.jsp</result>
+			<result name="init2" >/itms/resource/countUnloidFTTH.jsp</result>
+			<result name="unbind" >/itms/resource/unBindFTTH.jsp</result>
+			<result name="unloid" >/itms/resource/unLoidFTTH.jsp</result>
+			<result name="detail" >/itms/resource/FTTHDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="ReportUsernameACT" class="ReportUsernameACT">
+			<result name="init">/itms/resource/reportUsername.jsp</result>
+			<result name="list">/itms/resource/reportUsernameList.jsp</result>
+		</action>
+		
+		<!-- begin add by chenjie 新疆版本库需求 -->
+		<action name="deviceVersionManageACT" class="DeviceVersionManageACT">
+			<result name="queryDeviceVersion">/itms/resource/deviceVersionInfoList.jsp</result>
+			<result name="queryForModify">/itms/resource/deviceVersionInfoModify.jsp</result>
+			<result name="addDeviceVersion">/itms/resource/deviceVersionInfoAddResult.jsp</result>
+			<result name="modifyDeviceVersion">/itms/resource/deviceVersionInfoModifyResult.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- begin add by chenjie 新疆版本库需求 -->
+		
+		<action name="deviceVersionManageExpACT" class="DeviceVersionManageExpACT">
+			<result name="queryDeviceVersion">/itms/resource/deviceVersionInfoExpList.jsp</result>
+			<result name="queryForModify">/itms/resource/deviceVersionInfoExpModify.jsp</result>
+			<result name="addDeviceVersion">/itms/resource/deviceVersionInfoExpAddResult.jsp</result>
+			<result name="modifyDeviceVersion">/itms/resource/deviceVersionInfoModifyExpResult.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		
+		<!-- add by zhangchy 2011-12-08 用于新疆原软件版本升级到目标软件版本管理  begin 为了不影响江苏电信升级，将此注释-->
+		 <action name="softVerManage" class="SoftVersionManageACT">
+			<result name="queryForm">/itms/resource/softVersionManage.jsp</result>
+			<result name="queryList">/itms/resource/softVersionManageList.jsp</result>
+			<result name="queryLogList">/itms/resource/softVersionManageLogList.jsp</result>
+		</action> 
+		<!-- add by zhangchy 2011-12-08 用于新疆原软件版本升级到目标软件版本管理  end -->
+		
+		
+		<!-- add by oui限制修改查询信息  -->
+		<action name="deviceOUIInfoACT" class="DeviceOUIInfoACT">
+			<result name="init">/itms/resource/deviceOUI_info.jsp</result>
+			<result name="list">/itms/resource/deviceOUI_infoList.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!--  end oui限制修改查询信息 -->
+		
+		<!-- add by  超级权限日志管理 -->
+		<action name="logSuperPowerManage" class="LogSuperManageACT">
+			<result name="init">/itms/resource/logSuperPowerManage.jsp</result>
+			<result name="list">/itms/resource/logSuperPowerManageList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- end 超级权限日志管理 -->
+		
+		<!-- add by BSS终端规格与实际终端规格不一致比对 -->
+		<action name="BssSpecRealInfo" class="BssSpecRealInfoACT">
+			<result name="init">/itms/resource/BssSpecRealInfo.jsp</result>
+			<result name="list">/itms/resource/BssSpecRealInfoList.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- end BSS终端规格与实际终端规格不一致比对 -->
+		
+		<!-- add by 实际终端规格与BSS终端规格不一致比对 -->
+		<action name="UserSpecRealInfo" class="UserSpecRealInfoACT">
+			<result name="init">/itms/resource/UserSpecRealInfo.jsp</result>
+			<result name="list">/itms/resource/UserSpecRealInfoList.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!--  end 实际终端规格与BSS终端规格不一致比对 -->
+		
+		<!--add by  PON综合网管劣化光路报表 -->
+		<action name="PonNetWork" class="PonNetWorkDegraInfoACT" >
+			<result name="init">/itms/resource/ponNetworkDegraInfo.jsp</result>
+			<result name="list">/itms/resource/ponNetworkDegraInfoList.jsp</result>
+			<result name="ponlist">/itms/resource/ponNetworkDegraInfoDevList.jsp</result>
+			<result name="ponlesslist">/itms/resource/ponNetworkDegraLessInfoDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- end  PON综合网管劣化光路报表 -->
+		
+		<!--add by  按版本统计优化 -->
+		<action name="DeviceService" class="DeviceServiceACT" >
+			<result name="init">/itms/resource/DeviceServiceInfo.jsp</result>
+			<result name="devicelist">/itms/resource/DeviceServiceInfoList.jsp</result>
+			<result name="excelDevice">/itms/resource/DeviceServiceInfo_prt.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!--add by  按版本统计优化 -->
+		
+		<!-- add 属地统计语音端口信息 -->
+		<action name="VoiceOrderQuery" class="VoiceOrderQueryACT" >
+			<result name="init">/itms/resource/VoiceOrderInfo.jsp</result>
+			<result name="list">/itms/resource/VoiceOrderInfoList.jsp</result>
+			<result name="devicelist">/itms/resource/VoiceOrderInfoDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- end 属地统计语音端口信息 -->
+		
+		<!-- add  设备型号统计语音端口信息 -->
+		<action name="DeviceTypeVoiceQuery" class="DeviceTypeVoiceQueryACT" >
+			<result name="init">/itms/resource/DeviceTypeVoiceInfo.jsp</result>
+			<result name="list">/itms/resource/DeviceTypeVoiceListInfo.jsp</result>
+			<result name="devicelist">/itms/resource/DeviceTypeVoiceDevListInfo.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+			
+		</action>
+		<!-- end  设备型号统计语音端口信息 -->
+		
+		
+		<!-- add  语音信息错误信息统计 -->
+		<action name="VoiceFailResonQuery" class="VoiceFailResonQueryACT" >
+			<result name="init">/itms/resource/VoiceFailReasonInfo.jsp</result>
+			<result name="list">/itms/resource/VoiceFailReasonList.jsp</result>
+			<result name="devicelist">/itms/resource/VoiceFailReasonDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- end  语音信息错误信息统计 -->
+		
+		<!-- add  语音注册错误信息统计 -->
+		<action name="VoiceRegisterFailQuery" class="VoiceRegisterFailQueryACT" >
+			<result name="init">/itms/resource/VoiceRegisterFailInfo.jsp</result>
+			<result name="list">/itms/resource/VoiceRegisterFailInfoList.jsp</result>
+			<result name="devicelist">/itms/resource/VoiceRegisterFailDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- end  语音注册错误信息统计 -->
+		
+		<!-- add  语音注册查询-->
+		<action name="VoiceRegisterQuery" class="VoiceRegisterQueryACT" >
+			<result name="init">/itms/resource/VoiceRegisterQuery.jsp</result>
+			<result name="list">/itms/resource/VoiceRegisterList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- end  语音注册查询-->
+		<!-- gaoyi start 报表系统中新增功能部署报表  (区域)  -->
+		<action name="FunctionDeploymentByArea" class="FunctionDeploymentByAreaACT" >
+			<result name="init">/itms/resource/functionDeploymentByArea.jsp</result>
+			<result name="list">/itms/resource/functionDeploymentByAreaList.jsp</result>
+			<result name="devlist">/itms/resource/functionDeploymentByAreaDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- gaoyi end 报表系统中新增功能部署报表   (区域) -->
+		
+		<!-- gaoyi start 报表系统中新增功能部署报表  (设备类型)  -->
+		<action name="FunctionDeploymentByDevType" class="FunctionDeploymentByDevTypeACT" >
+			<result name="init">/itms/resource/functionDeploymentByDevType.jsp</result>
+			<result name="list">/itms/resource/functionDeploymentByDevTypeList.jsp</result>
+			<result name="devlist">/itms/resource/functionDeploymentByDevTypeDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- gaoyi end 报表系统中新增功能部署报表   (设备类型) -->
+		
+		<!-- gaoyi start E8-C终端使用情况 -->
+		<action name="TerminalE8CInfo" class="TerminalE8CACT" >
+			<result name="init">/itms/resource/TerminalE8CInfo.jsp</result>
+			<result name="list">/itms/resource/TerminalE8CInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- gaoyi end E8-C终端使用情况 -->
+		
+		<!-- gaoyi start 终端规格匹配情况统计 -->
+		<action name="TerminalSpecMatchInfo" class="TerminalSpecMatchACT" >
+			<result name="init">/itms/resource/TerminalSpecMatchInfo.jsp</result>
+			<result name="list">/itms/resource/TerminalSpecMatchInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- gaoyi end 终端规格匹配情况统计 -->
+		
+		<!-- gaoyi start 终端替换率统计报表 -->
+		<action name="TerminalReplaceInfo" class="TerminalReplaceACT" >
+			<result name="init">/itms/resource/TerminalReplaceInfo.jsp</result>
+			<result name="list">/itms/resource/TerminalReplaceInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- gaoyi end 终端替换率统计报表 -->
+		
+		<!-- os_shizy start 终端环境感知报表-->
+		<action name="TerminalEnvironmentStatementQuery" class="TerminalEnvironmentStatementACT" >
+			<result name="init">/itms/resource/terminalEnvironmentStatement.jsp</result>
+			<result name="list">/itms/resource/terminalEnvironmentStatementList.jsp</result>
+			<result name="devlist">/itms/resource/terminalEnvironmentStatementDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- os_shizy end 终端环境感知报表-->
+		
+		
+		<action name="EquipmentQuery" class="EquipmentACT" >
+			<result name="init">/itms/resource/equipment.jsp</result>
+			<result name="list">/itms/resource/equipmentList.jsp</result>
+			<result name="devlist">/itms/resource/equipmentDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		
+		<action name="UserQuery" class="UserQueryACT" >
+			<result name="init">/itms/resource/userQuery.jsp</result>
+			<result name="list">/itms/resource/userQueryList.jsp</result>
+			<result name="devlist">/itms/resource/userQueryDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		
+		<action name="VersionQuery" class="VersionACT" >
+			<result name="init">/itms/resource/version.jsp</result>
+			<result name="devlist">/itms/resource/versionDevList.jsp</result>
+			<result name="detaillist">/itms/resource/versionDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		
+		<action name="terminalUserBindingQuery" class="TerminalUserBindingACT" >
+			<result name="init">/itms/resource/terminalUserBinding.jsp</result>
+			<result name="list">/itms/resource/terminalUserBindingList.jsp</result>
+			<result name="devlist">/itms/resource/terminalUserBindingDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		
+		<action name="DPIQuery" class="DPIACT" >
+			<result name="init">/itms/resource/dpi.jsp</result>
+			<result name="list">/itms/resource/dpiList.jsp</result>
+			<result name="devlist">/itms/resource/dpiDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		
+		<action name="gwDeviceQuery" class="GwDeviceQueryACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- add by 终端绑定记录查询页面 -->
+		<action name="bindLogView" class="BindLogViewACT">
+			<result name="success">/inmp/resource/bindLogView.jsp</result>
+			<result name="list">/inmp/resource/bindLogViewList.jsp</result>
+		</action>
+		
+		<!-- add by 用户规格与终端规格不一致比对 -->
+		<action name="UserSpecTerminals" class="UserSpecTerminalsACT">
+			<result name="init">/inmp/resource/UserSpecTerminals.jsp</result>
+			<result name="searchdata">/inmp/resource/UserSpecTerminalsList.jsp</result>
+			<result name="list">/inmp/resource/UserSpecTerminalsListInfo.jsp</result>
+			<result name="ajax" type="ajax"/>
+			<result name="excel" type="excel"></result>
+		</action>
+	
+	
+		
+		<!-- add by wangyan 批量导出设备相关信息  -->
+		<action name="importQuery" class="ImportQueryActionImp">
+			<result name="ajax" type="ajax"/>
+			<result name="excel" type="excel"></result>
+			<result name="init">/inmp/resource/ImportQueryList.jsp</result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="ImportQuery.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>

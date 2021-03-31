@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Test TreeView </TITLE>
+<script language="JavaScript" src="js/tree_maker.js"></script>
+<script language="JavaScript" src="js/tree_res.js"></script>
+</HEAD>
+
+<BODY>
+<div id="idTreeView" XMLSrc="tvadmin.xml" onselectstart='return false' style="overflow:scroll;border:1pt solid black;width:300;height:400;padding:5pt 5pt 5pt 5pt" > 
+<script language="JavaScript">
+	init_tree();
+</script>
+</div>
+<p>&nbsp;</p>
+<button onclick="javascript:alert(getCurrentPath());">Get TreeView Current Path</button>
+&nbsp;&nbsp;
+<button onclick="javascript:alert(getCurrentLayer());">Get TreeView Current Layer</button>
+<br>
+<button onclick="javascript:alert(getCurrentPathID());">Get TreeView Current Path ID</button>
+<iframe id="testchild" name="testchild"></iframe>
+</BODY>
+</HTML>

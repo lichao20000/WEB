@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="iposs_monitor_MonitorDAO" class="com.linkage.module.liposs.monitor.dao.MonitorDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource"/>
+		</property>
+	</bean>
+	<bean id="chart_new" class="com.linkage.system.utils.chart.ChartUtil" scope="prototype"></bean>
+	<bean id="iposs_monitor_MonitorBIO" class="com.linkage.module.liposs.monitor.bio.MonitorBIOImp" scope="prototype">
+		<property name="mdao">
+			<ref local="iposs_monitor_MonitorDAO"/>
+		</property>
+		<property name="chart">
+			<ref local="chart_new"/>
+		</property>
+	</bean>
+	<bean id="iposs_monitor_MonitorAction" class="com.linkage.module.liposs.monitor.action.MonitorAction" scope="prototype">
+		<property name="mbio">
+			<ref local="iposs_monitor_MonitorBIO"/>
+		</property>
+	</bean>
+	<bean id="DbtableSpaceInfoAction" class="com.linkage.module.liposs.monitor.action.DbtableSpaceInfoAction" scope="prototype">
+		<property name="bio">
+			<ref local="DbtableSpaceInfoBIO"/>
+		</property>
+	</bean>
+	<bean id="DbtableSpaceInfoBIO" class="com.linkage.module.liposs.monitor.bio.DbtableSpaceInfoBio" scope="prototype">
+		<property name="dao">
+			<ref local="DbtableSpaceInfoDAO"/>
+		</property>
+	</bean>
+	<bean id="DbtableSpaceInfoDAO" class="com.linkage.module.liposs.monitor.dao.DbtableSpaceInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+</beans>

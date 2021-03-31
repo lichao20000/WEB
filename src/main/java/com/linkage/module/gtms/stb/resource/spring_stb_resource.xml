@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 湖南联通机顶盒批量重启任务管理 -->
+	<bean id="batchRebootAct" class="com.linkage.module.gtms.stb.resource.action.BatchRebootACT" scope="prototype">
+		<property name="bio">
+			<ref bean="batchRebootBio" />
+		</property>
+	</bean>
+	<bean id="batchRebootBio" class="com.linkage.module.gtms.stb.resource.serv.BatchRebootBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="batchRebootDao" />
+		</property>
+	</bean>
+	<bean id="batchRebootDao" class="com.linkage.module.gtms.stb.resource.dao.BatchRebootDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 湖南联通机顶盒自动软件升级规则管理 -->
+	<bean id="autoSoftUpRuleAct" class="com.linkage.module.gtms.stb.resource.action.AutoSoftUpRuleACT" scope="prototype">
+		<property name="bio">
+			<ref bean="autoSoftUpRuleBIO" />
+		</property>
+	</bean>
+	<bean id="autoSoftUpRuleBIO" class="com.linkage.module.gtms.stb.resource.serv.AutoSoftUpRuleBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="autoSoftUpRuleDAO" />
+		</property>
+	</bean>
+	<bean id="autoSoftUpRuleDAO" class="com.linkage.module.gtms.stb.resource.dao.AutoSoftUpRuleDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<!-- 湖南联通机顶盒零配置参数配置 -->
+	<bean id="stbSetConfParamAct" class="com.linkage.module.gtms.stb.resource.action.StbSetConfParamACT" scope="prototype">
+		<property name="bio">
+			<ref bean="stbSetConfParamBIO" />
+		</property>
+	</bean>
+	<bean id="stbSetConfParamBIO" class="com.linkage.module.gtms.stb.resource.serv.StbSetConfParamBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="stbSetConfParamDAO" />
+		</property>
+	</bean>
+	<bean id="stbSetConfParamDAO" class="com.linkage.module.gtms.stb.resource.dao.StbSetConfParamDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 湖南联通机顶盒工单查询 -->
+	<bean id="StbEServerQueryAct" class="com.linkage.module.gtms.stb.resource.action.StbEServerQueryAct" scope="prototype">
+		<property name="bio">
+			<ref bean="StbEServerQueryBio" />
+		</property>
+	</bean>
+	<bean id="StbEServerQueryBio" class="com.linkage.module.gtms.stb.resource.serv.StbEServerQueryBio" scope="prototype">
+		<property name="dao">
+			<ref bean="StbEServerQueryDao" />
+		</property>
+	</bean>
+	<bean id="StbEServerQueryDao" class="com.linkage.module.gtms.stb.resource.dao.StbEServerQueryDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<!-- 湖南联通机顶盒apk上报记录 -->
+	<bean id="stbCalltHistoryACT" class="com.linkage.module.gtms.stb.resource.action.StbCallHistoryACT" scope="prototype">
+		<property name="bio">
+			<ref bean="stbCallHistoryBIO" />
+		</property>
+	</bean>
+	<bean id="stbCallBIO" class="com.linkage.module.gtms.stb.resource.serv.StbCallHistoryBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="stbCallHistoryDAO" />
+		</property>
+	</bean>
+	<bean id="stbCallHistoryDAO" class="com.linkage.module.gtms.stb.resource.dao.StbCallHistoryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 湖南联通机顶盒按EPG版本统计 -->
+	<bean id="stbCountACT" class="com.linkage.module.gtms.stb.resource.action.StbCountReportAction" scope="prototype">
+		<property name="bio">
+			<ref bean="stbCountBIO" />
+		</property>
+	</bean>
+	<bean id="stbCountBIO" class="com.linkage.module.gtms.stb.resource.serv.StbCountReportBIO" scope="prototype">
+		<property name="serv">
+			<ref bean="stbCountBioServ" />
+		</property>
+		<property name="dao">
+			<ref bean="stbCountDAO" />
+		</property>
+	</bean>
+	<bean id="stbCountBioServ" class="com.linkage.module.gtms.stb.resource.serv.StbCountReportBioServ" scope="prototype">
+	</bean>
+	<bean id="stbCountDAO" class="com.linkage.module.gtms.stb.resource.dao.StbCountReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="stbDeviceCountACT" class="com.linkage.module.gtms.stb.resource.action.StbDeviceCountACT" scope="prototype">
+		<property name="bio">
+			<ref bean="stbDeviceCountBIO" />
+		</property>
+	</bean>
+	<bean id="stbDeviceCountBIO" class="com.linkage.module.gtms.stb.resource.serv.StbDeviceCountBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="stbDeviceCountDAO" />
+		</property>
+	</bean>
+	<bean id="stbDeviceCountDAO" class="com.linkage.module.gtms.stb.resource.dao.StbDeviceCountDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+
+	<!-- 湖南联通机顶盒策略定制、查询 -->
+	<bean id="stbSetParamACT" class="com.linkage.module.gtms.stb.resource.action.StbSetParamACT" scope="prototype">
+		<property name="bio">
+			<ref bean="stbSetParamBIO" />
+		</property>
+	</bean>
+	<bean id="stbSetParamBIO" class="com.linkage.module.gtms.stb.resource.serv.StbSetParamBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="stbSetParamDAO" />
+		</property>
+	</bean>
+	<bean id="stbSetParamDAO" class="com.linkage.module.gtms.stb.resource.dao.StbSetParamDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- STB模拟工单 add by zzd 2016-7-1 -->
+	<bean id="gtms_stb_resource_SimulateSheetAction" class="com.linkage.module.gtms.stb.resource.action.SimulateSheetStbACT" scope="prototype">
+		<property name="bio">
+			<ref bean="SimulateSheetStbBIO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetStbBIO" class="com.linkage.module.gtms.stb.resource.serv.SimulateSheetStbBIO" scope="prototype">
+	</bean>
+	<!-- STB模拟工单 -->
+	
+	<!-- 机顶盒数量查询统计 -->
+	<bean id="gtms_stb_resource_gwDeviceVenCityQueryACT" class="com.linkage.module.gtms.stb.resource.action.GwDeviceVenCityQueryACT" scope="prototype">
+		<property name="bio">
+			<ref bean="GwStbDeviceVenCityQueryBIO" />
+		</property>
+	</bean>
+	<bean id="GwStbDeviceVenCityQueryBIO" class="com.linkage.module.gtms.stb.resource.serv.GwDeviceVenCityQueryBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="GwStbDeviceVenCityQueryDAO" />
+		</property>
+	</bean>
+	<bean id="GwStbDeviceVenCityQueryDAO" class="com.linkage.module.gtms.stb.resource.dao.GwDeviceVenCityQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	<!-- 机顶盒信息查询 -->
+	<bean id="gtms_stb_resource_gwDeviceQueryACT" class="com.linkage.module.gtms.stb.resource.action.GwDeviceQueryACT" scope="prototype">
+		<property name="gwDeviceBio">
+			<ref bean="GwStbDeviceQueryBIO" />
+		</property>
+		<property name="xinnengBio">
+			<ref bean="DeviceXinnengBIO" />
+		</property>
+		<property name="certusDataBio">
+			<ref bean="itv_fault_CertusDataBioImp" />
+		</property>
+	</bean>
+	<bean id="GwStbDeviceQueryBIO" class="com.linkage.module.gtms.stb.resource.serv.GwDeviceQueryBIO" scope="prototype">
+		<property name="vmvDaoStb">
+			<ref bean="GwStbVendorModelVersionDAO" />
+		</property>
+		<property name="gwDeviceDao">
+			<ref bean="GwStbDeviceQueryDAO" />
+		</property>
+	</bean>
+	
+	<bean id="DeviceXinnengBIO" class="com.linkage.module.gtms.stb.resource.serv.DeviceXinnengBIO" scope="prototype">
+		<property name="xinnengDao">
+			<ref bean="DeviceXinnengDAO" />
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba" />
+		</property>
+	</bean>
+	<bean id="itv_fault_CertusDataBioImp" class="com.linkage.module.gtms.stb.fault.serv.CertusDataBioImp"
+		scope="prototype">
+	</bean>
+	
+	<bean id="DeviceXinnengDAO" class="com.linkage.module.gtms.stb.resource.dao.DeviceXinnengDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="GwStbDeviceQueryDAO" class="com.linkage.module.gtms.stb.resource.dao.GwDeviceQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	
+	<!-- 软件版本文件路径管理 -->
+	<bean id="gtms_stb_resource_SoftVersionACT" class="com.linkage.module.gtms.stb.resource.action.SoftVersionACT" scope="prototype">
+		<property name="bio">
+			<ref bean="gtms_stb_resource_SoftVersionBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_SoftVersionBIO" class="com.linkage.module.gtms.stb.resource.serv.SoftVersionBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="gtms_stb_resource_SoftVersionDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_SoftVersionDAO" class="com.linkage.module.gtms.stb.resource.dao.SoftVersionDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 版本文件路径管理 -->
+	<bean id="gtms_stb_resource_DeviceVersionACT" class="com.linkage.module.gtms.stb.resource.action.DeviceVersionACT" scope="prototype">
+		<property name="bio">
+			<ref bean="gtms_stb_resource_DeviceVersionBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_DeviceVersionBIO" class="com.linkage.module.gtms.stb.resource.serv.DeviceVersionBIO" scope="prototype">
+		<property name="vmvDaoStb">
+			<ref bean="GwStbVendorModelVersionDAO" />
+		</property>
+		<property name="dao">
+			<ref bean="gtms_stb_resource_DeviceVersionDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_DeviceVersionDAO" class="com.linkage.module.gtms.stb.resource.dao.DeviceVersionDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="GwStbVendorModelVersionDAO" class="com.linkage.module.gtms.stb.dao.GwStbVendorModelVersionDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	<bean id="gtms_stb_resource_DeviceTypeInfoACT" class="com.linkage.module.gtms.stb.resource.action.DeviceTypeInfoACT" scope="prototype">
+		<property name="bio">
+			<ref bean="gtms_stb_resource_DeviceTypeInfoBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_DeviceTypeInfoBIO" class="com.linkage.module.gtms.stb.resource.serv.DeviceTypeInfoBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="gtms_stb_resource_DeviceTypeInfoDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_DeviceTypeInfoDAO" class="com.linkage.module.gtms.stb.resource.dao.DeviceTypeInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	<bean id="gtms_stb_resource_SoftUpgradeACT" class="com.linkage.module.gtms.stb.resource.action.SoftUpgradeACT" scope="prototype">
+		<property name="bio">
+			<ref bean="gtms_stb_resource_SoftUpgradeBIO" />
+		</property>
+			<property name="gwDeviceQueryBio">
+			<ref bean="GwStbDeviceQueryBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_SoftUpgradeBIO" class="com.linkage.module.gtms.stb.resource.serv.SoftUpgradeBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="gtms_stb_resource_SoftUpgradeDAO" />
+		</property>
+		<property name="vmvDaoStb">
+			<ref bean="GwStbVendorModelVersionDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_SoftUpgradeDAO" class="com.linkage.module.gtms.stb.resource.dao.SoftUpgradeDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="vmvDaoStb">
+			<ref bean="GwStbVendorModelVersionDAO" />
+		</property>
+	</bean>
+	
+	<!-- 用户业务查询 -->
+	<bean id="gtms_stb_resource_CustomerAction" class="com.linkage.module.gtms.stb.resource.action.CustomerAction" scope="prototype">
+		<property name="customerBIO">
+			<ref bean="gtms_stb_resource_CustomerBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_CustomerBIO" class="com.linkage.module.gtms.stb.resource.serv.CustomerBIOImpl" scope="prototype">
+		<property name="customerDAO">
+			<ref bean="gtms_stb_resource_CustomerDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_CustomerDAO" class="com.linkage.module.gtms.stb.resource.dao.CustomerDAOImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 用户业务查询 -->
+	
+	<!-- BSS工单查询 -->
+	<bean id="gtms_stb_resource_BSSStatisticsAction" class="com.linkage.module.gtms.stb.resource.action.BSSStatisticsAction" scope="prototype">
+		<property name="bSSStatisticsBio">
+			<ref bean="gtms_stb_resource_BSSStatisticsBio" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_BSSStatisticsBio" class="com.linkage.module.gtms.stb.resource.serv.BSSStatisticsBIOImp" scope="prototype">
+		<property name="bSSStatisticsDao">
+			<ref bean="gtms_stb_resource_BSSStatisticsDao" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_BSSStatisticsDao" class="com.linkage.module.gtms.stb.resource.dao.BSSStatisticsDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- BSS工单查询 -->
+	<bean id="ServerManageDAO" class="com.linkage.module.gtms.stb.resource.dao.ServerManageDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ServerManageBIO" class="com.linkage.module.gtms.stb.resource.serv.ServerManageBIO">
+		<property name="serverManageDAO">
+			<ref local="ServerManageDAO" />
+		</property>
+	</bean>
+	<bean id="ServerManageACT" class="com.linkage.module.gtms.stb.resource.action.ServerManageACT" scope="prototype">
+		<property name="serverManageBIO">
+			<ref local="ServerManageBIO" />
+		</property>
+	</bean>
+	
+	<bean id="PicTaskQueryDAO" class="com.linkage.module.gtms.stb.resource.dao.PicTaskQueryDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="PicTaskQueryBIO" class="com.linkage.module.gtms.stb.resource.serv.PicTaskQueryBIO">
+		<property name="dao">
+			<ref local="PicTaskQueryDAO" />
+		</property>
+	</bean>
+	<bean id="PicTaskQueryACT" class="com.linkage.module.gtms.stb.resource.action.PicTaskQueryACT" scope="prototype">
+		<property name="bio">
+			<ref local="PicTaskQueryBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_StbInstACT" class="com.linkage.module.gtms.stb.resource.action.StbInstACT" scope="prototype">
+		<property name="bio">
+			<ref local="gtms_stb_resource_UserInstReleaseBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_UserInstReleaseBIO" class="com.linkage.module.gtms.stb.resource.serv.UserInstReleaseBIO" scope="prototype">
+		<property name="dao">
+			<ref local="gtms_stb_resource_UserInstReleaseDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_UserInstReleaseDAO" class="com.linkage.module.gtms.stb.resource.dao.UserInstReleaseDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="gtms_stb_resource_ZeroconfManualAction"
+		class="com.linkage.module.gtms.stb.resource.action.ZeroconfManualAction"
+		scope="prototype">
+		<property name="manualBio">
+			<ref local="gtms_stb_resource_ZeroconfManualBioImp" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_ZeroconfManualBioImp"
+		class="com.linkage.module.gtms.stb.resource.serv.ZeroconfManualBioImp"
+		scope="prototype">
+		<property name="manualDao">
+			<ref local="gtms_stb_resource_ZeroconfManualDaoImp" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_ZeroconfManualDaoImp"
+		class="com.linkage.module.gtms.stb.resource.dao.ZeroconfManualDaoImp"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="gtms_stb_resource_ConfigInfoACT"
+		class="com.linkage.module.gtms.stb.resource.action.ConfigInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="gtms_stb_resource_ConfigInfoBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_ConfigInfoBIO" class="com.linkage.module.gtms.stb.resource.serv.ConfigInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="gtms_stb_resource_ConfigInfoDAO" />
+		</property>
+
+	</bean>
+	<bean id="gtms_stb_resource_ConfigInfoDAO" class="com.linkage.module.gtms.stb.resource.dao.ConfigInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="gtms_stb_resource_MacQueryACT" class="com.linkage.module.gtms.stb.resource.action.MacQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="gtms_stb_resource_MacQueryBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_MacQueryBIO" class="com.linkage.module.gtms.stb.resource.serv.MacQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="gtms_stb_resource_MacQueryDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_MacQueryDAO" class="com.linkage.module.gtms.stb.resource.dao.MacQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="gtms_stb_resource_ImportMacInitACT"
+		class="com.linkage.module.gtms.stb.resource.action.ImportMacInitACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="gtms_stb_resource_ImportMacInitBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_ImportMacInitBIO"
+		class="com.linkage.module.gtms.stb.resource.serv.ImportMacInitBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="gtms_stb_resource_ImportMacInitDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_ImportMacInitDAO"
+		class="com.linkage.module.gtms.stb.resource.dao.ImportMacInitDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="gtms_stb_resource_BatchConfigNodeACT"
+		class="com.linkage.module.gtms.stb.resource.action.BatchConfigNodeACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="gtms_stb_resource_BatchConfigNodeBIO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_BatchConfigNodeBIO"
+		class="com.linkage.module.gtms.stb.resource.serv.BatchConfigNodeBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="gtms_stb_resource_BatchConfigNodeDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_stb_resource_BatchConfigNodeDAO"
+		class="com.linkage.module.gtms.stb.resource.dao.BatchConfigNodeDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="OpenDeviceShowPictureACT"
+		  class="com.linkage.module.gtms.stb.resource.action.OpenDeviceShowPictureACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="OpenDeviceShowPictureBIO" />
+		 </property>
+	</bean>
+	<bean id="OpenDeviceShowPictureBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.OpenDeviceShowPictureBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="OpenDeviceShowPictureDAO" />
+		 </property>
+	</bean>
+	<bean id="OpenDeviceShowPictureDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.OpenDeviceShowPictureDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<bean id="ShowAdverACT"
+		  class="com.linkage.module.gtms.stb.resource.action.ShowAdverACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="ShowAdverBIO" />
+		 </property>
+	</bean>
+	<bean id="ShowAdverBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.ShowAdverBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="ShowAdverDAO" />
+		 </property>
+	</bean>
+	<bean id="ShowAdverDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.ShowAdverDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	<bean id="OpenAdvertQueryACT"
+		  class="com.linkage.module.gtms.stb.resource.action.OpenAdvertQueryACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="OpenAdvertQueryBIO" />
+		 </property>
+	</bean>
+	<bean id="OpenAdvertQueryBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.OpenAdvertQueryBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="OpenAdvertQueryDAO" />
+		 </property>
+	</bean>
+	<bean id="OpenAdvertQueryDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.OpenAdvertQueryDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	<!-- 零配置成功率统计 -->
+	<bean id="ZeroConfigRateCountACT"
+		  class="com.linkage.module.gtms.stb.resource.action.ZeroConfigRateCountACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="ZeroConfigRateCountBIO" />
+		 </property>
+	</bean>
+	<bean id="ZeroConfigRateCountBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.ZeroConfigRateCountBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="ZeroConfigRateCountDAO" />
+		 </property>
+	</bean>
+	<bean id="ZeroConfigRateCountDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.ZeroConfigRateCountDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	<!-- 零配置机顶盒历史配置查询 -->
+	<bean id="ZeroConfigHistoryACT"
+		  class="com.linkage.module.gtms.stb.resource.action.ZeroConfigHistoryACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="ZeroConfigHistoryBIO" />
+		 </property>
+	</bean>
+	<bean id="ZeroConfigHistoryBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.ZeroConfigHistoryBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="ZeroConfigHistoryDAO" />
+		 </property>
+	</bean>
+	<bean id="ZeroConfigHistoryDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.ZeroConfigHistoryDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	<!-- 零配置失败原因统计 -->
+	<bean id="ZeroConfigFailReasonACT"
+		  class="com.linkage.module.gtms.stb.resource.action.ZeroConfigFailReasonACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="ZeroConfigFailReasonBIO" />
+		 </property>
+	</bean>
+	<bean id="ZeroConfigFailReasonBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.ZeroConfigFailReasonBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="ZeroConfigFailReasonDAO" />
+		 </property>
+	</bean>
+	<bean id="ZeroConfigFailReasonDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.ZeroConfigFailReasonDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	<bean id="SoftupgradByImportACT"
+		  class="com.linkage.module.gtms.stb.resource.action.SoftupgradByImportACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="SoftupgradByImportBIO" />
+		 </property>
+	</bean>
+	<bean id="SoftupgradByImportBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.SoftupgradByImportBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="SoftupgradByImportDAO" />
+		 </property>
+	</bean>
+	<bean id="SoftupgradByImportDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.SoftupgradByImportDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<!-- JXDX-ITV-(根据业务账号进行批量业务下发功能需求)  -->
+	<bean id="BatchSendUserInfoACT"
+		  class="com.linkage.module.gtms.stb.resource.action.BatchSendUserInfoACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="BatchSendUserInfoBIO" />
+		 </property>
+	</bean>
+	<bean id="BatchSendUserInfoBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.BatchSendUserInfoBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="BatchSendUserInfoDAO" />
+		 </property>
+	</bean>
+	<bean id="BatchSendUserInfoDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.BatchSendUserInfoDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	<!-- 修改业务账号和接入账号 -->
+	<bean id="revisePasswoedACT" class="com.linkage.module.gtms.stb.resource.action.revisePasswoedACT" scope="prototype"> 
+		<property name="bio">
+		<ref bean="revisePasswoedBIO" />
+		</property>
+	</bean>
+	<bean id="revisePasswoedBIO" class="com.linkage.module.gtms.stb.resource.serv.revisePasswoedBIO" scope="prototype"> 
+		<property name="dao">
+		<ref bean="revisePasswoedDAO" />
+		</property>
+	</bean>
+	<bean id="revisePasswoedDAO" class="com.linkage.module.gtms.stb.resource.dao.revisePasswoedDAO" scope="prototype"> 
+		<property name="dao">
+		<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 江西机顶盒检测结果查询 -->
+	
+	<bean id="CheckFruitQueryACT"
+		class="com.linkage.module.gtms.stb.report.act.CheckFruitQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="CheckFruitQueryBIO" />
+		</property>
+	</bean>
+	<bean id="CheckFruitQueryBIO"
+		class="com.linkage.module.gtms.stb.report.bio.CheckFruitQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="CheckFruitQueryDAO" />
+		</property>
+	</bean>
+	<bean id="CheckFruitQueryDAO" class="com.linkage.module.gtms.stb.report.dao.CheckFruitQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 批量ping查询 -->
+	<bean id="gtms_stb_resource_batchPingAction" class="com.linkage.module.gtms.stb.resource.action.BatchPingAction" scope="prototype">
+		<property name="bpBIO">
+			<ref bean="BatchPingBIO" />
+		</property>
+	</bean>
+	<bean id="BatchPingBIO" class="com.linkage.module.gtms.stb.resource.serv.BatchPingBIO" scope="prototype">
+		<property name="bpDao">
+			<ref bean="BatchPingDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BatchPingDAO" class="com.linkage.module.gtms.stb.resource.dao.BatchPingDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 机顶盒相关报表查询 -->
+	<bean id="stbReportACT" class="com.linkage.module.gtms.stb.resource.action.StbReportQueryACT" scope="prototype">
+		<property name="bio">
+			<ref bean="stbReportBIO" />
+		</property>
+	</bean>
+	<bean id="stbReportBIO" class="com.linkage.module.gtms.stb.resource.serv.StbReportQueryBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="stbReportDAO" />
+		</property>
+	</bean>
+	
+	<bean id="stbReportDAO" class="com.linkage.module.gtms.stb.resource.dao.StbReportQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- mac前缀反推机顶盒消息 -->
+	<bean id="PreMacDeviceACT" class="com.linkage.module.gtms.stb.resource.action.PreMacDeviceACT" scope="prototype">
+		<property name="bio">
+			<ref bean="PreMacDeviceBIO" />
+		</property>
+	</bean>
+	
+	<bean id="PreMacDeviceBIO" class="com.linkage.module.gtms.stb.resource.serv.PreMacDeviceBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="PreMacDeviceDAO" />
+		</property>
+	</bean>
+	
+	<bean id="PreMacDeviceDAO" class="com.linkage.module.gtms.stb.resource.dao.PreMacDeviceDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 用户画像 -->
+	<bean id="UserImageACT" class="com.linkage.module.gtms.stb.resource.action.UserImageACT" scope="prototype">
+		<property name="bio">
+			<ref bean="UserImageBIO" />
+		</property>
+	</bean>
+	<bean id="UserImageBIO" class="com.linkage.module.gtms.stb.resource.serv.UserImageBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="UserImageDAO" />
+		</property>
+	</bean>
+	
+	<bean id="UserImageDAO" class="com.linkage.module.gtms.stb.resource.dao.UserImageDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 机顶盒升级版本配置 -->
+	<bean id="StbUpgradeVersionACT"
+		  class="com.linkage.module.gtms.stb.resource.action.StbUpgradeVersionACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="StbUpgradeVersionBIO" />
+		 </property>
+	</bean>
+	<bean id="StbUpgradeVersionBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.StbUpgradeVersionBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="StbUpgradeVersionDAO" />
+		 </property>
+	</bean>
+	<bean id="StbUpgradeVersionDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.StbUpgradeVersionDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+		
+	<bean id="CustomerGroupACT" class="com.linkage.module.gtms.stb.resource.action.CustomerGroupACT" scope="prototype">
+		<property name="cgBIO">
+			<ref bean="CustomerGroupBIO" />
+		</property>
+	</bean>
+	<bean id="CustomerGroupBIO" class="com.linkage.module.gtms.stb.resource.serv.CustomerGroupBIO" scope="prototype">
+		<property name="cgDao">
+			<ref bean="CustomerGroupDAO" />
+		</property>
+	</bean>
+	
+	<bean id="CustomerGroupDAO" class="com.linkage.module.gtms.stb.resource.dao.CustomerGroupDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	<!-- 湖南联通业务平台类型管理 -->
+	<bean id="stbservplatformACT"
+		  class="com.linkage.module.gtms.stb.resource.action.servPlatformACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="servPlatformBIO" />
+		 </property>
+	</bean>
+	<bean id="servPlatformBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.servPlatformBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="servPlatformDAO" />
+		 </property>
+	</bean>
+	<bean id="servPlatformDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.servPlatformDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<!-- 湖南电信机顶盒设备信息管理 -->
+	<bean id="StbGwDeviceQueryACT"
+		  class="com.linkage.module.gtms.stb.resource.action.StbGwDeviceQueryACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="StbGwDeviceQueryBIO" />
+		 </property>
+	</bean>
+	<bean id="StbGwDeviceQueryBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.StbGwDeviceQueryBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="StbGwDeviceQueryDAO" />
+		 </property>
+	</bean>
+	<bean id="StbGwDeviceQueryDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.StbGwDeviceQueryDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<!-- 湖南联通用户信息管理 -->
+	<bean id="userMessageACT"
+		  class="com.linkage.module.gtms.stb.resource.action.userMessageManageACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="userMessageBIO" />
+		 </property>
+	</bean>
+	<bean id="userMessageBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.userMessageManageBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="userMessageDAO" />
+		 </property>
+	</bean>
+	<bean id="userMessageDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.userMessageManageDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	<!-- 湖南联通绑定页面 -->
+	<bean id="bindPageACT"
+		  class="com.linkage.module.gtms.stb.resource.action.bindPageACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="bindPageBIO" />
+		 </property>
+	</bean>
+	<bean id="bindPageBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.bindPageBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="bindPageDAO" />
+		 </property>
+	</bean>
+	<bean id="bindPageDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.bindPageDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<!-- 湖南联通机顶盒更换 -->
+	<bean id="StbChangeACT" class="com.linkage.module.gtms.stb.resource.action.StbChangeACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="StbChangeBIO" />
+		 </property>
+	</bean>
+	<bean id="StbChangeBIO" class="com.linkage.module.gtms.stb.resource.serv.StbChangeBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="StbChangeDAO" />
+		 </property>
+	</bean>
+	<bean id="StbChangeDAO" class="com.linkage.module.gtms.stb.resource.dao.StbChangeDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<!-- 湖南联通解绑页面 -->
+	<bean id="removeBindPageACT"
+		  class="com.linkage.module.gtms.stb.resource.action.removeBindPageACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="removeBindBIO" />
+		 </property>
+	</bean>
+	<bean id="removeBindBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.removeBindPageBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="removeBindDAO" />
+		 </property>
+	</bean>
+	<bean id="removeBindDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.removeBindPageDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<!-- 山东开机画面-->
+	<bean id="stbBootAdvertisementACT"
+		  class="com.linkage.module.gtms.stb.resource.action.stbBootAdvertisementACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="stbBootAdvertisementBIO" />
+		 </property>
+	</bean>
+	<bean id="stbBootAdvertisementBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.stbBootAdvertisementBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="stbBootAdvertisementDAO" />
+		 </property>
+	</bean>
+	<bean id="stbBootAdvertisementDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.stbBootAdvertisementDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<bean id="btachImportAdvertisementACT"
+		  class="com.linkage.module.gtms.stb.resource.action.btachImportAdvertisementACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="btachImportAdvertisementBIO" />
+		 </property>
+	</bean>
+	<bean id="btachImportAdvertisementBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.btachImportAdvertisementBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="btachImportAdvertisementDAO" />
+		 </property>
+	</bean>
+	<bean id="btachImportAdvertisementDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.btachImportAdvertisementDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<bean id="OpenDeviceShowPictureNewACT"
+		  class="com.linkage.module.gtms.stb.resource.action.OpenDeviceShowPictureNewACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="OpenDeviceShowPictureNewBIO" />
+		 </property>
+	</bean>
+	<bean id="OpenDeviceShowPictureNewBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.OpenDeviceShowPictureNewBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="OpenDeviceShowPictureNewDAO" />
+		 </property>
+	</bean>
+	<bean id="OpenDeviceShowPictureNewDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.OpenDeviceShowPictureNewDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="pictureDataSource" />
+		 </property>
+	</bean>
+	
+	<bean id="cityAllACT"
+		  class="com.linkage.module.gtms.stb.resource.action.cityAllACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="cityAllBIO" />
+		 </property>
+	</bean>
+	<bean id="cityAllBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.cityAllBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="cityAllDAO" />
+		 </property>
+	</bean>
+	<bean id="cityAllDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.cityAllDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<bean id="DeviceMessageQueryACT"
+		  class="com.linkage.module.gtms.stb.resource.action.DeviceMessageQueryACT"
+		  scope="prototype">
+		  <property name="bio">
+			<ref local="DeviceMessageQueryBIO" />
+		 </property>
+	</bean>
+	<bean id="DeviceMessageQueryBIO"
+		  class="com.linkage.module.gtms.stb.resource.serv.DeviceMessageQueryBIO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref local="DeviceMessageQueryDAO" />
+		 </property>
+	</bean>
+	<bean id="DeviceMessageQueryDAO"
+		  class="com.linkage.module.gtms.stb.resource.dao.DeviceMessageQueryDAO"
+		  scope="prototype">
+		  <property name="dao">
+			<ref bean="mainDataSource" />
+		 </property>
+	</bean>
+	
+	<bean id="StbBindLogViewDAO" class="com.linkage.module.gtms.stb.resource.dao.BindLogViewDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="StbBindLogViewBIO" class="com.linkage.module.gtms.stb.resource.serv.BindLogViewBIO"
+		scope="prototype">
+		<property name="bindLogViewDAO">
+			<ref bean="StbBindLogViewDAO" />
+		</property>
+	</bean>
+
+	<bean id="StbBindLogViewACT" class="com.linkage.module.gtms.stb.resource.action.BindLogViewACT"
+		scope="prototype">
+		<property name="bindLogViewBIO">
+			<ref bean="StbBindLogViewBIO" />
+		</property>
+	</bean>
+	
+	
+	<!-- JXDX-ITV-REQ-20180822-WUWF-001(ITV终端管理平台机顶盒批量软件升级改造) 新增机顶盒软件升级统计功能 -->
+	<bean id="StbSoftUpResultReportAction" class="com.linkage.module.gtms.stb.resource.action.StbSoftUpResultReportAction" scope="prototype">
+		<property name="bio">
+			<ref bean="StbSoftUpResultReportBIO" />
+		</property>
+	</bean>
+	<bean id="StbSoftUpResultReportBIO" class="com.linkage.module.gtms.stb.resource.serv.StbSoftUpResultReportBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbSoftUpResultReportDAO" />
+		</property>
+	</bean>
+	<bean id="StbSoftUpResultReportDAO" class="com.linkage.module.gtms.stb.resource.dao.StbSoftUpResultReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<!-- JXDX-ITV-REQ-20180822-WUWF-001(ITV终端管理平台机顶盒批量软件升级改造) 机顶盒批量软件升级 -->
+	<bean id="StbSoftWareACT" class="com.linkage.module.gtms.stb.resource.action.StbSoftWareACT" scope="prototype">
+		<property name="bio">
+			<ref bean="StbSoftWareBIO" />
+		</property>
+	</bean>
+	<bean id="StbSoftWareBIO" class="com.linkage.module.gtms.stb.resource.serv.StbSoftWareBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbSoftWareDAO" />
+		</property>
+	</bean>
+	<bean id="StbSoftWareDAO" class="com.linkage.module.gtms.stb.resource.dao.StbSoftWareDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	
+	<!-- HBLT-RMS-20190524LH-052文件服务器及其文件状态管理 -->
+	<bean id="FileServerManageACT" class="com.linkage.module.gtms.stb.resource.action.FileServerManageACT" scope="prototype">
+		<property name="bio">
+			<ref bean="FileServerManageBIO" />
+		</property>
+	</bean>
+	<bean id="FileServerManageBIO" class="com.linkage.module.gtms.stb.resource.serv.FileServerManageBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="FileServerManageDAO" />
+		</property>
+	</bean>
+	<bean id="FileServerManageDAO" class="com.linkage.module.gtms.stb.resource.dao.FileServerManageDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 宁夏机顶盒变更数据导出 -->
+	<bean id="StbBidChageACT" class="com.linkage.module.gtms.stb.resource.action.StbBidChageACT" scope="prototype">
+		<property name="bio">
+			<ref bean="StbBidChageBIO" />
+		</property>
+	</bean>
+	<bean id="StbBidChageBIO" class="com.linkage.module.gtms.stb.resource.serv.StbBidChageBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbBidChageDAO" />
+		</property>
+		<property name="vmvStbDao">
+			<ref bean="GwStbVendorModelVersionDAO" />
+		</property>
+	</bean>
+	<bean id="StbBidChageDAO" class="com.linkage.module.gtms.stb.resource.dao.StbBidChageDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- 新疆机顶盒溯源 -->
+	<bean id="StbSourceACT" class="com.linkage.module.gtms.stb.resource.action.StbSourceACT" scope="prototype">
+		<property name="bio">
+			<ref bean="StbSourceBIO" />
+		</property>
+	</bean>
+	<bean id="StbSourceBIO" class="com.linkage.module.gtms.stb.resource.serv.StbSourceBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbSourceDAO" />
+		</property>
+	</bean>
+	<bean id="StbSourceDAO" class="com.linkage.module.gtms.stb.resource.dao.StbSourceDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<!--HNLT-REQ-ITMS-20190910-ZC-001（账号与机顶盒绑定关系保护）  -->
+	<bean id="StbBindProtectACT" class="com.linkage.module.gtms.stb.resource.action.StbBindProtectACT" scope="prototype">
+		<property name="bio">
+			<ref bean="StbBindProtectBIO" />
+		</property>
+	</bean>
+	<bean id="StbBindProtectBIO" class="com.linkage.module.gtms.stb.resource.serv.StbBindProtectBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbBindProtectDAO" />
+		</property>
+	</bean>
+	<bean id="StbBindProtectDAO" class="com.linkage.module.gtms.stb.resource.dao.StbBindProtectDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="StbUpgradeBlackListACT" class="com.linkage.module.gtms.stb.resource.action.StbUpgradeBlackListACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="StbUpgradeBlackListBIO" />
+		</property>
+	</bean>
+	<bean id="StbUpgradeBlackListBIO" class="com.linkage.module.gtms.stb.resource.serv.StbUpgradeBlackListBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="StbUpgradeBlackListDAO" />
+		</property>
+	</bean>
+	<bean id="StbUpgradeBlackListDAO" class="com.linkage.module.gtms.stb.resource.dao.StbUpgradeBlackListDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!--HNLT-REQ-ITMS-20191028-ZC-001（机顶盒行货串货管控  -->
+	<bean id="StbCategoryCountAction" class="com.linkage.module.gtms.stb.resource.action.StbCategoryCountAction" scope="prototype">
+		<property name="bio">
+			<ref bean="StbCategoryCountBIO" />
+		</property>
+	</bean>
+	<bean id="StbCategoryCountBIO" class="com.linkage.module.gtms.stb.resource.serv.StbCategoryCountBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbCategoryCountDAO" />
+		</property>
+		<property name="serv">
+			<ref bean="stbCountBioServ" />
+		</property>
+	</bean>
+	<bean id="StbCategoryCountDAO" class="com.linkage.module.gtms.stb.resource.dao.StbCategoryCountDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+</beans>

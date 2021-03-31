@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+	<import resource="/application-config/applicationContext_share.xml"/>
+	<import resource="/application-config/applicationContext_public.xml"/>
+	<import resource="/application-config/applicationContext_NetCutover.xml"/>
+	<import resource="/application-config/applicationContext_hgwipMgSys.xml"/>
+	<import resource="/application-config/applicationContext_Resource.xml"/>
+	<import resource="/application-config/applicationContext_WebTopo.xml"/>
+	<import resource="/application-config/applicationContext_bbms.xml"/>
+	<import resource="/application-config/applicationContext_warn.xml"/>
+	<import resource="/application-config/applicationContext_maintain.xml"/>
+	<import resource="/application-config/applicationContext_performance.xml"/>
+	<import resource="/application-config/applicationContext_inmp.xml"/>
+	<import resource="/application-config/applicationContext_intellspeaker.xml"/>
+	<!-- <import resource="/com/linkage/module/liposs/monitor/applicationContext_liposs_monitor.xml"/> -->
+	
+	<!-- ids -->
+	<import resource="/application-config/applicationContext_ids.xml"/>
+	
+	<!-- 登录验证码 -->
+	<import resource="/application-config/applicationContext_new_login.xml"/>
+	
+	<!-- sgwms -->
+	<import resource="/application-config/applicationContext_AAA.xml"/>
+	<import resource="/application-config/applicationContext_securitygw.xml"/>
+	<import resource="/application-config/applicationContext_Report.xml"/>
+	<import resource="/application-config/applicationContext_flux.xml"/>
+	<import resource="/application-config/applicationContext_pmee.xml"/>
+	<import resource="/application-config/applicationContext_confTaskView.xml"/>
+	
+	<import resource="/application-config-gwms/spring_gwms_object.xml"/>
+	<import resource="/application-config-gwms/spring_gwms_resource.xml"/>
+	<import resource="/application-config-gwms/spring_gwms_report.xml"/>
+	<import resource="/application-config-gwms/spring_gwms_service.xml"/>
+	<import resource="/application-config-gwms/spring_gwms_diagnostics.xml"/>	
+	<import resource="/application-config-gwms/spring_gwms_config.xml"/>
+	
+	<import resource="/application-config-gwms/spring_gwms_share.xml"/>
+	<import resource="/application-config-gwms/spring_gwms_system.xml"/>
+	<import resource="/application-config-gwms/spring_gwms_sysConfig.xml"/>
+	<import resource="/application-config-gwms/spring_gwms_blocTest.xml"/>
+	
+	<!-- bbms -->
+	<import resource="/application-config-bbms/spring_bbms_object.xml"/>
+	<import resource="/application-config-bbms/spring_bbms_resource.xml"/>
+	<import resource="/application-config-bbms/spring_bbms_config.xml"/>
+	<import resource="/application-config-bbms/spring_bbms_report.xml"/>
+	<import resource="/application-config-bbms/spring_bbms_diag.xml"/>
+	<import resource="/application-config-bbms/spring_bbms_service.xml"/>
+	
+	<!-- itms -->
+	<import resource="/application-config-itms/spring_itms_report.xml"/>
+	<import resource="/application-config-itms/spring_itms_resource.xml"/>
+	<import resource="/application-config-itms/spring_itms_midware.xml"/>
+	<import resource="/application-config-itms/spring_itms_service.xml"/>
+	<import resource="/application-config-itms/spring_itms_config.xml"/>
+	
+	<import resource="classpath:/com/linkage/module/gtms/applicationContext_gtms.xml" />
+</beans>

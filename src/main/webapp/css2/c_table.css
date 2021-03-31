@@ -1,0 +1,143 @@
+@CHARSET "GBK";
+table.listtable{
+}
+
+table.listtable caption{
+    font-size:120%;
+    text-transform:uppercase;
+    text-align:left;
+    padding:.5em 1em;
+}
+
+table.listtable th{
+    text-align:left;
+}
+
+table.listtable,table.listtable th{
+  
+}
+
+table.listtable thead th {
+    border:1px solid #ACA899;
+	font-weight: bold;
+	text-align: center;
+	background-image: url(../images/green_title_bg.jpg);
+	line-height: 20px;
+}
+
+table.listtable tfoot th,table.listtable tfoot td{
+    border:1px solid #ACA899;
+	background-color: #E1EEEE;
+    padding-left: 4px;
+	padding-right:4px;
+	padding-top:1px;
+	padding-bottom:1px;
+}
+table.listtable tfoot td img{
+    border:none;
+    float:right;
+	vertical-align:bottom;
+    padding-left:10px;
+}
+
+table.listtable tbody{
+    background:#fff;
+}
+
+table.listtable tbody td, table.listtable tbody th {
+    padding:1px 2px 1px 2px;
+    border:1px solid #ACA899;
+}
+
+table.listtable tbody tr.odd{
+    background-color:#E8E8FF;
+}
+
+table.listtable tbody tr.even{
+    background-color:#ffffff;
+}
+
+table.listtable tbody tr.white{
+    background-color:#ffffff;
+}
+
+table.listtable tbody tr.white{
+    background-color:#ffffff;
+}
+table.listtable tbody tr.glory{
+    background-color:#E7E7E7;
+}
+table.listtable tbody tr.yellow{
+    background-color:#F7EDCC;
+}
+
+table.listtable tbody tr.blue{
+    background-color:#CCE0FE;
+}
+
+table.listtable tbody tr.hand{
+    cursor: hand;
+}
+
+table.listtable tbody tr.green{
+    background-color:#C5E3B9;
+}
+
+table.listtable tbody tr.red{
+    background-color:#FE7D7A;
+}
+
+table.listtable td div.left{
+	float: left;
+}
+table.listtable td div.right{
+	float: right;
+}
+
+
+table.querytable,table.querytable tr,table.querytable td
+{
+    border:1px solid #ACA899;
+    background-color:#ffffff;
+    padding:1px 2px 1px 2px;
+    font-size: 12px;
+	font-family: Arial, "Arial Black",  "ºÚÌå", "ËÎÌå";
+    
+}
+table.querytable .title_1
+{
+    border:1px solid #ACA899;
+	font-weight: bold;
+	text-align: center;
+	background-image: url(../images/green_title_bg.jpg);
+	line-height: 20px;
+
+}
+
+table.querytable .title_2
+{
+	background-color: #F4F4FF;
+	color:#000000;
+	text-align: right;
+}
+table.querytable .title_3
+{
+	background-image: url(../images/table_title3.jpg);
+	text-align: center;
+}
+table.querytable .foot{
+	border-width:1px;
+	border-style:solid;
+	border-color:#ACA899;
+	background-color: #E1EEEE;
+    padding-left: 4px;
+	padding-right:4px;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+table.querytable td div.left{
+	text-align: left;
+}
+table.querytable td div.right{
+	text-align:right;
+}

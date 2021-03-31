@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="gb2312"?>
+<MenuRes>
+	<MMenu>
+		<MenuNode linkID="_M_Node1" label="拓扑管理" url="" icon="m_icon_1.gif" target="" submenu="_M_Node1_S" />
+		<MenuNode linkID="_M_Node2" label="告警管理" url="" icon="m_icon_3.gif" target="" submenu="_M_Node2_S" />
+		<MenuNode linkID="_M_Node3" label="网元管理" url="" icon="m_icon_2.gif" target="" submenu="_M_Node3_S" />
+		<MenuNode linkID="_M_Node4" label="性能管理" url="" icon="m_icon_4.gif" target="" submenu="_M_Node4_S" />
+		<MenuNode linkID="_M_Node5" label="系统管理" url="" icon="m_icon_5.gif" target="" submenu="_M_Node5_S" />
+	</MMenu>
+	<SMenu ID="_M_Node1_S">
+		<MenuNode linkID="_M_Node1_S_Node1" label="重新发现" url="index.jsp" icon="" target="" />
+		<MenuNode linkID="_M_Node1_S_Node2" label="增量发现" url="main.jsp" icon="" target="childFrm" />
+		<MenuNode linkID="_M_Node1_S_Node3" label="管理拓扑" url="testLeft" icon="" target="javacript" />
+		<MenuNode linkID="_M_Node1_S_Node4" label="保存拓扑" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node1_S_Node5" label="另存拓扑" url="" icon="" target="" />
+	</SMenu>
+	<SMenu ID="_M_Node2_S">
+		<MenuNode linkID="_M_Node2_S_Node1" label="实时告警" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node2_S_Node2" label="历史告警" url="" icon="" target="" />
+	</SMenu>
+	<SMenu ID="_M_Node3_S">
+		<MenuNode linkID="_M_Node3_S_Node1" label="新增网元" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node3_S_Node2" label="显示所有网元" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node3_S_Node3" label="显示被管网元" url="" icon="" target="" />
+	</SMenu>
+	<SMenu ID="_M_Node4_S">
+		<MenuNode linkID="_M_Node4_S_Node1" label="性能配置" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node4_S_Node2" label="已配性能设备管理" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node4_S_Node3" label="流量配置" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node4_S_Node4" label="已配流量设备管理" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node4_S_Node5" label="IPCheck配置" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node4_S_Node6" label="已配IPCheck设备管理" url="" icon="" target="" />
+	</SMenu>
+	<SMenu ID="_M_Node5_S">
+		<MenuNode linkID="_M_Node5_S_Node1" label="关于" url="" icon="" target="" />
+		<MenuNode linkID="_M_Node5_S_Node2" label="系统帮助" url="" icon="" target="" />
+	</SMenu>
+</MenuRes>

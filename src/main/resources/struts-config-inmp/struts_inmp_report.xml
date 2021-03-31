@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="report_inmp"
+		extends="jfreechart-default,linkage_security,linkage-pdf-default"
+		namespace="/inmp/report">
+		
+		<!-- add by 用户按绑定方式统计页面 -->
+		<action name="bindWay" class="BindWayReportACT">
+			<result name="init">/inmp/report/bindWayReport.jsp</result>
+			<result name="list">/inmp/report/bindWayReportList.jsp</result>
+			<result name="hgwlist">/inmp/report/bindWayUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="allinit">/inmp/report/allBindWayReport.jsp</result>
+			<result name="alllist">/inmp/report/allBindWayReportList.jsp</result>
+			<result name="allhgwlist">/inmp/report/allBindWayUserList.jsp</result>
+		</action>
+		
+		<!-- add by 软件升级统计页面 -->
+		<action name="softUpResult" class="SoftUpResultReportACT">
+			<result name="init">/inmp/report/softUpResultReport.jsp</result>
+			<result name="list">/inmp/report/softUpResultReportList.jsp</result>
+			<result name="jsList">/inmp/report/softUpResultReportList_js.jsp</result>
+			<result name="devlist">/inmp/report/softUpResultDevList.jsp</result>
+			<result name="jsdevlist">/inmp/report/softUpResultDevList_js.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		
+		<!--add by wangyan 2016-03-22 无线业务策略查询 -->
+		<action name="strategyQuery" class="StrategyQueryACT">
+			<result name="init">/inmp/report/strategyQuery.jsp</result>
+			<result name="list">/inmp/report/strategyQueryList.jsp</result>
+		</action>
+		
+		<!-- add by wangyan 2016-03-22 E8-C活跃管理率 -->
+		<action name="E8CActiveReport" class="E8CActiveReportACT">
+			<result name="init">/inmp/report/E8CActiveReport.jsp</result>
+			<result name="dataList">/inmp/report/E8CActiveReportList.jsp</result>
+			<result name="cusList">/inmp/report/E8CUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<!-- add by wangyan 2016-03-22  家庭网关按绑定率统计 -->
+		<action name="getBindRateByCityid" class="BindReportAction">
+			<result name="page">/inmp/report/hgwUserBindReport.jsp</result>
+			<result name="list">/inmp/report/hgwUserBindReportList.jsp</result>
+			<result name="hgwlist">/inmp/report/hgwUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- add by wangyan 2016-03-22 PVC报表  -->
+		<action name="PVCReport" class="PVCReportACT">
+			<result name="newUserinit">/inmp/report/PVCNewUserReport.jsp</result>
+			<result name="oldUserinit">/inmp/report/PVCOldUserReport.jsp</result>
+			<result name="list">/inmp/report/PVCReportList.jsp</result>
+			<result name="hgwlist">/inmp/report/PVCUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>		
+	</package>
+</struts>

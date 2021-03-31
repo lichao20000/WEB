@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="blocTest" extends="struts-default,linkage-default,linkage_security"
+		namespace="/gwms/blocTest">
+		<action name="baseInfoView" class="BaseInfoViewACT">
+			<result name="success">
+				/gwms/blocTest/baseInfoView.jsp
+			</result>
+			<result name="list">/gwms/blocTest/baseInfoList.jsp</result>
+			<result name="cpeDetail">
+				/gwms/blocTest/baseInfoCpeDetail.jsp
+			</result>
+			<result name="customerDetail">
+				/gwms/blocTest/baseInfoCustomerDetail.jsp
+			</result>
+			<result name="sheetDeatil">
+				/gwms/blocTest/baseInfoSheetDetail.jsp
+			</result>
+			<result name="configFile">
+				/gwms/blocTest/deviceConfigFileList.jsp
+			</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="DeviceInfoQuery" class="deviceInfoQueryAction">
+			<result name="success">
+				/gwms/blocTest/DeviceInfoQuery.jsp
+			</result>
+			<result name="queryList">
+				/gwms/blocTest/DeviceInfoQueryList.jsp
+			</result>
+			<result name="query">/gwms/blocTest/DeviceType.jsp</result>
+			<result name="list">
+				/gwms/blocTest/DeviceTypeList.jsp
+			</result>
+			<result name="config">/gwms/blocTest/config.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+
+
+		<action name="QueryCustomerInfo" class="QueryCustomerInfoACT">
+
+			<result name="query">
+				/gwms/blocTest/CustomerInfo.jsp
+			</result>
+			<result name="ajax" type="ajax"></result>
+
+		</action>
+
+
+		<action name="EgwExpert" class="EgwExpertACT">
+            <result name="success">
+				/gwms/blocTest/Egw.jsp
+			</result>
+			<result name="init">
+				/gwms/blocTest/EgwExpert.jsp
+			</result>
+			<result name="edit">
+				/gwms/blocTest/EgwExpertEdit.jsp
+			</result>
+			<result name="ajax" type="ajax"></result>
+
+		</action>
+
+
+	<action name="queryDeviceStatus" class="QueryDeviceStatusACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="query">
+				/gwms/blocTest/monitorDeviceStatus.jsp
+			</result>
+			<result name="deviceStatusOperate">
+				/gwms/blocTest/monitorDeviceStatusList.jsp
+			</result>
+			<result name="getAllDeviceStatus">
+				/gwms/blocTest/monitorDeviceStatusList.jsp
+			</result>
+		</action>
+
+		<action name="bbmsDiag" class="BbmsDiagACT">
+			<result name="wanServDiag">
+				/gwms/blocTest/bbmsInternetDiagResult.jsp
+			</result>
+		</action>
+<!-- 手机移动端导入 -->
+		<action name="BatchAdditionPhone" class="BatchAdditionPhone">
+		<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

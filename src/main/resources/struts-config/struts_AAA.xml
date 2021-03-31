@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="AAA" extends="linkage_security" namespace="/AAA">
+		<action name="logQuery" class="logQueryAction">
+			<result name="success">/AAA/authenQuery.jsp</result>
+			<result name="print">/AAA/authorQuery.jsp</result>
+		</action>
+		<action name="addTacDev" class="addTacDevAction">
+			<result name="success">/AAA/addTacDev.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="searchDev" class="searchDevAction">
+			<result name="success">/AAA/searchDev.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="devDetailshow" class="devDetailshowAction">
+			<result name="success">/AAA/devDetailshow.jsp</result>
+		</action>
+		<action name="editDevice" class="editDeviceAction">
+			<result name="edit">/AAA/EditDevice.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="UserOperate" class="UserOperateAction">
+			<result name="success">/AAA/successInfo.jsp</result>
+			<result name="error">/AAA/successInfo.jsp</result>
+			<result name="step1">/AAA/userOperateStep1.jsp</result>
+			<result name="step2">/AAA/userOperateStep2.jsp</result>
+			<result name="step3">/AAA/userOperateStep3.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="UserInfo" class="UserInfoAction">
+			<result name="userList">/AAA/userQueryData.jsp</result>
+			<result name="detailInfo">/AAA/userDetailInfo.jsp</result>
+			<result name="showPrivilege">/AAA/userPrivilege.jsp</result>
+		</action>
+	</package>
+</struts>

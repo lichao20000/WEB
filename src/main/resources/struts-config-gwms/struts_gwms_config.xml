@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="config" extends="linkage_security" namespace="/gwms/config">
+		<!-- AppService -->
+		<action name="wanACT" class="WanACT">
+			<result name="success">/gwms/config/WanConfig.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="iptvACT" class="IptvACT">
+			<result name="success">/gwms/config/IptvConfig.jsp</result>
+			<result name="list">/gwms/config/IptvSSID2Config.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="voipACT" class="VoipACT">
+			<result name="success">/gwms/config/VoipConfig.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 下发业务工单 -->
+		<action name="businessSheetACT" class="BusinessSheetACT">
+			<result name="success">/gwms/config/BusinessSheet.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- Qos -->
+		<action name="qosConfig" class="QosConfigACT">
+			<result name="success">/gwms/config/qosSsid.jsp</result>
+			<result name="qosSsid">/gwms/config/qosSsid.jsp</result>
+			<result name="qosIptv">/gwms/config/qosIptv.jsp</result>
+			<result name="qosVoip">/gwms/config/qosVoip.jsp</result>
+			<result name="qosList">/gwms/config/qosList.jsp</result>
+			<result name="qosServ">/gwms/config/qosServ.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 手工工单 -->
+		<action name="serviceManSheet" class="ServiceManSheetACT">
+			<result name="success">/gwms/config/ServiceManSheet.jsp</result>
+			<result name="sheetInfo">/gwms/config/ServSheetConfig.jsp</result>
+			<result name="init4XJDX">/gwms/config/serviceDoneByBatchReport.jsp</result>
+			<result name="serviceList">/gwms/config/serviceDoneByBatchList.jsp</result>
+			<result name="serviceDetail">/gwms/config/serviceDoneByBatchDetail.jsp</result>
+			<result name="serviceDevList">/gwms/config/serviceDoneByBatchDevList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- ITMS设备转BBMS设备 -->
+		<action name="devManage" class="DevManageACT">
+			<result name="result">/gwms/config/BatchResult.jsp</result>
+			<result name="success">/gwms/config/deviceIPtoURL.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 桥接转路由 -->
+		<action name="bridge2Route" class="BridgeToRouteACT">
+			<result name="result">/gwms/config/bridgeToRoutedInfo.jsp</result>
+			<result name="success">/gwms/config/deviceIPtoURL.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 话机连接性测试 -->
+		<action name="voiceConnectionTest" class="VoiceConnectionTestACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 宁夏批量修改组播参数工具-->
+		<action name="setMulticastBatch" class="SetMulticastBatchACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="shareList0">/gwms/config/gwShareDeviceList0_setMulticastBach4NX.jsp</result>
+			<result name="initImport">/gwms/resource/setMulticastBatchTaskQuery.jsp</result>
+			<result name="taskResult">/gwms/resource/setMulticastBatchTaskResult.jsp</result>
+			<result name="taskDetail">/gwms/resource/setMulticastBatchTaskDetail.jsp</result>
+			
+			<result name="init">/gwms/resource/setMulticastBatchCountByTime.jsp</result>
+			<result name="shouRefreshInfoList">/gwms/resource/setMulticastBatchCount.jsp</result>
+			<result name="devList">/gwms/resource/setMulticastBatchCountDevList.jsp</result>
+			<result name="shouRefreshInfoListByTime">/gwms/resource/setMulticastBatchCountListByTime.jsp</result>
+			<result name="devListByTime">/gwms/resource/setMulticastBatchCountDevListByTime.jsp</result>
+			
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 重庆电信批量下发组播参数统计 begin -->
+		<action name="countMulticastBatch" class="CountMulticastBatchACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="query">/gwms/config/countMulticastBatch.jsp</result>
+			<result name="queryList">/gwms/config/countMulticastBatchList.jsp</result>
+			<result name="queryMCDownwards">/gwms/config/countMulticastDownwards.jsp</result>
+			<result name="mcDownwardsList">/gwms/config/countMulticastDownwardsList.jsp</result>
+			<result name="mcDownwardsdetail">/gwms/config/countMulticastDownwardsDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+

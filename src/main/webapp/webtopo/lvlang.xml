@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="gb2312"?>
+<lvlang>
+<!-- Grid -->
+<!-- Button hints -->
+	<searchTitle>填写搜索条件</searchTitle>
+	<updateTitle>更新选择记录</updateTitle>
+	<firstTitle>第一页</firstTitle>
+	<prevTitle>向前翻一页</prevTitle>
+	<nextTitle>向后翻一页</nextTitle>
+	<lastTitle>最后一页</lastTitle>
+	<insertTitle>增加一条新记录</insertTitle>
+	<deleteTitle>删除选择记录</deleteTitle>
+	<saveTitle>保存Grid (格式：HTML, Word or Excel)</saveTitle>
+	<copyTitle>拷贝Grid到剪贴板</copyTitle>
+	<helpTitle>显示Listview帮助</helpTitle>
+	<columnPickerTitle>选择Grid列</columnPickerTitle>
+	<clipboardCopy>拷贝Grid数据到剪贴板</clipboardCopy>
+	<sortTitle>增加排序字段</sortTitle>
+	<printTitle>打印Grid数据</printTitle>
+	<viewTitle>显示选择记录</viewTitle>
+
+<!-- Text -->
+	<searchText>搜索</searchText>
+	<updateText>更新</updateText>
+	<firstText>首页</firstText>
+	<prevText>上一页</prevText>
+	<nextText>下一页</nextText>
+	<lastText>尾页</lastText>
+	<insertText>插入</insertText>
+	<deleteText>删除</deleteText>
+	<saveText>保存</saveText>
+	<copyText>拷贝</copyText>
+	<helpText>帮助</helpText>
+	<columnPickerText>所有列</columnPickerText>
+	<sortText>排序</sortText>
+	<printText>打印</printText>
+	<viewText><![CDATA[<u>V</u>iew]]></viewText>
+
+	<page>页</page>
+	<of>共</of>
+	<rows>行</rows>
+<!-- alarm -->
+	<maxRowCount>数据大于允许的最大数目，自动截断！</maxRowCount>
+</lvlang>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<something-else-entirely>
+	<proxool>
+		<alias>xml-test</alias>
+		<driver-url>
+			jdbc:oracle:thin:@10.21.17.85:1521:ldims
+		</driver-url>
+		<driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+		<driver-properties>
+			<property name="user" value="tablequerymanager" />
+			<property name="password" value="mypassword123" />
+		</driver-properties>
+		<maximum-connection-count>10</maximum-connection-count>
+		<house-keeping-test-sql>select 1 from dual</house-keeping-test-sql>
+	</proxool>
+	<proxool>	
+		<alias>xml-report</alias>
+		<driver-url>
+			jdbc:oracle:thin:@10.21.17.85:1521:ldims
+		</driver-url>
+		<driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+		<driver-properties>
+			<property name="user" value="tablequerymanager" />
+			<property name="password" value="mypassword123" />
+		</driver-properties>
+		<maximum-connection-count>10</maximum-connection-count>
+		<house-keeping-test-sql>select 1 from dual</house-keeping-test-sql>
+	</proxool>
+	<proxool>	
+		<alias>xml-stb</alias>
+		<driver-url>
+			jdbc:oracle:thin:@10.21.17.85:1521:ldims
+		</driver-url>
+		<driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+		<driver-properties>
+			<property name="user" value="tablequerymanager" />
+			<property name="password" value="mypassword123" />
+		</driver-properties>
+		<maximum-connection-count>10</maximum-connection-count>
+		<house-keeping-test-sql>select 1 from dual</house-keeping-test-sql>
+	</proxool>
+</something-else-entirely>

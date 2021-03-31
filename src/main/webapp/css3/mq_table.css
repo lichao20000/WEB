@@ -1,0 +1,205 @@
+@CHARSET "GBK";
+table.listtable{
+	width:95%;
+}
+
+table.querytable{
+	width:100%;
+}
+
+table.green_gargtd{
+	height: 30px;
+	background-image: url(../images/title3_5.gif);
+	width:100%;
+}
+
+table.green_gargtd TH{
+	width: 162px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 16px;
+}
+
+table.listtable caption{
+	font-size: 10pt;
+	border:1px solid #ACA899;
+	font-weight: bold;
+	background-color: #D1D1D1;
+	line-height: 20px;
+	text-align: center;
+}
+
+table.listtable tbody tr {
+  	font-size: 10pt;
+	border:1px solid #CCCCCC;
+	background-color:expression((this.sectionRowIndex%2==0)?"#FFFFFF":"#F4FFFF");
+	color:#000000;
+	onmouseover:expression(onmouseover=function (){this.style.backgroundColor ='#8cbbda'}); 
+    onmouseout:expression(onmouseout=function (){this.style.backgroundColor =''});	
+}
+
+table.listtable thead th {
+    font-size: 10pt;
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 22px;
+	text-align: center;
+	background-image:  url("../images/green_title_bg.jpg");
+}
+
+table.listtable tfoot th,table.listtable tfoot td{
+    border:1px solid #ACA899;
+	background-color: #E8E8FF;
+    padding-left: 4px;
+	padding-right:4px;
+	padding-top:1px;
+	padding-bottom:1px;
+}
+table.listtable tfoot td img{
+    border:none;
+    float:left;
+	vertical-align:bottom;
+    padding-left:10px;
+}
+
+table.listtable tbody{
+	text-align:left;
+}
+
+table.listtable tbody td , table.listtable tbody th, table.listtable thead th{
+    padding:1px 2px 1px 2px;
+    border:1px solid #ACA899;
+}
+
+table.listtable tbody tr.odd {
+    background-color:#EBEBEB;
+}
+
+table.listtable tbody tr.even{
+    background-color:#ffffff;
+}
+
+table.listtable tbody tr.white{
+    background-color:#ffffff;
+}
+table.listtable tbody tr.glory,td.glory{
+    background-color:#E7E7E7;
+}
+table.listtable tbody tr.glory_line,td.glory_line{
+	background-color:#E7E7E7;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: BDBED0;	
+}
+table.listtable tbody tr.yellow,td.yellow{
+    background-color:#F7EDCC;
+}
+
+table.listtable tbody tr.blue,td.blue{
+    background-color:#345686;
+}
+
+table.listtable tbody tr.title_2
+{
+    background-color:#F8E2B9;
+	text-align: center;
+}
+table.listtable tbody tr.title_3
+{
+    background-color:#E0FCA8;
+		text-align: left;
+}
+
+table.listtable tbody tr.green,td.green{
+    background-color:#C5E3B9;
+	
+}
+table.listtable tbody tr.green_k,td.green_k{
+	background-color:#EAF2FF;
+	border: 1px solid #C6C6D0;	
+}
+table.listtable tbody tr.red,td.red{
+    background-color:#FE7D7A;
+}
+
+table.listtable td div.left,table.querytable td div.left{
+	float: left;
+}
+table.listtable td div.right,table.querytable td div.right{
+	float: right;
+}
+
+table.querytable,table.querytable tr,table.querytable td
+{
+    border:1px solid #ACA899;
+    /*background-color:#ffffff;*/
+    padding:1px 2px 1px 2px;
+	text-align: left;
+    font-size: 12px;
+	font-family: Arial, "Arial Black",  "??", "??";  
+}
+
+table.listtable td.column
+{
+	background-color: #F4F4FF;
+	color:#000000;
+		text-align:right;
+}
+
+table.querytable TH
+{
+	font-size: 10pt;
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 22px;
+	text-align: center;
+	background-image:  url("../images/green_title_bg.jpg");
+}
+
+table.querytable td.column
+{
+	background-color: #F4F4FF;
+	color:#000000;
+		text-align: right;
+}
+
+table.querytable .title_1 
+{
+    border:1px solid #ACA899;
+	font-weight: bold;
+	text-align: center;
+	background-color: #D1D1D1;
+	line-height: 20px;
+
+}
+
+table.querytable .title_2
+{
+	background-color: #F8E2B9;
+	text-align: center;
+}
+table.querytable .title_3 
+{
+    background-color:#E0FCA8;
+	text-align: center;
+}
+table.querytable .title_4
+{
+	background-color: #d1ddf2;
+	text-align: center;
+}
+table.listtable tfoot,table.querytable tfoot{
+	text-align: right;
+	background-color: #E8E8FF;
+	color:#000000;
+	height: 25px;
+}
+table.querytable td.foot{
+	text-align: right;
+	background-color: #E8E8FF;
+	color:#000000;
+	height: 25px;
+}

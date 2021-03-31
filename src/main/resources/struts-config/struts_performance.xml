@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!--performance功能模块-->
+	<package name="performance" extends="linkage_security" namespace="/performance">
+		<!--性能配置-->
+		<action name="configPmee" class="configPmeeAction">
+			<result name="success">/PerformanceConfig/configPmee.jsp</result>
+			<result name="detail">/PerformanceConfig/configPmeeDetail.jsp</result>
+			<result name="batch">/PerformanceConfig/batchConfig_getdev.jsp</result>
+			<result name="Warn">/PerformanceConfig/saveWarn.jsp</result>
+			<result type="ajax" name="ajax"></result>
+		</action>
+		<!-- 流量配置 -->
+		<!-- 江苏使用 -->
+		<!-- 
+			<action name="configFlux" class="ConfigFluxAction">
+				<result name="success">/PerformanceConfig/configFlux.jsp</result>
+				<result name="ajax" type="ajax"></result>
+				<result name="Warn">/PerformanceConfig/longfluxWarn.jsp</result>
+				<result name="portList">/PerformanceConfig/fluxPortList_long.jsp</result>
+				<result name="devicePort">/PerformanceConfig/getDevPort.jsp</result>
+				<result name="editPort">/PerformanceConfig/editFluxPort.jsp</result>
+			</action>
+		 -->
+		<!-- 其他项目组使用 -->
+		<action name="configFlux" class="ConfigFluxAction">
+			<result name="success">/PerformanceConfig/configFlux.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="Warn">/PerformanceConfig/shortfluxWarn.jsp</result>
+			<result name="portList">/PerformanceConfig/fluxPortList_short.jsp</result>
+			<result name="devicePort">/PerformanceConfig/getDevPort.jsp</result>
+			<result name="editPort">/PerformanceConfig/editFluxPort.jsp</result>
+		</action>
+		
+		<action name="portFilterAction" class="portFilterAction">				
+			<result name="success">/Performance/portFilter.jsp</result>		
+		</action>
+	</package>
+</struts>

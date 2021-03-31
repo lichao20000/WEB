@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="GB18030"?>
+<!--
+attribute:
+name: name of node.
+type: type of node. 1,string; 2,int; 3,unsignedInt; 4,boolean .
+readonly:is readonly. 0,none; 1,read; 2,read and write.
+ -->
+<InternetGatewayDevice>
+	<X_CU_Function>
+		<RemoteWeb>
+			<RemoteEnable name="LAN连接数" type="4" readonly="2" ="False"/>
+		</RemoteWeb>
+	</X_CU_Function>
+	<LANDevice>
+		<i>
+			<LANEthernetInterfaceNumberOfEntries name="LAN连接数" type="3" readonly="1"/>
+			<LANWLANConfigurationNumberOfEntries name="WLAN连接数" type="3" readonly="1"/>
+			<LANEthernetInterfaceConfig>
+				<i>
+					<Enable name="是否启用" type="4" readonly="2"/>
+					<Status name="状态" type="1" readonly="1"/>
+					<MACAddress name="MAC" type="1" readonly="1"/>
+					<MaxBitRate name="最大速率" type="1" readonly="2"/>
+					<DuplexMode name="复合模式" type="1" readonly="2"/>
+					<Stats>
+						<BytesSent name="发送字节" type="3" readonly="1"/>
+						<BytesReceived name="接收字节" type="3" readonly="1"/>
+						<PacketsSent name="发送包数" type="3" readonly="1"/>
+						<PacketsReceived name="接收包数" type="3" readonly="1"/>
+						<X_ATP_PacketsSentError name="发送错包" type="3" readonly="1"/>
+						<X_ATP_PacketsSentDrops name="发送丢包" type="3" readonly="1"/>
+						<X_ATP_PacketsReceivedError name="接收错包" type="3" readonly="1"/>
+						<X_ATP_PacketsReceivedDrops name="接收丢包" type="3" readonly="1"/>
+					</Stats>
+				</i>
+			</LANEthernetInterfaceConfig>
+			<WLANConfiguration>
+				<i>
+					<SSID name="SSID" type="1" readonly="2"/>
+					<Enable name="是否启用" type="4" readonly="2"/>
+					<Channel name="信道" type="3" readonly="2"/>
+					<ChannelsInUse name="当前信道" type="1" readonly="1"/>
+					<PossibleChannels name="可选信道" type="1" readonly="1"/>
+					<Status name="状态" type="1" readonly="1"/>
+					<BeaconType name="加密安全模式" type="1" readonly="2"/>
+					<Standard name="802.11工作模式" type="1" readonly="2"/>
+					<RadioEnabled name="是否广播" type="4" readonly="2"/>
+					<BasicAuthenticationMode name="基本认证模式" type="1" readonly="2"/>
+					<WEPKeyIndex name="密钥索引" type="3" readonly="2"/>
+					<WEPEncryptionLevel name="密钥长度" type="1" readonly="2"/>
+					<!--
+					<WEPKey>
+						<i>
+							<WEPKey name="密码" type="1" readonly="2"/>
+						</i>
+					</WEPKey>
+					-->
+					<WPAEncryptionModes name="WPA的加密模式" type="1" readonly="2"/>
+					<WPAAuthenticationMode name="WPA认证模式" type="1" readonly="2"/>
+					<!--
+					<PreSharedKey>
+						<i>
+							<PreSharedKey name="密码" type="1" readonly="2"/>
+						</i>
+					</PreSharedKey>
+					-->
+					<IEEE11iEncryptionModes name="802.11i加密模式" type="1" readonly="2"/>
+					<IEEE11iAuthenticationMode name="802.11i认证模式" type="1" readonly="2"/>
+					<TotalAssociations name="无线关联设备数" type="3" readonly="1"/>
+					<AssociatedDevice name="无线关联设备">
+						<i>
+							<AssociatedDeviceMACAddress name="MAC" type="1" readonly="1"/>
+							<AssociatedDeviceIPAddress name="IP" type="1" readonly="1"/>
+							<AssociatedDeviceAuthenticationState name="认证状态" type="1" readonly="1"/>
+						</i>
+					</AssociatedDevice>
+				</i>
+			</WLANConfiguration>
+			<Hosts>
+				<HostNumberOfEntries name="连接数" type="3" readonly="1"/>
+				<Host>
+					<i>
+						<IPAddress name="IP" type="1" readonly="1"/>
+						<AddressSource name="地址类型" type="1" readonly="1"/>
+						<MACAddress name="MAC" type="1" readonly="1"/>
+						<HostName name="主机名" type="1" readonly="1"/>
+						<Active name="端口状态" type="4" readonly="1"/>
+						<Layer2Interface  type="4" readonly="1"/>
+					</i>
+				</Host>
+			</Hosts>
+			<LANHostConfigManagement>
+				<DHCPServerConfigurable name="DHCP服务是否启用" type="4" readonly="2"/>
+				<DHCPServerEnable name="DHCP服务是否启用" type="4" readonly="2"/>
+				<DHCPRelay name="DHCP传递" type="4" readonly="1"/>
+				<MinAddress name="最小地址" type="1" readonly="2"/>
+				<MaxAddress name="最大地址" type="1" readonly="2"/>
+				<ReservedAddresses name="保留地址" type="1" readonly="2"/>
+				<!-- -1 表示无线 -->
+				<DHCPLeaseTime name="租期" type="2" readonly="2"/>
+				<AllowedMACAddresses name="允许接入的MAC地址列表" type="1" readonly="2"/>
+				<MinAddress name="指定池中将由 LAN 接口上的 DHCP 服务器分配的第一个地址" type="1" readonly="2"/>
+				<MaxAddress name="指定池中将由 LAN 接口上的 DHCP 服务器分配的最后一个地址" type="1" readonly="2"/>
+			</LANHostConfigManagement>
+		</i>
+	</LANDevice>
+	<WANDevice>
+		<i>			
+			<!-- CUC -->
+			<WANCommonInterfaceConfig name="WAN配置">
+				<EnabledForInternet name="使能所有连接实例与因特网的连接" type="4" readonly="1" /> 
+				<WANAccessType name="WAN方式" type="1" readonly="1"/> <!--DSL/Ethernet/X_CU_POTS/X_CU_EPON/x_CU_GPON... -->
+				
+				<Layer1UpstreamMaxBitRate type="3" readonly="1" />
+				<Layer1DownstreamMaxBitRate  type="3" readonly="1" />
+				<PhysicalLinkStatus    type="1" readonly="1" />
+				
+				<TotalBytesSent type="3" readonly="1" />
+				<TotalBytesReceived   type="3" readonly="1" />
+				<TotalPacketsSent type="3" readonly="1" />
+				<TotalPacketsReceived type="3" readonly="1" />
+			</WANCommonInterfaceConfig>
+			
+	
+			<WANDSLInterfaceConfig>
+				<enable name="使能连接" type="4" readonly="1" /> 
+				<Status name="线路状态,DSL物理链路的状态" type="1" readonly="1"/>
+				<StandardUsed name="StandardUsed" type="1" readonly="1"/>
+				<StandardsSupported name="StandardsSupported" type="1" readonly="1"/>
+				<UpstreamCurrRate name="UpstreamCurrRate" type="3" readonly="1"/>
+				<DownstreamCurrRate name="DownstreamCurrRate" type="3" readonly="1"/>
+				<UpstreamMaxRate name="DownstreamCurrRate" type="3" readonly="1"/>
+				<DownstreamMaxRate name="DownstreamCurrRate" type="3" readonly="1"/>
+				<UpstreamNoiseMargin name="DownstreamCurrRate" type="2" readonly="1"/>
+				<DownstreamNoiseMargin name="DownstreamCurrRate" type="2" readonly="1"/>
+				<UpstreamPower name="DownstreamCurrRate" type="2" readonly="1"/>
+				<DownstreamPower name="DownstreamPower" type="2" readonly="1"/>
+				<TotalStart name="TotalStart" type="3" readonly="1"/>
+				<ShowtimeStart name="ShowtimeStart" type="3" readonly="1"/>
+			</WANDSLInterfaceConfig>
+	
+			
+			<X_CU_WANEPONInterfaceConfig name="EPON配置">
+				<Enable name="Enable" type="4" readonly="1"/>
+				<Status name="物理链接状态" type="1" readonly="1"/>
+				<StandardsSupported name="网关上行WAN口所支持的标准" type="1" readonly="1" />
+				<StandardUsed name="网关使用的接口标准" type="1" readonly="1" />
+				<UpstreamMaxRate name="PON口上行可达到的最大带宽" type="3" readonly="1" />
+				<DownstreamMaxRate name="PON口下行可达到的最大带宽" type="3" readonly="1" />
+
+				<OpticalTransceiver>
+					<Temperature name="温度" type="2" readonly="1" />
+					<Vcc name="供电电压" type="3" readonly="1" />
+					<TXBias name="光发送机偏置电流" type="3" readonly="1" />
+					<TXPower name="发送机发送功率" type="2" readonly="1" />
+					<RXPower name="光接收机接收功率" type="2" readonly="1" />
+				</OpticalTransceiver>				
+				
+				<Stats>
+					<FECErrors name="" type="3" readonly="1" />
+					<FCSErrors name="" type="3" readonly="1" />
+					<HECError name="" type="3" readonly="1" />
+					<DropPackets name="" type="3" readonly="1" />
+					<BytesSent name="" type="3" readonly="1" />
+					<BytesReceived name="" type="3" readonly="1" />
+					<PacketsSent name="" type="3" readonly="1" />
+					<PacketsReceived name="" type="3" readonly="1" />
+					<SUnicastPackets name="" type="3" readonly="1" />
+					<RUnicastPackets name="" type="3" readonly="1" />
+					<SMulticastPackets name="" type="3" readonly="1" />
+					<RMulticastPackets name="" type="3" readonly="1" />
+					<SBroadcastPackets name="" type="3" readonly="1" />
+					<RBroadcastPackets name="" type="3" readonly="1" />
+					<SPausePackets name="PON口发送的PAUSE流控制帧数" type="3" readonly="1" />
+					<RPausePackets name="PON口接收的PAUSE流控制帧数" type="3" readonly="1" />
+				</Stats>
+			</X_CU_WANEPONInterfaceConfig>
+			
+			<X_CU_WANGPONInterfaceConfig name="GPON配置">
+				<Enable name="Enable" type="4" readonly="1"/>
+				<Status name="物理链接状态" type="1" readonly="1"/>
+				<StandardsSupported name="网关上行WAN口所支持的标准" type="1" readonly="1" />
+				<StandardUsed name="网关使用的接口标准" type="1" readonly="1" />
+				<UpstreamMaxRate name="PON口上行可达到的最大带宽" type="3" readonly="1" />
+				<DownstreamMaxRate name="PON口下行可达到的最大带宽" type="3" readonly="1" />
+				
+				<OpticalTransceiver>
+					<Temperature name="温度" type="2" readonly="1" />
+					<Vcc name="供电电压" type="3" readonly="1" />
+					<TXBias name="光发送机偏置电流" type="3" readonly="1" />
+					<TXPower name="发送机发送功率" type="2" readonly="1" />
+					<RXPower name="光接收机接收功率" type="2" readonly="1" />
+				</OpticalTransceiver>		
+				
+				<Stats>
+					<FECErrors name="" type="3" readonly="1" />
+					<FCSErrors name="" type="3" readonly="1" />
+					<HECError name="" type="3" readonly="1" />
+					<DropPackets name="" type="3" readonly="1" />
+					<BytesSent name="" type="3" readonly="1" />
+					<BytesReceived name="" type="3" readonly="1" />
+					<PacketsSent name="" type="3" readonly="1" />
+					<PacketsReceived name="" type="3" readonly="1" />
+					<SUnicastPackets name="" type="3" readonly="1" />
+					<RUnicastPackets name="" type="3" readonly="1" />
+					<SMulticastPackets name="" type="3" readonly="1" />
+					<RMulticastPackets name="" type="3" readonly="1" />
+					<SBroadcastPackets name="" type="3" readonly="1" />
+					<RBroadcastPackets name="" type="3" readonly="1" />
+					<SPausePackets name="PON口发送的PAUSE流控制帧数" type="3" readonly="1" />
+					<RPausePackets name="PON口接收的PAUSE流控制帧数" type="3" readonly="1" />
+				</Stats>
+			</X_CU_WANGPONInterfaceConfig>
+			
+			<WANConnectionDevice>
+				<i>
+					<!-- CUC -->
+					<WANIPConnectionNumberOfEntries name="IP连接数" type="3" readonly="1"/>
+					<WANPPPConnectionNumberOfEntries name="PPP连接数" type="3" readonly="1"/>
+					
+					<X_CU_VLANEnabled name="启用VLAN的标志" type="2" readonly="1" />
+					<X_CU_VLAN name="X_CU_VLAN" type="3" readonly="1" />
+					<X_CU_802_1p name="X_CU_802_1p" type="3" readonly="1" />
+					
+					<WANDSLLinkConfig name="DSL配置">
+						<Enable name="开关" type="4" readonly="1"/>
+						<DestinationAddress name="PVC" type="1" readonly="1"/>
+						<LinkType name="连接类型" type="1" readonly="1"/>
+					</WANDSLLinkConfig>
+				
+					<WANEthernetLinkConfig name="以太网配置">
+						<EthernetLinkStatus name="以太连接的状态" type="1" readonly="1"/>  <!-- UP/DOWN/UNAVAILABLE -->
+					</WANEthernetLinkConfig>
+					
+					<!-- CUC -->
+					<WANPPPConnection name="PPP连接配置">
+						<i>
+							<Enable name="开关" type="4" readonly="1"/>
+							<X_CU_LanInterface name="绑定端口" type="1" readonly="1"/>
+							<X_CU_ServiceList name="业务类型" type="1" readonly="1"/>
+							<Reset name="" type='4' readonly='2' />
+							<ConnectionStatus name="连接状态" type="1" readonly="1"/> <!-- Unconfigured,Connecting -->
+							<PossibleConnectionTypes type='1 ' readonly="1"/>
+							<ConnectionType name="连接类型" type="1" readonly="1"/>  <!-- IP_Routed,DHCP_Spoofed,PPPoE_Bridged,PPPoE_Relay... -->
+							<!-- delete 20131213 
+							<X_CU_VLANEnabled name="是否启动VLAN" type='4' readonly="1" />
+							<X_CU_VLANID name="VLANID" type="3" readonly="1" />
+							<X_CU_Priority name="" type="3" readonly="1" />
+							-->
+							<X_CU_MulticastVlan name="" type="3" readonly="1" />
+							<Name name="名称" type="1" readonly="1" />
+							<Uptime name="该连接启动时间（以秒计）" type="3" readonly="1" />
+							<LastConnectionError name="拨号错误代码" type="1" readonly="1"/>
+							<RSIPAvailable name="指示CPE设备上RSIP是否可用" type="4" readonly="1" />
+							<NATEnabled name="NAT开关" type="4" readonly="1"/>
+							
+							<Username name="帐号" type="1" readonly="1"/>
+							<Password name="密码" type="1" readonly="1"/>
+							
+							<ExternalIPAddress name="NAT使用该连接的外部地址" type="1" readonly="1"/>
+							<DNSEnable name="" type="4" readonly="1" />
+							<DNSOverrideAllowed name="" type="4" readonly="1" />
+							<DNSServers name="DNS" type="1" readonly="1"/>
+							
+							<MACAddress name="MAC地址" type="1" readonly="1"/>
+
+							<TransportType name="PPP连接的传输类型" type="1" readonly="1" /> <!-- PPPoA,PPPoE,L2TP,PPTP -->
+							<PPPoEACName name="" type="1"  readonly="1" />
+							<PPPoEServiceName   name="" type="1"  readonly="1" />
+							<ConnectionTrigger name="拨号方式" type="1" readonly="1"/>
+							
+							<RouteProtocolRx name="接受协议" type="1" readonly="1" /> <!-- off,RIPv1 ... -->
+							<X_CU_PPPoEProxyEnable name="开启和关闭PPPoe Proxy功能" type="4" readonly="1" />
+							<X_CU_PPPoEProxyMaxUsers name="单个PPPoE代理支持的用户数量" type="2"  readonly="1" />
+							<X_CU_IGMPProxyEnable name="对应WAN连接是否启用IGMPProxy" type="4" readonly="1" />
+							<PortMappingNumberOfEntrie name="端口映射入口的总数" type="3" readonly="1" />
+							<X_CU_IPForwardModeEnabled name="是否开启基于目的IP转发模式，缺省False" type="4" readonly="1" />
+							<X_CU_IPForwardList name="基于目的IP转发模式时该WAN连接支持的目的IP地址范围" type="1" readonly="1" />								
+							<X_CU_IPMode name="控制IPv4和IPv6协议使能" type="3" readonly="1" />
+							<X_CU_IPv6ConnStatus name="当前基于IPv6协议的连接状态协议" type="1" readonly="1" />
+							<X_CU_IPv6IPAddress name="仅当IPv6IPAddress为Static时可配置" type="1" readonly="1" />
+							<X_CU_IPv6IPAddressAlias name="WAN口地址别名" type="1" readonly="1" />
+							<X_CU_IPv6IPAddressOrigin name="地址分配机制" type="1" readonly="1" />
+							<X_CU_IPv6DNSServers name="DNS Server地址" type="1" readonly="1" />
+							<X_CU_IPv6PrefixDelegationEnabled name="WAN连接是否需要获得Prefix Delegation" type="4" readonly="1" />
+							<X_CU_IPv6PrefixAlias name="前缀地址别名" type="1" readonly="1" />
+							<X_CU_IPv6PrefixOrigin name="前缀地址分配机制" type="1" readonly="1" />
+							<X_CU_IPv6Prefix name="前缀地址" type="1" readonly="1" />
+							<X_CU_IPv6PrefixPltime name="公告前缀的preferred lifetime，单位：秒" type="3" readonly="1" />
+							<X_CU_IPv6PrefixVltime name="公告前缀的valid lifetime，单位：秒" type="3" readonly="1" />
+							<X_CU_DefaultIPv6Gateway name="WAN连接的默认网关" type="4" readonly="1" />
+							<X_CU_IPv6DomainName name="Domain" type="4" readonly="1" />
+						</i>
+					</WANPPPConnection>
+					<WANIPConnection name="IP连接配置">
+						<i>
+							<Enable name="开关" type="4" readonly="1"/>
+							<X_CU_LanInterface name="绑定端口" type="1" readonly="1"/>
+							<X_CU_ServiceList name="业务类型" type="1" readonly="1"/>
+							<Reset type='4' readonly='2' />
+							<ConnectionStatus name="连接状态" type="1" readonly="1"/> <!-- Unconfigured,Connecting -->
+							<PossibleConnectionTypes type='1 ' readonly="1"/>
+							<ConnectionType name="连接类型" type="1" readonly="1"/>  <!-- IP_Routed,DHCP_Spoofed,PPPoE_Bridged,PPPoE_Relay... -->
+							<X_CU_VLANEnabled name="是否启动VLAN" type='4' readonly="1" />
+							<X_CU_VLANID name="VLANID" type="3" readonly="1" />
+							<X_CU_Priority name="" type="3" readonly="1" />
+							<X_CU_MulticastVlan name="" type="3" readonly="1" />
+							<Name name="名称" type="1" readonly="1" />
+							<Uptime name="该连接启动时间（以秒计）" type="3" readonly="1" />
+							<LastConnectionError name="拨号错误代码" type="1" readonly="1"/>
+							<RSIPAvailable name="指示CPE设备上RSIP是否可用" type="4" readonly="1" />
+							<NATEnabled name="NAT开关" type="4" readonly="1"/>
+							
+							<AddressingType name="" type="1" readonly="1" />
+							<ExternalIPAddress name="NAT使用该连接的外部地址" type="1" readonly="1"/>
+							<SubnetMask name="连接类型" type="1" readonly="1"/>
+							<DNSEnable name="" type="4" readonly="1" />
+							<DNSOverrideAllowed name="" type="4" readonly="1" />
+							<DNSServers name="DNS" type="1" readonly="1"/>
+							<RouteProtocolRx name="接受协议" type="1" readonly="1" /> <!-- off,RIPv1 ... -->
+							<X_CU_IGMPProxyEnable name="对应WAN连接是否启用IGMPProxy" type="4" readonly="1" />
+							<PortMappingNumberOfEntrie name="端口映射入口的总数" type="3" readonly="1" />
+							
+						</i>
+					</WANIPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+	
+	<Services>
+		<X_CT-COM_MWBAND name="多终端">
+			<Mode name="模式" type="2" readonly="2"/>
+			<TotalTerminalNumber name="总数" type="2" readonly="2"/>
+			<STBRestrictEnable name="机顶盒开关" type="4" readonly="2"/>
+			<STBNumber name="机顶盒数" type="2" readonly="2"/>
+			<CameraRestrictEnable name="摄像头开关" type="4" readonly="2"/>
+			<CameraNumber name="摄像头数" type="2" readonly="2"/>
+			<ComputerRestrictEnable name="电脑开关" type="4" readonly="2"/>
+			<ComputerNumber name="电脑数" type="2" readonly="2"/>
+			<PhoneRestrictEnable name="电话开关" type="4" readonly="2"/>
+			<PhoneNumber name="电话数" type="2" readonly="2"/>
+		</X_CT-COM_MWBAND>
+		<X_CT-COM_IPTV name="IPTV">
+			<IGMPEnable name="开关" type="4" readonly="2"/>
+			<ProxyEnable name="代理开关" type="4" readonly="2" />
+			<SnoopingEnable name="Snooping开关" type="4" readonly="2" />
+			<STBNumber name="机顶盒数" type="3" readonly="1"/>
+		</X_CT-COM_IPTV>
+		<!--
+		<X_ATP_UPnP name="UPnP">
+			<Enable name="开关" type="4" readonly="2"/>
+		</X_ATP_UPnP>
+		-->
+		<VoiceService>
+			<i>
+				<VoiceProfileNumberOfEntries name="Voice Profile的个数" type="3" readonly="1"/>
+				<VoiceProfile>
+					<i>
+						<SIP name="SIP服务器">
+							<ProxyServer name="地址" type="1" readonly="2"/>
+							<ProxyServerPort name="端口" type="3" readonly="2"/>
+							<ProxyServerTransport name="代理服务器协议类型" type="1" readonly="2"/>
+							<X_CU_SecondaryProxyServer name="备用地址" type="1" readonly="2"/>
+							<X_CU_SecondaryProxyServerPort name="备用端口" type="3" readonly="2"/>
+							<X_CU_SecondaryProxyServerTransport name="代理服务器协议类型" type="1" readonly="2"/>
+							<RegistrarServer name="地址" type="1" readonly="2"/>
+							<RegistrarServerPort name="端口" type="3" readonly="2"/>
+							<RegistrarServerTransport name="注册服务器协议类型" type="1" readonly="2"/>
+							<X_CU_SecondaryRegistrarServer name="地址" type="1" readonly="2"/>
+							<X_CU_SecondaryRegistrarServerPort name="端口" type="3" readonly="2"/>
+							<X_CU_SecondaryRegistrarServerTransport name="注册服务器协议类型" type="1" readonly="2"/>
+							<OutboundProxy name="地址" type="1" readonly="2"/>
+							<OutboundProxyPort name="端口" type="3" readonly="2"/>
+							<X_CU_SecondaryOutboundProxyServer name="地址" type="1" readonly="2"/>
+							<X_CU_SecondaryOutboundProxyServerPort name="端口" type="3" readonly="2"/>
+						</SIP>
+						<X_CU_H248 name="H.248协议">
+							<MediaGatewayControler name="地址" type="1" readonly="2"/>
+							<MediaGatewayControlerPort name="端口" type="2" readonly="2"/>
+							<Standby-MediaGatewayControler name="备用地址" type="1" readonly="2"/>
+							<Standby-MediaGatewayControlerPort name="备用端口" type="2" readonly="2"/>
+							<MediaGatewayPort name="UDP端口号" type="2" readonly="2"/>
+							<DeviceID name="全局唯一的标识" type="1" readonly="2"/>
+							<DeviceIDType name="标识的类型" type="3" readonly="2"/>
+							<RTPPrefix name="RTP终结点标识前缀" type="1" readonly="2"/>
+						</X_CU_H248>
+						<Line name="线路状态">
+							<i>
+								<Enable name="开关" type="4" readonly="2"/>
+								<DirectoryNumber  name="用户号码" type="1" readonly="2"/>
+								<Status name="线路状态" type="1" readonly="1"/>
+								<SIP name="">
+									<AuthUserName name="认证用户名" type="1" readonly="2"/>
+									<AuthPassword name="认证密码" type="1" readonly="2"/>
+									<URI name="URI" type="1" readonly="2"/>
+								</SIP>
+								<X_CU_H248 name="H.248协议">
+									<LineName name="终端名" type="1" readonly="2"/>
+								</X_CU_H248>
+							</i>
+						</Line>
+					</i>
+				</VoiceProfile>
+			</i>
+		</VoiceService>
+	</Services>
+	
+	<ManagementServer>
+		<URL name="ACS URL" type="1" readonly="2"/>
+		<PeriodicInformEnable name="周期上报开关" type="4" readonly="2"/>
+		<PeriodicInformInterval name="周期上报秒" type="3" readonly="2"/>
+	</ManagementServer>
+	
+</InternetGatewayDevice>

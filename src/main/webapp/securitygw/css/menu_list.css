@@ -1,0 +1,155 @@
+td,BODY{
+ 
+ FONT-SIZE: 12px; 
+ MARGIN: 0px; 
+ FONT-FAMILY: Verdana, ËÎÌו; 
+
+}
+
+DIV.CM_MainMenuBar
+{
+  border-right: threedface 1px solid;
+  border-left: threedface 1px solid;
+  border-bottom: threedface 1px solid;
+  border-top: threedface 1px solid;
+  padding-top: 2px;
+  padding-bottom: 1px; 
+  cursor: default;
+}
+DIV.CM_MainMenu
+{
+  border-right: threedface 1px solid;
+  padding-right: 8px;
+  border-top: threedface 1px solid;
+  padding-left: 8px;
+  padding-bottom: 0px;
+  border-left: threedface 1px solid;
+  cursor: default;
+  padding-top: 3px;
+  border-bottom: threedface 1px solid;
+  position: absolute;
+}
+DIV.CM_MainMenuOver
+{
+  border-right: #316AC5 1px solid;
+  padding-right: 8px;
+  border-top: #316AC5 1px solid;
+  padding-left: 8px;
+  padding-bottom: 0px;
+  border-left: #316AC5 1px solid;
+  cursor: default;
+  padding-top: 3px;
+  border-bottom: #316AC5 1px solid;
+  position: absolute;
+  background-color: #C1D2EE;
+}
+
+DIV.CM_MainMenuClick{
+  border-right: #8A867A 1px solid;
+  padding-right: 8px;
+  border-top: #8A867A 1px solid;
+  padding-left: 8px;
+  padding-bottom: 1px;
+  border-left: #8A867A 1px solid;
+  cursor: default;
+  padding-top: 3px;
+  position: absolute;
+  background-color: #EFEDDE;
+}
+
+DIV.CM_SubMenu TD
+{
+  font-size: 12px;
+}
+DIV.CM_SubMenuBar
+{
+  color: #000000;
+  font-size: 12px;
+  border-right: appworkspace 1px solid;
+  border-top: appworkspace 1px solid;
+  border-left: appworkspace 1px solid;
+  border-bottom: appworkspace 1px solid;
+  font-family: Verdana, ËÎÌו;
+  position: absolute;
+  visibility: hidden;
+  background-color: buttonface;
+  margin-left: 1px;
+  margin-right: 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+DIV.CM_SubMenu
+{
+  cursor: default;
+}
+
+DIV.CM_OverLine{
+  position: absolute;
+  visibility: hidden;
+  z-index:100;
+  margin: 0px;
+}
+
+SPAN.SubFlag{
+	font-size: 13px;
+  text-align: right;
+	cursor:default;
+	font-family:"Wingdings 3";
+}
+
+TD.CM_Icon
+{
+  border-top: buttonface 1px solid;
+  border-left: buttonface 1px solid;
+  border-bottom: buttonface 1px solid;
+  background-color: buttonface;
+}
+
+TD.CM_IconOver{
+  border-top: #316AC5 1px solid;
+  border-left: #316AC5 1px solid;
+  border-bottom: #316AC5 1px solid;
+  border-right-width: 1px;
+  background-color: #C1D2EE;
+}
+
+TD.CM_Text
+{
+ padding-right: 2px;
+ padding-left: 5px;
+ padding-top: 2px;
+ border-top: menu 1px solid;
+ border-bottom: menu 1px solid;
+ background-color: menu;
+}
+
+TD.CM_TextOver{
+  padding-right: 2px;
+  padding-left: 5px;
+  padding-top: 2px;
+  border-top: #316AC5 1px solid;
+  border-bottom: #316AC5 1px solid;
+  background-color: #C1D2EE;
+}
+
+TD.CM_Sub
+{
+  border-right: menu 1px solid;
+  border-top: menu 1px solid;
+  border-bottom: menu 1px solid;
+  background-color: menu;
+  text-align:center
+}
+TD.CM_SubOver
+{
+  border-right: #316AC5 1px solid;
+  border-top: #316AC5 1px solid;
+  border-bottom: #316AC5 1px solid;
+  background-color: #C1D2EE;
+  text-align:center;
+}
+
+TD.CM_Space{
+  background-color: menu;
+}

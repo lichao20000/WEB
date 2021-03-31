@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="handSheet" class="dao.netcutover.HandSheetDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="workhand" class="action.netcutover.WorkHandAction"
+		scope="prototype">
+		<property name="workHandDao">
+			<ref local="work_hand" />
+		</property>
+	</bean>	
+	<bean id="work_hand" class="dao.netcutover.WorkHandDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="worksheet" class="action.netcutover.WorkSheetAction"
+		scope="prototype">
+		<property name="handSheetDao">
+			<ref local="handSheet"/>
+		</property>	
+		<property name="workHandDao">
+			<ref local="work_hand"/>
+		</property>		
+	</bean>
+	<bean id="adsl_open" class="action.netcutover.AdslOpenAction"
+		scope="prototype">
+		<property name="handSheetDao">
+			<ref local="handSheet"/>
+		</property>		
+	</bean>
+	<bean id="sheetView" class="action.netcutover.sheetViewAction"
+		scope="prototype">
+		<property name="handSheetDao">
+			<ref local="handSheet"/>
+		</property>		
+	</bean>
+</beans>

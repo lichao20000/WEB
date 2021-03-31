@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<import resource="classpath:/com/linkage/module/gtms/resource/applicationContext_gtms_resource.xml" />
+	<import resource="classpath:/com/linkage/module/gtms/report/applicationContext_nxFtthBind_gtms_report.xml" />
+	<import resource="classpath:/com/linkage/module/gtms/blocTest/applicationContext_gtms_blocTest.xml" />
+	<!--新疆需求 start -->
+	<import resource="classpath:/com/linkage/module/gtms/config/applicationContext_gtms_config.xml" />
+	<!--新疆需求 end -->
+	<!--上海测试start -->
+    <import resource="classpath:/com/linkage/module/gtms/diagnostic/applicationContext_gtms_diagnostic.xml" />
+	<!--上海测试 end -->
+	
+	<import resource="classpath:/com/linkage/module/gtms/service/applicationContext_gtms_service.xml" />
+	<import resource="classpath:/com/linkage/module/gtms/system/applicationContext_gtms_system.xml" />
+	
+	<!-- 机顶盒设备信息查询，版本文件路径管理 -->
+	<import resource="classpath:/com/linkage/module/gtms/stb/resource/spring_stb_resource.xml" />
+	<import resource="classpath:/com/linkage/module/gtms/stb/config/spring_stb_config.xml" />
+	<!-- 机顶盒共用页面（设备的高级查询，简单查询等） -->
+	<import resource="classpath:/com/linkage/module/gtms/stb/share/spring_stb_share.xml" />
+	<!-- 机顶盒重启，ping诊断，TraceRoute -->
+	<import resource="classpath:/com/linkage/module/gtms/stb/diagnostic/spring_stb_diagnostic.xml" />
+	<import resource="classpath:/com/linkage/module/gtms/stb/zeroconf/spring_stb_zeroconf.xml" />
+	<import resource="classpath:/com/linkage/module/gtms/itv/applicationContext_itv.xml" />
+	
+	<!-- 机顶盒设备信息查询，版本文件路径管理 -->
+	<import resource="classpath:/com/linkage/module/gtms/stb/report/spring_stb_report.xml" />
+
+</beans>

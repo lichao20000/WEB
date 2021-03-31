@@ -1,0 +1,181 @@
+<SCRIPT LANGUAGE="JavaScript">
+
+var tree;
+function init_tree()
+{	
+	tree=new Tree_treeView();
+	//设置tree_view属性
+	tree.showLine=true;//显示结点连线
+	tree.folderImg1="./treeimg/clsfld.gif";//默认文件夹折叠图标
+	tree.folderImg2="./treeimg/openfld.gif";//默认文件夹展开图标
+	tree.fileImg="./treeimg/link.gif";//文件图标
+	tree.target="_blank";//目标框架
+	tree.folderClass1="FOLDER_1";//文件夹样式(正常状态)
+	tree.folderClass2="FOLDER_2";//文件夹样式(鼠标位于文件夹上时)
+	tree.folderClass3="FOLDER_3";//文件夹样式(选择状态)
+	tree.fileClass1="FILE_1";//文件样式(正常状态)
+	tree.fileClass2="FILE_2";//文件样式(鼠标位于文件上时)
+	tree.fileClass3="FILE_3";//文件样式(选择状态)
+
+	//生成CSS样式，注意，格式是TD.XXX{...},(XXX是样式名,如folderClass1,selectClass)
+	var css=
+	"<style>"+
+	"TD.FOLDER_1{padding:1pt 5pt  }"+
+	"TD.FOLDER_2{color:red;padding:1pt 5pt}"+
+	"TD.FOLDER_3{text-decoration:underline;color:brown;padding:1pt 5pt}"+
+	"TD.FILE_1{padding:1pt 5pt}"+
+	"TD.FILE_2{color:blue;padding:1pt 5pt}"+
+	"TD.FILE_3{text-decoration:underline;color:green;padding:1pt 5pt}"+
+	"</style>";
+	document.write(css);//tree.refresh();
+
+	//添加根结点node
+	var node=tree.add(0,Tree_ROOT,0,"根结点[node]");
+	//在最后面添加根结点
+	tree.add(0,Tree_ROOT,Tree_LAST,"在最后面添加");
+	//在node下添加子结点
+	var child=node.addChild(Tree_LAST,"alert(new Date())",
+		"不用菜单标题作提示文字","不用菜单标题作状态栏文字");
+	//设置脚本
+	child.setScript("alert(new Date())");
+	//添加兄弟结点
+	tree.add(child.id,Tree_SIBLING,Tree_LAST,"链接");
+	//设置链接
+	child.next().setLink("http://www.6to23.com","_blank");
+	child.next().hint=child.next().status="http://www.6to23.com";
+	//展开根node
+	node.expand(true);
+	//添加事件函数,你可以作扩展以适应你的应用。
+	tree.callback_expanding=function my_expand(nodeID){
+		var text=tree.getNode(nodeID).text;
+		return text!="cancel";//如果结点文字为 'cancel',则不展开
+	}
+	tree.callback_rightClick=function my_rightClick(nodeID){
+		this.select(nodeID);//选择右键的结点
+		alert("你右键选择------>"+tree.getSelect().text);
+		return false;//取消右键菜单
+	}
+
+	//点击结点时更新文本框的内容
+	tree.callback_click=function my_click(nodeID){
+		var text=document.getElementById("text");
+		var hint=document.getElementById("hint");
+		var status=document.getElementById("status");
+		var script=document.getElementById("script");
+		var link=document.getElementById("link");
+		var node=tree.getNode(nodeID);
+		text.value=node.text;
+		hint.value=node.hint;
+		status.value=node.status;	
+		script.value=(node.getType()==Tree_SCRIPT?
+					node.getScript():"");
+		link.value=(node.getType()==Tree_LINK?
+					node.getLink():"");
+		document.getElementsByName("check")[0].checked=
+					node.getType()==Tree_SCRIPT;
+		document.getElementsByName("check")[1].checked=
+					node.getType()==Tree_LINK;
+		return true;//返回true调用默认的click,false 取消click
+	}
+}
+
+function runScript()
+{
+	var text=document.getElementById("toRun");
+	try{
+		eval(text.value);
+	}
+	catch(e){alert("运行脚本出错\r\n"+e.description);}
+}
+function del()
+{
+	if(tree.selectID==null)
+	{
+		alert('没有选择的菜单');
+		return;	
+	}
+	if(tree.selectID)
+	{
+		var next=tree.getSelect().next();
+		var id=next!=null?next.id:null;
+		tree.del(tree.getSelect().id);
+		if(id)tree.select(id);		
+	}
+}
+
+function addRoot()
+{
+	var text=document.getElementById("text");
+	var hint=document.getElementById("hint");
+	var status=document.getElementById("status");
+	tree.add(0,Tree_ROOT,Tree_LAST,text.value,hint.value,status.value,"","");	
+}
+
+function addSub()
+{
+	if(tree.selectID==null){
+		alert("没有选择的菜单");return;
+	}
+	var text=document.getElementById("text");
+	var hint=document.getElementById("hint");
+	var status=document.getElementById("status");
+	var script=document.getElementById("script");
+	var link=document.getElementById("link");
+	var node=tree.add(tree.selectID,Tree_CHILD,
+			Tree_LAST,text.value,hint.value,status.value,"","");
+	node.hint=hint.value;
+	node.status=status.value;
+	if(document.getElementsByName("check")[0].checked) 
+		node.setScript(script.value);
+	if(document.getElementsByName("check")[1].checked)
+		node.setLink(link.value,"_blank");
+}
+
+function set()
+{
+	var node=tree.getSelect();
+	if(node==null){
+		alert("没有选择的菜单");return;
+	}
+	var text=document.getElementById("text");
+	var hint=document.getElementById("hint");
+	var status=document.getElementById("status");
+	var script=document.getElementById("script");
+	var link=document.getElementById("link");
+	node.setText(text.value);
+	node.hint=hint.value;
+	node.status=status.value;
+	if(document.getElementsByName("check")[0].checked)
+		node.setScript(script.value);
+	if(document.getElementsByName("check")[1].checked)
+		node.setLink(link.value,"_blank");
+}
+</SCRIPT>
+
+<HTML>
+<HEAD>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<style>
+p{ font-size: 13px;margin-top:2px;margin-bottom:2px;}
+body{ background-color:white }
+a:link {color: Red; TEXT-DECORATION: none}
+a:hover {COLOR: Red!important; TEXT-DECORATION: underline}
+a:visited {COLOR: #ee9c00; TEXT-DECORATION: none}
+td{font-size:10pt;}
+img.hide{width:0;height:0}
+</style>
+<Title></Title>
+</HEAD>
+<BODY>
+<div align="center">
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" height="100%" >
+    <tr> 
+        
+      <td width="100%"> 
+        <div align="center"><b><font color="2D418E" size="6" face="隶书">报表初始化界面</font></b></div>
+      </td>
+    </tr>
+  </table>
+</div>
+</BODY>
+</HTML>

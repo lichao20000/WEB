@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="warnFilterDAO" class="dao.webtopo.warn.WarnFilterDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>	
+	<bean id="warnFilterBIO" class="bio.webtopo.warn.WarnFilterBIO" scope="prototype">
+		<property name="warnFilterDao">
+			<ref local="warnFilterDAO"/>
+		</property>
+	</bean>
+	<bean id="warnRuleDefAction" class="action.webtopo.warn.WarnRuleDefAction" scope="prototype">
+		<property name="warnFilterBio">
+			<ref local="warnFilterBIO"/>
+		</property>
+		<property name="warnFilterDao">
+			<ref local="warnFilterDAO"/>
+		</property>
+	</bean>
+	<bean id="warnColumnDefAction" class="action.webtopo.warn.WarnColumnDefAction" scope="prototype">
+		<property name="warnFilterBio">
+			<ref local="warnFilterBIO"/>
+		</property>
+		<property name="warnFilterDao">
+			<ref local="warnFilterDAO"/>
+		</property>
+	</bean>
+	<bean id="warnDetailInfoDAO" class="dao.webtopo.warn.WarnDetailInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="warnDetailInfoBIO" class="bio.webtopo.warn.WarnDetailInfoBIO" scope="prototype">
+		<property name="warnDetailInfoDao">
+			<ref local="warnDetailInfoDAO"/>
+		</property>
+	</bean>
+	<bean id="warnDetailInfoAction" class="action.webtopo.warn.WarnDetailInfoAction" scope="prototype">
+		<property name="warnDetailInfoBio">
+			<ref local="warnDetailInfoBIO"/>
+		</property>
+	</bean>
+	<bean id="RealTimeWarnAction" class="action.webtopo.warn.RealTimeWarnAction" scope="prototype">
+		<property name="rtd">
+			<ref local="RealTimeWarnDao"/>
+		</property>
+		<property name="rtb">
+			<ref local="RealTimeWarnBIO"/>
+		</property>
+	</bean>
+	<bean id="RealTimeWarnDao" class="dao.webtopo.warn.RealTimeWarnDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="RealTimeWarnBIO" class="bio.webtopo.warn.RealTimeWarnBIO" scope="prototype">
+		<property name="rwd">
+			<ref local="RealTimeWarnDao"/>
+		</property>
+	</bean>
+	<bean id="ImportTopoDAO" class="dao.resource.ImportTopoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ImportTopoAction" class="action.resource.ImportTopoAction" scope="prototype">
+		<property name="importTopo">
+			<ref local="ImportTopoDAO"/>
+		</property>
+	</bean>
+</beans>

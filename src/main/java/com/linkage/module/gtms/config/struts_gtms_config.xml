@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="config_gtms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/config">
+		<!-- 宁夏电信关闭光猫iTV无线业务 -->
+		<action name="OperatSSID" class="OperatSSIDACT">
+			<result name="list">/gwms/share/gwShareDeviceList0.jsp</result>
+			<result name="init">/gtms/config/operatSSIDQuery4NX.jsp</result>
+			<result name="result_list">/gtms/config/operatSSIDList4NX.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 山东联通单台设备开通路由上网 -->
+		<action name="useParameter" class="UseParameterACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="timeSet" class="controlTimeOfUserActionImpl">
+			<result name="init">/gtms/config/ControTimeOfUser.jsp</result>
+			<result name="list">/gtms/config/ControTimeOfUserList.jsp</result>
+			<result name="preUpdate">/gtms/config/ControTimeOfUserUpdate.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="timerParamConfig" class="VOIPParamConfigActionImpl">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="digitMapConfig" class="VOIPDigitMapBatchActionImpl">
+			<result name="init">/gtms/config/DigitMapBatchConfig.jsp</result>
+			<result name="digitQuery">/gtms/config/digitQuery.jsp</result>
+			<result name="list">/gtms/config/digitQueryList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="paramNodeBatchConfigAction" class="ParamNodeBatchConfigActionImpl">
+			<result name="initBatchSetTemplate">/gtms/config/BatchConfigFromTemplate.jsp</result>
+			<result name="initBatchSetTemplateStb">/gwms/resource/BatchConfigFromTemplate.jsp</result>
+			<result name="init">/gtms/config/ParamNodeBatchConfig.jsp</result>
+			<result name="init1">/gtms/config/ParamNodeBatchConfig1.jsp</result>
+			<result name="parNodelist">/gtms/config/parNodeList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="paramNodeBatchConfig4QAAction" class="ParamNodeBatchConfigAction4QAImpl">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="wirelessConfigAction" class="WirelessConfigActionImpl">
+			<result name="queryRes">/gtms/config/WirelessConfigRes.jsp</result>
+			<result name="deviceList">/gtms/config/deviceList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="configMaxTerminal" class="ConfigMaxTerminalActionImp">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="alarmConfig" class="AlarmConfigActionImpl">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="serverConfig" class="ServerConfigActionImpl">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 安徽批量回填LOID -->
+		<action name="setLoidAction" class="SetLoidActionImpl">
+			<result name="list">/gtms/config/SetLoidList.jsp</result>
+			<result name="isSucc">/gtms/config/SetLoidConfigSuc.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 安徽批量回填LOID -->
+		<action name="openOttServAction" class="OttConfigActionImpl">
+			<result name="queryRes">/gtms/config/WirelessConfigRes.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 江苏无线 -->
+		<action name="wirelessBusnissCtrl" class="WirelessBusinessCtrlACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="list">/gtms/config/WirelessBusList.jsp</result>
+		</action>
+		<!-- 宽带DHCP关闭 -->
+		<action name="netByDHCPStop" class="NetByDHCPStopACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="init">/gtms/config/NetByDHCPQuery.jsp</result>
+			<result name="list">/gtms/config/NetByDHCPList.jsp</result>
+		</action>
+		<!-- 江西批量节点配置 -->
+		<action name="paramNodeCfg" class="ParamNodeCfgACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="list">/paramConfig/paramNodeDevList.jsp</result>
+			<result name="paramNodeList">/paramConfig/paramNodeConfList.jsp</result>
+			<result name="configSuccess">/paramConfig/paramNodeResult.jsp</result>
+			<result name="uploadSuccess">/paramConfig/showUpload.jsp</result>
+		</action>
+		
+		<!-- 批量采集参数节点 -->
+		<action name="getNodeBatchConfigAction" class="getNodeBatchConfigActionImpl">
+			<result name="init">/gtms/config/getNodeBatchQuery.jsp</result>
+			<result name="nodeRecordlist">/gtms/config/nodeBatchList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- QOE -->
+		<action name="qoeFunctionAct" class="qoeFunctionACT">
+			<result name="showList">/inmp/softwareUp/returnList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 江西电信双栈刷新工具-->
+		<action name="stackRefreshTools" class="StackRefreshToolsACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="batch4cq">/gtms/config/StackRefreshTools4CQ.jsp</result>
+			<result name="shareList0">/gwms/share/gwShareDeviceList0_stackRefreshTools.jsp</result>
+			<result name="initMana4cq">/gtms/config/StackRefreshToolsQuery4CQ.jsp</result>
+			<result name="batchList4cq">/gtms/config/StackRefreshToolsList4CQ.jsp</result>
+			<result name="batchConfigListGyCity4cq">/gtms/config/StackRefreshToolsListGyCity4CQ.jsp</result>
+			<result name="batchConfigDevList4cq">/gtms/config/StackRefreshToolsDevList4CQ.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 双栈刷新结果统计-->
+		<action name="stackRefreshCount" class="StackRefreshCountACT">
+			<result name="init">/gtms/config/StackRefreshCountByTime.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+			<result name="shouRefreshInfoList">/gtms/config/StackRefreshCount.jsp</result>
+			<result name="devList">/gtms/config/StackRefreshCountDevList.jsp</result>
+			<result name="shouRefreshInfoListByTime">/gtms/config/StackRefreshCountListByTime.jsp</result>
+			<result name="devListByTime">/gtms/config/StackRefreshCountDevListByTime.jsp</result>
+		</action>
+		<!-- 宁夏电信组播下移新增/删除工具-->
+		<action name="modifyVlanTools" class="ModifyVlanToolsACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="shareList0">/gwms/share/gwShareDeviceList0_stackRefreshTools.jsp</result>
+			<result name="excel" type="excel"></result>
+			
+			<result name="init">/gtms/config/ModifyVlanCountByTime.jsp</result>
+			<result name="shouRefreshInfoList">/gtms/config/ModifyVlanCount.jsp</result>
+			<result name="devList">/gtms/config/ModifyVlanCountDevList.jsp</result>
+			<result name="shouRefreshInfoListByTime">/gtms/config/ModifyVlanCountListByTime.jsp</result>
+			<result name="devListByTime">/gtms/config/ModifyVlanCountDevListByTime.jsp</result>
+		</action>
+		<!-- 重庆批量重启-->
+		<action name="restartDeviceBatch" class="RestartDeviceBatchACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="batch4cq">/gtms/config/RestartDeviceBatch4CQ.jsp</result>
+			<result name="initMana4cq">/gtms/config/RestartDeviceBatchQuery4CQ.jsp</result>
+			<result name="batchList4cq">/gtms/config/RestartDeviceBatchList4CQ.jsp</result>
+			<result name="batchConfigListGyCity4cq">/gtms/config/RestartDeviceBatchListGyCity4CQ.jsp</result>
+			<result name="batchConfigDevList4cq">/gtms/config/RestartDeviceBatchDevList4CQ.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="batchConfigMaxTerminal" class="BatchConfigMaxTerminalActionImp">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 江西电信vlanid下发-->
+		<action name="BatchModifyVlanId" class="BatchModifyVlanIdACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- HBLT-RMS-20190712LH-056光猫IPTV路由业务新增路由节点下发 -->
+		<action name="BatchAddIptvNodeACT" class="BatchAddIptvNodeACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="batchConfigWifi" class="BatchConfigWifiACT">
+		   <result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="StackRefreshQueryACT" class="StackRefreshQueryACT">
+		   <result name="init">/gtms/config/StackRefreshQueryInfo.jsp</result>
+		   <result name="list">/gtms/config/StackRefreshQueryList.jsp</result>
+		   <result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 吉林联通NGN转IMS语音结果统计报表-->
+		<action name="voipChangeCount" class="VoipChangeCountACT">
+			<result name="init">/gtms/config/VoipChangeCount.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+			<result name="devList">/gtms/config/VoipChangeCountDevList.jsp</result>			
+		</action>
+		<action name="voipChangeConfigAction" class="VoipChangeConfigACT">
+		   <result name="shareList0">/gtms/config/voipChangeConfigQueryList.jsp</result>
+		   <result name="ajax" type="ajax"></result>
+		</action>
+		<action name="wifiPwdManageAction" class="WifiPwdManageAction">
+		   <result name="list">/gtms/config/wifiPwdManageList.jsp</result>
+		   <result name="wifiupdateInfo">/gtms/config/wifiPwdManageUpdate.jsp</result>
+		   <result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="delWanConnToolsAct" class="DelWanConnToolsACT">
+		   <result name="shareList">/gtms/config/delWanConnQueList.jsp</result>
+		   <result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,41 @@
+.green_title {
+	font-size: 12px;
+	color: #0E2966;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #C5E3B9;
+	line-height: 19px;
+}
+.set_blue_samll {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+}
+.black_small {
+	font-size: 12px;
+	color: #001466;
+}
+.blue_trover {
+	background-color: #CEE6FF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	cursor: default;
+}
+
+}
+.title3 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #003A66;
+	line-height: 16px;
+}
+.table_back {
+	font-size: 12px;
+	background-color: #E4F1FA;
+}
+.blue_trout {
+	background-color: #E4F1FA;
+	cursor: default;
+}

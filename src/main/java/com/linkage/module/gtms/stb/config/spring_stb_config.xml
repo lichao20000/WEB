@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="BaseConfigDAO" class="com.linkage.module.gtms.stb.config.dao.BaseConfigDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="StrategyDAO" class="com.linkage.module.gtms.stb.config.dao.StrategyDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BaseConfigBIO" class="com.linkage.module.gtms.stb.config.bio.BaseConfigBIO">
+		<property name="dao">
+			<ref local="BaseConfigDAO" />
+		</property>
+		<property name="strategyDAO">
+			<ref local="StrategyDAO" />
+		</property>
+	</bean>
+	<bean id="BaseConfigACT" class="com.linkage.module.gtms.stb.config.act.BaseConfigACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="BaseConfigBIO" />
+		</property>
+	</bean>
+	<bean id="StreamToolDAO" class="com.linkage.module.gtms.stb.config.dao.StreamToolDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="StreamToolBIO" class="com.linkage.module.gtms.stb.config.bio.StreamToolBIO">
+		<property name="streamToolDAO">
+			<ref local="StreamToolDAO" />
+		</property>
+	</bean>
+	<bean id="StreamToolACT" class="com.linkage.module.gtms.stb.config.act.StreamToolACT"
+		scope="prototype">
+		<property name="streamToolBIO">
+			<ref local="StreamToolBIO" />
+		</property>
+	</bean>
+	<bean id="GetParaModeValueBIO"
+		class="com.linkage.module.gtms.stb.config.bio.GetParaModeValueBIO">
+	</bean>
+	<bean id="GetParaModeValueACT"
+		class="com.linkage.module.gtms.stb.config.act.GetParaModeValueACT"
+		scope="prototype">
+		<property name="paraModeVlaueBio">
+			<ref local="GetParaModeValueBIO" />
+		</property>
+	</bean>
+	<bean id="BootAdvertiseConfigBIO"
+		class="com.linkage.module.gtms.stb.config.bio.BootAdvertiseConfigBIO">
+	</bean>
+	<bean id="BootAdvertiseConfigACT"
+		class="com.linkage.module.gtms.stb.config.act.BootAdvertiseConfigACT"
+		scope="prototype">
+		<property name="bootAdvertiseConfigBIO">
+			<ref local="BootAdvertiseConfigBIO" />
+		</property>
+	</bean>
+	<bean id="BatchCustomNodeConfigACT"
+		class="com.linkage.module.gtms.stb.config.act.BatchCustomNodeConfigACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchCustomNodeConfigBIO" />
+		</property>
+	</bean>
+	<bean id="BatchCustomNodeConfigBIO"
+		class="com.linkage.module.gtms.stb.config.bio.BatchCustomNodeConfigBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchCustomNodeConfigDAO" />
+		</property>
+	</bean>
+	<bean id="BatchCustomNodeConfigDAO"
+		class="com.linkage.module.gtms.stb.config.dao.BatchCustomNodeConfigDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>

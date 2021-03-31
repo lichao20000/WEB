@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="diagnostics_inmp" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/inmp/diagnostics">
+		<action name="deviceDiagnostics" class="DeviceDiagnosticsACT">
+			<result name="success">/inmp/diagnostics/wiredNetDiag.jsp</result>
+			<result name="wiredNetDiag">/inmp/diagnostics/wiredNetDiag.jsp</result>
+			<result name="wirelessNetDiag">/inmp/diagnostics/wirelessNetDiag.jsp</result>
+			<result name="netSlowDiag">/inmp/diagnostics/netSlowDiag.jsp</result>
+			<result name="netOfflineDiag">/inmp/diagnostics/netOfflineDiag.jsp</result>
+			<result name="diagTools">/inmp/diagnostics/diagTools.jsp</result>
+			<result name="iptvDiag">/inmp/diagnostics/iptvDiag.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="wireInfo">/inmp/diagnostics/diag/wireInfo.jsp</result>
+            <result name="servInfo">/inmp/diagnostics/diag/servInfo.jsp</result>
+            <result name="connErr">/inmp/diagnostics/diag/connErr.jsp</result>
+            <result name="pingInfo">/inmp/diagnostics/diag/pingInfo.jsp</result>
+            <result name="hostInfo">/inmp/diagnostics/diag/hostInfo.jsp</result>
+            <result name="dhcpInfo">/inmp/diagnostics/diag/dhcpInfo.jsp</result>
+            <result name="dnsInfo">/inmp/diagnostics/diag/dnsInfo.jsp</result>
+            <result name="lanInfo">/inmp/diagnostics/diag/lanInfo.jsp</result>
+            <result name="wlanInfo">/inmp/diagnostics/diag/wlanInfo.jsp</result>
+            <result name="iptvServInfo">/inmp/diagnostics/diag/iptvServInfo.jsp</result>
+		</action>
+		<action name="deviceInfo" class="DeviceInfoACT">
+			<result name="success">/inmp/diagnostics/deviceInfo.jsp</result>
+			<result name="wideNetInfo">/inmp/diagnostics/deviceInfo/deviceInfo_wideNet.jsp</result>
+			<result name="iptvInfo">/inmp/diagnostics/deviceInfo/deviceInfo_iptv.jsp</result>
+			<result name="voipInfo">/inmp/diagnostics/deviceInfo/deviceInfo_voip.jsp</result>
+			<result name="devStatInfo">/inmp/diagnostics/deviceInfo/deviceInfo_devStat.jsp</result>
+			<result name="wireinfoInfo">/inmp/diagnostics/deviceInfo/deviceInfo_wireinfo.jsp</result>
+			<result name="tr069Info">/inmp/diagnostics/deviceInfo/deviceInfo_tr069.jsp</result>
+			<result name="lanInfo">/inmp/diagnostics/deviceInfo/deviceInfo_lan.jsp</result>
+			<result name="wlanInfo">/inmp/diagnostics/deviceInfo/deviceInfo_wlan.jsp</result>
+			<result name="wlanAsso">/inmp/diagnostics/deviceInfo/deviceInfo_wlan_asso.jsp</result>
+			<result name="allInfo">/inmp/diagnostics/deviceInfo/deviceInfo_allInfo.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="algACT" class="AlgACT">
+			<result name="success">/inmp/diagnostics/AdvanceSearchAlg.jsp</result>
+			<result name="alg">/bbms/config/algConfig.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="mwbandACT" class="MwbandACT">
+			<result name="success">/inmp/diagnostics/AdvanceSearchMwband.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="diagTools" class="DiagToolsACT">
+			<result name="success">/inmp/diagnostics/diagTools.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="showStream">/inmp/diagnostics/diag/acsStream.jsp</result>
+		</action>
+		<!-- 健康库 -->
+		<action name="HealthInfo" class="HealthInfoACT">
+			<result name="success">/inmp/diagnostics/HealthInfo.jsp</result>
+			
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 专家库 -->
+		<action name="expertManage" class="ExpertManageACT">
+			<result name="success">/inmp/diagnostics/expertManage.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- IAD -->
+		<action name="iaddiag" class="IADDiagACT">
+			<result name="success">/inmp/diagnostics/IADDiag.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="wlanACT" class="WlanACT">
+			<result name="success">/inmp/diagnostics/AdvanceSearchWlan.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="xcompasswdACT" class="XcompasswdACT">
+			<result name="success">/inmp/diagnostics/AdvanceSearchXcompasswd.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="pingResult" class="PingResultACT">
+			<result name="success">/inmp/diagnostics/pingResult.jsp</result>
+		</action>
+	</package>
+	<package name="servStrategy_inmp" extends="linkage_security" namespace="/inmp/servStrategy">
+		<action name="ServStrategy" class="ServStrategyAction">		
+			<result name="initstart">/confTaskView/servStrategyFrame.jsp</result>
+			<result name="query">/confTaskView/servStrategySelect.jsp</result>
+			<result name="list">/confTaskView/servStrategyList.jsp</result>
+			<result name="strategy">/inmp/diagnostics/strategy.jsp</result>
+		</action>
+	</package>
+</struts>

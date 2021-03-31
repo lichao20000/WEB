@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="zeroconf_stb_gtms"
+		extends="jfreechart-default,linkage_security,linkage-pdf-default"
+		namespace="/gtms/stb/zeroconf">
+		<action name="zeroConfStatisticsReportQuery" class="ZeroConfStatisticsReportAction">
+			<result name="success">/gtms/stb/zeroconf/ZeroConfStatisticsReport.jsp
+			</result>
+			<result name="list">/gtms/stb/zeroconf/ZeroConfStatisticsReportDetail.jsp
+			</result>
+			<result name="cuslist">/gtms/stb/zeroconf/CustomerList.jsp</result>
+			<result name="cusfaillist">/gtms/stb/zeroconf/CustomerFailList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<action name="zeroFailReasonQuery" class="zeroFailReasonAction">
+			<result name="success">/gtms/stb/zeroconf/ZeroFailReason.jsp</result>
+			<result name="list">/gtms/stb/zeroconf/ZeroFailReasonDetail.jsp
+			</result>
+			<result name="zeroshareList">/gtms/stb/zeroconf/zerogwDeviceList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+	</package>
+</struts>

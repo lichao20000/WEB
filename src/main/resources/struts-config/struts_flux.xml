@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!--about report example jfreechart and table of report-->
+	<package name="flux" extends="jfreechart-default,linkage_security"
+		namespace="/flux">
+		<action name="FluxReport" class="FluxReportAction">
+			<result name="success">/Report/fluxReportForm.jsp</result>
+			<result name="data">/Report/fluxReportData.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="PerformanceReport" class="PerformanceReportAction">
+			<result name="success">/Report/performanceForm.jsp</result>
+			<result name="list">/Report/performanceData.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

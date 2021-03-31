@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="PingInfoACT" class="com.linkage.module.gtms.stb.diagnostic.action.PingInfoACT" scope="prototype">
+		<property name="pingBio">
+			<ref local="PingInfoBIO" />
+		</property>
+	</bean>
+	<bean id="PingInfoBIO" class="com.linkage.module.gtms.stb.diagnostic.serv.PingInfoBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="PingInfoDAO" />
+		</property>
+	</bean>
+	<bean id="PingInfoDAO" class="com.linkage.module.gtms.stb.diagnostic.dao.PingInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="StbSystemCmdACT" class="com.linkage.module.gtms.stb.diagnostic.action.StbSystemCmdACT" scope="prototype">
+		<property name="cmdio">
+			<ref local="StbSystemCmdBIO" />
+		</property>
+	</bean>
+	<bean id="StbSystemCmdBIO" class="com.linkage.module.gtms.stb.diagnostic.serv.StbSystemCmdBIO" scope="prototype">
+	</bean>
+	
+	
+	<bean id="StbDeviceBatchRebootACT" class="com.linkage.module.gtms.stb.diagnostic.action.StbDeviceBatchRebootACT" scope="prototype">
+		<property name="stbBio">
+			<ref local="StbDeviceBatchRebootBIO" />
+		</property>
+	</bean>
+	<bean id="StbDeviceBatchRebootBIO" class="com.linkage.module.gtms.stb.diagnostic.serv.StbDeviceBatchRebootBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbDeviceBatchRebootDAO" />
+		</property>
+	</bean>
+	<bean id="StbDeviceBatchRebootDAO" class="com.linkage.module.gtms.stb.diagnostic.dao.StbDeviceBatchRebootDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="StbBatchRestartACT" class="com.linkage.module.gtms.stb.diagnostic.action.StbBatchRestartACT" scope="prototype">
+		<property name="bio">
+			<ref local="StbBatchRestartBIO" />
+		</property>
+	</bean>
+	<bean id="StbBatchRestartBIO" class="com.linkage.module.gtms.stb.diagnostic.serv.StbBatchRestartBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="StbBatchRestartDAO" />
+		</property>
+	</bean>
+	<bean id="StbBatchRestartDAO" class="com.linkage.module.gtms.stb.diagnostic.dao.StbBatchRestartDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+</beans>

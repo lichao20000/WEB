@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>	
+	<!-- EVDO卡信息显示 -->
+	<bean id="ShowCardInfoBIO" class="com.linkage.module.bbms.resource.bio.ShowCardInfoBIO" scope="prototype">
+		<property name="dataCardDao">
+			<ref bean="DataCardDAO"/>
+		</property>
+		<property name="uimCardDao">
+			<ref bean="UimCardDAO"/>
+		</property>
+		<property name="cardDao">
+			<ref bean="CardDAO"/>
+		</property>
+	</bean>
+	<bean id="ShowCardInfoACT" class="com.linkage.module.bbms.resource.act.ShowCardInfoACT" scope="prototype">
+		<property name="showCardInfoBio">
+			<ref bean="ShowCardInfoBIO"/>
+		</property>
+	</bean>
+	<!-- 模拟工单 -->
+	<bean id="SendBssSheetBIO" class="com.linkage.module.bbms.resource.bio.SendBssSheetBIO" scope="prototype">
+
+	</bean>
+	<bean id="SendBssSheetACT" class="com.linkage.module.bbms.resource.act.SendBssSheetACT" scope="prototype">
+		<property name="sendBssSheetBio">
+			<ref bean="SendBssSheetBIO"/>
+		</property>
+	</bean>
+	<!-- 云南删除未使用定制终端的用户 -->
+	<bean id="DeleteBBMSUserDAO"
+		class="com.linkage.module.bbms.resource.dao.DeleteBBMSUserDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeleteBBMSUserBIO"
+		class="com.linkage.module.bbms.resource.bio.DeleteBBMSUserBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeleteBBMSUserDAO" />
+		</property>
+	</bean>
+	<bean id="DeleteBBMSUserACT"
+		class="com.linkage.module.bbms.resource.act.DeleteBBMSUserACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeleteBBMSUserBIO" />
+		</property>
+	</bean>
+	
+	<bean id="UploadNXACT" class="com.linkage.module.bbms.resource.act.UploadNXACT"
+		scope="prototype">
+		
+	</bean>
+</beans>

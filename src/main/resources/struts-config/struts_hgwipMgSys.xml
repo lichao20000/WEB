@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="hgwipMgSys" extends="struts-default,linkage-default,linkage_security" namespace="/hgwipMgSys">
+		<action name="vbrasMg" class="hgwBrasVbrasManageACT">
+			<result name="success">/hgwipMgSys/brasVbrasMg.jsp</result>
+			<result name="initCity" type="ajax"></result>
+			<result name="getNtMk" type="ajax"></result>
+			<result name="add" type="ajax"></result>
+			<result name="del" type="ajax"></result>
+			<result name="state">/Resource/BrasVbrasState.jsp</result>
+		</action>
+		<action name="ipMg" class="hgwipManagerAction">
+			<result name="success">/hgwipMgSys/ipMgSys.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="add" type="ajax"></result>
+			<result name="del" type="ajax"></result>
+			<result name="edit" type="ajax"></result>
+		</action>
+		<action name="ItvIpMg" class="itvIpManagerAction">
+			<result name="success">/hgwipMgSys/itvipMgSys.jsp</result>
+			<result name="addInit">/hgwipMgSys/itvipMgSysAdd.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="add" type="ajax"></result>
+			<result name="del" type="ajax"></result>
+			<result name="edit" type="ajax"></result>
+		</action>
+		<action name="getMenu" class="hgwGetIpInfoAction">
+			<result name="success">/hgwipMgSys/ipInfoShow.jsp</result>
+			<result name="input">/hgwipMgSys/ipInfoMenu.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="pageDispatcher" class="hgwDispaterAction">
+			<result name="success" type="chain">
+				<param name="actionName">${actionName}</param>
+				<param name="nameSpace">${nameSpace}</param>
+			</result>
+		</action>
+		<action name="getSubDetail" class="hgwGetSubnetDetailAction">
+			<result name="success">/hgwipMgSys/subnetDetail.jsp</result>
+		</action>
+		<action name="assignIP" class="hgwAssignIPAction">
+			<result name="success">/hgwipMgSys/assignIP.jsp</result>
+			<result name="cancelsubnet">/hgwipMgSys/recycleOrCancel.jsp</result>
+			<result name="edit" type="ajax"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="unAssignIP" class="hgwUnAssignIPAction">
+			<result name="success">/hgwipMgSys/unAssignIP.jsp</result>
+			<result name="cutorgive">/hgwipMgSys/assignSubNetOrAssginIP.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="getcountry" type="ajax"></result>
+			<result name="assignipcity" type="ajax"></result>
+			<result name="assignipuser" type="ajax"></result>
+		</action>
+		<action name="userappfp" class="hgwUserAppIpUploadAction">
+			<result name="success">/hgwipMgSys/assignSubNetOrAssginIP.jsp</result>
+		</action>
+		<action name="ipQuickModify" class="hgwIpQuickModifyAction">
+			<result name="success">/hgwipMgSys/IPQuickModify.jsp</result>
+		</action>
+		<action name="batchModifyIP" class="hgwBatchModifyIPAction">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="getChildCity" class="hgwGetChildCityAction">
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

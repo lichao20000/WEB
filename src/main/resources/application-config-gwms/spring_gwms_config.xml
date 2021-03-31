@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- 配置上网连接 -->
+	<bean id="WanBIO" class="com.linkage.module.gwms.config.bio.WanBIO" scope="prototype">
+		<property name="devDAO">
+			<ref bean="DevDAO"/>
+		</property>
+		<property name="wanDAO">
+			<ref bean="WanDAO"/>
+		</property>
+		<property name="wanConnDAO">
+			<ref bean="WanConnDAO"/>
+		</property>
+		<property name="wanConnSessDAO">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="localServParamDAO">
+			<ref bean="LocalServParamDAO"/>
+		</property>
+		<property name="wlanDAO">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="lanEthDAO">
+			<ref bean="LanEthDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="WanACT" class="com.linkage.module.gwms.config.act.WanACT" scope="prototype">
+		<property name="bio">
+			<ref bean="WanBIO"/>
+		</property>
+	</bean>
+	
+	<!-- 配置IPTV -->
+	<bean id="IptvBIO" class="com.linkage.module.gwms.config.bio.IptvBIO" scope="prototype">
+		<property name="devDAO">
+			<ref bean="DevDAO"/>
+		</property>
+		<property name="wanDAO">
+			<ref bean="WanDAO"/>
+		</property>
+		<property name="wanConnDAO">
+			<ref bean="WanConnDAO"/>
+		</property>
+		<property name="wanConnSessDAO">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="localServParamDAO">
+			<ref bean="LocalServParamDAO"/>
+		</property>
+		<property name="wlanDAO">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="lanEthDAO">
+			<ref bean="LanEthDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="IptvACT" class="com.linkage.module.gwms.config.act.IptvACT" scope="prototype">
+		<property name="bio">
+			<ref bean="IptvBIO"/>
+		</property>
+	</bean>
+	
+	<!-- 配置VOIP -->
+	<bean id="VoipBIO" class="com.linkage.module.gwms.config.bio.VoipBIO" scope="prototype">
+		<property name="devDAO">
+			<ref bean="DevDAO"/>
+		</property>
+		<property name="wanDAO">
+			<ref bean="WanDAO"/>
+		</property>
+		<property name="wanConnDAO">
+			<ref bean="WanConnDAO"/>
+		</property>
+		<property name="wanConnSessDAO">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="localServParamDAO">
+			<ref bean="LocalServParamDAO"/>
+		</property>
+		<property name="wlanDAO">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="lanEthDAO">
+			<ref bean="LanEthDAO"/>
+		</property>
+		<property name="voiceServiceDAO">
+			<ref bean="VoiceServiceProfileDAO"/>
+		</property>
+		<property name="voiceServiceLineDAO">
+			<ref bean="VoiceServiceProfileLineDAO"/>
+		</property>
+		<property name="voipCAO">
+			<ref bean="VoipCAO"/>
+		</property>
+	</bean>
+	
+	<bean id="VoipACT" class="com.linkage.module.gwms.config.act.VoipACT" scope="prototype">
+		<property name="bio">
+			<ref bean="VoipBIO"/>
+		</property>
+	</bean>
+	
+	<!-- 下发业务工单 -->
+	<bean id="BusinessSheetACT" class="com.linkage.module.gwms.config.act.BusinessSheetACT" scope="prototype">
+		<property name="wanBio">
+			<ref bean="WanBIO"/>
+		</property>
+		<property name="iptvBio">
+			<ref bean="IptvBIO"/>
+		</property>
+	</bean>
+	
+	<!-- Qos -->
+	<bean id="StrategyQosDAO" class="com.linkage.module.gwms.config.dao.StrategyQosDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="QosConfigBIO" class="com.linkage.module.gwms.config.bio.QosConfigBIO" scope="prototype">
+		<property name="strategyQosDao">
+			<ref bean="StrategyQosDAO"/>
+		</property>
+		<property name="wlanDao">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="qosDAO">
+			<ref bean="QosDAO"/>
+		</property>
+		<property name="qosCAO">
+			<ref bean="QosCAO"/>
+		</property>
+	</bean>
+	<bean id="QosConfigACT" class="com.linkage.module.gwms.config.act.QosConfigACT" scope="prototype">
+		<property name="qosBio">
+			<ref bean="QosConfigBIO"/>
+		</property>
+	</bean>
+	<!-- 手工工单 -->
+	<bean id="ServiceManSheetBIO" class="com.linkage.module.gwms.config.bio.ServiceManSheetSubBIO" scope="prototype">
+		<property name="custDao">
+			<ref bean="HgwCustDAO"/>
+		</property>
+		<property name="servUserDao">
+			<ref bean="HgwServUserDAO"/>
+		</property>
+	</bean>
+	<bean id="ServiceManSheetACT" class="com.linkage.module.gwms.config.act.ServiceManSheetSubACT" scope="prototype">
+		<property name="serviceManSheetBio">
+			<ref bean="ServiceManSheetBIO"/>
+		</property>
+	</bean>
+	<!-- ITMS设备转BBMS设备 -->
+	<bean id="DevManageBIO" class="com.linkage.module.gwms.config.bio.DevManageBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="DevManageDAO"/>
+		</property>
+	</bean>
+	<bean id="DevManageACT" class="com.linkage.module.gwms.config.act.DevManageACT" scope="prototype">
+		<property name="bio">
+			<ref bean="DevManageBIO"/>
+		</property>
+	</bean>
+	<!-- 桥接转路由 -->
+	<bean id="BridgeToRouteBIO" class="com.linkage.module.gwms.config.bio.BridgeToRouteBIO" scope="prototype">
+	</bean>
+	<bean id="BridgeToRouteACT" class="com.linkage.module.gwms.config.act.BridgeToRouteACT" scope="prototype">
+		<property name="bio">
+			<ref bean="BridgeToRouteBIO"/>
+		</property>
+	</bean>
+
+	
+	<!-- 话机连接性测试 -->
+	<bean id="VoiceConnectionTestBIO" class="com.linkage.module.gwms.config.bio.VoiceConnectionTestBIO" scope="prototype">
+	</bean>
+	<bean id="VoiceConnectionTestACT" class="com.linkage.module.gwms.config.act.VoiceConnectionTestACT" scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceConnectionTestBIO"/>
+		</property>
+	</bean>
+	
+	<!-- 宁夏批量修改组播参数工具-->
+	 <bean id="SetMulticastBatchACT" 
+	      class="com.linkage.module.gwms.config.act.SetMulticastBatchACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="SetMulticastBatchBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="SetMulticastBatchBIO"
+	   		class="com.linkage.module.gwms.config.bio.SetMulticastBatchBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="SetMulticastBatchDAO"/>
+			</property>
+	 </bean>
+	 <bean id="SetMulticastBatchDAO"
+	 		class="com.linkage.module.gwms.config.dao.SetMulticastBatchDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 
+	 <!-- 重庆电信批量下发组播参数统计 begin -->
+	 <bean id="CountMulticastBatchDAO"
+		class="com.linkage.module.gwms.config.dao.CountMulticastBatchDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="CountMulticastBatchBIO"
+		class="com.linkage.module.gwms.config.bio.CountMulticastBatchBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="CountMulticastBatchDAO" />
+		</property>
+	</bean>
+	<bean id="CountMulticastBatchACT"
+		class="com.linkage.module.gwms.config.act.CountMulticastBatchACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="CountMulticastBatchBIO" />
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

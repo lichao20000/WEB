@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="gb2312" ?> 
+  <Output Name="arg_list" Title="参数配置列表" IsSelect="true" ColCount="13">
+  <Columns>
+  <Column fieldname="fields1" remark="设备类型" display="" /> 
+  <Column fieldname="fields2" remark="软件版本" display="" /> 
+  <Column fieldname="fields3" remark="参数名称" display="" /> 
+  <Column fieldname="fields4" remark="参数来源" display="" /> 
+  <Column fieldname="fields5" remark="参数类型" display="" /> 
+  <Column fieldname="fields6" remark="必须？" display="" /> 
+  <Column fieldname="fields7" remark="只读？" display="" /> 
+  <Column fieldname="fields8" remark="默认值" display="" /> 
+  <Column fieldname="fields9" remark="命令" display="none" /> 
+  <Column fieldname="fields10" remark="备选值" display="" /> 
+  <Column fieldname="fields11" remark="参数单位" display="none" /> 
+  <Column fieldname="fields12" remark="参数描述" display="none" /> 
+  </Columns>
+  <Row primarykey="P1086600101" bgcolor="#FFFFFF">
+  <fields1 value="Cisco 2505" /> 
+  <fields2 value="11.1(7)" /> 
+  <fields3 value="test" /> 
+  <fields4 value="以上两者均可" /> 
+  <fields5 value="int" /> 
+  <fields6 value="必须" /> 
+  <fields7 value="可编辑" /> 
+  <fields8 value="12" /> 
+  <fields9 value="1" display="none" /> 
+  <fields10 value="12|14" /> 
+  <fields11 value="" display="none" /> 
+  <fields12 value="" display="none" /> 
+  </Row>
+  <Row primarykey="speed1" bgcolor="#F6F6F6">
+  <fields1 value="CISCO2948" /> 
+  <fields2 value="11.1(7)" /> 
+  <fields3 value="速率1" /> 
+  <fields4 value="用户输入" /> 
+  <fields5 value="int" /> 
+  <fields6 value="可选" /> 
+  <fields7 value="可编辑" /> 
+  <fields8 value="1024" /> 
+  <fields9 value="0" display="none" /> 
+  <fields10 value="1024|2048" /> 
+  <fields11 value="" display="none" /> 
+  <fields12 value="" display="none" /> 
+  </Row>
+  <Row primarykey="test1" bgcolor="#FFFFFF">
+  <fields1 value="Cisco 2505" /> 
+  <fields2 value="11.1(7)" /> 
+  <fields3 value="test1" /> 
+  <fields4 value="用户输入" /> 
+  <fields5 value="int" /> 
+  <fields6 value="必须" /> 
+  <fields7 value="可编辑" /> 
+  <fields8 value="1" /> 
+  <fields9 value="0" display="none" /> 
+  <fields10 value="" /> 
+  <fields11 value="" display="none" /> 
+  <fields12 value="" display="none" /> 
+  </Row>
+  <Row primarykey="test2" bgcolor="#F6F6F6">
+  <fields1 value="Cisco 2505" /> 
+  <fields2 value="11.1(7)" /> 
+  <fields3 value="test2" /> 
+  <fields4 value="用户输入" /> 
+  <fields5 value="string" /> 
+  <fields6 value="必须" /> 
+  <fields7 value="只读" /> 
+  <fields8 value="test2" /> 
+  <fields9 value="0" display="none" /> 
+  <fields10 value="" /> 
+  <fields11 value="" display="none" /> 
+  <fields12 value="" display="none" /> 
+  </Row>
+  <Row primarykey="test3" bgcolor="#FFFFFF">
+  <fields1 value="Cisco 2505" /> 
+  <fields2 value="11.1(7)" /> 
+  <fields3 value="test3" /> 
+  <fields4 value="用户输入" /> 
+  <fields5 value="ip" /> 
+  <fields6 value="必须" /> 
+  <fields7 value="可编辑" /> 
+  <fields8 value="10.1.1.10" /> 
+  <fields9 value="0" display="none" /> 
+  <fields10 value="" /> 
+  <fields11 value="" display="none" /> 
+  <fields12 value="" display="none" /> 
+  </Row>
+  </Output>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="bbms" extends="struts-default,linkage-default,linkage_security" namespace="/bbms">
+		<action name="CustomerInfo" class="CustomerInfoAction">
+			<result name="success">/bbms/addCustomerForm.jsp</result>
+			<result name="addForm">/bbms/addCustomerForm.jsp</result>
+			<result name="resultForm">/bbms/operatorResult.jsp</result>
+			<result name="editForm">/bbms/editCustomerForm.jsp</result>
+			<result name="queryForm">/bbms/customerQuery.jsp</result>
+			<result name="list">/bbms/customerData.jsp</result>
+			<result name="detail">/bbms/customerDetail.jsp</result>
+			<result type="excel" name="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="importCustomer" class="ImportCustomerActionbbms">
+			<result name="success">/bbms/operatorResult.jsp</result>
+		</action>
+		<action name="GetSnmpInfo" class="GetSnmpInfoAction">
+			<result name="success">/webtopo/DHCPConInfo.jsp</result>
+			<result name="vlan">/webtopo/webtopo_vlanInfo.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="ExceptionDevice" class="ExceptionDeviceAction">
+			<result>/Resource/ExceptionDevice.jsp</result>
+			<result name="devList">/Resource/ExceptionDevice.jsp</result>
+			<result name="expDev">/Resource/ExceptionViewOrAdd.jsp</result>
+			<result name="doExpDev" type="ajax"/>
+		</action>
+
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+

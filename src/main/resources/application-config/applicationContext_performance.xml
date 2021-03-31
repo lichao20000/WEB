@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!--    *************************************************性能配置*****************************************    -->
+	<!-- 线程池 -->
+	<bean id="threadPool" class="com.linkage.module.liposs.performance.bio.ThreadPool"  scope="singleton" destroy-method="destroy"/>
+	<!--性能配置ACTION-->
+	<bean id="configPmeeAction" class="com.linkage.module.liposs.performance.action.ConfigPmeeAction" scope="prototype">
+		<property name="cpd">
+			<ref local="configPmeeDao" />
+		</property>
+		<property name="cpb">
+			<ref local="configPmeeBio" />
+		</property>
+	</bean>
+	<!--性能配置DAO-->
+	<bean id="configPmeeDao" class="com.linkage.module.liposs.performance.dao.ConfigPmeeDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!--性能配置BIO-->
+	<bean id="configPmeeBio" class="com.linkage.module.liposs.performance.bio.ConfigPmeeBio" scope="prototype">
+		<property name="cpd">
+			<ref local="configPmeeDao" />
+		</property>
+		<property name="threadpool">
+			<ref local="threadPool"/>
+		</property>
+	</bean>
+	<!-- 流量配置ACTION -->
+	<bean id="ConfigFluxAction" class="com.linkage.module.liposs.performance.action.ConfigFluxAction" scope="prototype">
+		<property name="cfd">
+			<ref local="configFluxDao" />
+		</property>
+		<property name="cfb">
+			<ref local="configFluxBio" />
+		</property>
+	</bean>
+	<!--BIO-->
+	<bean id="configFluxBio" class="com.linkage.module.liposs.performance.bio.ConfigFluxBio" scope="prototype">
+		<property name="cfd">
+			<ref local="configFluxDao" />
+		</property>
+		<property name="threadpool">
+			<ref local="threadPool"/>
+		</property>
+		<property name="fci">
+			<ref local="FluxConfigInit"/>
+		</property>
+	</bean>
+	<!--*************************************江苏************************************************-->
+	<!--
+	<bean id="configFluxDao" class="com.linkage.module.liposs.performance.dao.ConfigFluxDao_longWarn" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	-->
+	<!--************************************其他项目组*************************************************-->
+	<bean id="configFluxDao" class="com.linkage.module.liposs.performance.dao.ConfigFluxDao_shortWarn" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="FluxConfigInit" class="com.linkage.module.liposs.performance.bio.snmpGather.FluxConfigInit">
+		<property name="cfd">
+			<ref local="configFluxDao"/>
+		</property>
+	</bean>
+	<!--默认模板配置-->
+	<bean id="defaultConfigFlux" class="com.linkage.module.liposs.performance.bio.DefaultConfigFlux" scope="prototype">
+		<property name="cfd">
+			<ref local="configFluxDao" />
+		</property>
+		<property name="threadpool">
+			<ref local="threadPool"/>
+		</property>
+		<property name="fci">
+			<ref local="FluxConfigInit"/>
+		</property>
+	</bean>
+	<bean id="defaultConfigPmee" class="com.linkage.module.liposs.performance.bio.DefaultConfigPmee" scope="prototype">
+		<property name="cpd">
+			<ref local="configPmeeDao" />
+		</property>
+		<property name="threadpool">
+			<ref local="threadPool"/>
+		</property>
+	</bean>
+	
+	<bean id="portFilterRuleDao" class="com.linkage.module.liposs.performance.dao.PortFilterRuleDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="portFilterRuleBio" class="com.linkage.module.liposs.performance.bio.PortFilterRuleBIO" scope="prototype">
+		<property name="portFilterRuleDao">
+			<ref local="portFilterRuleDao"/>
+		</property>
+	</bean>	
+	<bean id="portFilterAction" class="com.linkage.module.liposs.performance.action.PortFilterRuleAction" scope="prototype">
+		<property name="portFilterRuleBio">
+			<ref local="portFilterRuleBio"/>
+		</property>
+	</bean>
+</beans>

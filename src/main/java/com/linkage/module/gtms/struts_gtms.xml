@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<include file="/com/linkage/module/gtms/resource/struts_gtms_resource.xml"/>
+	<include file="/com/linkage/module/gtms/report/struts_nxFtthBind_gtms_report.xml"/>
+	<include file="/com/linkage/module/gtms/blocTest/struts_gtms_blocTest.xml"/>
+	<!--新疆需求 start -->
+	<include file="/com/linkage/module/gtms/config/struts_gtms_config.xml"/>
+	<!--新疆需求 end -->
+	<!--新疆需求 start -->
+	<include file="/com/linkage/module/gtms/diagnostic/struts_gtms_diagnostic.xml"/>
+	<!--新疆需求 end -->
+	
+	<include file="/com/linkage/module/gtms/service/struts_gtms_service.xml"/>
+	<include file="/com/linkage/module/gtms/system/struts_gtms_system.xml"/>
+	
+	<!-- 机顶盒设备信息查询，版本文件路径管理 -->
+	<include file="/com/linkage/module/gtms/stb/resource/struts_stb_resource.xml"/>
+	<!-- 机顶盒共用页面（设备的高级查询，简单查询等） -->
+	<include file="/com/linkage/module/gtms/stb/share/struts_stb_share.xml"/>
+	<!-- 机顶盒重启，ping诊断，TraceRoute -->
+	<include file="/com/linkage/module/gtms/stb/diagnostic/struts_stb_diagnostic.xml"/>
+	<include file="/com/linkage/module/gtms/stb/config/struts_stb_config.xml"/>
+	<include file="/com/linkage/module/gtms/stb/zeroconf/struts_stb_zeroconf.xml"/>
+	<include file="/com/linkage/module/gtms/itv/struts_itv.xml"/>
+	
+	<!-- 机顶盒报表 -->
+	<include file="/com/linkage/module/gtms/stb/report/struts_stb_report.xml"/>
+</struts>

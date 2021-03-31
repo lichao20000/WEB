@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+<body topmargin="0" marginheight="0" leftmargin="0" marginwidth="0" width=100%>
+<script type="text/javascript">
+<!--
+function document.body.onselectstart(){
+	return false;
+}
+premainframeset = parent.mainframeset.cols;
+function showhidelist(){
+	if(parent.mainframeset.cols == '0,8,*'){
+		parent.mainframeset.cols = premainframeset;
+		parent.innerframe.document.body.scrollLeft = 0;
+	}else{
+		parent.mainframeset.cols = '0,8,*';  
+		parent.innerframe.document.body.scrollLeft = 100;
+	}
+}
+//-->
+</script>
+<table width="8" height="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td background='innerimagebg.gif' onclick="showhidelist()" height="100%" title="隐藏/显示列表" style="CURSOR: hand"><img src="innerimage2.gif"></td>
+		<td background='innerimagebg.gif' onclick="showhidelist()" height="100%" title="隐藏/显示列表" style="CURSOR: hand"><img src="innerimage1.gif"></td>
+	</tr>
+</table>
+</body>
+</html>

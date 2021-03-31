@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="report_bbms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/bbms/report">
+		<action name="evdoReport" class="EVDOCountReportACT">
+			<result name="success">/bbms/report/EVDOCountReport.jsp</result>
+			<result name="list">/bbms/report/EVDOCountReportList.jsp</result>
+			<result name="print">/bbms/report/EVDOCountReportPrint.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="pdfByList" type="pdfByList"></result>
+		</action>
+		<action name="evdoPercent" class="EvdoPercentACT">
+			<result name="list">/bbms/report/EvdoPercent.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="evdoTemplate" class="EVDOReportTemplateACT">
+			<result name="success">/bbms/report/EVDOReportTemplateQuery.jsp</result>
+			<result name="list">/bbms/report/EVDOReportTemplateList.jsp</result>
+			<result name="timeList">/bbms/report/EVDOReportTimeList.jsp</result>
+			<result name="fluxList">/bbms/report/EVDOReportFluxList.jsp</result>
+			<result name="frequencyList">/bbms/report/EVDOReportFrequencyList.jsp</result>
+			<result name="tmslotList">/bbms/report/EVDOReportTmslotList.jsp</result>
+			<result name="activeList">/bbms/report/EVDOReportActiveList.jsp</result>
+			<result name="evdoTypeList">/bbms/report/EVDOReportEvdoTypeList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="serviceReport" class="ServiceReportACT">
+			<result name="list">/bbms/report/serviceReportList.jsp</result>
+			<result name="init">/bbms/report/serviceReport.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="serviceQuery" class="ServiceQueryACT">
+			<result name="list">/bbms/report/serviceQueryList.jsp</result>
+			<result name="init">/bbms/report/serviceQuery.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="bandwidthTopN" class="BandwidthTopNACT">
+			<result name="list">/bbms/report/bandwidthTopNList.jsp</result>
+			<result name="init">/bbms/report/bandwidthTopN.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="portFluxQuery" class="PortFluxQueryACT">
+			<result name="list">/bbms/report/portFluxQueryList.jsp</result>
+			<result name="init">/bbms/report/portFluxQuery.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="SyslogQuery" class="SyslogQueryACT">
+			<result name="showIndex">/bbms/report/SyslogQuery.jsp</result>
+			<result name="list">/bbms/report/SyslogQueryList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="deviceFluxQuery" class="DeviceFluxQueryACT">
+			<result name="list">/bbms/report/deviceFluxQueryList.jsp</result>
+			<result name="init">/bbms/report/deviceFluxQuery.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="runReportQuery" class="RunReportQueryACT">
+			<result name="baseInfo">/bbms/report/runReportBaseInfo.jsp</result>
+			<result name="netConfigInfo">/bbms/report/runReportNetConfigInfo.jsp</result>
+		</action>
+		<action name="warnReportACT" class="WarnReportACT">
+			<result name="warnRequireInit">/bbms/report/warnRequireReport.jsp</result>
+			<result name="warnInit">/bbms/report/warnReport.jsp</result>
+			<result name="queryWarnRequireReport">/bbms/report/warnRequireReportResult.jsp</result>
+			<result name="queryWarnReport">/bbms/report/warnReportResult.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+	</package>
+</struts>

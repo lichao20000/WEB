@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<definitions targetNamespace="http://resource.webservice.litms.linkage.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://resource.webservice.litms.linkage.com" xmlns:intf="http://resource.webservice.litms.linkage.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<message name="getNew_City_idResponse">
+  <part name="getNew_City_idReturn" type="xsd:string" /> 
+  </message>
+<message name="getDevice_oldResponse">
+  <part name="getDevice_oldReturn" type="xsd:string" /> 
+  </message>
+<message name="getUserHasResponse">
+  <part name="getUserHasReturn" type="xsd:string" /> 
+  </message>
+<message name="getDeviceListResponse">
+  <part name="getDeviceListReturn" type="xsd:string" /> 
+  </message>
+<message name="getDeviceListRequest">
+  <part name="city_id" type="xsd:string" /> 
+  <part name="gw_type" type="xsd:string" /> 
+  <part name="stroffset" type="xsd:string" /> 
+  <part name="device_serialnumber" type="xsd:string" /> 
+  <part name="type" type="xsd:string" /> 
+  </message>
+<message name="getDevice_oldRequest">
+  <part name="username" type="xsd:string" /> 
+  <part name="city_id" type="xsd:string" /> 
+  </message>
+<message name="getNew_City_idRequest">
+  <part name="old_city_id" type="xsd:string" /> 
+  </message>
+<message name="ipossModifyConfigRequest">
+  <part name="device_id" type="xsd:string" /> 
+  <part name="username" type="xsd:string" /> 
+  <part name="city_id" type="xsd:string" /> 
+  <part name="dealStaff" type="xsd:string" /> 
+  <part name="dealStaffid" type="xsd:string" /> 
+  <part name="device_id_old" type="xsd:string" /> 
+  <part name="fault_id" type="xsd:string" /> 
+  </message>
+<message name="ipossSaveConfigRequest">
+  <part name="device_id" type="xsd:string" /> 
+  <part name="username" type="xsd:string" /> 
+  <part name="city_id" type="xsd:string" /> 
+  <part name="dealStaff" type="xsd:string" /> 
+  </message>
+<message name="getUserHasRequest">
+  <part name="username" type="xsd:string" /> 
+  <part name="city_id" type="xsd:string" /> 
+  </message>
+<message name="ipossModifyConfigResponse">
+  <part name="ipossModifyConfigReturn" type="xsd:string" /> 
+  </message>
+<message name="ipossSaveConfigResponse">
+  <part name="ipossSaveConfigReturn" type="xsd:string" /> 
+  </message>
+<portType name="UserInstInter">
+<operation name="getDeviceList" parameterOrder="city_id gw_type stroffset device_serialnumber type">
+  <input message="impl:getDeviceListRequest" name="getDeviceListRequest" /> 
+  <output message="impl:getDeviceListResponse" name="getDeviceListResponse" /> 
+  </operation>
+<operation name="ipossSaveConfig" parameterOrder="device_id username city_id dealStaff">
+  <input message="impl:ipossSaveConfigRequest" name="ipossSaveConfigRequest" /> 
+  <output message="impl:ipossSaveConfigResponse" name="ipossSaveConfigResponse" /> 
+  </operation>
+<operation name="ipossModifyConfig" parameterOrder="device_id username city_id dealStaff dealStaffid device_id_old fault_id">
+  <input message="impl:ipossModifyConfigRequest" name="ipossModifyConfigRequest" /> 
+  <output message="impl:ipossModifyConfigResponse" name="ipossModifyConfigResponse" /> 
+  </operation>
+<operation name="getDevice_old" parameterOrder="username city_id">
+  <input message="impl:getDevice_oldRequest" name="getDevice_oldRequest" /> 
+  <output message="impl:getDevice_oldResponse" name="getDevice_oldResponse" /> 
+  </operation>
+ <operation name="getUserHas" parameterOrder="username city_id">
+  <input message="impl:getUserHasRequest" name="getUserHasRequest" /> 
+  <output message="impl:getUserHasResponse" name="getUserHasResponse" /> 
+  </operation>
+ <operation name="getNew_City_id" parameterOrder="old_city_id">
+  <input message="impl:getNew_City_idRequest" name="getNew_City_idRequest" /> 
+  <output message="impl:getNew_City_idResponse" name="getNew_City_idResponse" /> 
+  </operation>
+  </portType>
+<binding name="UserInstInterSoapBinding" type="impl:UserInstInter">
+  <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" /> 
+<operation name="getDeviceList">
+  <wsdlsoap:operation soapAction="" /> 
+<input name="getDeviceListRequest">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </input>
+<output name="getDeviceListResponse">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </output>
+  </operation>
+<operation name="ipossSaveConfig">
+  <wsdlsoap:operation soapAction="" /> 
+<input name="ipossSaveConfigRequest">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </input>
+<output name="ipossSaveConfigResponse">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </output>
+  </operation>
+<operation name="ipossModifyConfig">
+  <wsdlsoap:operation soapAction="" /> 
+<input name="ipossModifyConfigRequest">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </input>
+<output name="ipossModifyConfigResponse">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </output>
+  </operation>
+<operation name="getDevice_old">
+  <wsdlsoap:operation soapAction="" /> 
+<input name="getDevice_oldRequest">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </input>
+<output name="getDevice_oldResponse">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </output>
+  </operation>
+<operation name="getUserHas">
+  <wsdlsoap:operation soapAction="" /> 
+<input name="getUserHasRequest">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </input>
+<output name="getUserHasResponse">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </output>
+  </operation>
+<operation name="getNew_City_id">
+  <wsdlsoap:operation soapAction="" /> 
+<input name="getNew_City_idRequest">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </input>
+<output name="getNew_City_idResponse">
+  <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://resource.webservice.litms.linkage.com" use="encoded" /> 
+  </output>
+  </operation>
+  </binding>
+<service name="UserInstInterService">
+<port binding="impl:UserInstInterSoapBinding" name="UserInstInter">
+  <wsdlsoap:address location="http://localhost:8080/webPath/services/UserInstInter" /> 
+  </port>
+  </service>
+  </definitions>

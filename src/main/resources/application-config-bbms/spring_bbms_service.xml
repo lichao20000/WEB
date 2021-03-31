@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="EVDOBindLogACT" class="com.linkage.module.bbms.service.act.EVDOBindLogACT" scope="prototype">
+		<property name="bio">
+			<ref bean="EVDOBindLogBIO"/>
+		</property>
+	</bean>
+	<bean id="EVDOBindLogBIO" class="com.linkage.module.bbms.service.bio.EVDOBindLogBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="EVDOBindLogDAO"/>
+		</property>
+	</bean>
+	<bean id="EVDOBindLogDAO" class="com.linkage.module.bbms.service.dao.EVDOBindLogDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="DeviceDiagBIO" class="com.linkage.module.bbms.diag.bio.DeviceDiagBIO" scope="prototype">
+		<property name="diagDao">
+			<ref bean="DeviceDiagnosticDAO"/>
+		</property>
+		<property name="lanEthDao">
+			<ref bean="LanEthDAO"/>
+		</property>
+		<property name="wlanDao">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="healthInfoDao">
+			<ref bean="HealthInfoDAO"/>
+		</property>
+		<property name="wanDao">
+			<ref bean="WanDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceDiagACT" class="com.linkage.module.bbms.diag.act.DeviceDiagACT" scope="prototype">
+		<property name="diagBio">
+			<ref bean="DeviceDiagBIO"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="OneKeyDiagACT" class="com.linkage.module.bbms.diag.act.OneKeyDiagACT" scope="prototype">
+		<property name="bio">
+			<ref bean="OneKeyDiagBIO"/>
+		</property>
+	</bean>
+	<bean id="OneKeyDiagBIO" class="com.linkage.module.bbms.diag.bio.OneKeyDiagBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="OneKeyDiagDAO"/>
+		</property>
+	</bean>
+		<bean id="OneKeyDiagDAO" class="com.linkage.module.bbms.diag.dao.OneKeyDiagDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

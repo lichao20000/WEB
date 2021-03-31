@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- struts2由2.3.X ==>2.5.26后
+		需要将此文件头部2.0 => 2.5
+		package 新增属性 strict-method-invocation="false"
+		package	标签内最后添加 <global-allowed-methods>regex:.*</global-allowed-methods>
+		继承了linkage_security的struts文件不用修改
+		2020/12/11 by zhangyu25
+	-->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.action.extension" value="action,do" />
+
+	<package name="linkage_security" extends="struts-default,linkage-default,linkage_security" abstract="true"
+		strict-method-invocation="false">
+
+		<interceptors>
+			<interceptor name="linkage_splitPage" class="action.splitpage.SplitPageInterceptor"></interceptor>
+			<interceptor name="authorityInterceptor" class="com.linkage.module.gwms.util.AuthorityInterceptor"/>
+			<interceptor-stack name="linkage_default">
+				<interceptor-ref name="authorityInterceptor"/>
+				<interceptor-ref name="linkage_splitPage"/>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="linkage_default" />
+		<global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/preLogin.jsp</result>
+			<result name="wait">/wait.jsp</result>
+			<result name="ok">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</global-results>
+
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+	</package>
+	<package name="model_vip" extends="linkage_security" namespace="/model_vip">
+                <!--
+                <action name="NetMaintenance" class="NetMaintenanceAction">
+                        <interceptor-ref name="linkage_default" />
+                        <interceptor-ref name="execAndWait" />
+                        <result name="success">/model_vip/first.jsp</result>
+                        <result name="input">/model_vip/login.jsp</result>
+                </action>
+                <action name="NetMaintenanceSub" class="NetMaintenanceSubAction">
+                        <interceptor-ref name="linkage_default" />
+                        <interceptor-ref name="execAndWait" />
+                        <result name="success">/model_vip/inside_snmp.jsp</result>
+                        <result name="input">/model_vip/login.jsp</result>
+                </action>
+                -->
+                <!-- for security getway -->
+                <action name="SGWMenu" class="getSGWMenuAction">
+                        <result name="success">/securitygw/index/getSUserMenu.jsp</result>
+                </action>
+                <action name="Goto" class="GotoAction">
+                        <result name="success">/securitygw/index/SGWFistList.jsp</result>
+                        <result name="ok">/securitygw/menu.jsp</result>
+                </action>
+        </package>
+</struts>

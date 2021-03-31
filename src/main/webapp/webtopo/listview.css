@@ -1,0 +1,20 @@
+table.lvtoolbar {font-family:tahoma;font-size:8pt;}
+select.lv {font-family:tahoma;font-size:8pt;border:1pt solid dimgray}
+input.lv {font-family:tahoma;font-size:8pt;border:1pt solid dimgray;text-align:right}
+tr.lvheading {background-color:gainsboro;cursor:hand}
+td.lvheading {padding:0px}
+table.lvheading {font-family:tahoma;font-size:8pt;height:100%;width:100%;border:1pt outset;padding:0px;}
+table.lv {font-family:tahoma;font-size:8pt;border-color:DimGray;border-collapse:collapse;}
+.head{
+	background-color: #DFDFDF;
+	border-left:solid #ffffff 1.5px;
+	border-top:solid #ffffff 1.5px;
+	border-right:solid #808080 1.8px;
+	border-bottom:solid #808080 1.8px;
+	padding-left: 1px;
+	padding-top: 3px;
+	padding-bottom: 1px;
+	text-align:left;
+	font-size: 12px;
+	cursor:hand;
+}

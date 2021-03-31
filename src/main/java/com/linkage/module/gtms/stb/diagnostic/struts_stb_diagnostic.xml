@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gtms_stb_diagnostic" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/stb/diagnostic">
+		<action name="pingInfo" class="PingInfoACT">
+			<result name="stbPingIndex">/gtms/stb/diagnostic/StbDevicePingTest.jsp</result>
+			<result name="stbTraceRouteIndex">/gtms/stb/diagnostic/StbDeviceTraceRouteTest.jsp</result>
+			<result name="pingTest">/gtms/stb/diagnostic/stbDevicePingResult.jsp</result>
+			<result name="traceRoute">/gtms/stb/diagnostic/stbDeviceTraceRouteResult.jsp</result>
+			<result name="pingDiag">/gtms/stb/diagnostic/StbDevicePingDiagResult.jsp</result>
+			<result name="traceRouteDiag">/gtms/stb/diagnostic/StbDeviceTraceRouteDiagResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="systemCmd" class="StbSystemCmdACT">
+			<result name="reboot">/gtms/stb/diagnostic/stbDeviceRebootResult.jsp</result>
+			<result name="restore">/gtms/stb/diagnostic/stbDeviceRestoreFactoryResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="StbBatchRestart" class="StbBatchRestartACT">
+			<result name="shareList">/gtms/stb/share/gwShareDeviceList1.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="stbDeviceBatchReboot" class="StbDeviceBatchRebootACT">
+		    <result name="initStbDeviceBatchReboot">/gtms/stb/diagnostic/stbDeviceBatchReboot.jsp</result>
+		    <result name="queryRestartDev">/gtms/stb/diagnostic/restartDevDetail.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

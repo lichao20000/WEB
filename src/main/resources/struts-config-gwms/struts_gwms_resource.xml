@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="resource" extends="linkage_security,linkage-pdf-default"
+		namespace="/gwms/resource">
+		<action name="officeVoip" class="OfficeVoipACT">
+			<result name="success">/gwms/resource/officeVoip.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="hgwcustManage" class="HgwcustManageACT">
+			<result name="init">/gwms/resource/hgwcustManage.jsp</result>
+			<result name="saveOk">/gwms/resource/saveUser.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="itmsInst" class="ItmsInstACT">
+			<result name="device">/gwms/resource/deviceInfo.jsp</result>
+			<result name="userInst">/gwms/resource/itmsInstUserInfo.jsp</result>
+			<result name="userRelease">/gwms/resource/itmsReleaseUserInfo.jsp</result>
+			<result name="success">/gwms/resource/itmsInstMessage.jsp</result>
+			<result name="init">/gwms/resource/itmsInst.jsp</result>
+		</action>
+		<action name="bbmsInst" class="BbmsInstACT">
+			<result name="device">/gwms/resource/deviceInfo.jsp</result>
+			<result name="userInst">/gwms/resource/bbmsInstUserInfo.jsp</result>
+			<result name="userRelease">/gwms/resource/bbmsReleaseUserInfo.jsp</result>
+			<result name="success">/gwms/resource/bbmsInstMessage.jsp</result>
+		</action>
+		<action name="itmsIpossInst" class="ItmsIpossInstACT">
+			<result name="device">/gwms/resource/itmsIpossDeviceInfo.jsp</result>
+			<result name="inst">/gwms/resource/itmsIpossInstInfo.jsp</result>
+			<result name="modifyInst">/gwms/resource/itmsIpossModifyInstInfo.jsp
+			</result>
+			<result name="success">/gwms/resource/itmsIpossInstMessage.jsp</result>
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="linkage_splitPage" />
+		</action>
+		<action name="queryDevice" class="QueryDeviceACT">
+			<result name="list">/gwms/resource/deviceBindList.jsp</result>
+			<result name="devlist">/gwms/resource/deviceBindDevList.jsp</result>
+			<result name="impInitDevice">/gwms/resource/impInitDeviceList.jsp</result>
+			<result name="unconfirmDevice">/gwms/resource/unconfirmDeviceList.jsp</result>
+			<result name="deviceAll">/gwms/resource/deviceAllList.jsp</result>
+			<result name="deviceOperate">/gwms/resource/deviceOperateList.jsp</result>
+			<result name="deviceOperate2">/gwms/resource/deviceOperateListNew.jsp</result>
+			<result name="deviceOperateForSxlt">/gwms/resource/deviceOperateListNewForSxlt.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="iptvVlanManage" class="IptvVlanManageACT">
+			<result name="list">/gwms/resource/PVCVLANManage.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="refDelDev" class="RefDelDevACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="updateDevCityByIP" class="UpdateDevCityByIPACT">
+			<result name="device">/gwms/resource/CityIPDevInfo.jsp</result>
+			<result name="result">/gwms/resource/UpdateDevCityByIPMes.jsp</result>
+			<result name="ahdevice">/gwms/resource/updateCityDevInfo.jsp</result>
+			<result name="ahresult">/gwms/resource/updateCityInfo.jsp</result>
+			<result name="ahupresult">/gwms/resource/updateCityMes.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="software" class="SoftwareACT">
+			<result name="success">/gwms/resource/BatchSoftware.jsp</result>
+			<result name="batch4cq">/gwms/resource/BatchSoftware4CQ.jsp</result>
+			<result name="batch4sxlt">/gwms/resource/BatchSoftware4SXLT.jsp</result>
+			<result name="result">/gwms/config/BatchResult.jsp</result>
+			<result name="response">/fileconfig/FileUploadResult.jsp</result>
+			<result name="batch4Ah">/gwms/resource/BatchSoftware4Ah.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<!-- 2013年6月5日 15:01:15 add by zhangsb 安徽软件升级 -->
+			<result name="batchAh">/gwms/resource/BatchSoftwareAh.jsp</result>
+			<result name="list">/gwms/resource/BatchSoftWareTaskList.jsp</result>
+			<result name="taskDetail">/gwms/resource/BatchSoftTaskDetail.jsp</result>
+			<!-- 2020年6月16日 安徽软件升级 -->
+			<result name="batch4AHLT">/gwms/resource/BatchSoftware4AHLT.jsp</result>
+		</action>
+		
+		<action name="softwareNew" class="SoftwareNewACT">
+			<result name="success">/gwms/resource/BatchSoftware_new.jsp</result>
+			<result name="result">/gwms/config/BatchResultNew.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="batchSoftRestartACT" class="BatchSoftRestartACT">
+			<result name="result">/gwms/resource/BatchSoftRestartResult.jsp</result>
+		</action>
+		<action name="batchConfigNodeACT" class="BatchConfigNodeACT">
+			<result name="detail">/gwms/resource/BatchConfigNodeDetail.jsp</result>
+			<result name="result">/gwms/resource/BatchConfigNodeResult.jsp</result>
+			<result name="batchConfigList4XJ">/gwms/resource/BatchConfigList4XJ.jsp</result>
+			<result name="init">/gwms/report/gatherDevQuery.jsp</result>
+			<result name="wifiInit">/gwms/report/gatherWifiDevQuery.jsp</result>
+			<result name="gatherDevList">/gwms/report/gatherDevList.jsp</result>
+			<result name="gatherWifiDevList">/gwms/report/gatherWifiDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+        <action name ="nodeFileUpload" class ="NodeFileUploadAction"> 
+            <interceptor-ref name ="fileUploadStack"/> 
+            <result name ="success">/gwms/resource/NodeShowUpload.jsp</result> 
+        </action> 
+		<action name="bindLogView" class="BindLogViewACT">
+			<result name="success">/gwms/resource/bindLogView.jsp</result>
+			<result name="list">/gwms/resource/bindLogViewList.jsp</result>
+		</action>
+		<action name="bindLogCount" class="BindLogCountACT">
+			<result name="success">/gwms/resource/bindLogCount.jsp</result>
+			<result name="list">/gwms/resource/bindLogCountList.jsp</result>
+		</action>
+		<!-- 导入loid数图配置 -->
+		<action name="importLoidACT" class="ImportLoidACT">
+			<result name="success">/gwms/resource/importLoid.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="deviceByImport">/gwms/resource/importLoid.jsp</result>
+		</action>
+		<action name="analyticSimulateSheetACT" class="AnalyticSimulateSheetACT">
+			<result name="success">/gwms/resource/analyticSimulateSheet.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+			<result name="sheetResult">/gwms/resource/analyticSimulateSheet.jsp</result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchImporttemplate.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+		</action>
+
+		<action name="countDeviceACT" class="CountDeviceACT">
+			<result name="success">/gwms/resource/countDeviceInit.jsp</result>
+			<result name="result">/gwms/resource/countDeviceResult.jsp</result>
+			<result name="detail">/gwms/resource/countDeviceDetail.jsp</result>
+			<result name="resultExcel">/gwms/resource/countDeviceDetailExcel.jsp
+			</result>
+			<result name="detailAll">/gwms/resource/countDeviceDetailAll.jsp</result>
+			<result name="resultExcelAll">/gwms/resource/countDeviceDetailExcel.jsp
+			</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="batchMgcACT" class="BatchMgcACT">
+			<result name="success">/gwms/resource/BatchMgcInit.jsp</result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchImporttemplate.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+		</action>
+		
+		<action name="batchRemoveBind" class="BatchRemoveBindACT">
+			<result name="rsList">/gwms/resource/BatchRemoveResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		 <action name ="fileUpload" class ="FileUpload"> 
+	            <interceptor-ref name ="fileUploadStack"/> 
+	            <result name ="success">/gwms/resource/ShowUpload.jsp</result> 
+	      </action> 
+	    <action name="queryDeviceForQnu" class="QueryDeviceForQnuACT">
+			<result name="queryDeviceForQnu">/gwms/resource/queryDeviceListForQnu.jsp</result>
+		</action>
+		 
+		     <!-- add by zhuzhengdong 2016-10-13 -->
+	  <action name="batchSoftUpACT" class="BatchSoftUpACT">
+			<result name="batchSoftUpResponse">/gwms/resource/BatchSoftUpResult.jsp</result>
+			<result name="batchSoftUpList">/gwms/resource/BatchSoftUpList.jsp</result>
+			<result name="batchSoftUpList4cq">/gwms/resource/BatchSoftUpList4CQ.jsp</result>
+			<result name="batchSoftUpListGyCity4cq">/gwms/resource/BatchSoftUpListGyCity4CQ.jsp</result>
+			<result name="batchSoftUpDevList4cq">/gwms/resource/BatchSoftUpDevList4CQ.jsp</result>
+			<result name="init">/gwms/resource/BatchSoftUpQuery.jsp</result>
+			<result name="init4cq">/gwms/resource/BatchSoftUpQuery4CQ.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+			</action>
+	  <action name="batchHttpTest" class="BatchHttpTestACT">
+			<result name="success">/gwms/resource/BatchHttpTest.jsp</result>
+			<result name="result">/gwms/config/BatchResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="batchHttpTestMana" class="BatchHttpTestManaACT">
+			<result name="init">/gwms/resource/BatchHttpTaskQuery.jsp</result>
+			<result name="taskResultCount">/gwms/resource/BatchHttpCountTaskResult.jsp</result>
+			<result name="taskResult">/gwms/resource/showTestSpeedTaskResult.jsp</result>
+			<result name="taskDoSuccResult">/gwms/resource/showSpeedTaskDoSuccResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="BatchReset" class="BatchResetACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 江苏/新疆批量重启WEB功能 -->
+		<action name="BatchRestart" class="BatchRestartACT">
+		<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="batchConfig" class="BatchConfigACT">
+			<result name="batch4cq">/gwms/resource/BatchConfig4CQ.jsp</result>
+			<result name="result">/gwms/resource/BatchConfigResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="initMana4cq">/gwms/resource/BatchConfigQuery4CQ.jsp</result>
+			<result name="batchList4cq">/gwms/resource/BatchConfigList4CQ.jsp</result>
+			<result name="batchConfigListGyCity4cq">/gwms/resource/BatchConfigListGyCity4CQ.jsp</result>
+			<result name="batchConfigDevList4cq">/gwms/resource/BatchConfigDevList4CQ.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 河北联通测速黑名单功能-->
+		<action name="batchHttpTestBlackList" class="BatchHttpTestBlackListACT">
+		    <!-- 简单查询功能-->
+		    <result name="deviceDetailWihtBlackLsit">/gwms/resource/showDeviceDetailWithBlackList.jsp</result>	
+		    <result name="result">/gwms/config/BatchResult.jsp</result>	    
+		</action>
+		<action name="batchHttpTestBlackListMana" class="BatchHttpTestBlackListManaACT">
+			<result name="init">/gwms/resource/BatchHttpBlackListTaskQuery.jsp</result>
+			<result name="taskResult">/gwms/resource/showBlackListTaskResult.jsp</result>
+		</action>
+		<!-- 批量语音工单下发-->
+		<action name="batchVoipSheetAction" class="BatchVoipSheetAction">
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+			<result name="sheetResult">/gwms/resource/batchVoipSheet.jsp</result>
+			<result name="init">/gwms/resource/batchVoipResultReport.jsp</result>
+			<result name="list">/gwms/resource/batchVoipResultReportList.jsp</result>
+			<result name="devlist">/gwms/resource/batchVoipResultDevList.jsp</result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchImportVoipSheet.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+		</action>
+		<!-- 宁夏批量修改组播参数工具-->
+		<action name="setMulticastBatchCount" class="SetMulticastBatchCountACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+			<result name="initQuery">/gwms/resource/setMulticastBatchTaskQueryNew.jsp</result>
+			<result name="queryMulticastBatchList">/gwms/resource/setMulticastBatchTaskListNew.jsp</result>
+			<result name="queryMulticastDetailList">/gwms/resource/setMulticastBatchTaskShowDetail.jsp</result>
+			<result name="showDetailListByType">/gwms/resource/setMulticastBatchTaskDevDetail.jsp</result>
+		</action>
+		<!-- 河北联通批量采集LAN1口-->
+		<action name="superGatherLanTask" class="SuperGatherLanTaskACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="single">/gwms/resource/SuperGatherLanTaskSingle.jsp</result>
+			<result name="list">/gwms/resource/SuperGatherLanTaskList.jsp</result>
+			<result name="detail">/gwms/resource/SuperGatherLanTaskDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 甘肃光猫批量重启和长时间在线光猫自动重启定制任务管理 -->
+		<action name="batchRestartManagerACT" class="BatchRestartManagerACT">
+		    <result name="ajax" type="ajax"></result>
+		    <result name="init">/gwms/resource/BatchRestartQuery.jsp</result>
+		    <result name="detail">/gwms/resource/BatchRestartQueryDetail.jsp</result>
+			<result name="list">/gwms/resource/BatchRestartQueryList.jsp</result>
+		    <result name="excel" type="excel"></result>
+		</action>
+		<!-- 家庭网络拓扑 -->
+		<action name="FamilyNetTopnACT" class="FamilyNetTopnACT">
+		    <result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- GSDX-REQ-ITMS-20191211-LWX-001（批量恢复出厂设备并下发业务功能） -->
+		<action name="BatchResumeACT" class="BatchResumeACT">
+		    <result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- NXDX-REQ-ITMS-20191203-LX-001E8-C百兆改千兆终端报表 -->
+		<action name="DeviceE8CImportACT" class="DeviceE8CImportACT">
+			<result name="init">/gwms/resource/DeviceE8CByImport.jsp</result>
+		    <result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 模板定制 -->
+	    <action name="servTemplate" class="ServTemplateACTStb">
+        	<result name="ajax" type="ajax"/>
+        	<result name="index">/gwms/resource/ServTemplate.jsp</result>
+        	<result name="queryList">/gwms/resource/ServTemplateList.jsp</result>
+         	<result name="detail">/gwms/resource/ServTemplateDetail.jsp</result>
+         	<result name="add">/gwms/resource/ServTemplateAdd.jsp</result>
+        	<result name="edit">/gwms/resource/ServTemplateEdit.jsp</result>
+		</action>
+		
+		<!-- 新批量参数设置 -->
+		<action name="batchSetTempManaACT" class="BatchSetTempManaACT">
+			<result name="init">/gwms/resource/BatchSetTempManaQry.jsp</result>
+			<result name="list">/gwms/resource/BatchSetTempManaList.jsp</result>
+			<result name="devList">/gwms/resource/BatchSetTempManaDevList.jsp</result>
+			<result name="taskDetail">/gwms/resource/BatchSetTempManaTaskDetail.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+	</package>
+</struts>

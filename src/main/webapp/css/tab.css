@@ -1,0 +1,53 @@
+.curstarttab{
+	border-left: solid 1px #999999;
+	border-right: solid 1px #999999;
+	border-top: solid 1px #999999;
+	background: #ffffff;
+	text-align: center;
+	font-weight: bold;
+}
+
+.starttab{
+	border-left: solid 1px #999999;
+	border-right: solid 1px #999999;
+	border-top: solid 1px #999999;
+	background: #e1e1e1;
+	text-align: center;
+}
+.curendtab{
+	border-top: solid 1px #999999;
+	border-right: solid 1px #999999;
+	background: #ffffff;
+	text-align: center;
+	font-weight: bold;
+}
+.endtab{
+	border-top: solid 1px #999999;
+	border-right: solid 1px #999999;
+	background: #e1e1e1;
+	text-align: center;
+}
+.curendtab_bbms{
+	border-top: solid 1px #999999;
+	border-right: solid 1px #999999;
+	background: #66CCCC;
+	text-align: center;
+	font-weight: bold;
+}
+.endtab_bbms{
+	border-top: solid 1px #999999;
+	border-right: solid 1px #999999;
+	background: #e1e1e1;
+	text-align: center;
+	background-image:  url("../images/green_title_bg.jpg");
+}
+
+.tab_A:visited {
+	COLOR: #000000; TEXT-DECORATION: none;font-weight: bold
+}
+.tab_A:link {
+	COLOR: #000000; TEXT-DECORATION: none;font-weight: bold
+}
+.tab_A:hover {
+	COLOR: #000000; TEXT-DECORATION: none;font-weight: bold
+}

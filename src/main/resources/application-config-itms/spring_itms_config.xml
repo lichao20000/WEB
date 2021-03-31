@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="PreConfigDiagDAO"
+		class="com.linkage.module.itms.config.dao.PreConfigDiagDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="PreConfigDiagBIO"
+		class="com.linkage.module.itms.config.bio.PreConfigDiagBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="PreConfigDiagDAO" />
+		</property>
+	</bean>
+	<bean id="PreConfigDiagACT"
+		class="com.linkage.module.itms.config.act.PreConfigDiagACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="PreConfigDiagBIO" />
+		</property>
+	</bean>
+	<bean id="ChangeConnectionTypeDAO"
+		class="com.linkage.module.itms.config.dao.ChangeConnectionTypeDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ChangeConnectionTypeBIO"
+		class="com.linkage.module.itms.config.bio.ChangeConnectionTypeBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ChangeConnectionTypeDAO" />
+		</property>
+		
+			<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="lanEthDAO">
+			<ref bean="LanEthDAO"/>
+		</property>
+		
+	</bean>
+	<bean id="ChangeConnectionTypeACT"
+		class="com.linkage.module.itms.config.act.ChangeConnectionTypeACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ChangeConnectionTypeBIO" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- add by chenjie 2011.4.8 -->
+	<bean id="DigitMapConfigDAO"
+		class="com.linkage.module.itms.config.dao.DigitMapConfigDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DigitMapConfigBIO"
+		class="com.linkage.module.itms.config.bio.DigitMapConfigBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DigitMapConfigDAO" />
+		</property>
+	</bean>
+	<bean id="DigitMapConfigACT"
+		class="com.linkage.module.itms.config.act.DigitMapConfigACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DigitMapConfigBIO" />
+		</property>
+	</bean>
+	 <bean id="DigitDeviceDAO"
+                class="com.linkage.module.itms.config.dao.DigitDeviceDAO"
+                scope="prototype">
+                <property name="dao">
+                        <ref bean="mainDataSource" />
+                </property>
+        </bean>
+        <bean id="DigitDeviceBIO"
+                class="com.linkage.module.itms.config.bio.DigitDeviceBIO"
+                scope="prototype">
+                <property name="digitDeviceDAO">
+                        <ref bean="DigitDeviceDAO" />
+                </property>
+        </bean>
+        <bean id="DigitDeviceACT"
+                class="com.linkage.module.itms.config.act.DigitDeviceACT"
+                scope="prototype">
+                <property name="digitDeviceBIO">
+                        <ref bean="DigitDeviceBIO" />
+                </property>
+        </bean>
+	
+	
+	 <bean id="NatStatusQueryDAO"
+                class="com.linkage.module.itms.config.dao.NatStatusQueryDAO"
+                scope="prototype">
+                <property name="dao">
+                        <ref bean="mainDataSource" />
+                </property>
+        </bean>
+        <bean id="NatStatusQueryBIO"
+                class="com.linkage.module.itms.config.bio.NatStatusQueryBIO"
+                scope="prototype">
+                <property name="dao">
+                        <ref bean="NatStatusQueryDAO" />
+                </property>
+        </bean>
+        <bean id="NatStatusQueryACT"
+                class="com.linkage.module.itms.config.act.NatStatusQueryACT"
+                scope="prototype">
+                <property name="bio">
+                        <ref bean="NatStatusQueryBIO" />
+                </property>
+        </bean>
+</beans>

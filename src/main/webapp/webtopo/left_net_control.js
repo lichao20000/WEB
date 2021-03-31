@@ -1,0 +1,5 @@
+//≤‚ ‘
+function testLeft()
+{
+	alert("test");
+}

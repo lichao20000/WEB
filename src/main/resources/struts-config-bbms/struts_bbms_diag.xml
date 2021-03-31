@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="diag" extends="struts-default,linkage-default,linkage_security" namespace="/bbms/diag">
+		<action name="deviceDiag" class="DeviceDiagACT">
+			<result name="success">/bbms/diag/wiredNetDiag.jsp</result>
+			<result name="wiredNetDiag">/bbms/diagnostics/wiredNetDiag.jsp</result>
+			<result name="wirelessNetDiag">/bbms/diagnostics/wirelessNetDiag.jsp</result>
+			<result name="netSlowDiag">/bbms/diagnostics/netSlowDiag.jsp</result>
+			<result name="netOfflineDiag">/bbms/diagnostics/netOfflineDiag.jsp</result>
+			<result name="diagTools">/gwms/diagnostics/diagTools.jsp</result>
+			<result name="iptvDiag">/bbms/diagnostics/iptvDiag.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="wireInfo">/bbms/diagnostics/diag/wireInfo.jsp</result>
+      <result name="servInfo">/bbms/diagnostics/diag/servInfo.jsp</result>
+      <result name="connErr">/bbms/diagnostics/diag/connErr.jsp</result>
+      <result name="pingInfo">/bbms/diagnostics/diag/pingInfo.jsp</result>
+      <result name="hostInfo">/bbms/diagnostics/diag/hostInfo.jsp</result>
+      <result name="dhcpInfo">/bbms/diagnostics/diag/dhcpInfo.jsp</result>
+      <result name="dnsInfo">/bbms/diagnostics/diag/dnsInfo.jsp</result>
+      <result name="lanInfo">/bbms/diagnostics/diag/lanInfo.jsp</result>
+      <result name="wlanInfo">/bbms/diagnostics/diag/wlanInfo.jsp</result>
+      <result name="iptvServInfo">/bbms/diagnostics/diag/iptvServInfo.jsp</result>
+			<result name="wlanDiagInfo">/bbms/diagnostics/diag/wlanDiagInfo.jsp</result>
+		</action>
+		<action name="oneKeyDiag" class="OneKeyDiagACT">
+			<result name="success">/bbms/diagnostics/oneKeyDiagnostics.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="system_gtms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/system">
+		<action name="superRoleManage" class="superRoleActionImpl">
+			<result name="list">/gtms/system/SuperRoleList.jsp</result>
+			<result name="update">/gtms/system/UpdateSuperRole.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<action name="logManage" class="LogManageAction">
+			<result name="initPage">/gtms/system/LogManage.jsp</result>
+			<result name="queryLog">/gtms/system/LogManage.jsp</result>
+			<result name="saslog">/gtms/system/LogManageSAS.jsp</result>
+			<result type="excel" name="excel"></result>
+			<result type="ajax" name="ajax"></result>
+		</action>
+	</package>
+</struts>

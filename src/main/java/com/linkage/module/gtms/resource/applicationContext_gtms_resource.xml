@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="deviceInitAction" 
+		class="com.linkage.module.gtms.resource.action.DeviceInitAction" scope="prototype">
+		<property name="bio">
+			<ref bean="deviceInitBIO" />
+		</property>
+	</bean>
+	<bean id="deviceInitBIO" 
+		class="com.linkage.module.gtms.resource.serv.DeviceInitBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="deviceInitDAO" />
+		</property>
+	</bean>
+	<bean id="deviceInitDAO" 
+		class="com.linkage.module.gtms.resource.dao.DeviceInitDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<!-- add by zhangchy 2012-04-18 JSDX_ITMS-REQ-20120412-LUHJ-005 -->
+	<bean id="gtms_resource_deviceVersionAction" 
+		class="com.linkage.module.gtms.resource.action.DeviceVersionActionImp" scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceVersionServImp" />
+		</property>
+	</bean>
+	<bean id="DeviceVersionServImp" 
+		class="com.linkage.module.gtms.resource.serv.DeviceVersionServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceVersionDAOImp" />
+		</property>
+	</bean>
+	<bean id="DeviceVersionDAOImp" 
+		class="com.linkage.module.gtms.resource.dao.DeviceVersionDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<!-- add by zhangchy 2012-09-18 XJDX-REQ-20120907-HUJG3-001 -->
+	<bean id="gtms_resource_queryVoipPhoneByLoidAction" 
+		class="com.linkage.module.gtms.resource.action.QueryVoipPhoneByLoidActionImp" scope="prototype">
+		<property name="bio">
+			<ref bean="QueryVoipPhoneByLoidServImp" />
+		</property>
+	</bean>
+	<bean id="QueryVoipPhoneByLoidServImp" 
+		class="com.linkage.module.gtms.resource.serv.QueryVoipPhoneByLoidServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="QueryVoipPhoneByLoidDAOImp" />
+		</property>
+	</bean>
+	<bean id="QueryVoipPhoneByLoidDAOImp" 
+		class="com.linkage.module.gtms.resource.dao.QueryVoipPhoneByLoidDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="gtms_resource_importDeviceInitAction" 
+		class="com.linkage.module.gtms.resource.action.ImportDeviceInitActionImp" scope="prototype">
+		<property name="bio">
+			<ref bean="ImportDeviceInitServImp" />
+		</property>
+	</bean>
+	<bean id="ImportDeviceInitServImp" 
+		class="com.linkage.module.gtms.resource.serv.ImportDeviceInitServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="ImportDeviceInitDAOImp" />
+		</property>
+	</bean>
+	<bean id="ImportDeviceInitDAOImp" 
+		class="com.linkage.module.gtms.resource.dao.ImportDeviceInitDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	<bean id="gtms_resource_configVoiceProcessGainNodeAction" 
+            class="com.linkage.module.gtms.resource.action.ConfigVoiceProcessGainNodeActionImp" scope="prototype">
+            <property name="bio">
+                    <ref bean="ConfigVoiceProcessGainNodeServImp" />
+            </property>
+    </bean>
+    <bean id="ConfigVoiceProcessGainNodeServImp" 
+            class="com.linkage.module.gtms.resource.serv.ConfigVoiceProcessGainNodeServImp" scope="prototype">
+            <property name="dao">
+                    <ref bean="ConfigVoiceProcessGainNodeDAOImp" />
+            </property>
+    </bean>
+    <bean id="ConfigVoiceProcessGainNodeDAOImp" 
+            class="com.linkage.module.gtms.resource.dao.ConfigVoiceProcessGainNodeDAOImp" scope="prototype">
+            <property name="dao">
+                    <ref bean="mainDataSource" />
+            </property>
+    </bean>
+    
+    
+    <bean id="gtms_resource_countDeviceByServTypeIdAction" 
+            class="com.linkage.module.gtms.resource.action.CountDeviceByServTypeIdActionImp" scope="prototype">
+            <property name="bio">
+                    <ref bean="CountDeviceByServTypeIdServImp" />
+            </property>
+    </bean>
+    <bean id="CountDeviceByServTypeIdServImp" 
+            class="com.linkage.module.gtms.resource.serv.CountDeviceByServTypeIdServImp" scope="prototype">
+            <property name="dao">
+                    <ref bean="CountDeviceByServTypeIdDAOImp" />
+            </property>
+    </bean>
+    <bean id="CountDeviceByServTypeIdDAOImp" 
+            class="com.linkage.module.gtms.resource.dao.CountDeviceByServTypeIdDAOImp" scope="prototype">
+            <property name="dao">
+                    <ref bean="mainDataSource" />
+            </property>
+    </bean>
+    
+    <bean id="gtms_resource_bachServConfigAction" 
+            class="com.linkage.module.gtms.resource.action.BachServUpdateAndCongfigAction" scope="prototype">
+            <property name="bio">
+                    <ref bean="bachServConfigImp" />
+            </property>
+    </bean>
+    <bean id="bachServConfigImp" 
+            class="com.linkage.module.gtms.resource.serv.BachServConfigBioImpl" scope="prototype">
+            <property name="dao">
+            	<ref bean="bachServConfigDaoImpl" />
+            </property>
+    </bean>
+     <bean id="bachServConfigDaoImpl" 
+            class="com.linkage.module.gtms.resource.dao.BachServConfigDaoImpl" scope="prototype">
+            <property name="dao">
+                    <ref bean="mainDataSource" />
+            </property>
+    </bean>
+    
+    
+    <bean id="ImportQueryActionImp" 
+		class="com.linkage.module.gtms.resource.action.ImportQueryActionImp" scope="prototype">
+		<property name="bio">
+			<ref bean="ImportQueryServImp" />
+		</property>
+	</bean>
+	<bean id="ImportQueryServImp" 
+		class="com.linkage.module.gtms.resource.serv.ImportQueryServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="ImportQueryDAOImp" />
+		</property>
+	</bean>
+	<bean id="ImportQueryDAOImp" 
+		class="com.linkage.module.gtms.resource.dao.ImportQueryDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+</beans>

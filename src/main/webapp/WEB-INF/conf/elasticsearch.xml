@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GB18030"?>
+<Elasticsearch>
+	<!-- 地址端口，用英文,分隔 -->
+	<clusterAddress>192.168.18.131:9300</clusterAddress>
+	<!-- ,192.168.18.132:9300,192.168.18.133:9300 -->
+	<!-- 服务名 -->
+	<clustername>nx_elasticsearch</clustername>
+	<!-- 连接超时时间,s是秒 -->
+	<timeout>10s</timeout>
+	<indexList>
+		<index>
+			<!-- 索引名 -->
+			<indexName>ids</indexName>
+			<!-- 索引类型，用英文,分隔  -->
+			<indexTypes>ponstatus,netparam,voicestatus,laninfo,poninfo</indexTypes>
+		</index>
+	</indexList>
+</Elasticsearch>

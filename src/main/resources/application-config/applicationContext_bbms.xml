@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CustomerInfoDAO" class="dao.bbms.CustomerInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="CustomerInfoAction" class="action.bbms.CustomerInfoAction" scope="prototype">
+		<property name="customerInfo">
+			<ref local="CustomerInfoDAO" />
+		</property>
+	</bean>
+	<bean id="ImportCustomerDAObbms" class="dao.bbms.ImportCustomerDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ImportCustomerActionbbms" class="action.bbms.ImportCustomerAction" scope="prototype">
+		<property name="importCustomer">
+			<ref local="ImportCustomerDAObbms" />
+		</property>
+	</bean>
+	<bean id="GetSnmpInfoBIO" class="bio.bbms.GetSnmpInfoBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="GetSnmpInfoDAO" class="dao.bbms.GetSnmpInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="GetSnmpInfoAction" class="action.bbms.GetSnmpInfoAction" scope="prototype">
+		<property name="gsbio">
+			<ref bean="GetSnmpInfoBIO" />
+		</property>
+		<property name="getSnmpInfo">
+			<ref bean="GetSnmpInfoDAO" />
+		</property>
+	</bean>
+	<bean id="ExceptionDeviceListDAO" class="dao.bbms.ExceptionDeviceListDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ExceptionDeviceAction" class="action.bbms.ExceptionDeviceAction" scope="prototype">
+		<property name="edDAo">
+			<ref bean="ExceptionDeviceListDAO"/>
+		</property>
+	</bean>
+</beans>

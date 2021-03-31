@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Resource"
+		extends="struts-default,linkage-default,linkage-pdf-default,linkage_security" 
+		namespace="/Resource">
+		<global-results>
+			<result name="batchConfigResult">/share/BatchConfigResult.jsp</result>
+		</global-results>
+		<action name="importUser" class="ImportUser">
+			<result name="success" type="chain">exportUser</result>
+		</action>
+		<action name="exportUser" class="ExportUserAction">
+			<result name="success" type="excel"></result>
+			<result name="list">/Resource/exportEGWUser.jsp</result>
+			<result name="userByOrder">/Resource/EGWUserByOrder.jsp</result>
+		</action>
+		<action name="countDevice" class="CountDeviceAction">
+			<result name="success">/Resource/countDevice.jsp</result>
+			<result name="detail">/Resource/AreaServiceDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="importDevice" class="ImportDeviceAction">
+			<result name="success">/Resource/importDevice.jsp</result>
+		</action>
+		<action name="importUsersBBMS" class="ImportUsersBBMS">
+			<result name="success">
+				/Resource/ImportUsers_BBMS.jsp?isSuccess=1
+			</result>
+			<result name="error">
+				/Resource/ImportUsers_BBMS.jsp?isSuccess=0
+			</result>
+			<result name="lackDataErr">
+				/Resource/ImportUsers_BBMS.jsp?isSuccess=lackDataErr
+			</result>
+			<result name="numErr">
+				/Resource/ImportUsers_BBMS.jsp?isSuccess=numErr
+			</result>
+		</action>
+		<action name="devVenderModelAction" class="DevVenderModelAction">
+			<result name="deviceByImport">/Resource/ItvImportUsernameResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 定制终端模板管理 -->
+		<action name="terminalTemplate"
+			class="TerminalTemplateAction">
+			<result name="success">
+				/Resource/AddTerminalTemplate.jsp
+			</result>
+			<result name="list">
+				/Resource/TerminalTemplateList.jsp
+			</result>
+			<result name="edit">
+				/Resource/EditTerminalTemplate.jsp
+			</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 设备型号版本查询设备 -->
+		<action name="deviceModelInfo" class="DeviceModelInfoAction">
+			<result name="modelInfo">/Resource/DeviceModel_info.jsp</result>
+			<result name="stbModelInfo">/Resource/StbDeviceModel_info.jsp</result>
+			<result name="modelInfoSxlt">/Resource/DeviceModel_info_sxlt.jsp</result>
+			<result name="modelInfo4jlEther">/Resource/DeviceModel_info4jlEther.jsp</result>
+			<result name="etherDetail">/Resource/etherDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="stbVendorInfo">/Resource/StbVendorList.jsp</result>
+			<result name="VendorInfoForSxlt">/Resource/VendorList_Sxlt.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- IPTV定制管理 -->
+		<action name="itvConfig" class="ItvConfigAction">
+			<result name="success">/Resource/ItvConfigPage.jsp</result>
+			<result name="configResult">/Resource/ItvConfigResult.jsp</result>
+		</action>
+		<!-- IPTV定制管理(安装人员用) -->
+		<action name="itvConfigTrim" class="ItvConfigAction">
+			<result name="success">/Resource/ItvConfigPageTrim.jsp</result>
+			<result name="configResult">/Resource/ItvConfigResult.jsp</result>
+		</action>
+		<!-- ITV无线配置  -->
+		<action name="itvConfigByWlan" class="ItvConfigByWlanAction">
+			<result name="success">/Resource/ItvConfigPageByWlan.jsp</result>
+			<result name="configResult">/Resource/ItvConfigResult.jsp</result>
+		</action>
+		
+		<action name="upgradeBatch" class="UpgradeBatchAction">
+			<result name="initpage">/software/softUpgradeBatch.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 现场安装单台设备查询 -->
+		<action name="queryDeviceByAllCity" class="QueryDeviceByAllCityAction">
+			<result name="result">/Resource/queryDeviceByAllCityResult.jsp</result>
+		</action>
+		<!-- 设备性能流量查看,设备查询 -->
+		<action name="advancedDevInfo" class="AdvancedDevInfoAction">
+			<result name="queryData">/Resource/AdvancedQueryData.jsp</result>
+		</action>
+		
+		<action name="deviceManageData" class="DeviceManageDataAction">
+			<result name="pdfByList" type="pdfByList"></result>
+		</action>
+		
+		<!-- 设备型号WIFI能力 -->
+		<action name="deviceModelWifi" class="DeviceModelWifiAction">
+			<result name="modelWifiInfo">/Resource/DeviceWifiAbility.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 未确认设备列表 -->
+		<!--
+		<action name="unValidatedDevice" class="UnValidatedDeviceAction">
+			<result name="success">/Resource/unValidatedDevice.jsp</result>
+			<result name="result">/Resource/unValidatedDeviceResult.jsp</result>
+		</action>
+		-->
+	</package>
+	<!-- 家庭网关按绑定率统计  此配置文件被转移到struts_itms_report.xml中了
+	<package name="BindRate" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/BindRate">
+		<action name="getBindRateByCityid" class="BindReportAction">
+			<result name="page">/Resource/hgwUserBindReport.jsp</result>
+			<result name="list">/Resource/hgwUserBindReportList.jsp</result>
+			<result name="hgwlist">/Resource/hgwUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+	</package>-->
+</struts>

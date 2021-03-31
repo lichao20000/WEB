@@ -1,0 +1,194 @@
+.button {
+	BACKGROUND-IMAGE: url(../../images/button_tarout.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	COLOR: #ffffff;
+	CURSOR: hand;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	FONT-SIZE: 8pt;
+	line-height: 25px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	width: 66px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	background-position: center;
+	position: static;
+}
+.buttonover {
+	BACKGROUND-IMAGE: url(../../images/button_taron.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	COLOR: #ffffff;
+	CURSOR: hand;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	FONT-SIZE: 8pt;
+	line-height: 25px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	width: 66x;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	background-position: center;
+	position: static;
+}
+.sec_button {
+	BACKGROUND-IMAGE: url(../../images/sec_button_tarout.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	COLOR: #ffffff;
+	CURSOR: hand;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	FONT-SIZE: 8pt;
+	line-height: 25px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	width: 52px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	background-position: center;
+	position: static;
+}
+.sec_buttonover {
+	BACKGROUND-IMAGE: url(../../images/sec_button_taron.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	COLOR: #ffffff;
+	CURSOR: hand;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	FONT-SIZE: 8pt;
+	line-height: 25px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	width: 52x;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	background-position: center;
+	position: static;
+}
+.left_title {
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #ffffff;
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	line-height: 28px;
+	font-weight: bold;
+	color: #2f628a;
+	text-indent: 5pt;
+	cursor: hand;
+	background-image: url(../../images/left_titleback.jpg);
+	background-repeat:repet-x;
+	height: 28px;
+	width: 194px;
+}
+
+.left_titleon {
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #ffffff;
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	line-height: 28px;
+	font-weight: bold;
+	color: #ffffff;
+	text-indent: 5pt;
+	cursor: hand;
+	background-image: url(../../images/left_titleback2.jpg);
+	height: 28px;
+	width: 194px;
+}
+
+.left_title2 {
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	color: #000000;
+	text-indent:22pt;
+	cursor: hand;
+    height: 21px;
+	width: 194px;
+}
+.left_title2on {
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	color: #000000;
+	text-indent:22pt;
+	cursor: hand;
+	background-color: #fbfad4;
+    height: 21px;
+	width: 194px;
+}
+
+.left_title3 {
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	color: #000000;
+	text-indent:32pt;
+	cursor: hand;
+    height: 21px;
+	width: 194px;
+}
+.left_title3on {
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	color: #000000;
+	text-indent:32pt;
+	cursor: hand;
+	background-color: #fbfad4;
+    height: 21px;
+	width: 194px;
+}
+
+.left_title4 {
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	color: #000000;
+	text-indent:41pt;
+	cursor: hand;
+    height: 21px;
+	width: 194px;
+}
+.left_title4on {
+	font-family: Arial, "Arial Black", "����", "����";
+	font-size: 8pt;
+	color: #000000;
+	text-indent:41pt;
+	cursor: hand;
+	background-color: #fbfad4;
+    height: 21px;
+	width: 194px;
+}
+
+.dian_line {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #b9cde8;
+}
+
+.jianbian {height: 19px; 
+		   background-color: #D6E1F7; 
+		   font-size: 9pt; 
+		   vertical-align: middle; 
+		   padding-top: 2px; 
+		   color: #000000; 
+		   border-top-width: 1pt; 
+		   border-right-width: 1pt; 
+		   border-bottom-width: 1pt; 
+		   border-left-width: 1pt;
+		   text-align: absmiddle;
+		   text-decoration: blink;
+		   cursor: hand; 
+		   FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#889CD7, EndColorStr=#FFFFFF);
+}

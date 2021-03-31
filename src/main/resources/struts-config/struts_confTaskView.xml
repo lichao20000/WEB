@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="confTaskView" extends="linkage_security" namespace="/confTaskView">
+		<action name="ConfTaskView" class="ConfTaskViewAction">
+			<result name="query">/confTaskView/confTaskSelect.jsp</result>
+			<result name="confTaskList">/confTaskView/confTaskList.jsp</result>
+		</action>
+	</package>
+	<package name="servStrategy" extends="linkage_security" namespace="/servStrategy">
+		<action name="ServStrategy" class="ServStrategyAction">
+			<result name="initstart">/confTaskView/servStrategyFrame.jsp</result>
+			<result name="query">/confTaskView/servStrategySelect.jsp</result>
+			<result name="list">/confTaskView/servStrategyList.jsp</result>
+			<result name="strategy">/bbms/config/strategy.jsp</result>
+			<result name="strategyList">/software/strategyResultQueryList.jsp</result>
+		</action>
+	</package>
+	<package name="manageWan" extends="struts-default,linkage-default,linkage_security" namespace="/paramConfig">
+		<action name="manageWanConn" class="ManageWanConnAction">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="manageWanConnEdit" class="ManageWanConnEditAction">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="manageWlan" class="ManageWlanAction">
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

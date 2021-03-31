@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="WebTopo" extends="struts-default,linkage-default,linkage_security" namespace="/webtopo">
+		<action name="warnRuleDef" class="warnRuleDefAction">
+			<result name="success">/webtopo/warn/WarnRuleDef.jsp</result>
+			<result name="edit">/webtopo/warn/WarnDetailRuleEdit.jsp</result>
+			<result name="list">/webtopo/warn/WarnDetailRuleShow.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="warnColumnDef" class="warnColumnDefAction">
+			<result name="success">/webtopo/warn/WarnColumnDef.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="warnDetailInfo" class="warnDetailInfoAction">
+			<result name="success">/webtopo/warn/WarnDetailInfo.jsp</result>
+		</action>
+		<action name="RealTimeWarn" class="RealTimeWarnAction">
+			<result name="input">/webtopo/warn/RealTimeWarn.jsp</result>
+		    <result name="success">/webtopo/warn/RealTimeWarnData.jsp</result>
+		    <result name="ajax" type="ajax"></result>
+			<param name="totalnum">400</param>
+			<param name="totalref">100</param>
+		</action>
+		<action name="importTopo" class="ImportTopoAction">
+			<result name="success">/webtopo/importTopoResult.jsp</result>
+			<result name="importForm">/webtopo/importTopo.jsp</result>
+		</action>
+
+	</package>
+</struts>

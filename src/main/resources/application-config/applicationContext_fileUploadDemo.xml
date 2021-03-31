@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="uploadFile" class="com.linkage.liposs.buss.dao.docmanager.UploadFileDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="uploadFileAction" class="com.linkage.liposs.action.docmanager.UploadFileAction" scope="prototype">
+		<property name="uploadFileDAO">
+			<ref local="uploadFile"/>
+		</property>
+	</bean>
+	<bean id="downloadFileAction" class="com.linkage.liposs.action.docmanager.DownloadFileAction" scope="prototype">
+		<property name="uploadFileDAO">
+			<ref local="uploadFile"/>
+		</property>
+	</bean>
+	<bean id="viewOrDeleteFileAction" class="com.linkage.liposs.action.docmanager.ViewOrDeleteFileAction" scope="prototype">
+		<property name="uploadFileDAO">
+			<ref local="uploadFile"/>
+		</property>
+	</bean>
+</beans>

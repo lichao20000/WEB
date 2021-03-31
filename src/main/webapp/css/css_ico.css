@@ -1,0 +1,43 @@
+.button {
+	BACKGROUND-IMAGE: url(../images/button_blue.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	COLOR: #000000;
+	CURSOR: pointer;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	FONT-SIZE: 9pt;
+	line-height: 25px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	height: 25px;
+	width: 91px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	background-position: center;
+	position: static;
+}
+.buttonover {
+	BACKGROUND-IMAGE: url(../images/button_yellow.gif);
+	BACKGROUND-REPEAT: no-repeat;
+	COLOR: #000000;
+	CURSOR: pointer;
+	FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+	FONT-SIZE: 9pt;
+	line-height: 25px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	height: 25px;
+	width: 91px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	background-position: center;
+	position: static;
+}
+input:button{
+	cursor:pointer;
+}

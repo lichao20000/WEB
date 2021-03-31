@@ -1,0 +1,23 @@
+.top_right_line{
+	border-top: 1px solid #999999;
+	border-right: 1px solid #999999;
+}
+
+.top_leftt_line{
+	border-top: 1px solid #999999;
+	border-left: 1px solid #999999;
+}
+
+.top_line{
+	border-top: 1px solid #999999;
+}
+
+.nav_icon{
+	color: #003399;
+	font-weight: bold;
+}
+
+BODY,TABLE,TD,DIV,SPAN{
+	font-family: "ËÎÌו","Times New Roman";
+	font-size: 12px;
+}

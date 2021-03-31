@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!--流量分析 edit by xuj -->
+	<!-- dao -->
+	<bean id="FlowAnalyseDAO" class="com.linkage.liposs.buss.dao.flow.FlowAnalyseDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>	
+	</bean>
+	
+	<!-- bio-->
+	<bean id="FlowAnalyseBIO" class="com.linkage.liposs.buss.bio.flow.FlowAnalyseBIO" scope="prototype">
+		<property name="flowAnalyseDao">
+			<ref local="FlowAnalyseDAO"/>
+		</property>
+	</bean>	 
+	
+	<!-- action -->
+	<bean id="FlowAnalyseAction" class="com.linkage.liposs.action.flow.FlowAnalyseAction" scope="prototype">
+		<property name="flowAnalyse">
+			<ref local="FlowAnalyseDAO"/>
+		</property>
+	</bean>
+</beans>

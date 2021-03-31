@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>网关管理系统</TITLE>
+<style>
+BODY {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: "宋体","Arial"; FONT-SIZE: 12px; MARGIN: 0px
+}
+
+TD {
+	FONT-FAMILY: "宋体", "Tahoma"; FONT-SIZE: 12px
+}
+
+.A{
+	HEIGHT:20px;
+	BORDER:1px solid #999;
+	TEXT-DECORATION:none;
+	FONT-FAMILY: "宋体";
+	FONT-SIZE: 12px; 
+    COLOR: #000066; 
+    padding-top: 2px;
+	BACKGROUND-IMAGE:url(/images/buttonface.gif)
+}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function CloseModal(fv){
+    window.returnValue = fv;
+    window.close();
+}
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=100%>
+	<TR>
+		<td bgcolor=#FFFFCC height=27 style="padding-left:10px;border-bottom:1px solid #10659E;" width="100%"><img src="../images/error.gif" boder="0">&nbsp;&nbsp;系统操作提示</td>
+	</tr>
+	<tr>
+		<td height="100%" style="padding:18 36 10 36" align='center'>
+		您确实要永久地删除该条数据吗？
+		</td>
+	</tr>
+	<tr>
+		<td align=center style="padding-bottom:14px;" height=35>
+		<button class="A" onClick="CloseModal(true);" style="padding-left:10px;padding-right:10px" id="ok"> 确 定 </button>
+		&nbsp;&nbsp;&nbsp;&nbsp;<button class="A" onClick="CloseModal(false);" style="padding-left:10px;padding-right:10px" id="cancel"> 取 消 </button>		
+		</td>
+	</tr>
+	</table>
+</BODY>
+</HTML>

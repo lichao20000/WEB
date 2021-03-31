@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="ResourceBindMemConfigDAO"
+		class="com.linkage.module.gwms.sysConfig.dao.ResourceBindMemConfigDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ResourceBindMemConfigBIO" class="com.linkage.module.gwms.sysConfig.bio.ResourceBindMemConfigBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="ResourceBindMemConfigDAO" />
+		</property>
+	</bean>
+	<bean id="ResourceBindMemConfigACT" class="com.linkage.module.gwms.sysConfig.act.ResourceBindMemConfigACT" scope="prototype">
+		<property name="bio">
+			<ref bean="ResourceBindMemConfigBIO" />
+		</property>
+	</bean>
+	
+	<!-- test -->
+	<bean id="testUserInstReleaseDAO" class="com.linkage.module.gwms.sysConfig.dao.UserInstReleaseDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="testUserInstReleaseBIO" class="com.linkage.module.gwms.sysConfig.bio.UserInstReleaseBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="testUserInstReleaseDAO"/>
+		</property>
+	</bean>
+	<bean id="testItmsInstACT" class="com.linkage.module.gwms.sysConfig.act.ItmsInstACT" scope="prototype">
+		<property name="userInstReleaseBio">
+			<ref bean="testUserInstReleaseBIO"/>
+		</property>
+	</bean>
+</beans>

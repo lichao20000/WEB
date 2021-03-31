@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- add by zhangchy 2012-04-18 JSDX_ITMS-REQ-20120412-LUHJ-005 -->
+	<bean id="gtms_service_sendRouterOpenSheet"
+		class="com.linkage.module.gtms.service.action.SendRouterOpenSheetActionImp"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SendRouterOpenSheetServImp" />
+		</property>
+	</bean>
+	<bean id="SendRouterOpenSheetServImp"
+		class="com.linkage.module.gtms.service.serv.SendRouterOpenSheetServImp"
+		scope="prototype">
+	</bean>
+
+	<bean id="operateByHandActionDAO"
+		class="com.linkage.module.gtms.service.dao.OperateByHandActionDAOImp">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="operateByHandServ"
+		class="com.linkage.module.gtms.service.serv.OperateByHandServImp">
+		<property name="operateByHandActionDAO">
+			<ref bean="operateByHandActionDAO" />
+		</property>
+	</bean>
+
+	<bean id="gtms_service_operateByHandQuery"
+		class="com.linkage.module.gtms.service.action.OperateByHandActionImp"
+		scope="prototype">
+		<property name="operateByHandServ">
+			<ref bean="operateByHandServ" />
+		</property>
+	</bean>
+
+</beans>

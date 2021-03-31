@@ -1,0 +1,116 @@
+package com.linkage.module.gwms.resource.bio;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.linkage.module.gwms.resource.dao.BatchResetDAO;
+
+/**
+ * 
+ * @author hp (Ailk No.)
+ * @version 1.0
+ * @since 2017-10-11
+ * @category com.linkage.module.gwms.resource.bio
+ * @copyright Ailk NBS-Network Mgt. RD Dept.
+ *
+ */
+public class BatchResetBIO 
+{
+	private static Logger logger = LoggerFactory
+			.getLogger(BatchResetBIO.class);
+	private BatchResetDAO dao;
+	
+	public void download(String filepath, HttpServletResponse response) {
+		logger.debug("download({},{})", new Object[]{filepath, response});
+		InputStream fis=null;
+		OutputStream os=null;
+		try
+		{
+			// path是指欲下载的文件的路径
+			File file = new File(filepath);
+			// 取得文件名
+			String filename = file.getName();
+			// 以流的形式下载文件。
+			fis = new BufferedInputStream(new FileInputStream(filepath));
+			byte[] buffer = new byte[fis.available()];
+			fis.read(buffer);
+			fis.close();
+			fis=null;
+			
+			// 清空response
+			response.reset();
+			// 设置response的Header
+			response.addHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(filename, "UTF-8"));
+			response.addHeader("Content-Length", "" + file.length());
+			os = new BufferedOutputStream(response.getOutputStream());
+			response.setContentType("application/octet-stream");
+			os.write(buffer);
+			os.flush();
+			os.close();
+			os=null;
+		}
+		catch (IOException e)
+		{
+			logger.error("download file:[{}], error:", filepath, e);
+		}finally{
+			try {
+				if(fis!=null){
+					fis.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(os!=null){
+					os.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public String insert(List<String> dataList,String importQueryField,String user_Account)
+	{
+		String res="";
+		if("device_serialnumber".equals(importQueryField))
+		{
+			res=String.valueOf(dao.insertDevSn(dataList,user_Account));
+		}else
+		{
+			res=String.valueOf(dao.insertDeviceId(dataList,user_Account));
+		}
+		return res;
+	}
+	public String test()
+	{
+		String res=String.valueOf(dao.TodayNumber());
+		return res;
+	}
+	
+	public BatchResetDAO getDao()
+	{
+		return dao;
+	}
+
+	
+	public void setDao(BatchResetDAO dao)
+	{
+		this.dao = dao;
+	}
+	
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name ="fileUploadDemo" extends ="struts-default" namespace="/gwms/share"> 
+        <action name ="fileUpload" class ="FileUploadAction"> 
+            <interceptor-ref name ="fileUploadStack"/> 
+            <result name ="success">/gwms/share/ShowUpload.jsp</result> 
+            <result name="toExport" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="contentDisposition">attachment;filename="httpTestSpeedTemplate.txt"</param>
+				<param name="inputName">exportTxtStream</param>
+			</result>
+        </action> 
+    </package>
+	<package name="/gwms/share" extends="linkage_security" namespace="/gwms/share">
+		<action name="gwDeviceQuery" class="GwDeviceQueryACT">
+			<result name="success">/gwms/share/gwDeviceQuery.jsp</result>
+			<result name="shareList0">/gwms/share/gwShareDeviceList0.jsp</result>
+			<result name="shareList">/gwms/share/gwShareDeviceList.jsp</result>
+			<result name="shareList0select">/gwms/share/gwShareDeviceList0_select.jsp</result>
+			<result name="shareListselect">/gwms/share/gwShareDeviceList_select.jsp</result>
+			<result name="shareList0_newBatchSet">/gwms/share/gwShareDeviceList0_newBatchSet.jsp</result>
+			<result name="shareList_newBatchSet">/gwms/share/gwShareDeviceList_newBatchSet.jsp</result>
+			<result name="shareListForSxlt">/gwms/share/gwShareDeviceListForSxlt.jsp</result>
+			<result name="deviceOperateForSxlt">/gwms/share/deviceOperateForSxlt.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

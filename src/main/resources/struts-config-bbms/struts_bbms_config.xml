@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="config_bbms" extends="struts-default,linkage-default,linkage_security" namespace="/bbms/config">
+		<action name="EVDOWanACT" class="EVDOWanACT">
+			<result name="success">/bbms/config/EVDOWanConfigInfo.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- NTP配置 -->
+		<action name="ntpConfig" class="NtpConfigACT">
+		        <result name="success">/bbms/config/ntpConfig.jsp</result>
+		        <result name="ajax" type="ajax"></result>
+		</action>
+		<!-- SNMP配置 -->
+		<action name="snmpConfig" class="SNMPConfigACT">
+		        <result name="ajax" type="ajax"></result>
+		</action>
+		<!-- Vlan DHCP配置 -->
+		<action name="vlanDhcpConfig" class="VlanDhcpConfigACT">
+		        <result name="dhcp">/bbms/config/dhcpConfig.jsp</result>
+		        <result name="vlan">/bbms/config/vlanConfig.jsp</result>
+		        <result name="ajax" type="ajax"></result>
+		</action>
+		<!-- FTP配置 -->
+		<action name="ftpConfig" class="FTPConfigACT">
+		        <result name="success">/bbms/config/FtpConfig.jsp</result>
+		        <result name="ajax" type="ajax"></result>
+		</action>
+		<!-- TR069配置 -->
+		<action name="tr069Config" class="TR069ConfigACT">
+		        <result name="success">/bbms/config/TR069Config.jsp</result>
+		        <result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

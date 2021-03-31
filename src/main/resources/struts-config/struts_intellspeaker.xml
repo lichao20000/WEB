@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="intelspeaker" extends="linkage_security" namespace="/intelspeaker">
+		<action name="intelSpeakerConfigMgrAction" class="IntelSpeakerConfigMgrAction">
+			<result name="ajax" type="ajax"></result>
+			<result name="editRouter">/intelspeaker/configfileedit.jsp</result>
+			<result name="editRouterBak">/intelspeaker/configfileeditBak.jsp</result>
+			<result name="editFilter">/intelspeaker/filteredit.jsp</result>
+			<result name="editFilterBak">/intelspeaker/filtereditBak.jsp</result>
+			<result name="routerList">/intelspeaker/listhistoryfiles.jsp</result>
+			<result name="filterList">/intelspeaker/filterhistoryfiles.jsp</result>
+			<result name="download" type="stream">
+              <param name="contentType">application/xml</param>    <!-- 注意这里的ContentType -->
+             <param name="inputName">stream</param>                   <!-- 这里需要和Action里的变量名一致 -->
+             <param name="bufferSize">10240</param>  <!-- 下载文件的大小 10485760=10M -->
+	        </result>
+	        <result name="view">/intelspeaker/view.jsp</result>
+		</action>
+	</package>
+</struts>

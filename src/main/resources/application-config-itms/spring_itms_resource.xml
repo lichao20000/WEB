@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <!-- and by zhangyu25 CQDX-REQ-ITMS-20190225-YJ-001(安全端口关闭统计)-修改(1) -->
+    <bean id="SafePortCloseCountACT" class="com.linkage.module.itms.resource.act.SafePortCloseCountACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SafePortCloseCountBIO" />
+		</property>
+	</bean>
+	
+	<bean id="SafePortCloseCountBIO" class="com.linkage.module.itms.resource.bio.SafePortCloseCountBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SafePortCloseCountDAO" />
+		</property>
+	</bean>
+	
+	<bean id="SafePortCloseCountDAO" class="com.linkage.module.itms.resource.dao.SafePortCloseCountDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- end -->
+    
+    <bean id="UsersCountACT" class="com.linkage.module.itms.resource.act.UsersCountACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="UsersCountBIO" />
+		</property>
+	</bean>
+	
+    <bean id="UsersCountBIO" class="com.linkage.module.itms.resource.bio.UsersCountBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="UsersCountDAO" />
+		</property>
+	</bean>
+	
+    <bean id="UsersCountDAO" class="com.linkage.module.itms.resource.dao.UsersCountDAO" 
+        scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+    
+	<bean id="downloadCurrencyCaseACT" class="com.linkage.module.itms.resource.act.CurrenctCaseDownloadACT" scope="prototype">
+		<property name="bio" ref="DevVendorDataUploadBIO"></property>
+	</bean>
+	<!-- add by wangyan  20170106 -->
+	<bean id="QueryCurrentAcsACT" class="com.linkage.module.itms.resource.act.QueryCurrentAcsACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="QueryCurrentAcsBIO" />
+		</property>
+	</bean>
+
+	<bean id="QueryCurrentAcsBIO" class="com.linkage.module.itms.resource.bio.QueryCurrentAcsBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="QueryCurrentAcsDAO" />
+		</property>
+	</bean>
+
+	<bean id="QueryCurrentAcsDAO" class="com.linkage.module.itms.resource.dao.QueryCurrentAcsDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- end -->
+
+	<!-- add by wangyan  20161116 -->
+	<bean id="QueryVlanConfigACT" class="com.linkage.module.itms.resource.act.QueryVlanConfigACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="QueryVlanConfigBIO" />
+		</property>
+	</bean>
+
+	<bean id="QueryVlanConfigBIO" class="com.linkage.module.itms.resource.bio.QueryVlanConfigBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="QueryVlanConfigDAO" />
+		</property>
+	</bean>
+
+	<bean id="QueryVlanConfigDAO" class="com.linkage.module.itms.resource.dao.QueryVlanConfigDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- end -->
+
+	<!-- add by wangyan  20161019 -->
+	<bean id="APIManagerACT" class="com.linkage.module.itms.resource.act.APIManagerACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="APIManagerBIO" />
+		</property>
+	</bean>
+
+	<bean id="APIManagerBIO" class="com.linkage.module.itms.resource.bio.APIManagerBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="APIManagerDAO" />
+		</property>
+	</bean>
+
+	<bean id="APIManagerDAO" class="com.linkage.module.itms.resource.dao.APIManagerDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- add by wangyan  20161019 -->
+	<bean id="APIPluginACT" class="com.linkage.module.itms.resource.act.APIPluginACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="APIPluginBIO" />
+		</property>
+	</bean>
+
+	<bean id="APIPluginBIO" class="com.linkage.module.itms.resource.bio.APIPluginBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="APIPluginDAO" />
+		</property>
+	</bean>
+
+	<bean id="APIPluginDAO" class="com.linkage.module.itms.resource.dao.APIPluginDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- end -->
+	<bean id="HgwByMacDAO" class="com.linkage.module.itms.resource.dao.HgwByMacDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="HgwByMacBIO" class="com.linkage.module.itms.resource.bio.HgwByMacBIO"
+		scope="prototype">
+		<property name="hgwByMacDao">
+			<ref bean="HgwByMacDAO" />
+		</property>
+	</bean>
+	<bean id="HgwByMacACT" class="com.linkage.module.itms.resource.act.HgwByMacACT"
+		scope="prototype">
+		<property name="hgwByMacBio">
+			<ref bean="HgwByMacBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceToUsernameDAO"
+		class="com.linkage.module.itms.resource.dao.DeviceToUsernameDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceToUsernameBIO"
+		class="com.linkage.module.itms.resource.bio.DeviceToUsernameBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceToUsernameDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceToUsernameACT"
+		class="com.linkage.module.itms.resource.act.DeviceToUsernameACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceToUsernameBIO" />
+		</property>
+	</bean>
+	<bean id="EPonSNQueryDAO" class="com.linkage.module.itms.resource.dao.EPonSNQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="EPonSNQueryBIO" class="com.linkage.module.itms.resource.bio.EPonSNQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="EPonSNQueryDAO" />
+		</property>
+	</bean>
+	<bean id="EPonSNQueryACT" class="com.linkage.module.itms.resource.act.EPonSNQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="EPonSNQueryBIO" />
+		</property>
+	</bean>
+
+	<!-- new add by chenjie 2011-3-22 -->
+	<bean id="DeviceTypeInfoACT" class="com.linkage.module.itms.resource.act.DeviceTypeInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceTypeInfoBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceTypeInfoBIO" class="com.linkage.module.itms.resource.bio.DeviceTypeInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceTypeInfoDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceTypeInfoDAO" class="com.linkage.module.itms.resource.dao.DeviceTypeInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="DeviceTypeInfoExpACT"
+		class="com.linkage.module.itms.resource.act.DeviceTypeInfoExpACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceTypeInfoExpBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceTypeInfoExpBIO"
+		class="com.linkage.module.itms.resource.bio.DeviceTypeInfoExpBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceTypeInfoExpDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceTypeInfoExpDAO"
+		class="com.linkage.module.itms.resource.dao.DeviceTypeInfoExpDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<!-- new add by chenjie 2011-5-7 -->
+	<bean id="CardInfoACT" class="com.linkage.module.itms.resource.act.CardInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="CardInfoBIO" />
+		</property>
+	</bean>
+	<bean id="CardInfoBIO" class="com.linkage.module.itms.resource.bio.CardInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="CardInfoDAO" />
+		</property>
+	</bean>
+	<bean id="CardInfoDAO" class="com.linkage.module.itms.resource.dao.CardInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="CountFtthACT" class="com.linkage.module.itms.resource.act.CountFtthACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="CountFtthBIO" />
+		</property>
+	</bean>
+	<bean id="CountFtthBIO" class="com.linkage.module.itms.resource.bio.CountFtthBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="CountFtthDAO" />
+		</property>
+	</bean>
+	<bean id="CountFtthDAO" class="com.linkage.module.itms.resource.dao.CountFtthDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="ReportUsernameACT" class="com.linkage.module.itms.resource.act.ReportUsernameACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ReportUsernameBIO" />
+		</property>
+	</bean>
+	<bean id="ReportUsernameBIO" class="com.linkage.module.itms.resource.bio.ReportUsernameBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ReportUsernameDAO" />
+		</property>
+	</bean>
+	<bean id="ReportUsernameDAO" class="com.linkage.module.itms.resource.dao.ReportUsernameDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<!-- begin add by chenjie 2012-12-14 新疆版本库需求 -->
+	<bean id="DeviceVersionManageACT"
+		class="com.linkage.module.itms.resource.act.DeviceVersionManageACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceVersionManageBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceVersionManageBIO"
+		class="com.linkage.module.itms.resource.bio.DeviceVersionManageBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceVersionManageDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceVersionManageDAO"
+		class="com.linkage.module.itms.resource.dao.DeviceVersionManageDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end add by chenjie 2012-12-14 新疆版本库需求 -->
+
+
+	<!-- add by zhangchy 2011-12-08 用于新疆原软件版本升级到目标软件版本管理 begin 为了不影响江苏电信升级，将此注释 -->
+	<bean id="SoftVersionManageACT"
+		class="com.linkage.module.itms.resource.act.SoftVersionManageACT"
+		scope="prototype">
+		<property name="softVersionManageBIO">
+			<ref bean="SoftVersionManageBIO" />
+		</property>
+	</bean>
+	<bean id="SoftVersionManageBIO"
+		class="com.linkage.module.itms.resource.bio.SoftVersionManageBIO"
+		scope="prototype">
+		<property name="softVersionManageDao">
+			<ref bean="SoftVersionManageDAO" />
+		</property>
+	</bean>
+	<bean id="SoftVersionManageDAO"
+		class="com.linkage.module.itms.resource.dao.SoftVersionManageDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- add by zhangchy 2011-12-08 用于新疆原软件版本升级到目标软件版本管理 end -->
+
+	<!-- start oui限制修改查询信息 -->
+	<bean id="DeviceOUIInfoACT" class="com.linkage.module.itms.resource.act.DeviceOUIInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceOUIInfoBIO" />
+		</property>
+	</bean>
+
+	<bean id="DeviceOUIInfoBIO" class="com.linkage.module.itms.resource.bio.DeviceOUIInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceOUIInfoDAO" />
+		</property>
+	</bean>
+
+	<bean id="DeviceOUIInfoDAO" class="com.linkage.module.itms.resource.dao.DeviceOUIInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end oui限制修改查询信息 -->
+
+	<!--start 超级权限日志管理 查询 -->
+	<bean id="LogSuperManageACT" class="com.linkage.module.itms.resource.act.LogSuperManageACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="LogSuperManageBIO" />
+		</property>
+	</bean>
+
+	<bean id="LogSuperManageBIO" class="com.linkage.module.itms.resource.bio.LogSuperManageBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="LogSuperManageDAO" />
+		</property>
+	</bean>
+
+	<bean id="LogSuperManageDAO" class="com.linkage.module.itms.resource.dao.LogSuperManageDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!--end 超级权限日志管理 查询 -->
+
+	<!-- start BSS终端规格与实际终端规格不一致比对 -->
+	<bean id="BssSpecRealInfoACT" class="com.linkage.module.itms.resource.act.BssSpecRealInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSpecRealInfoBIO" />
+		</property>
+	</bean>
+
+	<bean id="BssSpecRealInfoBIO" class="com.linkage.module.itms.resource.bio.BssSpecRealInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSpecRealInfoDAO" />
+		</property>
+	</bean>
+
+	<bean id="BssSpecRealInfoDAO" class="com.linkage.module.itms.resource.dao.BssSpecRealInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- end BSS终端规格与实际终端规格不一致比对 -->
+
+
+	<!-- start 实际终端规格与BSS终端规格不一致比对 -->
+	<bean id="UserSpecRealInfoACT"
+		class="com.linkage.module.itms.resource.act.UserSpecRealInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="UserSpecRealInfoBIO" />
+		</property>
+	</bean>
+
+	<bean id="UserSpecRealInfoBIO"
+		class="com.linkage.module.itms.resource.bio.UserSpecRealInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="UserSpecRealInfoDAO" />
+		</property>
+	</bean>
+
+	<bean id="UserSpecRealInfoDAO"
+		class="com.linkage.module.itms.resource.dao.UserSpecRealInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- end 实际终端规格与BSS终端规格不一致比对 -->
+
+
+	<!-- start PON综合网管劣化光路报表 -->
+	<bean id="PonNetWorkDegraInfoACT"
+		class="com.linkage.module.itms.resource.act.PonNetWorkDegraInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="PonNetWorkDegraInfoBIO" />
+		</property>
+	</bean>
+
+	<bean id="PonNetWorkDegraInfoBIO"
+		class="com.linkage.module.itms.resource.bio.PonNetWorkDegraInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="PonNetWorkDegraInfoDAO" />
+		</property>
+		<property name="pondao">
+			<ref bean="PonNetWorkDataDAO" />
+		</property>
+	</bean>
+
+	<bean id="PonNetWorkDegraInfoDAO"
+		class="com.linkage.module.itms.resource.dao.PonNetWorkDegraInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="PonNetWorkDataDAO" class="com.linkage.module.itms.resource.dao.PonNetWorkDataDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="reportDataSource" />
+		</property>
+	</bean>
+	<!-- end PON综合网管劣化光路报表 -->
+
+	<!-- start 按版本统计优化 -->
+	<bean id="DeviceServiceACT" class="com.linkage.module.itms.resource.act.DeviceServiceACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceServiceBIO" />
+		</property>
+	</bean>
+
+	<bean id="DeviceServiceBIO" class="com.linkage.module.itms.resource.bio.DeviceServiceBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceServiceDAO" />
+		</property>
+	</bean>
+
+	<bean id="DeviceServiceDAO" class="com.linkage.module.itms.resource.dao.DeviceServiceDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 按版本统计优化 -->
+
+	<!-- add 属地统计语音端口信息 -->
+	<bean id="VoiceOrderQueryACT" class="com.linkage.module.itms.resource.act.VoiceOrderQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceOrderQueryBIO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceOrderQueryBIO" class="com.linkage.module.itms.resource.bio.VoiceOrderQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceOrderQueryDAO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceOrderQueryDAO" class="com.linkage.module.itms.resource.dao.VoiceOrderQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 属地统计语音端口信息 -->
+
+	<!-- add 设备型号统计语音端口信息 -->
+	<bean id="DeviceTypeVoiceQueryACT"
+		class="com.linkage.module.itms.resource.act.DeviceTypeVoiceQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceTypeVoiceQueryBIO" />
+		</property>
+	</bean>
+
+	<bean id="DeviceTypeVoiceQueryBIO"
+		class="com.linkage.module.itms.resource.bio.DeviceTypeVoiceQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceTypeVoiceQueryDAO" />
+		</property>
+	</bean>
+
+	<bean id="DeviceTypeVoiceQueryDAO"
+		class="com.linkage.module.itms.resource.dao.DeviceTypeVoiceQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 设备型号统计语音端口信息 -->
+
+	<!-- add 语音失败原因统计端口信息 -->
+	<bean id="VoiceFailResonQueryACT"
+		class="com.linkage.module.itms.resource.act.VoiceFailResonQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceFailResonQueryBIO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceFailResonQueryBIO"
+		class="com.linkage.module.itms.resource.bio.VoiceFailResonQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceFailResonQueryDAO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceFailResonQueryDAO"
+		class="com.linkage.module.itms.resource.dao.VoiceFailResonQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 语音失败原因统计端口信息 -->
+
+	<!-- add 语音注册错误信息统计 -->
+	<bean id="VoiceRegisterFailQueryACT"
+		class="com.linkage.module.itms.resource.act.VoiceRegisterFailQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceRegisterFailQueryBIO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceRegisterFailQueryBIO"
+		class="com.linkage.module.itms.resource.bio.VoiceRegisterFailQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceRegisterFailQueryDAO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceRegisterFailQueryDAO"
+		class="com.linkage.module.itms.resource.dao.VoiceRegisterFailQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 语音注册错误信息统计 -->
+	
+	<!-- add 设备批量重新信息统计 -->
+	<bean id="DevBatchRestartQueryACT"
+		class="com.linkage.module.itms.resource.act.DevBatchRestartQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DevBatchRestartQueryBIO" />
+		</property>
+	</bean>
+
+	<bean id="DevBatchRestartQueryBIO"
+		class="com.linkage.module.itms.resource.bio.DevBatchRestartQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DevBatchRestartQueryDAO" />
+		</property>
+		<property name="stbDao">
+			<ref bean="DevBatchRestartQueryStbDAO" />
+		</property>
+	</bean>
+
+	<bean id="DevBatchRestartQueryDAO"
+		class="com.linkage.module.itms.resource.dao.DevBatchRestartQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DevBatchRestartQueryStbDAO"
+		  class="com.linkage.module.itms.resource.dao.DevBatchRestartQueryStbDAO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="stbDataSource" />
+		</property>
+	</bean>
+	<!-- end 设备批量重新信息统计 -->
+	
+	<!-- add 每月新装设备报表 -->
+	<bean id="NewDeviceQueryACT"
+		class="com.linkage.module.itms.resource.act.NewDeviceQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="NewDeviceQueryBIO" />
+		</property>
+	</bean>
+
+	<bean id="NewDeviceQueryBIO"
+		class="com.linkage.module.itms.resource.bio.NewDeviceQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="NewDeviceQueryDAO" />
+		</property>
+	</bean>
+
+	<bean id="NewDeviceQueryDAO"
+		class="com.linkage.module.itms.resource.dao.NewDeviceQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 每月新装设备报表 -->
+
+	<!-- start 语音注册查询 -->
+	<bean id="VoiceRegisterQueryACT"
+		class="com.linkage.module.itms.resource.act.VoiceRegisterQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceRegisterQueryBIO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceRegisterQueryBIO"
+		class="com.linkage.module.itms.resource.bio.VoiceRegisterQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceRegisterQueryDAO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceRegisterQueryDAO"
+		class="com.linkage.module.itms.resource.dao.VoiceRegisterQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 语音注册查询 -->
+
+	<!-- gaoyi start 报表系统中新增功能部署报表 (区域)-->
+	<bean id="FunctionDeploymentByAreaACT"
+		class="com.linkage.module.itms.resource.act.FunctionDeploymentByAreaACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="FunctionDeploymentByAreaBIO" />
+		</property>
+	</bean>
+	<bean id="FunctionDeploymentByAreaBIO"
+		class="com.linkage.module.itms.resource.bio.FunctionDeploymentByAreaBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="FunctionDeploymentByAreabioDAO" />
+		</property>
+	</bean>
+	<bean id="FunctionDeploymentByAreabioDAO"
+		class="com.linkage.module.itms.resource.dao.FunctionDeploymentByAreaDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- gaoyi end 报表系统中新增功能部署报表 （区域）-->
+	
+	
+		<!-- gaoyi start 报表系统中新增功能部署报表 (设备型号)-->
+	<bean id="FunctionDeploymentByDevTypeACT"
+		class="com.linkage.module.itms.resource.act.FunctionDeploymentByDevTypeACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="FunctionDeploymentByDevTypeBIO" />
+		</property>
+	</bean>
+	<bean id="FunctionDeploymentByDevTypeBIO"
+		class="com.linkage.module.itms.resource.bio.FunctionDeploymentByDevTypeBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="FunctionDeploymentByDevTypeDAO" />
+		</property>
+	</bean>
+	<bean id="FunctionDeploymentByDevTypeDAO"
+		class="com.linkage.module.itms.resource.dao.FunctionDeploymentByDevTypeDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- gaoyi end 报表系统中新增功能部署报表 （设备型号）-->
+	
+	
+	<!-- gaoyi start E8-C终端使用情况 -->
+	<bean id="TerminalE8CACT"
+		class="com.linkage.module.itms.resource.act.TerminalE8CACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="TerminalE8CBIO" />
+		</property>
+	</bean>
+	<bean id="TerminalE8CBIO"
+		class="com.linkage.module.itms.resource.bio.TerminalE8CBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="TerminalE8CDAO" />
+		</property>
+	</bean>
+	<bean id="TerminalE8CDAO"
+		class="com.linkage.module.itms.resource.dao.TerminalE8CDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- gaoyi end E8-C终端使用情况 -->
+	
+	<!-- gaoyi start 终端规格匹配情况统计 -->
+	<bean id="TerminalSpecMatchACT"
+		class="com.linkage.module.itms.resource.act.TerminalSpecMatchACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="TerminalSpecMatchBIO" />
+		</property>
+	</bean>
+	<bean id="TerminalSpecMatchBIO"
+		class="com.linkage.module.itms.resource.bio.TerminalSpecMatchBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="TerminalSpecMatchDAO" />
+		</property>
+	</bean>
+	<bean id="TerminalSpecMatchDAO"
+		class="com.linkage.module.itms.resource.dao.TerminalSpecMatchDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- gaoyi end 终端替换率统计报表 -->
+	
+	<!-- gaoyi start 终端规格匹配情况统计 -->
+	<bean id="TerminalReplaceACT"
+		class="com.linkage.module.itms.resource.act.TerminalReplaceACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="TerminalReplaceBIO" />
+		</property>
+	</bean>
+	<bean id="TerminalReplaceBIO"
+		class="com.linkage.module.itms.resource.bio.TerminalReplaceBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="TerminalReplaceDAO" />
+		</property>
+	</bean>
+	<bean id="TerminalReplaceDAO"
+		class="com.linkage.module.itms.resource.dao.TerminalReplaceDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- gaoyi end 终端替换率统计报表 -->
+	
+	
+	<!-- os_shizy start 终端环境感知报表-->
+	<bean id="TerminalEnvironmentStatementACT"
+		class="com.linkage.module.itms.resource.act.TerminalEnvironmentStatementACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="TerminalEnvironmentStatementBIO" />
+		</property>
+	</bean>
+	<bean id="TerminalEnvironmentStatementBIO"
+		class="com.linkage.module.itms.resource.bio.TerminalEnvironmentStatementBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="TerminalEnvironmentStatementDAO" />
+		</property>
+	</bean>
+	<bean id="TerminalEnvironmentStatementDAO"
+		class="com.linkage.module.itms.resource.dao.TerminalEnvironmentStatementDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- os_shizy end 终端环境感知报表-->
+	
+	
+	<bean id="EquipmentACT"
+		class="com.linkage.module.itms.resource.act.EquipmentACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="EquipmentBIO" />
+		</property>
+	</bean>
+	<bean id="EquipmentBIO"
+		class="com.linkage.module.itms.resource.bio.EquipmentBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="EquipmentDAO" />
+		</property>
+	</bean>
+	<bean id="EquipmentDAO"
+		class="com.linkage.module.itms.resource.dao.EquipmentDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	
+	<bean id="UserQueryACT"
+		class="com.linkage.module.itms.resource.act.UserQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="UserQueryBIO" />
+		</property>
+	</bean>
+	<bean id="UserQueryBIO"
+		class="com.linkage.module.itms.resource.bio.UserQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="UserQueryDAO" />
+		</property>
+	</bean>
+	<bean id="UserQueryDAO"
+		class="com.linkage.module.itms.resource.dao.UserQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	
+	<bean id="VersionACT"
+		class="com.linkage.module.itms.resource.act.VersionACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VersionBIO" />
+		</property>
+	</bean>
+	<bean id="VersionBIO"
+		class="com.linkage.module.itms.resource.bio.VersionBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VersionDAO" />
+		</property>
+	</bean>
+	<bean id="VersionDAO"
+		class="com.linkage.module.itms.resource.dao.VersionDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="TerminalUserBindingACT"
+		class="com.linkage.module.itms.resource.act.TerminalUserBindingACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="TerminalUserBindingBIO" />
+		</property>
+	</bean>
+	<bean id="TerminalUserBindingBIO"
+		class="com.linkage.module.itms.resource.bio.TerminalUserBindingBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="TerminalUserBindingDAO" />
+		</property>
+	</bean>
+	<bean id="TerminalUserBindingDAO"
+		class="com.linkage.module.itms.resource.dao.TerminalUserBindingDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="DPIACT"
+		class="com.linkage.module.itms.resource.act.DPIACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DPIBIO" />
+		</property>
+	</bean>
+	<bean id="DPIBIO"
+		class="com.linkage.module.itms.resource.bio.DPIBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DPIDAO" />
+		</property>
+	</bean>
+	<bean id="DPIDAO"
+		class="com.linkage.module.itms.resource.dao.DPIDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="GwDeviceQueryAction" class="com.linkage.module.itms.resource.act.GwDeviceQueryACT" scope="prototype">
+		<property name="gwDeviceBio">
+			<ref local="GwDeviceQueryBIOITMS" />
+		</property>
+	</bean>
+	<bean id="GwDeviceQueryBIOITMS" class="com.linkage.module.itms.resource.bio.GwDeviceQueryBIO" scope="prototype">
+		<property name="vmvDao">
+			<ref bean="GwVendorModelVersionDAOITMS" />
+		</property>
+	</bean>
+	<bean id="GwVendorModelVersionDAOITMS" class="com.linkage.module.itms.resource.dao.GwVendorModelVersionDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="QueryDeviceByVoipIpDAO" class="com.linkage.module.itms.resource.dao.QueryDeviceByVoipIpDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="QueryDeviceByVoipIpBIO" class="com.linkage.module.itms.resource.bio.QueryDeviceByVoipIpBIO" scope="prototype">
+		<property name="dao" ref="QueryDeviceByVoipIpDAO"></property>
+	</bean>
+	<bean id="QueryDeviceByVoipIpACT" class="com.linkage.module.itms.resource.act.QueryDeviceByVoipIpACT" scope="prototype">
+		<property name="bio" ref="QueryDeviceByVoipIpBIO"></property>
+	</bean>
+	<bean id="UserSpecTerminalsDAO" class="com.linkage.module.itms.resource.dao.UserSpecTerminalsDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="UserSpecTerminalsBIO" class="com.linkage.module.itms.resource.bio.UserSpecTerminalsBIO" scope="prototype">
+		<property name="dao" ref="UserSpecTerminalsDAO"></property>
+	</bean>
+	<bean id="UserSpecTerminalsACT" class="com.linkage.module.itms.resource.act.UserSpecTerminalsACT" scope="prototype">
+		<property name="bio" ref="UserSpecTerminalsBIO"></property>
+	</bean>
+
+	<bean id="SoftUpgradRecordQueryDAO" class="com.linkage.module.itms.resource.dao.SoftUpgradRecordQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="SoftUpgradRecordQueryBIO" class="com.linkage.module.itms.resource.bio.SoftUpgradRecordQueryBIO" scope="prototype">
+		<property name="dao" ref="SoftUpgradRecordQueryDAO"></property>
+	</bean>
+	<bean id="SoftUpgradRecordQueryACT" class="com.linkage.module.itms.resource.act.SoftUpgradRecordQueryACT" scope="prototype">
+		<property name="bio" ref="SoftUpgradRecordQueryBIO"></property>
+	</bean>
+		<bean id="FaultTreadtMentDAO" class="com.linkage.module.itms.resource.dao.FaultTreadtMentDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="FaultTreadtMentBIO" class="com.linkage.module.itms.resource.bio.FaultTreadtMentBIO" scope="prototype">
+		<property name="dao" ref="FaultTreadtMentDAO"></property>
+	</bean>
+	<bean id="FaultTreadtMentACT" class="com.linkage.module.itms.resource.act.FaultTreadtMentACT" scope="prototype">
+		<property name="bio" ref="FaultTreadtMentBIO"></property>
+		<property name="deviceInfoBIO">
+			<ref bean="DeviceInfoBIO"/>
+		</property>
+	</bean>
+	<bean id="DeviceInfoBIO" class="com.linkage.module.gwms.diagnostics.bio.DeviceInfoBIO" scope="prototype">
+		<property name="deviceInfoDAO">
+			<ref bean="DeviceInfoDAO"/>
+		</property>
+		<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="wanDao">
+			<ref bean="WanDAO"/>
+		</property>
+	</bean>
+	<bean id="E8cVersionQueryACT" class="com.linkage.module.itms.resource.act.E8cVersionQueryACT" scope="prototype">
+		<property name="bio" ref="E8cVersionQueryBIO"></property>
+	</bean>
+	<bean id="E8cVersionQueryBIO" class="com.linkage.module.itms.resource.bio.E8cVersionQueryBIO" scope="prototype">
+		<property name="dao" ref="E8cVersionQueryDAO"></property>
+	</bean>
+	<bean id="E8cVersionQueryDAO" class="com.linkage.module.itms.resource.dao.E8cVersionQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DevVendorDataUploadACT" class="com.linkage.module.itms.resource.act.DevVendorDataUploadACT" scope="prototype">
+		<property name="bio" ref="DevVendorDataUploadBIO"></property>
+	</bean>
+	<bean id="DevVendorDataUploadBIO" class="com.linkage.module.itms.resource.bio.DevVendorDataUploadBIO" scope="prototype">
+		<property name="dao" ref="DevVendorDataUploadDAO"></property>
+	</bean>
+	<bean id="DevVendorDataUploadDAO" class="com.linkage.module.itms.resource.dao.DevVendorDataUploadDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DevRepairTestInfoACT" class="com.linkage.module.itms.resource.act.DevRepairTestInfoACT" scope="prototype">
+		<property name="bio" ref="DevRepairTestInfoBIO"></property>
+	</bean>
+	<bean id="DevRepairTestInfoBIO" class="com.linkage.module.itms.resource.bio.DevRepairTestInfoBIO" scope="prototype">
+		<property name="dao" ref="DevRepairTestInfoDAO"></property>
+	</bean>
+	<bean id="DevRepairTestInfoDAO" class="com.linkage.module.itms.resource.dao.DevRepairTestInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="StbDeviceCountACT" class="com.linkage.module.itms.resource.act.StbDeviceCountACT" scope="prototype">
+		<property name="bio" ref="StbDeviceCountBIO"></property>
+	</bean>
+	<bean id="StbDeviceCountBIO" class="com.linkage.module.itms.resource.bio.StbDeviceCountBIO" scope="prototype">
+		<property name="dao" ref="StbDeviceCountDAO"></property>
+	</bean>
+	<bean id="StbDeviceCountDAO" class="com.linkage.module.itms.resource.dao.StbDeviceCountDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="StbSheetSuccACT" class="com.linkage.module.itms.resource.act.StbSheetSuccACT" scope="prototype">
+		<property name="bio" ref="StbSheetSuccBIO"></property>
+	</bean>
+	<bean id="StbSheetSuccBIO" class="com.linkage.module.itms.resource.bio.StbSheetSuccBIO" scope="prototype">
+		<property name="dao" ref="StbSheetSuccDAO"></property>
+	</bean>
+	<bean id="StbSheetSuccDAO" class="com.linkage.module.itms.resource.dao.StbSheetSuccDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchModifyMGCIPACT" class="com.linkage.module.itms.resource.act.BatchModifyMGCIPACT" scope="prototype">
+		<property name="bio" ref="BatchModifyMGCIPBIO"></property>
+	</bean>
+	<bean id="BatchModifyMGCIPBIO" class="com.linkage.module.itms.resource.bio.BatchModifyMGCIPBIO" scope="prototype">
+	</bean>
+	<bean id="DevWriteOffRateACT" class="com.linkage.module.itms.resource.act.DevWriteOffRateACT" scope="prototype">
+		<property name="bio" ref="DevWriteOffRateBIO"></property>
+	</bean>
+	<bean id="DevWriteOffRateBIO" class="com.linkage.module.itms.resource.bio.DevWriteOffRateBIO" scope="prototype">
+		<property name="dao" ref="DevWriteOffRateDAO"></property>
+	</bean>
+	<bean id="DevWriteOffRateDAO" class="com.linkage.module.itms.resource.dao.DevWriteOffRateDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	
+	<!-- new add by wangyan 2016-4-19 -->
+	<bean id="ZdTableInfoACT" class="com.linkage.module.itms.resource.act.ZdTableInfoACT" scope="prototype">
+		<property name="bio" ref="ZdTableInfoBIO"></property>
+	</bean>
+	<bean id="ZdTableInfoBIO" class="com.linkage.module.itms.resource.bio.ZdTableInfoBIO" scope="prototype">
+		<property name="dao" ref="ZdTableInfoDAO"></property>
+	</bean>
+	<bean id="ZdTableInfoDAO" class="com.linkage.module.itms.resource.dao.ZdTableInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+		<!-- new add by wangyan 2016-4-21 -->
+	<bean id="DevVerificationDisListACT" class="com.linkage.module.itms.resource.act.DevVerificationDisListACT" scope="prototype">
+		<property name="bio" ref="DevVerificationDisListBIO"></property>
+	</bean>
+	<bean id="DevVerificationDisListBIO" class="com.linkage.module.itms.resource.bio.DevVerificationDisListBIO" scope="prototype">
+		<property name="dao" ref="DevVerificationDisListDAO"></property>
+	</bean>
+	<bean id="DevVerificationDisListDAO" class="com.linkage.module.itms.resource.dao.DevVerificationDisListDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<!-- new add by wangyan 2016-4-22 -->
+	<bean id="RecycleDevRateACT" class="com.linkage.module.itms.resource.act.RecycleDevRateACT" scope="prototype">
+		<property name="bio" ref="RecycleDevRateBIO"></property>
+	</bean>
+	<bean id="RecycleDevRateBIO" class="com.linkage.module.itms.resource.bio.RecycleDevRateBIO" scope="prototype">
+		<property name="dao" ref="RecycleDevRateDAO"></property>
+	</bean>
+	<bean id="RecycleDevRateDAO" class="com.linkage.module.itms.resource.dao.RecycleDevRateDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<!-- new add by wangyan 2016-4-27 -->
+	<bean id="DevUserAgreeRateACT" class="com.linkage.module.itms.resource.act.DevUserAgreeRateACT" scope="prototype">
+		<property name="bio" ref="DevUserAgreeRateBIO"></property>
+	</bean>
+	<bean id="DevUserAgreeRateBIO" class="com.linkage.module.itms.resource.bio.DevUserAgreeRateBIO" scope="prototype">
+		<property name="dao" ref="DevUserAgreeRateDAO"></property>
+	</bean>
+	<bean id="DevUserAgreeRateDAO" class="com.linkage.module.itms.resource.dao.DevUserAgreeRateDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 新疆 ITMS系统批量重启终端 -->
+	<bean id="BatchRestartClientACT"
+		  class="com.linkage.module.itms.resource.act.BatchRestartClientACT" scope="prototype">
+		  <property name="bio">
+		  	<ref bean="BatchRestartClientBIO"/>
+		  </property>
+	</bean>
+	<bean id="BatchRestartClientBIO"
+		  class="com.linkage.module.itms.resource.bio.BatchRestartClientBIO" scope="prototype">
+		  <property name="dao">
+		  	<ref bean="BatchRestartClientDAO"/>
+		  </property>
+	</bean>
+	<bean id="BatchRestartClientDAO"
+		  class="com.linkage.module.itms.resource.dao.BatchRestartClientDAO" scope="prototype">
+		  <property name="dao">
+		  	<ref bean="dynamicDataSource"/>
+		  </property> 
+	</bean>	
+	
+	<!-- 语音数图配置策略查询 -->
+	<bean id="SoundGraphsQueryACT" class="com.linkage.module.itms.resource.act.SoundGraphsQueryACT" scope="prototype">
+		<property name="bio">
+		  	<ref bean="SoundGraphsQueryBIO"/>
+		  </property>
+	</bean>
+	<bean id="SoundGraphsQueryBIO" class="com.linkage.module.itms.resource.bio.SoundGraphsQueryBIO" scope="prototype">
+		<property name="dao">
+		  	<ref bean="SoundGraphsQueryDAO"/>
+		  </property>
+	</bean>
+	<bean id="SoundGraphsQueryDAO" class="com.linkage.module.itms.resource.dao.SoundGraphsQueryDAO" scope="prototype">
+		<property name="dao">
+		  	<ref bean="dynamicDataSource"/>
+		  </property>
+	</bean>
+	<!-- 批量修改终端接入数 -->
+	<bean id="QueryBatchModifyTerminalACT" class="com.linkage.module.itms.resource.act.QueryBatchModifyTerminalACT" scope="prototype">
+	<property name="bio">
+	<ref bean="QueryBatchModifyTerminalBIO"/>
+	</property>
+	</bean>
+	<bean id="QueryBatchModifyTerminalBIO" class="com.linkage.module.itms.resource.bio.QueryBatchModifyTerminalBIO" scope="prototype">
+	<property name="dao">
+	<ref bean="QueryBatchModifyTerminalDAO"/>
+	</property>
+	</bean>
+	<bean id="QueryBatchModifyTerminalDAO" class="com.linkage.module.itms.resource.dao.QueryBatchModifyTerminalDAO" scope="prototype">
+	<property name="dao">
+	<ref bean="dynamicDataSource"/>
+	</property>
+	</bean>
+	
+	<!-- 新疆重启数查询 -->
+	<bean id="LogRestartQueryACT"
+	 class="com.linkage.module.itms.resource.act.LogRestartQueryACT" scope="prototype">
+	<property name="itms_restartBIO">
+		<ref  bean="LogRestartQueryBIO"/>
+	</property>
+	</bean>
+	<bean id="LogRestartQueryBIO"
+	class="com.linkage.module.itms.resource.bio.LogRestartQueryBIO">
+	<property name="restartDAO">
+		<ref bean="RestartDAO"/>
+	</property>
+	</bean>
+	<bean id="RestartDAO"
+		class="com.linkage.module.itms.resource.dao.LogRestartQueryDAO">
+    <property name="dao">
+		<ref bean="mainDataSource" />
+	 </property>
+	 </bean>	
+	 
+	
+	<bean id="DepartManageAction" class="com.linkage.module.itms.resource.act.DepartManageAction"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DepartManageBIO" />
+		</property>
+	</bean>
+	<bean id="DepartManageBIO" class="com.linkage.module.itms.resource.bio.DepartManageBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DepartManageDAO" />
+		</property>
+	</bean>
+	<bean id="DepartManageDAO" class="com.linkage.module.itms.resource.dao.DepartManageDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="DeviceWhiteListACT" class="com.linkage.module.itms.resource.act.DeviceWhiteListACT"
+	scope="prototype">
+	<property name="bio">
+		<ref bean="DeviceWhiteListBIO" />
+	</property>
+	</bean>
+	<bean id="DeviceWhiteListBIO" class="com.linkage.module.itms.resource.bio.DeviceWhiteListBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceWhiteListDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceWhiteListDAO" class="com.linkage.module.itms.resource.dao.DeviceWhiteListDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- HBLT-RMS-20190524LH-052文件服务器及其文件状态管理 -->
+	<bean id="ItmsFileServerManageACT" class="com.linkage.module.itms.resource.act.FileServerManageACT" scope="prototype">
+		<property name="bio">
+			<ref bean="ItmsFileServerManageBIO" />
+		</property>
+	</bean>
+	<bean id="ItmsFileServerManageBIO" class="com.linkage.module.itms.resource.bio.FileServerManageBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="ItmsFileServerManageDAO" />
+		</property>
+	</bean>
+	<bean id="ItmsFileServerManageDAO" class="com.linkage.module.itms.resource.dao.FileServerManageDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceTestAccountACT" class="com.linkage.module.itms.resource.act.DeviceTestAccountACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceTestAccountBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceTestAccountBIO" class="com.linkage.module.itms.resource.bio.DeviceTestAccountBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceTestAccountDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceTestAccountDAO" class="com.linkage.module.itms.resource.dao.DeviceTestAccountDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceInfoExportACT" class="com.linkage.module.itms.resource.act.DeviceInfoExportACT"
+		scope="prototype">
+	</bean>
+	<!-- 甘肃工作备忘录 -->
+	<bean id="MemBookACT" class="com.linkage.module.itms.resource.act.MemBookACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="MemBookBIO" />
+		</property>
+	</bean>
+	<bean id="MemBookBIO" class="com.linkage.module.itms.resource.bio.MemBookBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="MemBookDAO" />
+		</property>
+	</bean>
+	<bean id="MemBookDAO" class="com.linkage.module.itms.resource.dao.MemBookDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="FileUploadForGS" class="com.linkage.module.itms.resource.act.FileUploadForGS" scope="prototype">
+	</bean>
+	
+	<!-- new add by fanjm 新批量参数下发2020-3-3 -->
+	<bean id="ServTemplateACT" class="com.linkage.module.itms.resource.act.ServTemplateACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ServTemplateBIO" />
+		</property>
+	</bean>
+	<bean id="ServTemplateBIO" class="com.linkage.module.itms.resource.bio.ServTemplateBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ServTemplateDAO" />
+		</property>
+	</bean>
+	<bean id="ServTemplateDAO" class="com.linkage.module.itms.resource.dao.ServTemplateDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- new add by fanjm 新批量参数下发2020-3-19 -->
+	<bean id="BatchSetTempManaACT" class="com.linkage.module.itms.resource.act.BatchSetTempManaACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="BatchSetTempManaBIO" />
+		</property>
+	</bean>
+	<bean id="BatchSetTempManaBIO" class="com.linkage.module.itms.resource.bio.BatchSetTempManaBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="BatchSetTempManaDAO" />
+		</property>
+	</bean>
+	<bean id="BatchSetTempManaDAO" class="com.linkage.module.itms.resource.dao.BatchSetTempManaDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- add 新疆测速100M统计 -->
+	<bean id="SpeedTest1000MACT"
+		class="com.linkage.module.itms.resource.act.SpeedTest1000MACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SpeedTest1000MBIO" />
+		</property>
+	</bean>
+
+	<bean id="SpeedTest1000MBIO"
+		class="com.linkage.module.itms.resource.bio.SpeedTest1000MBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SpeedTest1000MDAO" />
+		</property>
+	</bean>
+
+	<bean id="SpeedTest1000MDAO"
+		class="com.linkage.module.itms.resource.dao.SpeedTest1000MDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end 新疆测速100M统计 -->
+</beans>

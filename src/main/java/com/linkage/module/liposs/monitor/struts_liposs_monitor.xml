@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="monitorReport" extends="jfreechart-default,linkage_security" namespace="/liposs/monitorReport">
+		<action name="monitorAct" class="iposs_monitor_MonitorAction">
+			<result>/monitor/MonitorQuery.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+			<result name="currProgress">/monitor/monitorProgress.jsp</result>
+			<result name="currProgressList">/monitor/monitorProgressList.jsp</result>
+			<result name="monitotList">/monitor/monitorList.jsp</result>
+			<result name="monitorHost">/monitor/monitorProgressHistory.jsp</result>
+			<result name="proHistotyList">/monitor/monitorProgressHistoryList.jsp</result>
+			<result name="log">/monitor/showLog.jsp</result>
+		</action>
+		<action name="dbtableSpaceInfoAction" class="DbtableSpaceInfoAction">
+			<result name="tableSpaceInfoList">/monitor/DbtableSpaceInfo.jsp</result>
+		</action>
+	</package>
+</struts>

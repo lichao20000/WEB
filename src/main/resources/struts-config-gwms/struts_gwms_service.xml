@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="service" extends="linkage_security,linkage-default" namespace="/gwms/service">
+		<action name="sheetStateView" class="SheetStateViewACT">
+			<result name="success">/gwms/service/sheetStateView.jsp</result>
+			<result name="list">/gwms/service/sheetStateViewList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="servStrategyView" class="ServStrategyConfigACT">
+			<result name="list">/gwms/service/servStrategyConfigList.jsp</result>
+			<result name="init">/gwms/service/servStrategyConfigView.jsp</result>
+		</action>
+		<action name="servStrategyLog" class="ServStrategyLogACT">
+			<result name="query">/gwms/service/servStrategyLogView.jsp</result>
+			<result name="list">/gwms/service/servStrategyLogList.jsp</result>
+		</action>
+		<!-- 批量更换光猫 -->
+		<action name="gwBindDevQuery" class="GwBindDevQueryACT">
+			<result name="success">/gwms/share/gwDeviceQuery.jsp</result>
+			<result name="shareList0">/gwms/share/gwShareDeviceList1.jsp</result>
+			<result name="shareList">/gwms/share/gwShareDeviceList.jsp</result>
+			<result name="list">/ids/share/BindDeviceInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+	</package>
+</struts>

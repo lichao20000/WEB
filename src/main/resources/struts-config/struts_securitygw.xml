@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="securitygw_manager" extends="struts-default,linkage_security,jfreechart-default,linkage-default"	namespace="/securitygw">
+    <action name="SgwPerformance" class="SgwPerformanceAction">    	
+			<result name="success">/securitygw/mainten_manager/sgwdevice_Performance.jsp</result>
+			<result name="ok" type="chart">
+				<param name="width">500</param>
+				<param name="height">250</param>
+			</result>
+		</action>
+		<action name="SgwPerformanceHomePage" class="SgwPerformanceAction">  			
+			<result name="ok" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+		</action>
+		<action name="entSecStat!*" method="{1}" class="EntSecStatAction">
+			<result name="success">/securitygw/security_audit/ent_sec_audit.jsp</result>
+			<result name="virusStatToday" type="chart">
+			   <param name="width">300</param>
+               <param name="height">112</param>
+			</result>
+			<result name="spamStatToday" type="chart">
+			   <param name="width">300</param>
+               <param name="height">112</param>
+			</result>
+			
+			
+			
+			
+			
+			<result name="attackStatToday" type="chart">
+			   <param name="width">300</param>
+               <param name="height">112</param>
+			</result>
+			<result name="filterStatToday" type="chart">
+			   <param name="width">300</param>
+               <param name="height">112</param>
+			</result>
+			<result name="fluxStatToday" type="chart">
+			   <param name="width">300</param>
+               <param name="height">112</param>
+			</result>
+			<result name="terminConnStatToday" type="chart">
+			   <param name="width">300</param>
+               <param name="height">112</param>
+			</result>
+			<result name="webVisitTimes" type="chart">
+			   <param name="width">300</param>
+               <param name="height">112</param>
+			</result>
+			<result name="queryViursDetails">/securitygw/security_audit/virus_data_detail.jsp</result>
+			<result name="queryAttackDetails">/securitygw/security_audit/attack_data_detail.jsp</result>
+			<result name="querySpamMailDetails">/securitygw/security_audit/spammail_data_detail.jsp</result>
+			<result name="queryFilterDetails">/securitygw/security_audit/filter_data_detail.jsp</result>
+		</action>
+		<action name="NetFluxAnalyse!*" method="{1}" class="NetFluxAnalyseAction">
+			<result name="success">/securitygw/behavior_analyse/netfluxanalyse.jsp</result>
+			<result name="popup">/securitygw/behavior_analyse/netfluxanalyse_popup.jsp</result>
+			<result name="getSmallFluxToday" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+			<result name="netFluxAnalysToday" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+			<result name="netFluxAnalysWeek" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+			<result name="netFluxAnalysMonth" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+		</action>
+		<action name="EntWebTopn!*" method="{1}" class="EntWebTopnAction">
+			<result name="success">/securitygw/behavior_analyse/entwebtopn.jsp</result>
+
+			<result name="getSmallWebTopnToday" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+			<result name="entWebTopnToday" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+			<result name="entWebTopnWeek" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+			<result name="entWebTopnMonth" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+		</action>
+		<action name="EntFtpTopn!*" method="{1}" class="EntFtpSiteTopnAction">
+			<result name="success">/securitygw/behavior_analyse/entftptopn.jsp</result>
+
+			<result name="entFtpTopnToday" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+			<result name="entFtpTopnWeek" type="chart">
+				<param name="width">670</param>
+				<param name="height">300</param>
+			</result>
+			<result name="entFtpTopnMonth" type="chart">
+				<param name="width">670</param>
+				<param name="height">250</param>
+			</result>
+
+		</action>
+		<action name="AdvNetBehaviorTopN!*"  method="{1}"  class="AdvNetBehaviorAction">
+			<result name="success">/securitygw/behavior_analyse/advNetBehaviorQuery.jsp</result>
+ 			<result name="advNetBehaviorChar" type="chart">
+				<param name="width">670</param>
+				<param name="height">330</param>
+			</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="PBTopN" class="PBTopN">
+			<result name="success">/securitygw/behavior_analyse/topN.jsp</result>
+		</action>
+		<action name="PBTopNAction" class="PBTopNAction">
+			<result name="ajax" type="ajax"></result>
+			<result name="topSmall" type="chart">
+			   <param name="width">260</param>
+               <param name="height">130</param>
+			</result>
+			<result name="topNDay" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+			<result name="topNWeek" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+			<result name="topNMonth" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+		</action>
+		<action name="PBWebTopN" class="PBWebTopN">
+			<result name="success">/securitygw/behavior_analyse/web_topN.jsp</result>
+		</action>
+		<action name="PBWebTopNAction" class="PBWebTopNAction">
+			<result name="webSmall" type="chart">
+			   <param name="width">260</param>
+               <param name="height">130</param>
+			</result>
+			<result name="webTopNDay" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+			<result name="webTopNWeek" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+			<result name="webTopNMonth" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+		</action>
+		<action name="PBMailTopN" class="PBMailTopN">
+			<result name="success">/securitygw/behavior_analyse/mail_topN.jsp</result>
+		</action>
+		<action name="PBMailTopNAction" class="PBMailTopNAction">
+			<result name="mailSmall" type="chart">
+			   <param name="width">260</param>
+               <param name="height">130</param>
+			</result>
+			<result name="mailTopNDay" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+			<result name="mailTopNWeek" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+			<result name="mailTopNMonth" type="chart">
+			   <param name="width">670</param>
+               <param name="height">330</param>
+			</result>
+		</action>
+		<action name="PBDetailAction" class="PBDetailAction">
+			<result name="queryData">/securitygw/behavior_analyse/conn_details_query.jsp</result>
+		</action>
+		<!-- <action name="webTopNHighQuery" class="webTopNHighQuery">
+			<result>/securitygw/behavior_analyse/webtopNhighquery.jsp</result>
+		</action> -->
+		<!-- 病毒-->
+		<action name="VirusReport" class="VirusReportAction">
+			<result name="success">/securitygw/security_audit/sgwdeviceVirus.jsp</result>
+			<result name="adv">/securitygw/security_audit/sgwdVirusAdvQuery.jsp</result>
+			<result name="small" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+			<result name="day" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="week" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="month" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="ajax" type="ajax" />
+		</action>
+		<!-- 垃圾邮件-->
+		<action name="TrashMailReport" class="TrashMailReportAction">
+			<result name="success">/securitygw/security_audit/sgwdeviceMail.jsp</result>
+			<result name="adv">/securitygw/security_audit/sgwdMailAdvQuery.jsp</result>
+			<result name="small" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+			<result name="day" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="week" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="month" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="ajax" type="ajax" />
+		</action>
+		<!--攻击-->
+		<action name="AttackReport" class="AttackReportAction">
+			<result name="success">/securitygw/security_audit/sgwdeviceAttack.jsp</result>
+			<result name="adv">/securitygw/security_audit/sgwdAttackAdvQuery.jsp</result>
+			<result name="small" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+			<result name="day" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="week" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="month" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="ajax" type="ajax" />
+		</action>
+		<!--过滤 -->
+		<action name="FilterReport" class="FilterReportAction">
+			<result name="success">/securitygw/security_audit/sgwdeviceFilter.jsp</result>
+			<result name="adv">/securitygw/security_audit/sgwdFilterAdvQuery.jsp</result>
+			<result name="small" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+			<result name="day" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="week" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="month" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="ajax" type="ajax" />
+		</action>
+		<!-- 安全 -->
+		<action name="SafeReport" class="SafeReportAction">
+			<result name="success">/securitygw/security_audit/sgwdeviceSafe.jsp</result>
+			<result name="adv">/securitygw/security_audit/sgwdSafeAdvQuery.jsp</result>
+			<result name="small" type="chart">
+				<param name="width">260</param>
+				<param name="height">130</param>
+			</result>
+			<result name="day" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="week" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="month" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="ajax" type="ajax" />
+		</action>
+		<action name="UserTopReport" class="UserTopReportAction">
+			<result name="virus">/securitygw/security_audit/sgwUserdeviceVirus.jsp</result>
+			<result name="mail">/securitygw/security_audit/sgwUserdeviceMail.jsp</result>
+			<result name="filter">/securitygw/security_audit/sgwUserdeviceFilter.jsp</result>
+			<result name="attack">/securitygw/security_audit/sgwUserdeviceAttack.jsp</result>
+			<result name="virusAD">/securitygw/security_audit/sgwUserdeviceVirusAD.jsp</result>
+			<result name="asmailAD">/securitygw/security_audit/sgwUserdeviceMailAD.jsp</result>
+			<result name="filterAD">/securitygw/security_audit/sgwUserdeviceFilterAD.jsp</result>
+			<result name="attackAD">/securitygw/security_audit/sgwUserdeviceAttackAD.jsp</result>
+			<result name="Chart" type="chart">
+				<param name="width">670</param>
+				<param name="height">290</param>
+			</result>
+			<result name="Table" type="ajax"></result>
+		</action>
+</package>
+</struts>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="NetCutover" extends="linkage_security"
+		namespace="/NetCutover">
+		<action name="work_hand" class="workhand">
+			<result name="success">
+				/NetCutover/eg_work_handForm.jsp
+			</result>
+		</action>
+		<action name="deviceinfo" class="worksheet">
+			<result name="input">
+				/NetCutover/eg_work_handForm.jsp
+			</result>
+			<result name="success">
+				/NetCutover/eg_work_handForm.jsp
+			</result>
+		</action>
+		<action name="adslOpen" class="adsl_open">
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="token"/>
+			<result name="invalid.token">/token.jsp</result>
+			<result name="input">
+				/NetCutover/changedev_Result.jsp
+			</result>
+			<result name="success" type="redirectAction">
+				 <param  name="actionName" >sheetView</param > 
+       			 <param  name="sheet_id" >${sheet_id}</param > 
+			</result>       
+		</action>
+		<action name="sheetView" class="sheetView">
+			<result name="success">
+				/NetCutover/sheetReport.jsp
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,77 @@
+body{
+	margin: 0px;
+	font-size: 12px;
+	text-align: center;
+	font-family: Arial, "Arial Black","宋体";
+}
+table{
+	padding:0px;
+	margin:0px;
+	font-size: 12px;
+	width:95%;
+	font-family: Arial, "Arial Black","宋体","黑体";
+	border:none;
+	background-color: #ffffff;
+}
+table,tr,thead,th,td{
+	border-spacing:0px;
+	border-collapse:collapse;
+	padding:0px;
+}
+A:visited {
+	COLOR: #006790; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #0045aa; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+
+input  {
+	BACKGROUND-COLOR: #f1f1f1;
+	BORDER-BOTTOM: #eeeeee 1px solid; 
+	BORDER-LEFT: #333333 1px solid; 
+	BORDER-RIGHT: #eeeeee 1px solid; 
+	BORDER-TOP: #333333 1px solid; 
+	COLOR: #0000cc; 
+	FONT-FAMILY: "宋体","Arial";
+}
+select {
+	BACKGROUND-COLOR: #f1f1f1;
+	BORDER-BOTTOM: #eeeeee 1px solid; 
+	BORDER-LEFT: #333333 1px solid; 
+	BORDER-RIGHT: #eeeeee 1px solid; 
+	BORDER-TOP: #333333 1px solid; 
+	COLOR: #0000cc; 
+	FONT-FAMILY: "宋体","Arial";
+}
+input.onread {
+	color: #6a6a6a;
+	background-color: #DFDFFF;
+}
+input[type="radio"]  {
+	color: #6a6a6a;
+}
+input[type="checkbox"]  {
+	color: #6a6a6a;
+}
+button {
+ 	background-color: #D6E1F7; 
+	font-size: 9pt; 
+	vertical-align: middle; 
+	padding-top: 2px; 
+	color: #000000; 
+	border-top-width: 1pt; 
+	border-right-width: 1pt; 
+	border-bottom-width: 1pt; 
+	border-left-width: 1pt;
+	text-align: absmiddle;
+	text-decoration: blink;
+	cursor: hand; 
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#889CD7, EndColorStr=#FFFFFF);
+}
+label
+{
+cursor:hand;
+}

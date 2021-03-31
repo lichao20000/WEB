@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="NetDelayChartAction" class="com.linkage.liposs.action.common.NetDelayChartAction" scope="prototype">
+		<property name="pingTest">
+			<ref bean="PingTest" />
+		</property>
+	</bean>
+
+	<bean id="StateDevUserDao" class="dao.report.StateDevUserDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="StateDevUserBio" class="bio.report.StateDevUserBio" scope="prototype">
+		<property name="stateDao">
+			<ref bean="StateDevUserDao"/>
+		</property>
+	</bean>
+	<bean id="StateDevUserAction" class="action.report.StateDevUserAction" scope="prototype">
+		<property name="stateBio">
+			<ref bean="StateDevUserBio"/>
+		</property>
+	</bean>
+	<bean id="StrategyConfigStatDAO" class="dao.report.StrategyConfigStatDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="StrategyConfigStatBIO" class="bio.report.StrategyConfigStatBIO" scope="prototype">
+		<property name="statDao">
+			<ref bean="StrategyConfigStatDAO"/>
+		</property>
+	</bean>
+	<bean id="StrategyConfigStatAction" class="action.report.StrategyConfigStatAction" scope="prototype">
+		<property name="statBio">
+			<ref bean="StrategyConfigStatBIO"/>
+		</property>
+	</bean>
+	
+</beans>

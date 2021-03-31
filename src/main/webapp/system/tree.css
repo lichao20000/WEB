@@ -1,0 +1,74 @@
+SPAN.clsSpace
+{
+	font-family:verdana;
+	position:relative;
+	padding:3px 2px;
+	top:0px;
+	width:17px;
+	margin:0px;
+	cursor:hand;
+	overflow:hidden;
+}
+SPAN.clsCollapse
+{
+	line-height:6px;
+	font-size:9px;
+	overflow:hidden;
+	padding:1px;
+}
+
+SPAN.clsExpand
+{
+	padding-left:1px;
+	overflow:hidden;
+	line-height:3px;
+	font-size:13px;
+	padding-top:3px;
+}
+
+span.clsSpace span
+{
+	position:relative;
+	width:11px;
+	height:11px;
+	border:solid 1px black;
+	background-color:#ffffff;
+	cursor:hand;
+}
+
+span
+{
+	padding:2px 3px;
+	position:relative;
+	display:inline; 
+	top:-2px;
+	height:17px;
+	border: solid 1px #f1f1f1;
+	font-family:Verdana,ËÎÌו;
+	cursor:default;
+	font-size:12px;
+}
+
+SPAN.clsLeaf
+{
+	overflow:visible;
+	font-size:9px;
+	line-height:3px;
+	padding: 1px 0px 0px 3px;
+}
+
+span.clsLabel
+{
+
+}
+
+.hide
+{
+	display:none;
+}
+
+.shown
+{
+	display:block;
+	margin-left:15px;
+}

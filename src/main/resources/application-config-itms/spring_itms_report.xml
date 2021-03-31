@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+	<!-- 重庆21和23端口关闭统计 -->
+	<bean id="PortCloseCountACT"
+		class="com.linkage.module.itms.report.act.PortCloseCountACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="PortCloseCountBIO" />
+		</property>
+	</bean>
+	<bean id="PortCloseCountBIO"
+		class="com.linkage.module.itms.report.bio.PortCloseCountBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="PortCloseCountDAO" />
+		</property>
+	</bean>
+	<bean id="PortCloseCountDAO"
+		class="com.linkage.module.itms.report.dao.PortCloseCountDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	
+	<!-- add by fanjm 20161111 begin -->
+	<bean id="UserDeviceClassifyDAO"
+		class="com.linkage.module.itms.report.dao.UserDeviceClassifyDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="UserDeviceClassifyBIO"
+		class="com.linkage.module.itms.report.bio.UserDeviceClassifyBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="UserDeviceClassifyDAO" />
+		</property>
+	</bean>
+	<bean id="UserDeviceClassifyACT"
+		class="com.linkage.module.itms.report.act.UserDeviceClassifyACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="UserDeviceClassifyBIO" />
+		</property>
+	</bean>
+	<!-- add by fanjm 20161111 end-->
+	<bean id="ItmsFileUpload" class="com.linkage.module.itms.report.act.FileUploadAction"
+		scope="prototype"></bean>
+	<!-- iptv考核只考核e8-b的 -->
+	<bean id="PVCDeploymentReportDAO"
+		class="com.linkage.module.itms.report.dao.PVCDeploymentReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="PVCDeploymentReportBIO"
+		class="com.linkage.module.itms.report.bio.PVCDeploymentReportBIO"
+		scope="prototype">
+		<property name="pvcDeploymentReportDao">
+			<ref bean="PVCDeploymentReportDAO" />
+		</property>
+	</bean>
+	<bean id="PVCDeploymentReportACT"
+		class="com.linkage.module.itms.report.act.PVCDeploymentReportACT"
+		scope="prototype">
+		<property name="pvcDeploymentReportBio">
+			<ref bean="PVCDeploymentReportBIO" />
+		</property>
+	</bean>
+	<!-- iptv考核只考核所有 -->
+	<bean id="PVCReportDAO" class="com.linkage.module.itms.report.dao.PVCReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="PVCReportBIO" class="com.linkage.module.itms.report.bio.PVCReportBIO"
+		scope="prototype">
+		<property name="pvcReportDao">
+			<ref bean="PVCReportDAO" />
+		</property>
+	</bean>
+	<bean id="PVCReportACT" class="com.linkage.module.itms.report.act.PVCReportACT"
+		scope="prototype">
+		<property name="pvcReportBio">
+			<ref bean="PVCReportBIO" />
+		</property>
+	</bean>
+	<!-- 用户绑定信息统计 -->
+	<bean id="BindWayReportDAO" class="com.linkage.module.itms.report.dao.BindWayReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="BindWayReportBIO" class="com.linkage.module.itms.report.bio.BindWayReportBIO"
+		scope="prototype">
+		<property name="bindWayReportDao">
+			<ref bean="BindWayReportDAO" />
+		</property>
+	</bean>
+	<bean id="BindWayReportACT" class="com.linkage.module.itms.report.act.BindWayReportACT"
+		scope="prototype">
+		<property name="bindWayReportBio">
+			<ref bean="BindWayReportBIO" />
+		</property>
+	</bean>
+	<!-- 异常绑定统计 -->
+	<bean id="BindExceptionReportDAO"
+		class="com.linkage.module.itms.report.dao.BindExceptionReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="BindExceptionReportBIO"
+		class="com.linkage.module.itms.report.bio.BindExceptionReportBIO"
+		scope="prototype">
+		<property name="bindExceptionReportDao">
+			<ref bean="BindExceptionReportDAO" />
+		</property>
+	</bean>
+	<bean id="BindExceptionReportACT"
+		class="com.linkage.module.itms.report.act.BindExceptionReportACT"
+		scope="prototype">
+		<property name="bindExceptionReportBio">
+			<ref bean="BindExceptionReportBIO" />
+		</property>
+	</bean>
+	<bean id="ITVCountDAO" class="com.linkage.module.itms.report.dao.ITVCountDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="ITVCountBIO" class="com.linkage.module.itms.report.bio.ITVCountBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ITVCountDAO" />
+		</property>
+	</bean>
+	<bean id="ITVCountACT" class="com.linkage.module.itms.report.act.ITVCountACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ITVCountBIO" />
+		</property>
+	</bean>
+	<bean id="SoftUpResultReportDAO"
+		class="com.linkage.module.itms.report.dao.SoftUpResultReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="SoftUpResultReportBIO"
+		class="com.linkage.module.itms.report.bio.SoftUpResultReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SoftUpResultReportDAO" />
+		</property>
+	</bean>
+	<bean id="SoftUpResultReportACT"
+		class="com.linkage.module.itms.report.act.SoftUpResultReportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SoftUpResultReportBIO" />
+		</property>
+	</bean>
+	<!-- 家庭网关按绑定率统计 begin -->
+	<bean id="BindReportDAO" class="com.linkage.module.itms.report.dao.BindReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="BindReportBIO" class="com.linkage.module.itms.report.bio.BindReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="BindReportDAO" />
+		</property>
+	</bean>
+	<bean id="BindReportAction" class="com.linkage.module.itms.report.act.BindReportAction"
+		scope="prototype">
+		<property name="bio">
+			<ref local="BindReportBIO" />
+		</property>
+	</bean>
+	<!-- 家庭网关按绑定率统计 end -->
+
+	<!-- 工单统计报表 begin 为了不影响江苏电信升级 将此注释 -->
+      <bean id="SheetStatsReportACT" class="com.linkage.module.itms.report.act.SheetStatsReportACT" scope="prototype">
+        <property name="bio">
+           <ref bean="SheetStatsReportBIO"/>
+         </property> 
+      </bean>
+      <bean id="SheetStatsReportBIO" class="com.linkage.module.itms.report.bio.SheetStatsReportBIO" scope="prototype">
+       <property name="dao"> 
+         <ref bean="SheetStatsReportDAO" />
+       </property> </bean> 
+        <bean id="SheetStatsReportDAO" class="com.linkage.module.itms.report.dao.SheetStatsReportDAO" scope="prototype"> 
+        <property name="dao"> 
+          <ref bean="mainDataSource" /> 
+        </property> 
+		</bean>  
+	<!-- 工单统计报表 end 为了不影响江苏电信升级 将此注释 -->
+
+	<!-- 用于新疆 FTTH用户绑定情况统计 begin 为了不影响江苏电信升级 将此注释 -->
+	<bean id="FTTHUserBindACT" class="com.linkage.module.itms.report.act.FTTHUserBindACT" 
+		scope="prototype"> <property name="ftthUserBindBIO"> <ref bean="FTTHUserBindBIO"/> 
+		</property> </bean> <bean id="FTTHUserBindBIO" class="com.linkage.module.itms.report.bio.FTTHUserBindBIO" 
+		scope="prototype"> <property name="ftthUserBindDAO"> <ref bean="FTTHUserBindDAO"/> 
+		</property> </bean> <bean id="FTTHUserBindDAO" class="com.linkage.module.itms.report.dao.FTTHUserBindDAO" 
+		scope="prototype"> <property name="dao"> <ref bean="mainDataSource"/> </property> 
+		</bean>
+	<!-- 用于新疆 FTTH用户绑定情况统计 end -->
+	<!-- 用于查询终端版本规范率 start -->
+	<bean id="TerminalVersionNormACT"
+		class="com.linkage.module.itms.report.act.TerminalVersionNormACT"
+		scope="prototype">
+		<property name="terminalVersionNormBIO">
+			<ref bean="TerminalVersionNormBIO" />
+		</property>
+	</bean>
+	<bean id="TerminalVersionNormBIO"
+		class="com.linkage.module.itms.report.bio.TerminalVersionNormBIO"
+		scope="prototype">
+		<property name="terminalVersionNormDAO">
+			<ref bean="TerminalVersionNormDAO" />
+		</property>
+	</bean>
+	<bean id="TerminalVersionNormDAO"
+		class="com.linkage.module.itms.report.dao.TerminalVersionNormDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- 用于查询终端版本规范率 end -->
+	<!-- 用于用于自定义SQL查询 start -->
+	<bean id="CustomerSQLReportACT" class="com.linkage.module.itms.report.act.CustomerSQLReportACT"
+		scope="prototype">
+		<property name="customerSQLReportBIO">
+			<ref bean="CustomerSQLReportBIO" />
+		</property>
+	</bean>
+	<bean id="CustomerSQLReportBIO" class="com.linkage.module.itms.report.bio.CustomerSQLReportBIO"
+		scope="prototype">
+		<property name="customerSQLReportDAO">
+			<ref bean="CustomerSQLReportDAO" />
+		</property>
+	</bean>
+	<bean id="CustomerSQLReportDAO" class="com.linkage.module.itms.report.dao.CustomerSQLReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 用于自定义SQL查询 end -->
+	<!-- 用于查询业务一次下发成功率统计 start -->
+	<bean id="BusOnceDownSucACT" class="com.linkage.module.itms.report.act.BusOnceDownSucACT"
+		scope="prototype">
+		<property name="busOnceDownSucBIO">
+			<ref bean="BusOnceDownSucBIO" />
+		</property>
+	</bean>
+	<bean id="BusOnceDownSucBIO" class="com.linkage.module.itms.report.bio.BusOnceDownSucBIO"
+		scope="prototype">
+		<property name="busOnceDownSucDAO">
+			<ref bean="BusOnceDownSucDAO" />
+		</property>
+	</bean>
+	<bean id="BusOnceDownSucDAO" class="com.linkage.module.itms.report.dao.BusOnceDownSucDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- 用于查询业务一次下发成功率统计 end -->
+	<!-- 用于查询业务一次下发成功率统计(按厂商型号版本统计) start -->
+	<bean id="BusOnceDownSucACTNxdx" class="com.linkage.module.itms.report.act.BusOnceDownSucACTNxdx"
+		scope="prototype">
+		<property name="busOnceDownSucBIO">
+			<ref bean="BusOnceDownSucBIONxdx" />
+		</property>
+	</bean>
+	<bean id="BusOnceDownSucBIONxdx" class="com.linkage.module.itms.report.bio.BusOnceDownSucBIONxdx"
+		scope="prototype">
+		<property name="busOnceDownSucDAO">
+			<ref bean="BusOnceDownSucDAONxdx" />
+		</property>
+	</bean>
+	<bean id="BusOnceDownSucDAONxdx" class="com.linkage.module.itms.report.dao.BusOnceDownSucDAONxdx"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- 新增山西联通业务下发统计功能 -->
+	<bean id="BusOnceDownSucACTSxlt" class="com.linkage.module.itms.report.act.BusOnceDownSucACTSxlt"
+		  scope="prototype">
+		<property name="busOnceDownSucBIO">
+			<ref bean="BusOnceDownSucBIOSxlt" />
+		</property>
+	</bean>
+	<bean id="BusOnceDownSucBIOSxlt" class="com.linkage.module.itms.report.bio.BusOnceDownSucBIOSxlt"
+		  scope="prototype">
+		<property name="busOnceDownSucDAO">
+			<ref bean="BusOnceDownSucDAOSxlt" />
+		</property>
+	</bean>
+	<bean id="BusOnceDownSucDAOSxlt" class="com.linkage.module.itms.report.dao.BusOnceDownSucDAOSxlt"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- 用于查询业务一次下发成功率统计(按厂商型号版本统计)end -->
+	<bean id="ZeroAutoConfigACT"
+		class="com.linkage.module.itms.report.act.ZeroAutoConfigInfoACT"
+		scope="prototype">
+		<property name="zeroAutoConfigBio">
+			<ref bean="ZeroAutoConfigBio" />
+		</property>
+	</bean>
+
+	<bean id="ZeroAutoConfigBio"
+		class="com.linkage.module.itms.report.bio.ZeroAutoConfigInfoBIO"
+		scope="prototype">
+		<property name="zeroAutoConfigDAO">
+			<ref bean="ZeroAutoConfigDAO" />
+		</property>
+	</bean>
+
+	<bean id="ZeroAutoConfigDAO"
+		class="com.linkage.module.itms.report.dao.ZeroAutoConfigInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="ActiveTerminalACT" class="com.linkage.module.itms.report.act.ActiveTerminalACT"
+		scope="prototype">
+		<property name="activeTerminalBIO">
+			<ref bean="ActiveTerminalBIO" />
+		</property>
+	</bean>
+
+	<bean id="ActiveTerminalBIO" class="com.linkage.module.itms.report.bio.ActiveTerminalBIO"
+		scope="prototype">
+		<property name="activeTerminalDAO">
+			<ref bean="ActiveTerminalDAO" />
+		</property>
+	</bean>
+
+	<bean id="ActiveTerminalDAO" class="com.linkage.module.itms.report.dao.ActiveTerminalDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="NoOnlineTerminalACT" class="com.linkage.module.itms.report.act.NoOnlineTerminalACT"
+		scope="prototype">
+		<property name="noOnlineTerminalBIO">
+			<ref bean="NoOnlineTerminalBIO" />
+		</property>
+	</bean>
+
+	<bean id="NoOnlineTerminalBIO" class="com.linkage.module.itms.report.bio.NoOnlineTerminalBIO"
+		scope="prototype">
+		<property name="noOnlineTerminalDAO">
+			<ref bean="NoOnlineTerminalDAO" />
+		</property>
+	</bean>
+
+
+	<bean id="NoOnlineTerminalDAO" class="com.linkage.module.itms.report.dao.NoOnlineTerminalDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="MothTerminalOrderACT" class="com.linkage.module.itms.report.act.MothTerminalOrderACT">
+		<property name="mothTerminalOrderBIO">
+			<ref bean="MothTerminalOrderBIO" />
+		</property>
+	</bean>
+
+	<bean id="MothTerminalOrderBIO" class="com.linkage.module.itms.report.bio.MothTerminalOrderBIO">
+		<property name="mothTerminalOrderDAO">
+			<ref bean="MothTerminalOrderDAO" />
+		</property>
+	</bean>
+
+	<bean id="MothTerminalOrderDAO" class="com.linkage.module.itms.report.dao.MothTerminalOrderDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="UserDeviceReportACT" class="com.linkage.module.itms.report.act.UserDeviceReportACT"
+		scope="prototype">
+		<property name="userDeviceReportBIO">
+			<ref local="UserDeviceReportBIO" />
+		</property>
+	</bean>
+
+	<bean id="UserDeviceReportBIO" class="com.linkage.module.itms.report.bio.UserDeviceReportBIO"
+		scope="prototype">
+		<property name="userDeviceReportDAO">
+			<ref local="UserDeviceReportDAO" />
+		</property>
+	</bean>
+
+	<bean id="UserDeviceReportDAO" class="com.linkage.module.itms.report.dao.UserDeviceReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+
+	<!-- 零配置开通成功率按本地网统计结果前台展示 begin -->
+	<bean id="ZeroConfigurationSuccessRateDAO"
+		class="com.linkage.module.itms.report.dao.ZeroConfigurationSuccessRateDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="reportDataSource" />
+		</property>
+	</bean>
+	<bean id="ZeroConfigurationSuccessRateBIO"
+		class="com.linkage.module.itms.report.bio.ZeroConfigurationSuccessRateBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="ZeroConfigurationSuccessRateDAO" />
+		</property>
+	</bean>
+	<bean id="ZeroConfigurationSuccessRateACT"
+		class="com.linkage.module.itms.report.act.ZeroConfigurationSuccessRateACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="ZeroConfigurationSuccessRateBIO" />
+		</property>
+	</bean>
+	<!-- 零配置开通成功率按本地网统计结果前台展示 end -->
+
+	<bean id="ReportSubSystemAction"
+		class="com.linkage.module.itms.report.act.ReportSubSystemAction"
+		scope="prototype">
+	</bean>
+
+
+	<bean id="PresetEquipmentAnalysisACT"
+		class="com.linkage.module.itms.report.act.PresetEquipmentAnalysisACT">
+		<property name="bio">
+			<ref bean="PresetEquipmentAnalysisBIO" />
+		</property>
+	</bean>
+
+	<bean id="PresetEquipmentAnalysisBIO"
+		class="com.linkage.module.itms.report.bio.PresetEquipmentAnalysisBIO">
+		<property name="dao">
+			<ref bean="PresetEquipmentAnalysisDAO" />
+		</property>
+	</bean>
+
+	<bean id="PresetEquipmentAnalysisDAO"
+		class="com.linkage.module.itms.report.dao.PresetEquipmentAnalysisDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+
+	<bean id="PresetEquipmentNotImportACT"
+		class="com.linkage.module.itms.report.act.PresetEquipmentNotImportACT">
+		<property name="bio">
+			<ref bean="PresetEquipmentNotImportBIO" />
+		</property>
+	</bean>
+
+	<bean id="PresetEquipmentNotImportBIO"
+		class="com.linkage.module.itms.report.bio.PresetEquipmentNotImportBIO">
+		<property name="dao">
+			<ref bean="PresetEquipmentNotImportDAO" />
+		</property>
+	</bean>
+
+	<bean id="PresetEquipmentNotImportDAO"
+		class="com.linkage.module.itms.report.dao.PresetEquipmentNotImportDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+
+
+	<bean id="TianyiStoreBusinessACT"
+		class="com.linkage.module.itms.report.act.TianyiStoreBusinessACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="TianyiStoreBusinessBIO" />
+		</property>
+	</bean>
+	<bean id="TianyiStoreBusinessBIO"
+		class="com.linkage.module.itms.report.bio.TianyiStoreBusinessBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="TianyiStoreBusinessDAO" />
+		</property>
+	</bean>
+	<bean id="TianyiStoreBusinessDAO"
+		class="com.linkage.module.itms.report.dao.TianyiStoreBusinessDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+
+
+
+	<bean id="MoreBroadbandBusinessACT"
+		class="com.linkage.module.itms.report.act.MoreBroadbandBusinessACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="MoreBroadbandBusinessBIO" />
+		</property>
+	</bean>
+	<bean id="MoreBroadbandBusinessBIO"
+		class="com.linkage.module.itms.report.bio.MoreBroadbandBusinessBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="MoreBroadbandBusinessDAO" />
+		</property>
+	</bean>
+	<bean id="MoreBroadbandBusinessDAO"
+		class="com.linkage.module.itms.report.dao.MoreBroadbandBusinessDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+
+	<bean id="BssLogACT" class="com.linkage.module.itms.report.act.BssLogACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssLogBIO" />
+		</property>
+	</bean>
+	<bean id="BssLogBIO" class="com.linkage.module.itms.report.bio.BssLogBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssLogDAO" />
+		</property>
+	</bean>
+	<bean id="BssLogDAO" class="com.linkage.module.itms.report.dao.BssLogDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="StatisticalLordMGCAddressACT"
+		class="com.linkage.module.itms.report.act.StatisticalLordMGCAddressACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="StatisticalLordMGCAddressBIO" />
+		</property>
+	</bean>
+	<bean id="StatisticalLordMGCAddressBIO"
+		class="com.linkage.module.itms.report.bio.StatisticalLordMGCAddressBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="StatisticalLordMGCAddressDAO" />
+		</property>
+	</bean>
+	<bean id="StatisticalLordMGCAddressDAO"
+		class="com.linkage.module.itms.report.dao.StatisticalLordMGCAddressDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="reportDao"
+		class="com.linkage.module.itms.report.dao.ExportSipUserReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="reportBio"
+		class="com.linkage.module.itms.report.bio.ExportSipUserReportBIO"
+		scope="prototype">
+		<property name="reportDao">
+			<ref bean="reportDao" />
+		</property>
+	</bean>
+	<bean id="sipUserInfo"
+		class="com.linkage.module.itms.report.act.ExportSipUserReportACT"
+		scope="prototype">
+		<property name="reportBio">
+			<ref bean="reportBio" />
+		</property>
+	</bean>
+
+	<bean id="DeviceCountReportDAO" class="com.linkage.module.itms.report.dao.DeviceCountReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceCountReportBIO" class="com.linkage.module.itms.report.bio.DeviceCountReportBIO"
+		scope="prototype">
+		<property name="deviceCountReportDao">
+			<ref bean="DeviceCountReportDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceCountReportACT" class="com.linkage.module.itms.report.act.DeviceCountReportACT"
+		scope="prototype">
+		<property name="deviceCountReportBio">
+			<ref bean="DeviceCountReportBIO" />
+		</property>
+	</bean>
+	<!-- wanghong5 用户按业务类型统计 -->
+	<bean id="CountServReportDAO" class="com.linkage.module.itms.report.dao.CountServReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="CountServReportBIO" class="com.linkage.module.itms.report.bio.CountServReportBIO"
+		scope="prototype">
+		<property name="countServReportDao">
+			<ref bean="CountServReportDAO" />
+		</property>
+	</bean>
+	<bean id="CountServReportACT" class="com.linkage.module.itms.report.act.CountServReportACT"
+		scope="prototype">
+		<property name="countServReportBio">
+			<ref bean="CountServReportBIO" />
+		</property>
+	</bean>
+	<!-- wanghong5 无线业务策略查询 -->
+	<bean id="StrategyQueryDAO" class="com.linkage.module.itms.report.dao.StrategyQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="StrategyQueryBIO" class="com.linkage.module.itms.report.bio.StrategyQueryBIO"
+		scope="prototype">
+		<property name="strategyQueryDao">
+			<ref bean="StrategyQueryDAO" />
+		</property>
+	</bean>
+	<bean id="StrategyQueryACT" class="com.linkage.module.itms.report.act.StrategyQueryACT"
+		scope="prototype">
+		<property name="strategyQueryBio">
+			<ref bean="StrategyQueryBIO" />
+		</property>
+	</bean>
+
+
+	<bean id="ExportUserReportDAO" class="com.linkage.module.itms.report.dao.ExportUserReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+
+	<bean id="ExportUserReportBIO" class="com.linkage.module.itms.report.bio.ExportUserReportBIO"
+		scope="prototype">
+		<property name="exportUserReportDAO">
+			<ref bean="ExportUserReportDAO" />
+		</property>
+	</bean>
+
+	<bean id="ExportUserACT" class="com.linkage.module.itms.report.act.ExportUserACT"
+		scope="prototype">
+		<property name="exportBIO">
+			<ref bean="ExportUserReportBIO" />
+		</property>
+	</bean>
+	<bean id="FileUploadAction" class="com.linkage.module.itms.report.act.FileUploadAction"
+		scope="prototype">
+	</bean>
+	<bean id="E8CActiveReportDAO" class="com.linkage.module.itms.report.dao.E8CActiveReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+
+	<bean id="E8CActiveReportBIO" class="com.linkage.module.itms.report.bio.E8CActiveReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="E8CActiveReportDAO" />
+		</property>
+	</bean>
+
+	<bean id="E8CActiveReportACT" class="com.linkage.module.itms.report.act.E8CActiveReportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="E8CActiveReportBIO" />
+		</property>
+	</bean>
+	<bean id="AWifiResultReportDAO" class="com.linkage.module.itms.report.dao.AWifiResultReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="AWifiResultReportBIO" class="com.linkage.module.itms.report.bio.AWifiResultReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="AWifiResultReportDAO" />
+		</property>
+	</bean>
+	<!-- awifi业务开通情况统计 -->
+	<bean id="AWifiResultReportACT" class="com.linkage.module.itms.report.act.AWifiResultReportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="AWifiResultReportBIO" />
+		</property>
+	</bean>
+
+	<!-- add by chenzhangjian for memcachedManage at 20150813 begin -->
+	<bean id="MemcachedManageDAO" class="com.linkage.module.itms.report.dao.MemcachedManageDAO"
+		scope="prototype">
+	</bean>
+	<bean id="MemcachedManageBIO" class="com.linkage.module.itms.report.bio.MemcachedManageBIO"
+		scope="prototype">
+		<property name="memcachedManageDAO">
+			<ref bean="MemcachedManageDAO" />
+		</property>
+	</bean>
+	<bean id="MemcachedManageACT" class="com.linkage.module.itms.report.act.MemcachedManageACT"
+		scope="prototype">
+		<property name="memcachedManageBIO">
+			<ref bean="MemcachedManageBIO" />
+		</property>
+	</bean>
+
+	<!-- 当日用户开通查询 -->
+	<bean id="QueryOpenBusinessACT" class="com.linkage.module.itms.report.act.QueryOpenBusinessACT"
+		scope="prototype">
+		<property name="queryBusinessBio">
+			<ref bean="OpenBusinessBIO" />
+		</property>
+	</bean>
+
+	<bean id="OpenBusinessBIO" class="com.linkage.module.itms.report.bio.QueryOpenBusinessBIO"
+		scope="prototype">
+		<property name="businessDao">
+			<ref bean="OpenBusinessDAO" />
+		</property>
+	</bean>
+
+	<bean id="OpenBusinessDAO" class="com.linkage.module.itms.report.dao.OpenBusinessDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- add by chenzhangjian for memcachedManage at 20150813 end -->
+
+	<!-- mq查询 -->
+	<bean id="QueryMqACT" class="com.linkage.module.itms.report.act.QueryMqACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="QueryMqBIO" />
+		</property>
+	</bean>
+
+	<bean id="QueryMqBIO" class="com.linkage.module.itms.report.bio.QueryMqBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="QueryMqDAO" />
+		</property>
+	</bean>
+
+	<bean id="QueryMqDAO" class="com.linkage.module.itms.report.dao.QueryMqDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- 机顶盒活跃用户 -->
+	<bean id="ActiveUserReportDAO" class="com.linkage.module.itms.report.dao.ActiveUserReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ActiveUserReportBIO" class="com.linkage.module.itms.report.bio.ActiveUserReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ActiveUserReportDAO" />
+		</property>
+	</bean>
+	<bean id="ActiveUserReportACT" class="com.linkage.module.itms.report.act.ActiveUserReportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ActiveUserReportBIO" />
+		</property>
+	</bean>
+	
+	<!-- add by wangyan at 20150813 end -->
+
+	<!-- 湖北电信长时间光猫批量重启成功率报表统计  add by songxiaoqiang  -->
+	<bean id="BatchRestartResultACT" class="com.linkage.module.itms.report.act.BatchRestartResultACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchRestartResultBIO" />
+		</property>
+	</bean>
+	<bean id="BatchRestartResultBIO" class="com.linkage.module.itms.report.bio.BatchRestartResultBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchRestartResultDAO" />
+		</property>
+	</bean>
+	<bean id="BatchRestartResultDAO" class="com.linkage.module.itms.report.dao.BatchRestartResultDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- JXDX-REQ-ITMS-20190722-WWF-003	ITMS+家庭网关对外接口普通用户测速报表  -->
+	<bean id="HttpTestReportDAO" class="com.linkage.module.itms.report.dao.HttpTestReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="HttpTestReportBIO" class="com.linkage.module.itms.report.bio.HttpTestReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="HttpTestReportDAO" />
+		</property>
+	</bean>
+	<bean id="HttpTestReportACT" class="com.linkage.module.itms.report.act.HttpTestReportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="HttpTestReportBIO" />
+		</property>
+	</bean>
+	
+	<!-- JXDX-REQ-ITMS-20191224-WWF-001(ITMS+家庭网关后台批量测速需求) -->
+	<bean id="HttpTestBatchReportDAO" class="com.linkage.module.itms.report.dao.HttpTestBatchReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="HttpTestBatchReportBIO" class="com.linkage.module.itms.report.bio.HttpTestBatchReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="HttpTestBatchReportDAO" />
+		</property>
+	</bean>
+	<bean id="HttpTestBatchReportACT" class="com.linkage.module.itms.report.act.HttpTestBatchReportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="HttpTestBatchReportBIO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="BatchRestartJXDAO" class="com.linkage.module.itms.report.dao.BatchRestartJXDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchRestartJXBIO" class="com.linkage.module.itms.report.bio.BatchRestartJXBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchRestartJXDAO" />
+		</property>
+	</bean>
+	<bean id="BatchRestartJXACT" class="com.linkage.module.itms.report.act.BatchRestartJXACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchRestartJXBIO" />
+		</property>
+	</bean>
+	<bean id="NetAccSpeedDAO" class="com.linkage.module.itms.report.dao.NetAccSpeedDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="NetAccSpeedBIO" class="com.linkage.module.itms.report.bio.NetAccSpeedBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="NetAccSpeedDAO" />
+		</property>
+	</bean>
+	<bean id="NetAccSpeedAction" class="com.linkage.module.itms.report.act.NetAccSpeedAction"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="NetAccSpeedBIO" />
+		</property>
+	
+	</bean>
+	
+	<!-- 带宽对应设备统计 -->
+	<bean id="BandwidthDeviceReportDAO" class="com.linkage.module.itms.report.dao.BandwidthDeviceReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BandwidthDeviceReportBIO" class="com.linkage.module.itms.report.bio.BandwidthDeviceReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BandwidthDeviceReportDAO" />
+		</property>
+	</bean>
+	<bean id="BandwidthDeviceReportACT" class="com.linkage.module.itms.report.act.BandwidthDeviceReportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BandwidthDeviceReportBIO" />
+		</property>
+	</bean>
+
+	<!-- 报表下载统计 begin -->
+	<bean id="FileExportDAO" class="com.linkage.module.itms.report.dao.FileExportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="FileExportBIO" class="com.linkage.module.itms.report.bio.FileExportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="FileExportDAO" />
+		</property>
+	</bean>
+	<bean id="FileExportACT" class="com.linkage.module.itms.report.act.FileExportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="FileExportBIO" />
+		</property>
+	</bean>
+	<!-- 报表下载统计 end -->
+
+
+	<!-- 吉林联通VOIP修改IP工单统计 -->
+	<bean id="VoipXIPBSSReportJLDAO" class="com.linkage.module.itms.report.dao.VoipXIPBSSReportJLDAO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="VoipXIPBSSReportJLBIO" class="com.linkage.module.itms.report.bio.VoipXIPBSSReportJLBIO"
+		  scope="prototype">
+		<property name="reportJLDAO">
+			<ref bean="VoipXIPBSSReportJLDAO" />
+		</property>
+	</bean>
+	<bean id="VoipXIPBSSReportJLACT" class="com.linkage.module.itms.report.act.VoipXIPBSSReportJLACT"
+		  scope="prototype">
+		<property name="reportJLBIO">
+			<ref bean="VoipXIPBSSReportJLBIO" />
+		</property>
+	</bean>
+
+
+	<!-- 分组管理统计 end -->
+	
+	<!-- 新疆电信新增新开户绑定终端情况报表 -->
+	<bean id="userOpenBindACT" class="com.linkage.module.itms.report.act.UserOpenBindACT" 
+		scope="prototype">
+		<property name="userOpenBindBIO">
+			<ref bean="userOpenBindBIO" />
+		</property>
+	</bean>
+	<bean id="userOpenBindBIO" class="com.linkage.module.itms.report.bio.UserOpenBindBIO" 
+		scope="prototype">
+		<property name="userOpenBindDAO">
+			<ref bean="userOpenBindDAO" />
+		</property>
+	</bean>
+	<bean id="userOpenBindDAO" class="com.linkage.module.itms.report.dao.UserOpenBindDAO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+<bean id="DelWanConnReportDAO" class="com.linkage.module.itms.report.dao.DelWanConnReportDAO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DelWanConnReportBIO" class="com.linkage.module.itms.report.bio.DelWanConnReportBIO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="DelWanConnReportDAO" />
+		</property>
+	</bean>
+	<bean id="DelWanConnReportACT" class="com.linkage.module.itms.report.act.DelWanConnReportACT"
+		  scope="prototype">
+		<property name="bio">
+			<ref bean="DelWanConnReportBIO" />
+		</property>
+	</bean>
+
+	<bean id="BridgeAndRouteRecordDao" class="com.linkage.module.itms.report.dao.BridgeAndRouteRecordDao"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BridgeAndRouteRecordBio" class="com.linkage.module.itms.report.bio.BridgeAndRouteRecordBio"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="BridgeAndRouteRecordDao" />
+		</property>
+	</bean>
+	<bean id="BridgeAndRouteRecordAct" class="com.linkage.module.itms.report.act.BridgeAndRouteRecordAct"
+		  scope="prototype">
+		<property name="bio">
+			<ref bean="BridgeAndRouteRecordBio" />
+		</property>
+	</bean>
+</beans>

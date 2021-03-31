@@ -1,0 +1,119 @@
+SPAN.clsSpace
+{
+	font-family:verdana;
+	position:relative;
+	padding:3px 2px;
+	top:0px;
+	width:17px;
+	margin:0px;
+	cursor:hand;
+	overflow:hidden;
+}
+SPAN.clsCollapse
+{
+	line-height:6px;
+	font-size:9px;
+	overflow:hidden;
+	padding:1px;
+}
+
+SPAN.clsExpand
+{
+	padding-left:1px;
+	overflow:hidden;
+	line-height:3px;
+	font-size:13px;
+	padding-top:3px;
+}
+
+span.clsSpace span
+{
+	position:relative;
+	width:11px;
+	height:11px;
+	border:solid 1px black;
+	background-color:#ffffff;
+	cursor:hand;
+}
+
+span
+{
+	padding:2px 3px;
+	position:relative;
+	display:inline; 
+	top:-2px;
+	height:17px;
+	border:1px;
+	font-family:Verdana,ËÎÌו;
+	cursor:default;
+	font-size:12px;
+}
+
+SPAN.clsLeaf
+{
+	overflow:visible;
+	font-size:9px;
+	line-height:3px;
+	padding: 1px 0px 0px 3px;
+}
+
+span.clsLabel
+{
+
+}
+
+.hide
+{
+	display:none;
+}
+
+.shown
+{
+	display:block;
+	margin-left:15px;
+}
+
+.cMenu {
+  color: #000000;
+  font-size: 12px;
+  border-right: #999999 1px solid;
+  border-top: #999999 1px solid;
+  border-left: #999999 1px solid;
+  border-bottom: #999999 1px solid;
+  font-family: Verdana, ËÎÌו;
+  position: absolute;
+  visibility: hidden;
+  background-color: menu;
+  margin-left: 1px;
+  margin-right: 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  FILTER: alpha(opacity=0); 
+  CURSOR: default; 
+  FONT-SIZE: 9pt; 
+  FONT-WEIGHT: normal; 
+  LINE-HEIGHT: 20px; 
+  WIDTH: 110px;
+  z-index: 100;
+}
+.menuitems_over {
+  border: #316AC5 1px solid;
+  background-color: #C1D2EE;
+    font-size:12px;
+    MARGIN: 1px;
+    PADDING-BOTTOM: 0px;
+	PADDING-LEFT: 15px;
+	PADDING-RIGHT: 3px;
+	PADDING-TOP: 1px;
+}
+
+.menuitems {
+  border: menu 1px solid;
+  background-color: menu;
+    font-size:12px;
+    MARGIN: 1px;
+    PADDING-BOTTOM: 0px;
+	PADDING-LEFT: 15px;
+	PADDING-RIGHT: 3px;
+	PADDING-TOP: 1px;
+}

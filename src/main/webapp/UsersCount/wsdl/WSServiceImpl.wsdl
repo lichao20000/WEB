@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://impl.webservice.apps" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://impl.webservice.apps" xmlns:intf="http://impl.webservice.apps" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://impl.webservice.apps" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="QueryGetWay">
+    <complexType>
+     <sequence>
+      <element name="in0" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="QueryGetWayResponse">
+    <complexType>
+     <sequence>
+      <element name="QueryGetWayReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="readStr">
+    <complexType>
+     <sequence>
+      <element name="in0" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="readStrResponse">
+    <complexType>
+     <sequence>
+      <element name="readStrReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ServiceDoneReturn">
+    <complexType>
+     <sequence>
+      <element name="in0" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ServiceDoneReturnResponse">
+    <complexType>
+     <sequence>
+      <element name="ServiceDoneReturnReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="readStrResponse">
+
+      <wsdl:part element="impl:readStrResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceDoneReturnRequest">
+
+      <wsdl:part element="impl:ServiceDoneReturn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="QueryGetWayRequest">
+
+      <wsdl:part element="impl:QueryGetWay" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="QueryGetWayResponse">
+
+      <wsdl:part element="impl:QueryGetWayResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="readStrRequest">
+
+      <wsdl:part element="impl:readStr" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceDoneReturnResponse">
+
+      <wsdl:part element="impl:ServiceDoneReturnResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSServiceImpl">
+
+      <wsdl:operation name="QueryGetWay">
+
+         <wsdl:input message="impl:QueryGetWayRequest" name="QueryGetWayRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:QueryGetWayResponse" name="QueryGetWayResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="readStr">
+
+         <wsdl:input message="impl:readStrRequest" name="readStrRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:readStrResponse" name="readStrResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ServiceDoneReturn">
+
+         <wsdl:input message="impl:ServiceDoneReturnRequest" name="ServiceDoneReturnRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ServiceDoneReturnResponse" name="ServiceDoneReturnResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSServiceImplSoapBinding" type="impl:WSServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="QueryGetWay">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="QueryGetWayRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="QueryGetWayResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="readStr">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="readStrRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="readStrResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ServiceDoneReturn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ServiceDoneReturnRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ServiceDoneReturnResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSServiceImplService">
+
+      <wsdl:port binding="impl:WSServiceImplSoapBinding" name="WSServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/RestAndWS/services/WSServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

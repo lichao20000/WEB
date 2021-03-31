@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="FileUploadAction" class="com.linkage.module.gwms.share.act.FileUploadAction" scope="prototype">
+	</bean>
+	<bean id="GwDeviceQueryACT" class="com.linkage.module.gwms.share.act.GwDeviceQueryACT" scope="prototype">
+		<property name="gwDeviceBio">
+			<ref local="GwDeviceQueryBIO" />
+		</property>
+	</bean>
+	<bean id="GwDeviceQueryBIO" class="com.linkage.module.gwms.share.bio.GwDeviceQueryBIO" scope="prototype">
+		<property name="vmvDao">
+			<ref bean="GwVendorModelVersionDAO" />
+		</property>
+		<property name="gwDeviceDao">
+			<ref local="GwDeviceQueryDAO" />
+		</property>
+	</bean>
+	<bean id="GwDeviceQueryDAO" class="com.linkage.module.gwms.share.dao.GwDeviceQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<!-- 批量更换光猫  -->
+	<bean id="GwBindDevQueryACT" class="com.linkage.module.gwms.share.act.GwBindDevQueryACT" scope="prototype">
+		<property name="gwDeviceBio">
+			<ref local="GwBindDevQueryBIO" />
+		</property>
+	</bean>
+	<bean id="GwBindDevQueryBIO" class="com.linkage.module.gwms.share.bio.GwBindDevQueryBIO" scope="prototype">
+		<property name="vmvDao">
+			<ref bean="GwVendorModelVersionDAO" />
+		</property>
+		<property name="gwDeviceDao">
+			<ref local="GwBindDevQueryDAO" />
+		</property>
+	</bean>
+	<bean id="GwBindDevQueryDAO" class="com.linkage.module.gwms.share.dao.GwBindDevQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="GwVendorModelVersionDAO" class="com.linkage.module.gwms.share.dao.GwVendorModelVersionDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <bean id="AreaGet" class="com.linkage.liposs.buss.system.AreaGet" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+    <bean id="AreaSelect" class="com.linkage.liposs.action.system.AreaSelect" scope="prototype">
+		<property name="areaget">
+			<ref local="AreaGet" />
+		</property>
+	</bean>
+	<bean id="DialingConfigDAO" class="com.linkage.liposs.buss.system.DialingConfigDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DialingConfigAction" class="com.linkage.liposs.action.system.DialingConfigAction" scope="prototype">
+		<property name="dcDAO">
+			<ref local="DialingConfigDAO" />
+		</property>
+	</bean>
+	<bean id="RTMsgCfgDAO" class="com.linkage.liposs.buss.tools.RTMsgCfgDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="RTMsgConfigAction" class="com.linkage.liposs.action.tools.RTMsgConfigAction" scope="prototype">
+		<property name="rtd">
+			<ref local="RTMsgCfgDAO" />
+		</property>
+	</bean>
+	<bean id="RTMsgSendDAO" class="com.linkage.liposs.buss.tools.RTMsgSendDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="cfgDAO">
+			<ref local="RTMsgCfgDAO" />
+		</property>
+	</bean>
+	<bean id="RTMsgSendAction" class="com.linkage.liposs.action.tools.RTMsgSendAction" scope="prototype">
+		<property name="rtDAO">
+			<ref local="RTMsgSendDAO" />
+		</property>
+	</bean>
+	<bean id="MsgLogQDAO" class="com.linkage.liposs.buss.tools.MsgLogQDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="MsgLogAction" class="com.linkage.liposs.action.tools.MsgLogAction" scope="prototype">
+		<property name="mlDAO">
+			<ref local="MsgLogQDAO" />
+		</property>
+	</bean>
+	<bean id="MsgTemplateDAO" class="com.linkage.liposs.buss.tools.MsgTemplateDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="devA">
+			<ref bean="devA" />
+		</property>
+	</bean>
+	<bean id="MsgTemplateCusAction" class="com.linkage.liposs.action.tools.MsgTemplateCusAction" scope="prototype">
+		<property name="msgdao">
+			<ref local="MsgTemplateDAO" />
+		</property>
+	</bean>
+	<bean id="ExportDataDao" class="com.linkage.liposs.buss.tools.ExportDataDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="Export" class="com.linkage.liposs.action.common.ExportDataAction" scope="prototype">
+		<property name="exportDAO">
+			<ref local="ExportDataDao" />
+		</property>
+	</bean>
+	<bean id="ImportCustomerDAO" class="com.linkage.liposs.buss.system.ImportCustomerDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ImportCustomerAction" class="com.linkage.liposs.action.common.ImportCustomerAction" scope="prototype">
+		<property name="importData">
+			<ref local="ImportCustomerDAO" />
+		</property>
+	</bean>
+	<bean id="ExportCustomerDAO" class="com.linkage.liposs.buss.system.ExportCustomerDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ExportCustomerAction" class="com.linkage.liposs.action.common.ExportCustomerAction" scope="prototype">
+		<property name="exportCustomer">
+			<ref local="ExportCustomerDAO" />
+		</property>
+	</bean>
+</beans>

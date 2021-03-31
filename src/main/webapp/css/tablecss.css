@@ -1,0 +1,74 @@
+@CHARSET "GBK";
+.tab_title {
+	border-bottom-width: 1px;
+	border-bottom-color: #FD8E00;
+	background-color: #3F7AA7;
+}
+
+.tr_white
+{
+text-align: left;
+border-width: 1px;
+border-style: solid;
+background-color: white;
+padding:0px;
+text-indent: 2pt;
+}
+
+.tr_glory
+{
+text-align: left;
+border-width: 1px;
+border-style: solid;
+background-color:#E7E7E7;
+padding:0px;
+text-indent: 2pt;
+}
+
+.tr_yellow
+{
+text-align: left;
+border-width: 1px;
+border-style: solid;
+background-color:#F7EDCC;
+padding:0px;
+text-indent: 2pt;
+}
+
+.table
+{
+	text-align: left;
+	background-color:#ffffff;
+	border-width: 1px;
+	border-style: solid;
+	border-color:#ACA899;
+	border-collapse: collapse;
+}
+
+.trOver_blue {
+	background-color: #CCE0FE;
+}
+.trOver_blue_hand {
+	background-color: #CCE0FE;
+	cursor: hand;
+}
+
+.tr_green {
+	background-color: #C5E3B9;
+	font-family: Arial, "Arial Black", "宋体", "黑体";
+	font-size: 9pt;
+	line-height: 17px;
+	font-weight: normal;
+	text-indent: 2pt;
+	background-position: left;
+}
+
+.tr_red {
+	background-color: #FE7D7A;
+	font-family: Arial, "Arial Black", "宋体", "黑体";
+	font-size: 9pt;
+	line-height: 17px;
+	font-weight: normal;
+	text-indent: 2pt;
+	background-position: left;
+}

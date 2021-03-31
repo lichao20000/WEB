@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="itv_gtms" extends="linkage_security"
+		namespace="/gtms/itv">
+		<action name="MenuManager" class="gtms_itv_MenuManagerAction">
+			<result name="module">/itv/index/ModuleFrame.jsp</result>
+			<result name="tree">/itv/index/TreeFrame.jsp</result>
+			<result name="treeNew">/itv/index/TreeFrameNew.jsp</result>
+		</action>
+		<!-- 
+		<action name="GetMenu" class="gtms_itv_GetMenu">
+			<result name="success">/lims/index/leftmenu.jsp</result>
+			<result type="ajax" name="ajax"></result>
+		</action>-->
+		<!-- 
+		<action name="FirstPage" class="gtms_itv_firstPage_Action">
+			<result type="ajax" name="ajax"></result>
+		</action>
+
+		<action name="ISAPic" class="gtms_itv_ISAPicAction">
+			<result type="ajax" name="ajax1"></result>
+			<result type="ajax" name="ajax2"></result>
+			<result type="ajax" name="ajax3"></result>
+		</action> -->
+	</package>
+
+</struts>

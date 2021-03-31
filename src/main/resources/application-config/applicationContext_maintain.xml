@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<bean id="mtMaxUserNumDAO" class="dao.maintain.mtMaxUserNumDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="mtMaxUserNumBIO" class="bio.maintain.mtMaxUserNumBIO" scope="prototype">
+		<property name="mtMUNDao">
+			<ref bean="mtMaxUserNumDAO" />
+		</property>
+	</bean>
+	
+	<bean id="maintainMaxUserNumAction" class="action.maintain.maintainMaxUserNumAction" scope="prototype">
+	
+		<property name="mtMUNBio">
+			<ref bean="mtMaxUserNumBIO" />
+		</property>
+		
+		<property name="mtMUNDao">
+			<ref local="mtMaxUserNumDAO" />
+		</property>
+	</bean>
+	
+	<bean id="DeviceModelDao" class="dao.resource.DeviceModelDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceModelInfoAction"
+		class="action.resource.DeviceModelInfoAction" scope="prototype">
+		<property name="modelDao">
+			<ref bean="DeviceModelDao" />
+		</property>
+	</bean>
+	<bean id="DeviceVendorModelDao"
+		class="dao.resource.DeviceVendorModelDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceVenderModelAction"
+		class="action.resource.DevVenderModelAction" scope="prototype">
+		<property name="devDao">
+			<ref bean="DeviceVendorModelDao" />
+		</property>
+	</bean>
+	
+	<bean id="DeviceModelWifiAction"
+		class="action.resource.DeviceModelWifiAction" scope="prototype">
+		<property name="modelDao">
+			<ref bean="DeviceModelWifiDao" />
+		</property>
+	</bean>
+	<bean id="DeviceModelWifiDao" class="dao.resource.DeviceModelWifiDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+</beans>

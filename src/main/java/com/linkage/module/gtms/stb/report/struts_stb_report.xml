@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="report_stb_gtms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/stb/report">
+	
+		<action name="batchImpQryStbInfo" class="BatchImpQryStbInfoACT"> 
+			<result name="list">/gtms/stb/report/BatchImpQryStbInfoList.jsp</result>
+			<result name="listItms">/Report/BatchImpQryInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="sheetReport" class="SheetReportACT"> 
+			<result name="init">/Report/cqdxstb/sheetStatsReportView.jsp</result> 
+			<result name="result">/Report/cqdxstb/sheetStatsReportResult.jsp</result> 
+			<result name="detail">/Report/cqdxstb/sheetStatsReportDetail.jsp</result> 
+		</action>
+		<action name="sheetReasonReport" class="SheetReasonReportACT"> 
+			<result name="init">/Report/cqdxstb/sheetReasonReportView.jsp</result> 
+			<result name="result">/Report/cqdxstb/sheetReasonReportResult.jsp</result> 
+			<result name="detail">/Report/cqdxstb/sheetReasonReportDetail.jsp</result> 
+		</action>
+		<action name="sheetCustReport" class="SheetCustReportACT">
+			<result name="init">/Report/cqdxstb/sheetCustReportView.jsp</result> 
+			<result name="result">/Report/cqdxstb/sheetCustReportResult.jsp</result> 
+			<result name="detail">/Report/cqdxstb/sheetCustReportDetail.jsp</result> 
+		</action>
+		<action name="sheetDeviceReport" class="SheetDeviceReportACT">
+			<result name="init">/Report/cqdxstb/sheetDeviceReportView.jsp</result> 
+			<result name="result">/Report/cqdxstb/sheetDeviceReportResult.jsp</result> 
+			<result name="detail">/Report/cqdxstb/sheetDeviceReportDetail.jsp</result> 
+		</action>
+		<action name="sheetDailyCustReport" class="SheetDailyCustReportACT">
+			<result name="init">/Report/cqdxstb/sheetDailyCustReportView.jsp</result>
+			<result name="result">/Report/cqdxstb/sheetDailyCustReportResult.jsp</result> 
+			<result name="detail">/Report/cqdxstb/sheetDailyCustReportDetail.jsp</result> 
+		</action>
+	</package>
+</struts>

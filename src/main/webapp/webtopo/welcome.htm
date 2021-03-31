@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Welcome to you </TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function showWebTopo(){
+	wt = window.open("index.jsp",null,"toolbars=no,scrollbars=no,menubar=no,directories=no,status=yes,resizable =yes");
+}
+var arrImgSize = new Object();
+
+function getIconSize(type,icon){
+	var arr = new Array(2);
+	if(typeof(arrImgSize[icon]) != "object"){
+		idTmpImg.src = "images/"+icon;
+		arr = new Array(2);
+		arr[0] = idTmpImg.width;
+		arr[1] = idTmpImg.height;
+		arrImgSize[icon] = arr;
+	}
+	else{
+		arr = arrImgSize[icon];
+	}
+	alert(arrImgSize[icon][0])
+	return arr;
+}
+
+function test(icon){
+	w	= arrImgSize[icon][0];
+	h	= arrImgSize[icon][1];
+	alert(w+"\n"+h);
+}
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY onload="getIconSize(0,'network_cloud.png')">
+<a href="javascript:showWebTopo();">Ω¯»ÎWeb Topo</a>
+<a href="http://202.102.15.121:8080/ldims/i_web_10000.jsp?city_id=0004">≤‚ ‘</a>
+<div style="position:absolute;left:0px;top:0px;visibility: hidden"><img id="idTmpImg"  /></div>
+<button onclick="getIconSize(0,'network_cloud.png')" >getImgSize0</button>
+<button onclick="getIconSize(1,'FC_switch1.png')" >getImgSize1</button>
+<button onclick="getIconSize(100,'network_cloud4.png')" >getImgSize100</button>
+<button onclick="getIconSize(2,'router.png')" >getImgSize2</button>
+<button onclick="getIconSize(3,'sun.png')" >getImgSize3</button>
+<button onclick="test('network_cloud.png')" >TestImgSize0</button>
+</BODY>
+</HTML>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="midware_itms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/itms/midware">
+		<action name="midWare" class="MidWareACT">
+			<result name="ajax" type="ajax"/>
+		</action>
+		<action name="businessOpen" class="BusinessOpenACT">
+			<result name="ajax" type="ajax"/>
+			<result name="open">/itms/MidWare/business_open.jsp</result>
+		</action>
+	</package>
+</struts>

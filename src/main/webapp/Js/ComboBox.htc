@@ -1,0 +1,799 @@
+//修改后的htc.
+
+<public:component tagname="ComboBox" literalcontent="true">
+
+<public:method name="CreateComboBox" internalname="f_PublicCreateComboBox" />
+
+<public:method name="CreateComboBoxIpt" internalname="f_PublicCreateComboBoxIpt" />
+
+<public:method name="CreateDropDown" internalname="f_PublicCreateDropDown" />
+
+<public:method name="CreateDropList" internalname="f_PublicCreateDropList" />
+
+<public:method name="CreatePopup" internalname="f_PublicCreatePopup" />
+
+
+
+
+
+<public:attach event="oncontentready" onevent="f_CreateComboBox()" />
+
+
+
+<SCRIPT LANGUAGE="JScript">
+
+var oPopup = null;
+
+var ComboBox = null;
+
+var ComboBoxIpt = null;
+
+var DropDown = null;
+
+var DropList = null;
+
+var aNodes = new Array();
+
+
+
+var mnuX = 0;
+
+var mnuY = 0;
+
+
+
+function f_CreateComboBox()
+
+{
+
+	aNodes = f_CreateNodes(element.innerHTML);
+
+	DropList = f_PublicCreateDropList();
+
+	f_PublicCreateDropListData(aNodes);
+
+	ComboBox = f_PublicCreateComboBox();
+
+	ComboBoxIpt = f_PublicCreateComboBoxIpt();
+
+	DropDown = f_PublicCreateDropDown();
+
+	oPopup = f_PublicCreatePopup();
+
+	
+
+	ComboBox.attachEvent("onmouseover",fnMouseover);
+
+	ComboBox.attachEvent("onmouseout",fnMouseout);
+
+	DropDown.attachEvent("onmousedown",fnMousedown);
+
+	ComboBoxIpt.attachEvent("onfocus",ComboBoxFocus);
+
+	ComboBoxIpt.attachEvent("onblur",ComboBoxBlur);
+
+	ComboBoxIpt.attachEvent("onkeyup",ComboBoxKeyup);
+
+	window.document.attachEvent("onclick", chkstat);
+
+        
+
+}
+
+
+
+function f_PublicCreateComboBox()
+
+{
+
+	var oTable = window.document.createElement("TABLE");
+
+	oTable.cellSpacing = 1;
+
+	oTable.cellPadding = 0;
+
+	oTable.id = "AXTeamComboBox"+uniqueID;
+
+	oTable.style.display = "inline";
+
+	oTable.border = 0;
+
+	oTable.bgColor = "#FFFFFF";
+
+	element.insertAdjacentElement("BeforeBegin",oTable);
+
+	oTable.ComboBoxFocus = false;
+
+	return oTable;
+
+}
+
+
+
+function f_PublicCreateComboBoxIpt()
+
+{
+
+	var oInput = window.document.createElement("INPUT");
+
+	oInput.type = "text";
+
+	oInput.style.border = 0;
+
+	oInput.style.width = element.width;
+
+	oInput.style.height = 15;
+
+
+
+    //新增代码，是否设置无效状态
+
+    if (element.isEdit){
+
+		oInput.disabled=true;
+
+	}
+
+	
+
+	oInput.id = "AXTeamComboBoxIpt"+uniqueID;
+
+	
+
+    //设置默认值
+
+    oInput.value=element.value;
+
+	ComboBox.insertRow().insertCell().appendChild(oInput);
+
+	ComboBox.rows[0].bgColor = "#FFFFFF";
+
+	return oInput;
+
+}
+
+
+
+function f_PublicCreateDropDown()
+
+{
+
+	var oTable = window.document.createElement("TABLE");
+
+	oTable.cellSpacing = 0;
+
+	oTable.cellPadding = 0;
+
+	oTable.id = "AXTeamDropDown"+uniqueID;
+
+	oTable.border = 0;
+
+	oTable.bgColor="#DBD8D1";
+
+	oTable.style.cssText = "display:inline;cursor:default;";
+
+	oTable.attachEvent("onselectstart", fnCancel);
+
+	var otd = oTable.insertRow().insertCell();
+
+	otd.style.cssText = "font-family: webdings;font-size:8px;text-align: center;width:13px;height:17px;";
+
+	otd.innerText = "6";
+
+	ComboBox.rows[0].insertCell().appendChild(oTable);
+
+	return oTable;
+
+}
+
+
+
+function f_PublicCreateDropList()
+
+{
+
+	var oTable = window.document.createElement("TABLE");
+
+	oTable.cellSpacing = 1;
+
+	oTable.cellPadding = 0;
+
+	oTable.border = 0;
+
+	oTable.bgColor="#FFFFFF";
+
+	oTable.style.cssText = "font-size:9pt;cursor:default;border:1px solid #666666;";
+
+	oTable.attachEvent("onselectstart", fnCancel);
+
+	return oTable;
+
+}
+
+
+
+function f_PublicCreateDropListData(aNodes,redata)
+
+{
+
+	if(!redata)
+
+		var re=new RegExp("^");
+
+	else
+
+		var re=new RegExp("^"+redata,"i");
+
+	var otd = null;
+
+	var No=DropList.rows.length;
+
+        for(i=0;i<No;i++)DropList.deleteRow();
+
+
+
+	for(var i=0;i<aNodes.length;i++)
+
+	{
+
+		if(re.test(aNodes[i])==true)
+
+		{
+
+			otd = DropList.insertRow().insertCell();
+
+			otd.style.height = "12px";
+
+                        otd.innerHTML = aNodes[i];
+
+                        otd.selectId=i;
+
+                        element.selectCount=i;
+
+			otd.attachEvent("onmouseover",DropListOver);
+
+			otd.attachEvent("onmouseout",DropListOut);
+
+			otd.attachEvent("onclick",DropListClick);
+
+                } 
+
+                else{
+
+                        element.selectedIndex=-1;
+
+   
+
+		}
+
+                
+
+	}
+
+        ////判断是否有新值
+
+        if (redata==""){
+
+           element.selectedIndex=-1;
+
+        }
+
+        else
+
+        {
+
+          for(i=0;i<aNodes.length;i++){
+
+               if (redata==aNodes[i]){
+
+                  element.selectedIndex=i;
+
+                  element.value=aNodes[i];
+
+                  return;
+
+               }
+
+          }
+
+        }
+
+        
+
+
+
+}
+
+
+
+function f_PublicCreatePopup()
+
+{
+
+
+
+	var oSpan = element.document.createElement("span");
+
+	oSpan.style.cssText = "	position:absolute;display:none;cursor:default;z-index:100;";
+
+	//window.document.body.appendChild(oSpan);
+
+	element.parentElement.appendChild(oSpan);
+
+	return oSpan;
+
+}
+
+
+
+function f_CreateNodes(htmlText)
+
+{
+
+	var oSpan = element.document.createElement("span");
+
+	oSpan.innerHTML = htmlText;
+
+	var xNodes = oSpan.childNodes;
+
+	var Nodes = new Array();
+
+	var nNumNodes = (xNodes == null) ? 0 : xNodes.length;
+
+	
+
+	for (var nIndex = 0; nIndex < nNumNodes; nIndex++)
+
+	{
+
+		var node = xNodes[nIndex];
+
+		if (node != null)
+
+			Nodes = Nodes.concat(f_CreateDropListItems(node));
+
+	}
+
+	return Nodes;
+
+}
+
+
+
+function f_CreateDropListItems(oNode)
+
+{
+
+	var rNodes;
+
+	var szTagName = (oNode.tagName == null) ? "" : oNode.tagName.toLowerCase();
+
+	if(szTagName == "option")
+
+	{
+
+		var szText = oNode.innerText;
+
+		rNodes = new Array(szText);
+
+	}
+
+	else
+
+		rNodes = new Array();
+
+	return rNodes;
+
+}
+
+
+
+function fnMouseover()
+
+{
+
+        //无效状态
+
+        if(element.disabled){
+
+                return;
+
+}
+
+	if(ComboBox.ComboBoxFocus) return;
+
+	overstat();
+
+}
+
+
+
+function fnMouseout()
+
+{
+
+	if(ComboBox.ComboBoxFocus) return;
+
+	defaultstat();
+
+}
+
+
+
+function fnMousedown()
+
+{
+
+        //无效状态
+
+        if(element.disabled){
+
+                return;
+
+}
+
+	if(event.srcElement != ComboBoxIpt)
+
+	{
+
+		if(oPopup.style.display == '')
+
+		{
+
+			oPopup.style.display = 'none';
+
+			DropDown.style.color = "#000000";
+
+			return;
+
+		}
+
+
+
+		f_PublicCreateDropListData(aNodes)
+
+		ComboBoxIpt.select();
+
+		DropDown.style.color = "#FFFFFF";
+
+	}
+
+	oPopup.appendChild(DropList);
+
+	oPopup.style.width = (oPopup.offsetWidth < ComboBox.offsetWidth) ? ComboBox.offsetWidth : oPopup.offsetWidth;
+
+	oPopup.style.left = getx(ComboBox);
+
+	oPopup.style.top = gety(ComboBox)+19;
+
+	oPopup.style.display = '';
+
+	oPopup.children[0].width = "100%";
+
+	ComboBox.ComboBoxFocus = true;
+
+}
+
+
+
+function overstat()
+
+{
+
+	ComboBox.bgColor="#0A246A";
+
+	DropDown.bgColor="#B6BDD2";
+
+	DropDown.style.color = "#000000";
+
+}
+
+
+
+function defaultstat()
+
+{
+
+	ComboBox.bgColor="#FFFFF";
+
+	DropDown.bgColor="#DBD8D1";
+
+	DropDown.style.color = "#000000";
+
+}
+
+
+
+function DropListOver()
+
+{
+
+	obj = event.srcElement;
+
+	obj.bgColor='highlight';obj.style.color='#FFFFFF';obj.style.cursor='default';
+
+}
+
+
+
+function DropListOut()
+
+{
+
+	obj = event.srcElement;
+
+	obj.bgColor='#FFFFFF';obj.style.color='#000000';
+
+}
+
+
+
+function DropListClick()
+
+{
+
+	obj = event.srcElement;
+
+	ComboBoxIpt.value = obj.innerText;
+
+        element.selectedIndex=obj.selectId;
+
+        element.value=obj.innerText;//增加显示值
+
+	oPopup.style.display = "none";
+
+	ComboBoxIpt.select();
+
+	DropDown.style.color = '#000000';
+
+}
+
+
+
+function ComboBoxFocus()
+
+{
+
+	if(ComboBox.ComboBoxFocus) return;
+
+	ComboBox.ComboBoxFocus = true;
+
+	overstat();
+
+}
+
+
+
+function ComboBoxBlur()
+
+{
+
+	if(ComboBox.ComboBoxFocus) return;
+
+	defaultstat();
+
+}
+
+
+
+function ComboBoxKeyup()
+
+{
+
+	f_PublicCreateDropListData(aNodes,ComboBoxIpt.value);
+
+	fnMousedown();
+
+	//addOption();
+
+}
+
+
+
+function addOption(){
+
+ if(event.keyCode==13)
+
+ {
+
+	aNodes[aNodes.length] = ComboBoxIpt.value;
+
+ }  
+
+}
+
+
+
+function chkstat()
+
+{
+
+	var oEl = event.srcElement;
+
+	
+
+	while( null != oEl && oEl != ComboBox)
+
+	{
+
+		oEl = oEl.parentElement;
+
+	}
+
+
+
+	if(oEl == null)
+
+	{
+
+		defaultstat();
+
+		ComboBox.ComboBoxFocus = false;
+
+		oPopup.style.display = "none";
+
+	}
+
+}
+
+
+
+function fnCancel()
+
+{
+
+	return false;
+
+}
+
+
+
+function getx(e)
+
+{
+
+	var l=e.offsetLeft;
+
+	while(e=e.offsetParent){
+
+		l+=e.offsetLeft;
+
+	}
+
+	return l;
+
+}
+
+
+
+function gety(e)
+
+{
+
+	var t=e.offsetTop;
+
+	while(e=e.offsetParent){
+
+		t+=e.offsetTop;
+
+	}
+
+	return t;
+
+}
+
+
+
+function hideElement(elmID){
+
+	for (i = 0; i < document.all.tags(elmID).length; i++){
+
+		obj = document.all.tags(elmID)[i];
+
+		if (! obj || ! obj.offsetParent)
+
+			continue;
+
+
+
+		objLeft   = obj.offsetLeft;
+
+		objTop    = obj.offsetTop;
+
+		objParent = obj.offsetParent;
+
+		while (objParent.tagName.toUpperCase() != "BODY")
+
+		{
+
+			objLeft  += objParent.offsetLeft;
+
+			objTop   += objParent.offsetTop;
+
+			objParent = objParent.offsetParent;
+
+		}
+
+
+
+		if(mnuX > (objLeft + obj.offsetWidth) || objLeft > (mnuX + activeObj.offsetWidth))
+
+			;
+
+		else if(objTop > (mnuY + activeObj.offsetHeight))
+
+			;
+
+		else
+
+			obj.style.visibility = "hidden";
+
+	}
+
+}
+
+
+
+function showElement(elmID){
+
+	for (i = 0; i < document.all.tags(elmID).length; i++){
+
+		obj = document.all.tags(elmID)[i];
+
+		if (! obj || ! obj.offsetParent)
+
+			continue;
+
+		obj.style.visibility = "";
+
+	}
+
+}
+
+
+
+
+
+function MouseMove(){
+
+	if(activeObj == null)
+
+		return;
+
+	var top  = parseInt(activeObj.style.top);
+
+	var left = parseInt(activeObj.style.left);
+
+	var wi   = activeObj.offsetWidth;
+
+	var he   = activeObj.offsetHeight;
+
+	var x    = event.clientX;
+
+	var y    = event.clientY + document.body.scrollTop;
+
+	var x1 = left + wi;
+
+	var y1 = top + he;
+
+	var y2 = top - 24;
+
+
+
+	if(x>x1||x<left||y>y1||y<y2){
+
+		HideMenu(activeObj);
+
+		showElement("SELECT");
+
+	}
+
+}
+
+
+
+document.onmousemove = MouseMove;
+
+
+
+</SCRIPT>

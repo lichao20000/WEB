@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="pmee" extends="linkage_security" namespace="/pmee">
+		 <action name="DevPmeeConfig" class="DevPmeeConfigAction">
+			<result name="success">/pmee/ConfigPmee.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action> 
+	</package>
+</struts>

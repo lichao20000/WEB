@@ -1,0 +1,363 @@
+html, body, div, p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, button, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+body {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    color: #595959;
+    background: #F0F0F0;
+}
+
+table {
+    width: 100%;
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none
+}
+
+a:visited {
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: none
+}
+
+:focus {
+    outline: 0
+}
+
+ol, ul {
+    list-style: none
+}
+
+.box {
+    width: 100%;
+    position: relative;
+}
+
+.nav {
+    width: 150px;
+    position: fixed;
+    top: 90px;
+    left: 0;
+}
+
+.nav ul {
+    float: right;
+    margin-right: 5px;
+}
+
+.nav ul li {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    width: 120px;
+    padding-left: 5px;
+}
+
+.nav ul li a {
+    color: #595959;
+}
+
+.nav ul li a.selected {
+    color: #fff;
+}
+
+/*.timeline-head::after, .timeline-dot::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: 7px;
+    height: 30px;
+    width: 1px;
+    background-color: #fff;
+}*/
+
+.timeline-head {
+    background: url("../images/time-head.png") no-repeat 105px 20px;
+}
+
+.timeline-dot {
+    background: url("../images/dot-bg.png") no-repeat;
+}
+
+.timeline-end {
+    background: url("../images/time-head.png") no-repeat 105px 5px;
+}
+
+.nav ul li.selected {
+    background: url("../images/bg-selected.png") no-repeat ;
+
+}
+
+
+.nav ul li a.selected {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.content {
+    margin-left: 150px;
+}
+
+.title {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.detail {
+    color: #595959;
+    font-size: 12px;
+}
+
+.detail table {
+    border: 1px #ECEFF1 solid;
+
+}
+
+.detail table thead td {
+    text-align: center;
+    background-color: #F3F5F7;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.detail table tr {
+    height: 50px;
+    background-color: #FFFFFF;
+}
+
+.detail table tr td {
+    padding-left: 10px;
+
+}
+
+.state {
+    color: #FF0000;
+}
+
+.btn {
+    width: 145px;
+    height: 35px;
+    background-color: #F9F9F9;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.btn-get {
+    width: 90px;
+    height: 35px;
+    background-color: #158BD7;
+    color: #FFFFFF;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#list table {
+    border: none;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+}
+
+#list table tr {
+    height: 30px;
+}
+
+#list table tr.oddRow {
+    background-color: #F9F9F9;
+}
+
+.fold {
+    color: #158BD7;
+    cursor: pointer;
+}
+
+.toolbar {
+    text-align: center;
+}
+
+.form-btn {
+    height: 60px;
+    width: 430px;
+    background-color: #F9F9F9;
+    margin: 50px 0;
+}
+
+/*用户查询&组网*/
+.ml100 {
+    margin-left: 100px;
+}
+
+.queryType li {
+    float: left;
+    width: 80px;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 50px;
+    background-color: #ebe9e9;
+    font-size: 14px;
+    text-align: center;
+    color: #8e8e8e;
+    cursor: pointer;
+}
+
+.queryType li:hover {
+    background-color: #168bd8;
+    color: #fff;
+}
+
+.queryType .active {
+    background-color: #168bd8;
+    color: #fff;
+}
+
+.head {
+    margin: 30px auto 0;
+    width: 124px;
+    height: 98px;
+    background: url("../images/guangqian.png") no-repeat center;
+}
+
+.v-line {
+    width: 1px;
+    height: 100px;
+    background-color: #168bd8;
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+}
+
+.ftth {
+    margin: 0 auto;
+    width: 122px;
+    height: 108px;
+    background: url("../images/ftth.png") no-repeat center;
+    position: relative;
+}
+
+.info {
+    width: 355px;
+    height: 252px;
+    position: absolute;
+    left: 132px;
+    top: -75px;
+    background: url("../images/info-bg.png") no-repeat;
+}
+
+.info table {
+    position: absolute;
+    left: 25px;
+    top: 10px;
+    width: 325px;
+    height: 232px;
+    font-size: 14px;
+    border: none;
+ }
+
+.info table tr {
+    height: 30px;
+    background-color: #f3f6f8;
+    border: none;
+}
+
+.info table tr td {
+    color: #168bd8;
+}
+
+.list {
+    width: 1125px;
+    height: 450px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin: 0 auto;
+}
+
+#row {
+    margin: 0 auto;
+}
+
+.shebei {
+    width: 225px;
+    float: left;
+    border-top: 1px #168bd8 solid;
+    position: relative;
+}
+
+.shebei .img {
+    text-align: center;
+}
+
+.start, .end, .only {
+    border-top: none;
+
+}
+
+.start {
+    background: url("../images/h-line.png") no-repeat top right;
+}
+
+.end {
+    background: url("../images/h-line.png") no-repeat top left;
+}
+
+.item {
+    width: 166px;
+    height: 189px;
+    background: url("../images/item-bg.png") no-repeat;
+    text-align: left;
+    padding: 10px 15px 10px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.item p {
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+p.test:hover
+{
+			display: block; 
+            height: 80px; 
+            overflow: auto; 
+            white-space: normal;
+}
+.item p span {
+    color: #168bd8;
+    margin-left: 10px;
+}
+
+.item p a {
+    color: #168bd8;
+}
+
+.item p a:hover {
+    color: #ff860a;
+}
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.user {
+    margin: 0 20px;
+}
+
+.user table tr td:hover {
+    color: #168bd8;
+}

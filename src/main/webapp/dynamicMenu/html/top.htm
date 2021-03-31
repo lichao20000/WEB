@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>LITMS---e家终端综合管理系统</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(../../images/title_back.jpg);
+}
+-->
+</style>
+<link href="../liulu.css" rel="stylesheet" type="text/css">
+<link href="../css_ico.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+function GoLeft(v) {
+	var page = v;
+	parent.leftFrame.location.href=page;
+}
+
+function forwardPage(page){
+	top.window.location.href = page;
+}
+
+function showURL(){
+		window.top.frames[2].document.all('viewPage').src="../../webtopo/main.jsp?type=1"		
+}
+
+function hide()
+{
+	if(isIE)
+	{
+		var fm = window.top.document.getElementById('frame');
+		fm.cols = "1,*";
+		window.top.frames[2].document.getElementById('showImg').style.display='inline';
+	}	
+}
+
+var isNC6 = (document.getElementById && !document.all)?true:false;
+var isIE = (document.all)?true:false;
+
+function resize()
+{
+	var obj = document.getElementById("treeView");
+	if(isNC6) obj.height=window.innerHeight-20;
+}
+
+
+//added by yanhj 2007-5-15:退出
+function closeWin() {	
+	window.top.close();
+}
+//end 2007-5-15
+
+</script>
+
+</head>
+
+<body >
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="54"><img src="../../images/title.jpg" width="1002" height="54" border="0" usemap="#Map">
+      <map name="Map">
+        <area shape="rect" coords="692,17,751,35" href="javascript:void(0);forwardPage('../../index.jsp');">
+        <area shape="rect" coords="760,17,837,34" href="javascript:void(0);forwardPage('../../login.jsp');">
+		<!-- modified by yanhj 2007-5-15 -->
+        <area shape="rect" coords="846,17,905,34" href="javascript:closeWin();">
+		<!-- end 2007-5-15 -->
+        <area shape="rect" coords="913,16,972,33" href="javascript:void(0);window.showModalDialog('../../help.jsp',window,'dialogHeight:400px;dialogWidth:500px');">
+    </map></td>
+  </tr>
+ </table>
+</body>
+</html>

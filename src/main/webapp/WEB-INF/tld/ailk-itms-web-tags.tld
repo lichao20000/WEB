@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+	<description><![CDATA["To make it easier to access dynamic data;
+                        the Apache Struts framework includes a library of custom tags.
+                        The tags interact with the framework's validation and internationalization features;
+                        to ensure that input is correct and output is localized.
+                        The Struts Tags can be used with JSP FreeMarker or Velocity."]]></description>
+	<display-name>ITMS Tags</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>ms</short-name>
+	<uri>/ailk-itms-web-tags</uri>
+	<tag>
+		<description><![CDATA[SuperAuth Tag]]></description>
+		<name>hasAuth</name>
+		<tag-class>com.linkage.litms.common.tld.ui.SuperAuthTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description><![CDATA[Expression to determine if body of tag is to be displayed with superTag]]></description>
+			<name>authCode</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<dynamic-attributes>false</dynamic-attributes>
+	</tag>
+	<tag>
+		<description><![CDATA[Area Tag]]></description>
+		<name>inArea</name>
+		<tag-class>com.linkage.litms.common.tld.ui.AreaTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description><![CDATA[区域简码，多个简码之间以英文逗号分隔]]></description>
+			<name>areaCode</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[需要判断当前项目所属区域不在areaCode之中，设置为true，默认false]]></description>
+			<name>notInMode</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<dynamic-attributes>false</dynamic-attributes>
+	</tag>
+	<tag>
+		<description><![CDATA[create simple page tag. only support previous and next page]]></description>
+		<name>simplePages</name>
+		<tag-class>com.linkage.litms.common.tld.ui.SimplePageTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[can chang page size? config true or fasle ,default true]]></description>
+			<name>selectPageSize</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

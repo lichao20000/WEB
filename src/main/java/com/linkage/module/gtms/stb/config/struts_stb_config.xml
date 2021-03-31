@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gtms_stb_config"
+		extends="jfreechart-default,linkage_security,linkage-pdf-default"
+		namespace="/gtms/stb/config">
+		<action name="baseConfig" class="BaseConfigACT">
+			<result name="base">/gtms/stb/config/baseConfig.jsp</result>
+			<result name="cmpstVideoAndAspRatio">/gtms/stb/config/cmpstVideoAndAspRatioCfg.jsp
+			</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="streamTool" class="StreamToolACT">
+			<result name="showStream">/gtms/stb/config/streamContent.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="bootAdvertiseConfig" class="BootAdvertiseConfigACT">
+			<result name="bootAdvertiseResult">/gtms/stb/config/bootAdvertiseResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="paraModeValue" class="GetParaModeValueACT">
+			<result name="oneValue">/gtms/stb/config/getParaModelResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="batchCustomNodeConfig" class="BatchCustomNodeConfigACT">
+			<result name="initBatchConfigNode">/gtms/stb/config/batchCustomizeNodeConfig.jsp</result>
+			<result name="initBatchConfigNode4XJ">/gtms/stb/config/batchCustomizeNodeConfig4XJ.jsp</result>
+			<result name="initBatchConfigNode4XJ_Ipoe">/gtms/stb/config/batchCustomizeNodeConfig4XJ_Ipoe.jsp</result>
+			<result name="initForEdition">/gtms/stb/config/AddEditor.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchConfigTemplate.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+			<result name="initBatchCfgByITV">/gtms/stb/config/batchConfigByITVZero.jsp</result>
+			<result name="result">/gtms/stb/config/batchConfigResultByITVZero.jsp</result>
+		</action>
+	</package>
+</struts>

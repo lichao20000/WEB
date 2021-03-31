@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="ConfTaskViewDao" class="dao.confTaskView.ConfTaskViewDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ConfTaskViewAction" class="action.confTaskView.ConfTaskViewAction" scope="prototype">
+		<property name="confTaskViewDao">
+			<ref local="ConfTaskViewDao" />
+		</property>
+	</bean>
+	<bean id="ServStrategyDao" class="dao.confTaskView.ServStrategyDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="StrategyDao" class="com.linkage.module.gwms.dao.gw.StrategyDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ServStrategyAction" class="action.confTaskView.ServStrategyAction" scope="prototype">
+		<property name="servStrategyDao">
+			<ref local="ServStrategyDao" />
+		</property>
+		<property name="strategyDao">
+			<ref local="StrategyDao" />
+		</property>
+	</bean>
+	<bean id="ManageWanConnAction" class="action.confTaskView.ManageWanConnAction">
+	</bean>
+	<bean id="ManageWanConnEditAction" class="action.confTaskView.ManageWanConnEditAction">
+	</bean>
+	<bean id="ManageWlanAction" class="action.confTaskView.ManageWlanAction">
+	</bean>
+	<!-- 手工绑定之后，业务下发配置 -->
+	<bean id="StrategyConfigDao" class="dao.confTaskView.StrategyConfigDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="StrategyConfigBio" class="bio.confTaskView.StrategyConfigBio" scope="prototype">
+		<property name="strategyConfigDao">
+			<ref local="StrategyConfigDao" />
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+	<!-- 20190307 zhangyu JXDX-REQ-ITMS-20190227-WWF-001(ITMS+家庭网关页面匹配终端百兆千兆信息需求)-批注 -->
+	<bean id="GBBroadBandMatchACT" 
+		class="com.linkage.module.gtms.report.action.GBBroadBandMatchACT" scope="prototype">
+		<property name="bio">
+			<ref bean="GBBroadBandMatchBIO" />
+		</property>
+	</bean>
+	<bean id="GBBroadBandMatchBIO" 
+		class="com.linkage.module.gtms.report.serv.GBBroadBandMatchBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="GBBroadBandMatchDAO" />
+		</property>
+	</bean>
+	<bean id="GBBroadBandMatchDAO" 
+		class="com.linkage.module.gtms.report.dao.GBBroadBandMatchDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- end -->
+	
+
+	<bean id="gtms_report_ftthUserBindAction" 
+		class="com.linkage.module.gtms.report.action.FtthUserBindActionImp" scope="prototype">
+		<property name="bio">
+			<ref bean="FtthUserBindServImp" />
+		</property>
+	</bean>
+	<bean id="FtthUserBindServImp" 
+		class="com.linkage.module.gtms.report.serv.FtthUserBindServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="FtthUserBindDaoImp" />
+		</property>
+	</bean>
+	<bean id="FtthUserBindDaoImp" 
+		class="com.linkage.module.gtms.report.dao.FtthUserBindDaoImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BusinessOpenCountActionImpl"
+		  class="com.linkage.module.gtms.report.action.BusinessOpenCountActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="BusinessOpenCountServImpl"/>
+		</property>  
+    </bean>
+    <bean id="BusinessOpenCountServImpl" 
+    	class="com.linkage.module.gtms.report.serv.BusinessOpenCountServImpl" scope="prototype">
+    	<property name="dao">
+    		<ref bean="BusinessOpenCountDaoImpl"/>
+    	</property>	
+    </bean>
+    <bean id="BusinessOpenCountDaoImpl"
+    	class="com.linkage.module.gtms.report.dao.BusinessOpenCountDaoImpl" scope="prototype">
+    	<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+    </bean>
+     <bean id="FailReasonCountActionImpl"
+    	class="com.linkage.module.gtms.report.action.FailReasonCountActionImpl" scope="prototype">
+    	<property name="bio">
+			<ref bean="FailReasonCountServImpl" />
+		</property>
+    </bean>
+    <bean id="FailReasonCountServImpl"
+    	class="com.linkage.module.gtms.report.serv.FailReasonCountServImpl" scope="prototype">
+    	<property name="dao">
+			<ref bean="FailReasonCountDaoImpl" />
+		</property>
+    </bean>
+    <bean id="FailReasonCountDaoImpl"
+    	class="com.linkage.module.gtms.report.dao.FailReasonCountDaoImpl" scope="prototype">
+    	<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+    </bean>
+    
+    <bean id="ConfigRateReportActionImpl"
+    	class="com.linkage.module.gtms.report.action.ConfigRateReportActionImpl" scope="prototype">
+    	<property name="configRateReportBio">
+			<ref bean="ConfigRateReportServImpl" />
+		</property>
+    </bean>
+    <bean id="ConfigRateReportServImpl"
+    	class="com.linkage.module.gtms.report.serv.ConfigRateReportServImpl" scope="prototype">
+    	<property name="configRateReportDao">
+			<ref bean="ConfigRateReportDaoImpl" />
+		</property>
+    </bean>
+    <bean id="ConfigRateReportDaoImpl"
+    	class="com.linkage.module.gtms.report.dao.ConfigRateReportDaoImpl" scope="prototype">
+    	<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+    </bean>
+    
+    
+    <bean id="configFailInfoDao"
+    	class="com.linkage.module.gtms.report.dao.ConfigFailInfoDaoImpl" scope="prototype">
+    	<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+    </bean>
+    
+    <bean id="configFailInfoSer"
+    	class="com.linkage.module.gtms.report.serv.ConfigFailInfoSerImpl" scope="prototype">
+    	<property name="configFailInfoDao">
+    		<ref bean="configFailInfoDao"/>
+    	</property>
+    </bean>
+    
+    <bean id="ConfigFailInfoActionImpl"
+    	class="com.linkage.module.gtms.report.action.ConfigFailInfoActionImpl"  scope="prototype">
+    	<property name="configFailInfoSer">
+    		<ref bean="configFailInfoSer"/>
+    	</property>
+    </bean>
+     
+     <bean id="StatisticsNXACT"
+    	class="com.linkage.module.gtms.report.action.StatisticsNXACT" scope="prototype">
+    	<property name="bio">
+			<ref bean="StatisticsNXBIO" />
+		</property>
+    </bean>
+    <bean id="StatisticsNXBIO"
+    	class="com.linkage.module.gtms.report.serv.StatisticsNXBIO" scope="prototype">
+    	<property name="dao">
+			<ref bean="StatisticsNXDAO" />
+		</property>
+    </bean>
+    <bean id="StatisticsNXDAO"
+    	class="com.linkage.module.gtms.report.dao.StatisticsNXDAO" scope="prototype">
+    	<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+    </bean>
+ 
+    
+</beans>

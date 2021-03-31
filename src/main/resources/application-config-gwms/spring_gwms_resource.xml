@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- -->
+	<bean id="DevDAO" class="com.linkage.module.gwms.resource.dao.DevDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<!-- 局向和VOIP服务器地址对应关系 -->
+	<bean id="OfficeVoipBIO" class="com.linkage.module.gwms.resource.bio.OfficeVoipBIO"
+		scope="prototype">
+		<property name="cityOfficeZoneDao">
+			<ref bean="CityOfficeZoneDAO" />
+		</property>
+	</bean>
+	<bean id="OfficeVoipACT" class="com.linkage.module.gwms.resource.act.OfficeVoipACT"
+		scope="prototype">
+		<property name="officeVoipBio">
+			<ref bean="OfficeVoipBIO" />
+		</property>
+	</bean>
+
+	<!-- 家庭网关用户添加，编辑 -->
+	<bean id="HgwcustManageBIO" class="com.linkage.module.gwms.resource.bio.HgwcustManageBIO"
+		scope="prototype">
+		<property name="cityOfficeZoneDao">
+			<ref bean="CityOfficeZoneDAO" />
+		</property>
+		<property name="hgwCustDao">
+			<ref bean="HgwCustDAO" />
+		</property>
+	</bean>
+	<bean id="HgwcustManageACT" class="com.linkage.module.gwms.resource.act.HgwcustManageACT"
+		scope="prototype">
+		<property name="hgwcustManageBio">
+			<ref bean="HgwcustManageBIO" />
+		</property>
+	</bean>
+	<!-- 现场安装 -->
+	<bean id="UserInstReleaseBIO" class="com.linkage.module.gwms.resource.bio.UserInstReleaseBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="UserInstReleaseDAO" />
+		</property>
+		<property name="strategyConfigBio">
+			<ref bean="StrategyConfigBio" />
+		</property>
+	</bean>
+	<bean id="ItmsInstACT" class="com.linkage.module.gwms.resource.act.ItmsInstACT"
+		scope="prototype">
+		<property name="userInstReleaseBio">
+			<ref bean="UserInstReleaseBIO" />
+		</property>
+	</bean>
+	<bean id="BbmsInstACT" class="com.linkage.module.gwms.resource.act.BbmsInstACT"
+		scope="prototype">
+		<property name="userInstReleaseBio">
+			<ref bean="UserInstReleaseBIO" />
+		</property>
+	</bean>
+	<bean id="ItmsIpossInstACT" class="com.linkage.module.gwms.resource.act.ItmsIpossInstACT"
+		scope="prototype">
+		<property name="userInstReleaseBio">
+			<ref bean="UserInstReleaseBIO" />
+		</property>
+	</bean>
+	<!-- 设备绑定情况列表查询 -->
+	<bean id="QueryDeviceBIO" class="com.linkage.module.gwms.resource.bio.QueryDeviceBIO"
+		scope="prototype">
+		<property name="deviceDao">
+			<ref bean="DeviceDAO" />
+		</property>
+	</bean>
+	<bean id="QueryDeviceACT" class="com.linkage.module.gwms.resource.act.QueryDeviceACT"
+		scope="prototype">
+		<property name="queryDeviceBio">
+			<ref bean="QueryDeviceBIO" />
+		</property>
+	</bean>
+	<!-- IPTV考核标准VLAN管理 -->
+	<bean id="IptvVlanManageDAO" class="com.linkage.module.gwms.resource.dao.IptvVlanManageDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="IptvVlanManageBIO" class="com.linkage.module.gwms.resource.bio.IptvVlanManageBIO"
+		scope="prototype">
+		<property name="iptvVlanManageDao">
+			<ref bean="IptvVlanManageDAO" />
+		</property>
+	</bean>
+	<bean id="IptvVlanManageACT" class="com.linkage.module.gwms.resource.act.IptvVlanManageACT"
+		scope="prototype">
+		<property name="iptvVlanManageBio">
+			<ref bean="IptvVlanManageBIO" />
+		</property>
+	</bean>
+	<!-- 设备刷新删除 -->
+	<bean id="RefDelDevDAO" class="com.linkage.module.gwms.resource.dao.RefDelDevDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="RefDelDevBIO" class="com.linkage.module.gwms.resource.bio.RefDelDevBIO"
+		scope="prototype">
+		<property name="refDelDevDao">
+			<ref bean="RefDelDevDAO" />
+		</property>
+		<property name="midWareBIO">
+			<ref bean="MidWareBIO" />
+		</property>
+	</bean>
+	<bean id="RefDelDevACT" class="com.linkage.module.gwms.resource.act.RefDelDevACT"
+		scope="prototype">
+		<property name="refDelDevBio">
+			<ref bean="RefDelDevBIO" />
+		</property>
+	</bean>
+	<!-- 全网设备查询 -->
+	<bean id="UpdateDevCityByIPDAO"
+		class="com.linkage.module.gwms.resource.dao.UpdateDevCityByIPDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="UpdateDevCityByIPBIO"
+		class="com.linkage.module.gwms.resource.bio.UpdateDevCityByIPBIO"
+		scope="prototype">
+		<property name="updateDevCityByIPDao">
+			<ref bean="UpdateDevCityByIPDAO" />
+		</property>
+	</bean>
+	<bean id="UpdateDevCityByIPACT"
+		class="com.linkage.module.gwms.resource.act.UpdateDevCityByIPACT"
+		scope="prototype">
+		<property name="updateDevCityByIPBio">
+			<ref bean="UpdateDevCityByIPBIO" />
+		</property>
+	</bean>
+	<!-- 软件升级 -->
+	<bean id="SoftwareDAO" class="com.linkage.module.gwms.resource.dao.SoftwareDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="SoftwareBIO" class="com.linkage.module.gwms.resource.bio.SoftwareBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SoftwareDAO" />
+		</property>
+	</bean>
+	<bean id="SoftwareACT" class="com.linkage.module.gwms.resource.act.SoftwareACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SoftwareBIO" />
+		</property>
+		<property name="gwDeviceQueryBio">
+			<ref bean="GwDeviceQueryBIO" />
+		</property>
+	</bean>
+
+
+	<bean id="BatchHttpTestDAO" class="com.linkage.module.gwms.resource.dao.BatchHttpTestDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchHttpTestBIO" class="com.linkage.module.gwms.resource.bio.BatchHttpTestBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchHttpTestDAO" />
+		</property>
+	</bean>
+	<bean id="BatchHttpTestACT" class="com.linkage.module.gwms.resource.act.BatchHttpTestACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchHttpTestBIO" />
+		</property>
+		<property name="gwDeviceQueryBio">
+			<ref bean="GwDeviceQueryBIO" />
+		</property>
+	</bean>
+	
+	<bean id="BatchHttpTestManaDAO" class="com.linkage.module.gwms.resource.dao.BatchHttpTestManaDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchHttpTestManaBIO" class="com.linkage.module.gwms.resource.bio.BatchHttpTestManaBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchHttpTestManaDAO" />
+		</property>
+	</bean>
+	<bean id="BatchHttpTestManaACT" class="com.linkage.module.gwms.resource.act.BatchHttpTestManaACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchHttpTestManaBIO" />
+		</property>
+	</bean>
+	
+	<!-- 测速黑名单相关类配置 -->
+	<bean id="BatchHttpTestBlackListDAO" class="com.linkage.module.gwms.resource.dao.BatchHttpTestBlackListDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchHttpTestBlackListBIO" class="com.linkage.module.gwms.resource.bio.BatchHttpTestBlackListBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchHttpTestBlackListDAO" />
+		</property>
+	</bean>	
+	<bean id="BatchHttpTestBlackListACT" class="com.linkage.module.gwms.resource.act.BatchHttpTestBlackListACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchHttpTestBlackListBIO" />
+		</property>
+	</bean>
+	<bean id="BatchHttpTestBlackListManaDAO" class="com.linkage.module.gwms.resource.dao.BatchHttpTestBlackListManaDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchHttpTestBlackListManaBIO" class="com.linkage.module.gwms.resource.bio.BatchHttpTestBlackListManaBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchHttpTestBlackListManaDAO" />
+		</property>
+	</bean>	
+	<bean id="BatchHttpTestBlackListManaACT" class="com.linkage.module.gwms.resource.act.BatchHttpTestBlackListManaACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchHttpTestBlackListManaBIO" />
+		</property>
+	</bean>
+	
+
+	<bean id="SoftwareNewACT" class="com.linkage.module.gwms.resource.act.SoftwareNewACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SoftwareBIO" />
+		</property>
+		<property name="gwDeviceQueryBio">
+			<ref bean="GwDeviceQueryBIO" />
+		</property>
+		<property name="vubio">
+			<ref bean="VersionUpgradeBIO" />
+		</property>
+	</bean>
+	<bean id="VersionUpgradeBIO" class="com.linkage.module.gwms.resource.bio.VersionUpgradeBIO">
+		<property name="dao" ref="VersionUpgradeDAO"></property>
+	</bean>
+	<bean id="VersionUpgradeDAO" class="com.linkage.module.gwms.resource.dao.VersionUpgradeDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+
+
+
+	<!-- 批量重启 -->
+	<bean id="BatchSoftRestartDAO"
+		class="com.linkage.module.gwms.resource.dao.BatchSoftRestartDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchSoftRestartBIO"
+		class="com.linkage.module.gwms.resource.bio.BatchSoftRestartBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchSoftRestartDAO" />
+		</property>
+	</bean>
+	<bean id="BatchSoftRestartACT"
+		class="com.linkage.module.gwms.resource.act.BatchSoftRestartAct"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchSoftRestartBIO" />
+		</property>
+		<property name="gwDeviceQueryBio">
+			<ref bean="GwDeviceQueryBIO" />
+		</property>
+	</bean>
+
+	<!-- 批量采集 -->
+	<bean id="BatchConfigNodeDAO" class="com.linkage.module.gwms.resource.dao.BatchConfigNodeDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchConfigNodeBIO" class="com.linkage.module.gwms.resource.bio.BatchConfigNodeBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchConfigNodeDAO" />
+		</property>
+	</bean>
+	<bean id="BatchConfigNodeACT" class="com.linkage.module.gwms.resource.act.BatchConfigNodeAct"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchConfigNodeBIO" />
+		</property>
+		<property name="gwDeviceQueryBio">
+			<ref bean="GwDeviceQueryBIO" />
+		</property>
+	</bean>
+	<bean id="NodeFileUploadAction"
+		class="com.linkage.module.gwms.resource.act.NodeFileUploadAction"
+		scope="prototype">
+	</bean>
+	<bean id="BindLogViewDAO" class="com.linkage.module.gwms.resource.dao.BindLogViewDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="BindLogViewBIO" class="com.linkage.module.gwms.resource.bio.BindLogViewBIO"
+		scope="prototype">
+		<property name="bindLogViewDAO">
+			<ref bean="BindLogViewDAO" />
+		</property>
+	</bean>
+
+	<bean id="BindLogViewACT" class="com.linkage.module.gwms.resource.act.BindLogViewACT"
+		scope="prototype">
+		<property name="bindLogViewBIO">
+			<ref bean="BindLogViewBIO" />
+		</property>
+	</bean>
+
+
+	<bean id="BindLogCountDAO" class="com.linkage.module.gwms.resource.dao.BindLogCountDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BindLogCountBIO" class="com.linkage.module.gwms.resource.bio.BindLogCountBIO"
+		scope="prototype">
+		<property name="bindLogCountDAO">
+			<ref bean="BindLogCountDAO" />
+		</property>
+	</bean>
+	<bean id="BindLogCountACT" class="com.linkage.module.gwms.resource.act.BindLogCountACT"
+		scope="prototype">
+		<property name="bindLogCountBIO">
+			<ref bean="BindLogCountBIO" />
+		</property>
+	</bean>
+
+	<!-- 导入loid数图配置 -->
+	<bean id="ImportLoidDAO" class="com.linkage.module.gwms.resource.dao.ImportLoidDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ImportLoidBIO" class="com.linkage.module.gwms.resource.bio.ImportLoidBIO"
+		scope="prototype">
+		<property name="importLoidDAO">
+			<ref bean="ImportLoidDAO" />
+		</property>
+	</bean>
+	<bean id="ImportLoidACT" class="com.linkage.module.gwms.resource.act.ImportLoidACT"
+		scope="prototype">
+		<property name="importLoidBIO">
+			<ref bean="ImportLoidBIO" />
+		</property>
+	</bean>
+	<!-- 解析excel发送工单 -->
+	<bean id="AnalyticSimulateSheetDAO"
+		class="com.linkage.module.gwms.resource.dao.AnalyticSimulateSheetDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="AnalyticSimulateSheetBIO"
+		class="com.linkage.module.gwms.resource.bio.AnalyticSimulateSheetBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="AnalyticSimulateSheetDAO" />
+		</property>
+	</bean>
+	<bean id="AnalyticSimulateSheetACT"
+		class="com.linkage.module.gwms.resource.act.AnalyticSimulateSheetACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="AnalyticSimulateSheetBIO" />
+		</property>
+	</bean>
+
+
+	<bean id="CountDeviceDAO" class="com.linkage.module.gwms.resource.dao.CountDeviceDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="CountDeviceBIO" class="com.linkage.module.gwms.resource.bio.CountDeviceBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="CountDeviceDAO" />
+		</property>
+	</bean>
+	<bean id="CountDeviceACT" class="com.linkage.module.gwms.resource.act.CountDeviceACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="CountDeviceBIO" />
+		</property>
+	</bean>
+
+	<bean id="BatchMgcDAO" class="com.linkage.module.gwms.resource.dao.BatchMgcDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="BatchMgcBIO" class="com.linkage.module.gwms.resource.bio.BatchMgcBIO"
+		scope="prototype">
+		<property name="batchMgcDAO">
+			<ref local="BatchMgcDAO" />
+		</property>
+	</bean>
+
+	<bean id="BatchMgcACT" class="com.linkage.module.gwms.resource.act.BatchMgcACT"
+		scope="prototype">
+		<property name="batchMgcBIO">
+			<ref local="BatchMgcBIO" />
+		</property>
+	</bean>
+
+	<bean id="FileUpload" class="com.linkage.module.gwms.resource.act.FileUploadAction" scope="prototype">
+	</bean>
+	<bean id="BatchRemoveBindDAO" class="com.linkage.module.gwms.resource.dao.BatchRemoveBindDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="BatchRemoveBindBIO" class="com.linkage.module.gwms.resource.bio.BatchRemoveBindBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="BatchRemoveBindDAO" />
+		</property>
+	</bean>
+
+	<bean id="BatchRemoveBindACT" class="com.linkage.module.gwms.resource.act.BatchRemoveBindACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="BatchRemoveBindBIO" />
+		</property>
+	</bean>
+
+	<bean id="QueryDeviceForQnuDAO" class="com.linkage.module.gwms.resource.dao.QueryDeviceForQnuDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+
+	<bean id="QueryDeviceForQnuBIO" class="com.linkage.module.gwms.resource.bio.QueryDeviceForQnuBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="QueryDeviceForQnuDAO" />
+		</property>
+	</bean>
+
+	<bean id="QueryDeviceForQnuACT" class="com.linkage.module.gwms.resource.act.QueryDeviceForQnuACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="QueryDeviceForQnuBIO" />
+		</property>
+	</bean>
+	
+	 <!-- add by zhuzhengdong 2016-10-13 -->
+	<bean id="BatchSoftUpACT" class="com.linkage.module.gwms.resource.act.BatchSoftwareUpgrade"
+		scope="prototype">
+		<property name="bio">
+			<ref local="BatchSoftUpBIO" />
+		</property>
+	</bean>
+	<bean id="BatchSoftUpBIO" class="com.linkage.module.gwms.resource.bio.BatchSoftwareUpBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="BatchSoftUpDAO" />
+		</property>
+	</bean>
+	<bean id="BatchSoftUpDAO" class="com.linkage.module.gwms.resource.dao.BatchSoftwareUpDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="BatchResetACT" class="com.linkage.module.gwms.resource.act.BatchResetACT" scope="prototype">
+		<property name="bio">
+		<ref bean="BatchResetBIO"/>
+		</property>
+	</bean>
+	<bean id="BatchResetBIO" class="com.linkage.module.gwms.resource.bio.BatchResetBIO" scope="prototype">
+		<property name="dao">
+		<ref bean="BatchResetDAO"/>
+		</property>
+	</bean>
+	<bean id="BatchResetDAO" class="com.linkage.module.gwms.resource.dao.BatchResetDAO" scope="prototype">
+		<property name="dao">
+		<ref bean="mainDataSource"/>
+		</property>
+	</bean>	
+	
+	<!-- 江苏/新疆批量重启WEB -->
+	<bean id="BatchRestartACT" class="com.linkage.module.gwms.resource.act.BatchRestartACT" scope="prototype">
+	<property name="bio">
+	<ref bean="BatchRestartBIO"/>
+	</property>
+	</bean>
+	<bean id="BatchRestartBIO" class="com.linkage.module.gwms.resource.bio.BatchRestartBIO" scope="prototype">
+	<property name="dao">
+	<ref bean="BatchRestartDAO"/>
+	</property>
+	</bean>
+	<bean id="BatchRestartDAO" class="com.linkage.module.gwms.resource.dao.BatchRestartDAO" scope="prototype">
+	<property name="dao">
+	<ref bean="mainDataSource"/>
+	</property>
+	</bean>	
+	
+	<!-- 重庆批量配置管理 -->
+	<bean id="BatchConfigDAO" class="com.linkage.module.gwms.resource.dao.BatchConfigDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchConfigBIO" class="com.linkage.module.gwms.resource.bio.BatchConfigBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchConfigDAO" />
+		</property>
+	</bean>
+	<bean id="BatchConfigACT" class="com.linkage.module.gwms.resource.act.BatchConfigACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchConfigBIO" />
+		</property>
+	</bean>
+	
+	<!-- 批量语音工单下发 -->
+	<bean id="BatchVoipSheetDAO" class="com.linkage.module.gwms.resource.dao.BatchVoipSheetDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BatchVoipSheetBIO"
+		class="com.linkage.module.gwms.resource.bio.BatchVoipSheetBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchVoipSheetDAO" />
+		</property>
+	</bean>
+	<bean id="BatchVoipSheetAction" 
+	    class="com.linkage.module.gwms.resource.act.BatchVoipSheetAction"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchVoipSheetBIO" />
+		</property>
+	</bean>
+	 <!-- 宁夏批量修改组播参数工具-->
+	 <bean id="SetMulticastBatchCountACT" 
+	      class="com.linkage.module.gwms.resource.act.SetMulticastBatchCountACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="SetMulticastBatchCountBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="SetMulticastBatchCountBIO"
+	   		class="com.linkage.module.gwms.resource.bio.SetMulticastBatchCountBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="SetMulticastBatchCountDAO"/>
+			</property>
+	 </bean>
+	 <bean id="SetMulticastBatchCountDAO"
+	 		class="com.linkage.module.gwms.resource.dao.SetMulticastBatchCountDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <!--河北联通批量采集LAN1-->
+	 <bean id="SuperGatherLanTaskACT" 
+	      class="com.linkage.module.gwms.resource.act.SuperGatherLanTaskACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="SuperGatherLanTaskBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="SuperGatherLanTaskBIO"
+	   		class="com.linkage.module.gwms.resource.bio.SuperGatherLanTaskBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="SuperGatherLanTaskDAO"/>
+			</property>
+	 </bean>
+	 <bean id="SuperGatherLanTaskDAO"
+	 		class="com.linkage.module.gwms.resource.dao.SuperGatherLanTaskDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 
+	 <!-- 甘肃批量重启任务管理 -->
+	<bean id="BatchRestartManagerACT"
+		class="com.linkage.module.gwms.resource.act.BatchRestartManagerACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchRestartManagerBIO" />
+		</property>
+	</bean>
+	<bean id="BatchRestartManagerBIO"
+		class="com.linkage.module.gwms.resource.bio.BatchRestartManagerBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchRestartManagerDAO" />
+		</property>
+	</bean>
+	<bean id="BatchRestartManagerDAO"
+		class="com.linkage.module.gwms.resource.dao.BatchRestartManagerDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	 <!-- 家庭网络拓扑 -->
+	<bean id="FamilyNetTopnACT"
+		class="com.linkage.module.gwms.resource.act.FamilyNetTopnACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="FamilyNetTopnBIO" />
+		</property>
+	</bean>
+	<bean id="FamilyNetTopnBIO"
+		class="com.linkage.module.gwms.resource.bio.FamilyNetTopnBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="FamilyNetTopnDAO" />
+		</property>
+	</bean>
+	<bean id="FamilyNetTopnDAO"
+		class="com.linkage.module.gwms.resource.dao.FamilyNetTopnDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="BatchResumeACT"
+		class="com.linkage.module.gwms.resource.act.BatchResumeACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BatchResumeBIO" />
+		</property>
+	</bean>
+	<bean id="BatchResumeBIO"
+		class="com.linkage.module.gwms.resource.bio.BatchResumeBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BatchResumeDAO" />
+		</property>
+	</bean>
+	<bean id="BatchResumeDAO"
+		class="com.linkage.module.gwms.resource.dao.BatchResumeDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="DeviceE8CImportACT"
+		class="com.linkage.module.gwms.resource.act.DeviceE8CImportACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceE8CImportBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceE8CImportBIO"
+		class="com.linkage.module.gwms.resource.bio.DeviceE8CImportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceE8CImportDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceE8CImportDAO"
+		class="com.linkage.module.gwms.resource.dao.DeviceE8CImportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- new add by fanjm 新批量参数下发2020-7-6 -->
+	<bean id="ServTemplateACTStb" class="com.linkage.module.gwms.resource.act.ServTemplateACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ServTemplateBIOStb" />
+		</property>
+	</bean>
+	<bean id="ServTemplateBIOStb" class="com.linkage.module.gwms.resource.bio.ServTemplateBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ServTemplateDAOStb" />
+		</property>
+	</bean>
+	<bean id="ServTemplateDAOStb" class="com.linkage.module.gwms.resource.dao.ServTemplateDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- new add by fanjm 新批量参数下发2020-3-19 -->
+	<bean id="BatchSetTempManaACTStb" class="com.linkage.module.gwms.resource.act.BatchSetTempManaACT"
+		scope="prototype">
+		<property name="bio">
+			<ref local="BatchSetTempManaBIOStb" />
+		</property>
+	</bean>
+	<bean id="BatchSetTempManaBIOStb" class="com.linkage.module.gwms.resource.bio.BatchSetTempManaBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="BatchSetTempManaDAOStb" />
+		</property>
+	</bean>
+	<bean id="BatchSetTempManaDAOStb" class="com.linkage.module.gwms.resource.dao.BatchSetTempManaDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>

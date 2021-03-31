@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="DeviceDiagnosticDAO" class="com.linkage.module.gwms.diagnostics.dao.DeviceDiagnosticDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+		<property name="wireInfoDao">
+			<ref bean="WireInfoDAO"/>
+		</property>
+		<property name="wanConnDao">
+			<ref bean="WanConnDAO"/>
+		</property>
+		<property name="wanConnSessDao">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="lanHostDao">
+			<ref bean="LanHostDAO"/>
+		</property>
+		<property name="hgwCustDao">
+			<ref bean="HgwCustDAO"/>
+		</property>
+		<property name="hgwServUserDao">
+			<ref bean="HgwServUserDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceDiagnosticBIO" class="com.linkage.module.gwms.diagnostics.bio.DeviceDiagnosticBIO" scope="prototype">
+		<property name="diagDao">
+			<ref bean="DeviceDiagnosticDAO"/>
+		</property>
+		<property name="lanEthDao">
+			<ref bean="LanEthDAO"/>
+		</property>
+		<property name="wlanDao">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="healthInfoDao">
+			<ref bean="HealthInfoDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceDiagnosticsACT" class="com.linkage.module.gwms.diagnostics.act.DeviceDiagnosticsACT" scope="prototype">
+		<property name="diagBio">
+			<ref bean="DeviceDiagnosticBIO"/>
+		</property>
+	</bean>
+	<bean id="DeviceInfoDAO" class="com.linkage.module.gwms.diagnostics.dao.DeviceInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+		<property name="wireInfoDao">
+			<ref bean="WireInfoDAO"/>
+		</property>
+		<property name="wanConnDao">
+			<ref bean="WanConnDAO"/>
+		</property>
+		<property name="wanConnSessDao">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="lanHostDao">
+			<ref bean="LanHostDAO"/>
+		</property>
+		<property name="hgwCustDao">
+			<ref bean="HgwCustDAO"/>
+		</property>
+		<property name="hgwServUserDao">
+			<ref bean="HgwServUserDAO"/>
+		</property>
+		<property name="localServParamDAO">
+			<ref bean="LocalServParamDAO"/>
+		</property>
+		<property name="wlanDAO">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="voiceDAO">
+			<ref bean="VoiceServiceProfileDAO"/>
+		</property>
+		<property name="voiceeLineDAO">
+			<ref bean="VoiceServiceProfileLineDAO"/>
+		</property>
+		<property name="tr069DAO">
+			<ref bean="GwTr069DAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceInfoBIO" class="com.linkage.module.gwms.diagnostics.bio.DeviceInfoBIO" scope="prototype">
+		<property name="deviceInfoDAO">
+			<ref bean="DeviceInfoDAO"/>
+		</property>
+		<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="wanDao">
+			<ref bean="WanDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceInfoACT" class="com.linkage.module.gwms.diagnostics.act.DeviceInfoACT" scope="prototype">
+		<property name="deviceInfoBIO">
+			<ref bean="DeviceInfoBIO"/>
+		</property>
+	</bean>
+
+	<!-- AdvanceSearch -->
+	<!-- ALG -->
+	<bean id="AlgBIO" class="com.linkage.module.gwms.diagnostics.bio.AlgBIO" scope="prototype">
+		<property name="devDAO">
+			<ref bean="DevDAO"/>
+		</property>
+		<property name="algDAO">
+			<ref bean="AlgDAO"/>
+		</property>
+		<property name="algCAO">
+			<ref bean="AlgCAO"/>
+		</property>
+	</bean>
+	<bean id="AlgACT" class="com.linkage.module.gwms.diagnostics.act.AlgACT" scope="prototype">
+		<property name="bio">
+			<ref bean="AlgBIO"/>
+		</property>
+	</bean>
+
+	<!-- MWBAN -->
+	<bean id="MwbandBIO" class="com.linkage.module.gwms.diagnostics.bio.MwbandBIO" scope="prototype">
+		<property name="devDAO">
+			<ref bean="DevDAO"/>
+		</property>
+		<property name="mwbandDAO">
+			<ref bean="MwbandDAO"/>
+		</property>
+		<property name="mwbandCAO">
+			<ref bean="MwbandCAO"/>
+		</property>
+	</bean>
+	<bean id="MwbandACT" class="com.linkage.module.gwms.diagnostics.act.MwbandACT" scope="prototype">
+		<property name="bio">
+			<ref bean="MwbandBIO"/>
+		</property>
+	</bean>
+	
+	<!-- UPNP -->
+	<bean id="UpnpBIO" class="com.linkage.module.gwms.diagnostics.bio.UpnpBIO" scope="prototype">
+	</bean>
+	<bean id="UpnpACT" class="com.linkage.module.gwms.diagnostics.act.UpnpACT" scope="prototype">
+		<property name="bio">
+			<ref bean="UpnpBIO"/>
+		</property>
+	</bean>
+	
+	<!-- ONU -->
+	<bean id="OnuBIO" class="com.linkage.module.gwms.diagnostics.bio.OnuBIO" scope="prototype">
+	</bean>
+	<bean id="OnuACT" class="com.linkage.module.gwms.diagnostics.act.OnuACT" scope="prototype">
+		<property name="bio">
+			<ref bean="OnuBIO"/>
+		</property>
+	</bean>
+	
+	<!-- DNS Modify -->
+	<bean id="DnsModifyBIO" class="com.linkage.module.gwms.diagnostics.bio.DnsModifyBIO" scope="prototype">
+		<property name="hgwServUserDao">
+			<ref bean="HgwServUserDAO"/>
+		</property>
+		<property name="healthInfoDao">
+			<ref bean="HealthInfoDAO"/>
+		</property>
+	</bean>
+	<bean id="DnsModifyACT" class="com.linkage.module.gwms.diagnostics.act.DnsModifyACT" scope="prototype">
+		<property name="bio">
+			<ref bean="DnsModifyBIO"/>
+		</property>
+	</bean>
+	
+	<!-- WLAN -->
+	<bean id="WlanBIO" class="com.linkage.module.gwms.diagnostics.bio.WlanBIO" scope="prototype">
+		<property name="wlanDAO">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="wlanCAO">
+			<ref bean="WlanCAO"/>
+		</property>
+	</bean>
+	<bean id="WlanACT" class="com.linkage.module.gwms.diagnostics.act.WlanACT" scope="prototype">
+		<property name="bio">
+			<ref bean="WlanBIO"/>
+		</property>
+	</bean>
+
+	<!-- X_COM_PASSWD -->
+	<bean id="XcompasswdBIO" class="com.linkage.module.gwms.diagnostics.bio.XcompasswdBIO" scope="prototype">
+		<property name="devDAO">
+			<ref bean="DevDAO"/>
+		</property>
+		<property name="xcompasswdDAO">
+			<ref bean="XcompasswdDAO"/>
+		</property>
+		<property name="xcompasswdCAO">
+			<ref bean="XcompasswdCAO"/>
+		</property>
+	</bean>
+	<bean id="XcompasswdACT" class="com.linkage.module.gwms.diagnostics.act.XcompasswdACT" scope="prototype">
+		<property name="bio">
+			<ref bean="XcompasswdBIO"/>
+		</property>
+	</bean>
+	<!-- diagnostics tools -->
+	<bean id="DiagToolsBIO" class="com.linkage.module.gwms.diagnostics.bio.DiagToolsBIO" scope="prototype">
+		<property name="versionFileDao">
+			<ref bean="VersionFileDAO"/>
+		</property>
+		<property name="sessDao">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="acsStreamDao">
+			<ref bean="AcsStreamDAO"/>
+		</property>
+		<property name="pingDao">
+			<ref bean="PingResultDAO"/>
+		</property>
+	</bean>
+	<bean id="DiagToolsACT" class="com.linkage.module.gwms.diagnostics.act.DiagToolsACT" scope="prototype">
+		<property name="diagToolsBio">
+			<ref bean="DiagToolsBIO"/>
+		</property>
+	</bean>
+	
+	<!-- 健康库 -->
+	<bean id="HealthInfoDAO" class="com.linkage.module.gwms.diagnostics.dao.HealthInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+		
+		<property name="hgwServUserDao">
+			<ref bean="HgwServUserDAO"/>
+		</property>
+	</bean>
+	<bean id="HealthInfoCAO" class="com.linkage.module.gwms.diagnostics.cao.HealthInfoCAO" scope="prototype">
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	<bean id="HealthInfoBIO" class="com.linkage.module.gwms.diagnostics.bio.HealthInfoBIO" scope="prototype">
+		<property name="healthInfoDao">
+			<ref bean="HealthInfoDAO"/>
+		</property>
+		<property name="healthInfoCao">
+			<ref bean="HealthInfoCAO"/>
+		</property>
+	</bean>
+	<bean id="HealthInfoACT" class="com.linkage.module.gwms.diagnostics.act.HealthInfoACT" scope="prototype">
+		<property name="healthInfoBio">
+			<ref bean="HealthInfoBIO"/>
+		</property>
+	</bean>
+	<bean id="ExpertManageBIO" class="com.linkage.module.gwms.diagnostics.bio.ExpertManageBIO" scope="prototype">
+		<property name="expertDao">
+			<ref bean="ExpertDAO"/>
+		</property>
+	</bean>
+	<bean id="ExpertManageACT" class="com.linkage.module.gwms.diagnostics.act.ExpertManageACT" scope="prototype">
+		<property name="expertBio">
+			<ref bean="ExpertManageBIO"/>
+		</property>
+	</bean>
+	<bean id="IADDiagACT" class="com.linkage.module.gwms.diagnostics.act.IADDiagACT" scope="prototype">
+	</bean>
+	
+
+	<!-- 宁夏VoIP语音数据采集  begin 为了不影响江苏电信升级 将此注释-->
+	<bean id="VoipDeviceInfoACT" class="com.linkage.module.gwms.diagnostics.act.VoipDeviceInfoACT" scope="prototype">
+		<property name="voipDeviceInfoBIO">
+			<ref bean="VoipDeviceInfoBIO"/>
+		</property>
+	</bean>
+	<bean id="VoipDeviceInfoBIO" class="com.linkage.module.gwms.diagnostics.bio.VoipDeviceInfoBIO" scope="prototype">
+		<property name="voipDeviceInfoDAO">
+			<ref bean="VoipDeviceInfoDAO"/>
+		</property>
+		<property name="wanDAO">
+			<ref bean="WanDAO"/>
+		</property>
+		<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="wanConnDAO">
+			<ref bean="WanConnDAO"/>
+		</property>
+		<property name="wanConnSessDAO">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="localServParamDAO">
+			<ref bean="LocalServParamDAO"/>
+		</property>
+		<property name="voiceServiceDAO">
+			<ref bean="VoiceServiceProfileDAO"/>
+		</property>
+		<property name="voiceServiceLineDAO">
+			<ref bean="VoiceServiceProfileLineDAO"/>
+		</property>
+	</bean>
+	<bean id="VoipDeviceInfoDAO" class="com.linkage.module.gwms.diagnostics.dao.VoipDeviceInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 宁夏VoIP语音数据采集  end -->
+	<bean id="DroopEvaluationDAO" class="com.linkage.module.gwms.diagnostics.dao.DroopEvaluationDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="DroopEvaluationBIO" class="com.linkage.module.gwms.diagnostics.bio.DroopEvaluationBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="DroopEvaluationDAO"/>
+		</property>
+	</bean>
+	<bean id="DroopEvaluationACT" class="com.linkage.module.gwms.diagnostics.act.DroopEvaluationACT" scope="prototype">
+		<property name="bio">
+			<ref bean="DroopEvaluationBIO"/>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

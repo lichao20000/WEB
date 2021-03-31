@@ -1,0 +1,242 @@
+<%@ page contentType="text/html;charset=GBK"%>
+<%@ page import="com.linkage.litms.common.database.*" %>
+<%@ page import="java.util.*" %>
+<jsp:useBean id="UserInstAct" scope="request" class="com.linkage.litms.resource.UserInstAct"/>
+<jsp:useBean id="DeviceAct" scope="request" class="com.linkage.litms.resource.DeviceAct"/>
+<%
+request.setCharacterEncoding("GBK");
+
+String username = request.getParameter("username");
+String dealStaff = request.getParameter("dealstaff");
+String city_id = request.getParameter("city_id");
+String userHostIP = request.getParameter("userhostip");
+
+String device_id = "";
+//----增加属地权限限定  by zhaixf
+String sqlCity = "select city_id,parent_id from tab_city";
+Map map = DataSetBean.getMap(sqlCity);
+//-------
+//sql = "select a.oui,a.device_serialnumber,b.devicetype_id,b.device_id from tab_hgwcustomer a,tab_gw_device b where a.oui=b.oui and a.device_serialnumber=b.device_serialnumber and a.username='" 
+//			+ username + "' and a.user_state = '1'";
+String  sql = "select a.oui,a.device_serialnumber,b.devicetype_id,b.device_id from tab_hgwcustomer a,tab_gw_device b where a.username='" 
+	+ username + "' and a.user_state = '1' and a.device_id=b.device_id ";
+//--------
+String pcityId = (String)map.get(city_id);
+
+
+if (pcityId != null && !pcityId.equals("-1")){
+	sql += " and b.city_id in('"+pcityId+"','"+city_id+"','00') ";
+}
+
+//------------
+Cursor cursor = DataSetBean.getCursor(sql);
+Map fields = cursor.getNext();
+
+if (fields != null){
+	device_id = (String)fields.get("device_id");
+}
+
+String devicetype_id = null;
+String devicemodel = null;
+String softwareversion = null;
+
+//获取设备信息
+Map deviceTypeMap = UserInstAct.getDeviceTypeMap();
+Map venderMap = DeviceAct.getOUIDevMap();
+
+//判断是家庭网关还是企业网关
+String gw_type = UserInstAct.getDeviceType(username);
+%>
+<%@ include file="../head.jsp"%>
+<SCRIPT LANGUAGE="JavaScript" SRC="../Js/edittable.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+//-->
+</SCRIPT>
+
+<link rel="stylesheet" href="../css/listview.css" type="text/css">
+<TABLE border=0 cellspacing=0 cellpadding=0 width="100%">
+<TR><TD HEIGHT=20>&nbsp;</TD></TR>
+<TR><TD>
+	<FORM NAME="frm" METHOD="post" ACTION="ipossUserinstSave.jsp" onsubmit="return CheckForm()">
+		<input type="hidden" name="username" value="<%=username%>">
+		<input type="hidden" name="selDevice" value="<%=device_id%>">
+		<input type="hidden" name="dealStaff" value="<%=dealStaff%>">
+		<input type="hidden" name="city_id" value="<%=city_id%>">
+		<input type="hidden" name="userHostIP" value="<%=userHostIP%>">
+		<input type="hidden" name="gw_type" value="<%=gw_type%>">
+		<input type="hidden" name="strAction" value="save">
+		<TABLE width="95%" border=0 cellspacing=0 cellpadding=0 align="center">
+		<tr>
+			<td>
+			<table width="100%" height="30" border="0" cellspacing="0" cellpadding="0" class="green_gargtd">
+				<tr>
+					<td width="162" align="center" class="title_bigwhite">
+						现场安装
+					</td>
+					<td>
+						<img src="../images/attention_2.gif" width="15" height="12">
+						<font color="#FF0000">只有安装家庭/企业网关设备的用户需要操作此界面，其他用户请勿操作。</font>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr><td bgcolor=#999999>
+		<table width="100%" border=0 cellspacing=1 cellpadding=2 align="center">
+			<tr>
+				<th colspan="5">现场安装设备确认</th>
+			</tr>
+			<TR>
+				<td class=column2 colspan="2">用户宽带帐号：</td>
+				<td class=column2><%=username%></td>
+				<td class=column2>操作人用户帐号：</td>
+				<td class=column2><%=dealStaff%></td>
+			</TR>
+			<tr><td bgcolor="#FFFFFF" colspan="5" height="20"></td></tr>
+			<tr style="display:none" id="alertMsg"><td bgcolor="#FFFFFF" colspan="5"><font color="#FF0000">请输入至少最后5位序列号进行查询</font></td></tr>
+		<%if (fields != null){ 
+			devicetype_id = (String)fields.get("devicetype_id");
+			String[] tmp = (String[])deviceTypeMap.get(devicetype_id);
+			if (tmp != null && tmp.length==2) {
+				devicemodel = tmp[0];
+				softwareversion = tmp[1];			
+			}
+			else{
+				devicemodel = "";
+				softwareversion = "";
+			}
+			
+			String tmpVal = fields.get("device_id") + "#" + fields.get("device_serialnumber");
+			%>
+			<tr><td bgcolor="#FFFFFF" colspan="5"><font color="#FF0000">该用户已绑定了如下设备，如有问题，请联系管理员！</font></td></tr>
+			<TR>
+				<TH nowrap>选择</TH>
+				<TH nowrap>设备厂商</TH>
+				<TH nowrap>型号</TH>
+				<TH nowrap>软件版本</TH>
+				<TH nowrap>设备序列号</TH>
+			</TR>
+			<tr>
+				<td class=column2 width="5%"><input type=radio checked name=chkCheck value="<%=tmpVal%>" disabled></td>
+				<td class=column2 width="25%"><%=venderMap.get(fields.get("oui")) %></td>
+				<td class=column2 width="20%"><%=devicemodel %></td>
+				<td class=column2 width="15%"><%=softwareversion %></td>
+				<td class=column2 width="35%"><%=(String)fields.get("device_serialnumber") %></td>
+			</tr>
+		<%}%>
+			<TR style="display:none" id="serialnumber">
+				<TD colspan="2" class=column2>可以选择的新设备：</TD>
+				<TD colspan="1" class=column2>设备序列号</TD>
+				<TD colspan="2" class=column2>
+					<input type="text" name=device_serialnumber value="" class="bk">
+					<input type="button" name="sort" value="查询" onclick="checkSerialno()">
+				</TD>
+			</TR>
+			<TR style="display:none" id="dispTr">
+				<TD bgcolor=#ffffff colspan="5">
+					<div id="userTable"></div>
+				</TD>
+			</TR>
+			<TR style="display:none">
+				<TD>
+					<IFRAME ID="childFrm" SRC="" STYLE="display:none"></IFRAME>
+				</TD>
+			</TR>
+			<tr style="display:none" id="save_btn">
+				<td  colspan="5" align="right" class=green_foot>
+					<input type="submit" name="submit" value="确认保存">
+				</td>
+			</tr>
+		</table>
+		</td></tr>
+		</TABLE>
+	</FORM>	
+</TD></TR>
+</TABLE>
+<SCRIPT LANGUAGE="JavaScript">
+//查询设备信息
+function getUserinstInfo(){
+    var page="ipossUserinstInfo.jsp?status=All&device_serialnumber="+document.frm.device_serialnumber.value + "&city_id=" + document.frm.city_id.value
+    		+"&gw_type="+document.frm.gw_type.value
+    		+"&refresh="+(new Date()).getTime();
+	document.all("childFrm").src = page;
+	document.all("serialnumber").style.display="";
+	document.frm.selDevice.value = "";
+}
+
+//翻页
+function goPage(offset){
+	var page="ipossUserinstInfo.jsp?status=All&offset="+offset+"&device_serialnumber="+document.frm.device_serialnumber.value + "&city_id=" + document.frm.city_id.value
+			+"&gw_type="+document.frm.gw_type.value
+			+"&refresh="+(new Date()).getTime();
+	document.all("childFrm").src = page;
+	document.all("serialnumber").style.display="";
+	document.frm.selDevice.value = "";
+}
+//详细信息
+function DetailDevice(device_id){
+	var strpage = "DeviceShow.jsp?device_id=" + device_id;
+	window.open(strpage,"","left=20,top=20,width=900,height=650,resizable=yes,scrollbars=yes");
+}
+//提交验证
+function CheckForm(){
+	
+	var obj = document.all("chkCheck");
+	var serialnumber = '';
+	
+	if (obj == null){
+		alert('请先选择一个家庭/企业网关设备再进行保存操作!');
+		return false;
+	}
+	
+	if (typeof(obj.value) != 'undefined'){
+		if (obj.checked){
+			var tmp = obj.value.split('#');
+			document.frm.selDevice.value = tmp[0];
+			serialnumber = tmp[1];
+		}
+	}
+	else{
+		for (var i=0;i<obj.length;i++){
+			if (obj[i].checked){
+				var tmp = obj[i].value.split('#');
+				document.frm.selDevice.value = tmp[0];
+				serialnumber = tmp[1];
+			}
+		}
+	}
+	
+	if (document.frm.selDevice.value == "" ){
+		alert('请先选择一个家庭/企业网关设备再进行保存操作!');
+		return false;
+	}
+	
+	var message = "请确认！用户帐号：<%=username%>，设备序列号："+serialnumber;
+	if (!confirm(message+'！是否继续保存?')){
+		return false;
+	}
+}
+
+//查询设备前验证
+function checkSerialno(){
+	var tmp = document.frm.device_serialnumber.value;
+	if (tmp.length < 5){
+		alert('请输入至少最后5位序列号进行查询!');
+	}
+	else{
+		getUserinstInfo();
+	}
+}
+
+<%if (fields == null){%>
+	document.all("serialnumber").style.display="";
+	document.all("save_btn").style.display = "";
+	document.all("alertMsg").style.display = "";
+	document.frm.selDevice.value = "";
+<%}%>
+
+</SCRIPT>
+
+<%@ include file="../foot.jsp"%>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="config_itms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/itms/config">
+		<action name="preConfigDiag" class="PreConfigDiagACT">
+			<result name="baseInfo">/itms/config/PreConfigDiagBaseInfo.jsp</result>
+			<result name="businessInfo">/itms/config/PreConfigDiagBusinessInfo.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="changeConnectionType" class="ChangeConnectionTypeACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="internetInfos">/itms/config/ChangeConnectionTypeAccountInfo.jsp</result>
+			<result name="servList">/itms/config/getServInfo.jsp</result>
+		</action>
+		
+		<!-- 数图配置模板管理 begin -->
+		<action name="digitMapConfig" class="DigitMapConfigACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="query">/itms/config/digitMapQuery.jsp</result>
+			<result name="queryList">/itms/config/digitMapList.jsp</result>
+			<result name="queryForConfig">/itms/config/digitMapConfig2.jsp</result>
+			<result name="queryForConfigAll">/itms/config/digitMapConfigAll.jsp</result>
+			<result name="updateQuery">/itms/config/digitMapAdd.jsp</result>
+		</action>
+		<!-- 数图配置模板管理 end -->
+		
+		<action name="digitDeviceACT" class="DigitDeviceACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="success">/itms/config/digitDeviceQuery.jsp</result>
+			<result name="list">/itms/config/digitDeviceResult.jsp</result>
+			
+		</action>
+		<!-- NAT -->
+		<action name="NatStatusQueryACT" class="NatStatusQueryACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="success">/itms/config/NatStatusQuery.jsp</result>
+		</action>
+	</package>
+</struts>

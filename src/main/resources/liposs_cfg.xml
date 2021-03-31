@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="gb2312"?>
+<liposs-config>
+	<!-- XSS漏洞处理，过滤敏感词，可以不配敏感词或无该节点 -->
+	<sensitiveWord>alert,insert,delete</sensitiveWord>
+	<!-- 系统名称 -->
+	<ServerName>商务领航定制终端综合管理系统(BBMS)</ServerName>
+	<!-- 版本 -->
+	<Version>2.0</Version>	
+	<!-- 系统类型（1:家庭网关(默认)，2:企业网关，0:综合ITMS） -->
+	<SystemType>0</SystemType>
+	<!-- 系统分布式部署模式-->
+	<ClusterMode>
+	    <!--1：ALL 2：开通子系统  3：报表子系统 -->
+		<mode>1</mode>
+	    <!-- mode为2时，url必填 -->
+		<url>http://202.102.39.141:9090/itms/checkuser.jsp</url>
+		<!-- mode为2时，url必填，为报表系统的module_id -->
+		<reportSysID></reportSysID>
+	</ClusterMode>
+	<!-- 系统角色表名（家庭网关 hgw_item_role，企业网关 egw_item_role，综合ITMS(默认)tab_item_role） -->
+	<Systype>tab_item_role</Systype>
+
+	<!-- 每次调用ACS操作设备前，休眠的时间 (单位：毫秒)-->
+	<sleepTime>3000</sleepTime>
+	
+	<!-- 建档成功后，是否需要下发业务工单(0:不下发    1:下发) -->
+	<doBusiness>1</doBusiness>
+	
+	<!-- 是否启用超级权限(true,false) -->
+	<enableSuperAuth>false</enableSuperAuth>
+	
+	<!--其中1表示下发，0表示不下发，-->
+	<!-- 以下是商务领航配置参数代表意义 -->
+	<!--
+	其中第一位表示【单PVC业务】、
+	第二位表示【用户多终端业务】、
+	第三位表示【IPTV业务】、
+	第四位表示【ITMS2.0业务】 -->
+	<!-- 以下是家庭网关配置参数代表意义 -->
+	<!--
+	其中第一位表示【开户】-->
+	<doBusinessParam>0,0,0,0</doBusinessParam>
+	
+	<!-- 现场安装中是否需要下发业务工单-日志路径 -->
+	<userInst_ForOpen_Path>/export/home/bbms/WEB/</userInst_ForOpen_Path>
+	
+	<!-- 程序安装属地 -->
+	<InstArea>
+		<Name>江苏电信</Name>
+		<ShortName>js_dx</ShortName>
+		<Version>2.0</Version>
+		<PVC>8/46</PVC>
+		<!-- 是否是省中心 -->
+		<IsSZX>true</IsSZX>
+	</InstArea>
+
+	<!--主机信息-->
+	<HostInfo>
+		<!--主机带外的ip地址-->
+		<IP>192.168.228.192</IP>
+		<WebPort>7001</WebPort>
+	</HostInfo>
+
+	<auth>
+		<!--用户认证类型，1程序自己认证，2发送给AAA-->
+		<checktype>1</checktype>
+		<!--帐号过期的用户是否允许继续使用，true:不允许继续使用，false：修改密码后，允许继续使用-->
+		<checkAccountTime>true</checkAccountTime>
+		<!-- 密码有效时间（单位：月） -->
+		<EffectiveDate>24</EffectiveDate>
+	</auth>
+	
+	<!--网关设备管理协议 0: All(所有); 1:TR069; 2: SNMP-->
+	<GwProtocol>1</GwProtocol>
+	
+	<!-- 文件上传方式是否通过WEB中转,1:是;0:否(默认0)(配置1同时需要把struts.properties中的struts.multipart.maxSize=104857600) -->
+	<uploadFileTransitByWEB>0</uploadFileTransitByWEB>
+	
+	<!-- SnmpOpen -->
+	<IpossDBInfo>
+		<IP>192.168.228.192</IP>
+		<Port>4100</Port>
+		<UserName>itmsmanager</UserName>
+		<Password>mypassword123</Password>
+	</IpossDBInfo>
+	
+	<!-- 同步安装人员帐号所用 -->
+	<socket>
+		<gather_id_1>
+			<!-- 设备使能配置 -->
+			<AdslWorkSheet>
+				<IP>192.168.228.192</IP>
+				<Port>8890</Port>
+			</AdslWorkSheet>
+		</gather_id_1>
+	</socket>
+	
+	<!-- webtopo corba -->
+	<webtopo>
+		<!--MASTERCONTROL的连接名字和POA字符串-->
+		<MC_NAME>RemoteDbACSServant</MC_NAME>
+		<MC_POA>lmgDataSource_poaNoILOG5</MC_POA>
+		<!--webtopo中缓存告警的数目，默认为2000-->
+		<WARN_ALL_NUM>20000</WARN_ALL_NUM>
+		<!--webtopo中显示告警的数目，默认为200-->
+		<WARN_VIEW_NUM>200</WARN_VIEW_NUM>
+		<!--webtopo中显示告警的默认等级，默认为4,显示比它大的告警等级-->
+		<WARN_VIEW_LEVEL>0</WARN_VIEW_LEVEL>
+		<!-- webtopo告警列表中是否需要根据地市过滤 true:根据地市过滤 false:反之-->
+		<WARN_FILTER_CITY>true</WARN_FILTER_CITY>
+	</webtopo>
+	<!-- midware  -->
+	<midware>
+		<notify>false</notify>
+		<host>http://218.80.221.103:8082</host>
+		<login>lc</login>
+		<key>test1234567890</key>
+		<cfg_file_path>/export/home/tools/Tomcat6/webapps/itms/client.xml</cfg_file_path>
+	</midware>
+	
+	<!-- 现场安装，添加用户时，是否需要判断该用户是否存在 1为需要，0为不需要-->
+	<chkinstuser>1</chkinstuser>
+	<!-- 现场安装，判断是否需要把从IPOSS传递过来的属地更新到数据库 1为需要，0为不需要-->
+	<chkcityid>1</chkcityid>
+	<!-- 报表生成工具 -->
+	<rrct>
+		<!-- 策略配置默认参数 -->
+		<policy>
+			<!-- 发送类型 0：自动 1：确认后 -->
+			<send_type>0</send_type>
+			<!-- 策略 -->
+			<value>1,3|1_1,1_3|1_1,1_3|1_1_1,1_1_3</value>
+			<!-- 重试次数 -->
+			<retry>3</retry>
+			<!-- 定制策略 -->
+			<customize>11111111</customize>
+			<!-- 发送邮箱 -->
+			<email></email>
+		</policy>
+		<!-- 管理接口参数 -->
+		<manager>
+			<ip>192.168.228.192</ip>
+			<port>5147</port>
+			<timeout>5000</timeout>
+			<!-- 重试次数 -->
+			<retry>2</retry>
+		</manager>
+	</rrct>
+	
+	<!-- 思科设备的device_model_id，作为设备操作特殊处理的判断 -->
+	<isCISCO>
+		<device_model_id>0</device_model_id>
+	</isCISCO>
+
+	<!-- 报表的配置文件 -->
+	<report>
+		   <FluxBase>1000</FluxBase>
+		   <FluxUnit>(1000*1000*1)</FluxUnit>
+		   <UnitName>M</UnitName>
+		   <confirm>1</confirm>
+	</report>
+	<!-- BSS接口模拟工单服务器地址和端口 -->
+	<bss_sheet>
+		<server>192.168.32.231</server>
+		<port>30000</port>
+		<serverStb>192.168.18.54</serverStb>
+		<portStb>40000</portStb>
+	</bss_sheet>
+	
+	<!-- 是否可以导出报表 1需要导出，0不需要导出-->
+	<isReport>1</isReport>
+	
+	<changePwd>
+		<!-- 是否开启密码失效并提示修改密码功能 1：开启，0：不开启-->
+		<changePwdEnable>1</changePwdEnable>
+		<!-- 密码有效期(admin密码除外) 单位：月 -->
+		<pwdValidity>3</pwdValidity>
+	</changePwd>
+	
+	<mq>
+	<!-- 每个模块唯一的标识，目前暂定：web、PreProcess、SuperGather -->
+		<clientId>WEB</clientId>
+		<itms>
+			<!-- itmsEnable. 0:false,default; 1:yes. -->
+			<itmsEnable>1</itmsEnable>
+			<mqACSAlive>
+				<!-- enable. 0:false,default; 1:yes. -->
+				<enab>1</enab>
+				<url>tcp://192.168.2.14:61616</url>
+				<topic>acs.alive</topic>
+				<messageServerType>1</messageServerType>
+			</mqACSAlive>
+			<mqDevRPC>
+				<!-- enable. 0:false,default; 1:yes. -->
+				<enab>1</enab>
+				<url>tcp://192.168.2.14:61616</url>
+				<topic>dev.rpc</topic>
+				<messageServerType>1</messageServerType>
+			</mqDevRPC>
+		</itms>
+		<bbms>
+			<!-- bbmsEnable. 0:false,default; 1:yes. -->
+			<bbmsEnable>0</bbmsEnable>
+			<mqACSAlive>
+				<!-- enable. 0:false,default; 1:yes. -->
+				<enab>1</enab>
+				<url>tcp://192.168.2.14:61616</url>
+				<topic>acs.alive</topic>
+				<messageServerType>1</messageServerType>
+			</mqACSAlive>
+			<mqDevRPC>
+				<!-- enable. 0:false,default; 1:yes. -->
+				<enab>1</enab>
+				<url>tcp://192.168.2.14:61616</url>
+				<topic>dev.rpc</topic>
+				<messageServerType>1</messageServerType>
+			</mqDevRPC>
+		</bbms>
+		<stb>
+			<!-- stbEnable. 0:false,default; 1:yes. -->
+			<stbEnable>0</stbEnable>
+			<mqACSAlive>
+				<!-- enable. 0:false,default; 1:yes. -->
+				<enab>1</enab>
+				<url>tcp://192.168.2.14:61616</url>
+				<topic>acs.alive</topic>
+				<messageServerType>1</messageServerType>
+			</mqACSAlive>
+			<mqDevRPC>
+				<!-- enable. 0:false,default; 1:yes. -->
+				<enab>1</enab>
+				<url>tcp://192.168.2.14:61616</url>
+				<topic>dev.rpc</topic>
+				<messageServerType>1</messageServerType>
+			</mqDevRPC>
+		</stb>
+	</mq>
+	
+	<!-- kafka配置文件 -->
+    <kafka>
+        <itms>
+	        <kafkaACSAlive>
+                <autoCommitInterval>1000</autoCommitInterval>
+                <groupId>lims.itms.alive</groupId>
+                <sessionTimeout>60000</sessionTimeout>
+                <syncTime>2000</syncTime>
+                <topic>acs.alive</topic>
+                <zooKeeper>172.17.2.226:2181,172.17.2.227:2181</zooKeeper>
+	        </kafkaACSAlive>
+	        <kafkaDevRPC>
+                <autoCommitInterval>1000</autoCommitInterval>
+                <groupId>lims.itms.rpc</groupId>
+                <sessionTimeout>60000</sessionTimeout>
+                <syncTime>2000</syncTime>
+                <topic>dev.rpc</topic>
+                <zooKeeper>172.17.2.226:2181,172.17.2.227:2181</zooKeeper>
+	        </kafkaDevRPC>
+        </itms>
+        <bbs>
+	        <kafkaACSAlive>
+                <autoCommitInterval>1000</autoCommitInterval>
+                <groupId>lims.bbs.alive</groupId>
+                <sessionTimeout>60000</sessionTimeout>
+                <syncTime>2000</syncTime>
+                <topic>acs.alive</topic>
+                <zooKeeper>172.17.2.226:2181,172.17.2.227:2181</zooKeeper>
+	        </kafkaACSAlive>
+	        <kafkaDevRPC>
+                <autoCommitInterval>1000</autoCommitInterval>
+                <groupId>lims.bbs.rpc</groupId>
+                <sessionTimeout>60000</sessionTimeout>
+                <syncTime>2000</syncTime>
+                <topic>dev.rpc</topic>
+                <zooKeeper>172.17.2.226:2181,172.17.2.227:2181</zooKeeper>
+	        </kafkaDevRPC>
+        </bbs>
+        <stb>
+	        <kafkaACSAlive>
+                <autoCommitInterval>1000</autoCommitInterval>
+                <groupId>lims.stb.alive</groupId>
+                <sessionTimeout>60000</sessionTimeout>
+                <syncTime>2000</syncTime>
+                <topic>acs.alive</topic>
+                <zooKeeper>172.17.2.226:2181,172.17.2.227:2181</zooKeeper>
+	        </kafkaACSAlive>
+	        <kafkaDevRPC>
+                <autoCommitInterval>1000</autoCommitInterval>
+                <groupId>lims.stb.rpc</groupId>
+                <sessionTimeout>60000</sessionTimeout>
+                <syncTime>2000</syncTime>
+                <topic>dev.rpc</topic>
+                <zooKeeper>172.17.2.226:2181,172.17.2.227:2181</zooKeeper>
+	        </kafkaDevRPC>
+        </stb>
+    </kafka>
+        
+	<Mail>
+		<HOSTNAME>mail.asiainfo-linkage.com</HOSTNAME>
+		<USER>zhangsm</USER>
+		<PASSWORD>damin@067314</PASSWORD>
+		<FROMADDRESS>zhangsm@asiainfo-linkage.com</FROMADDRESS>
+	</Mail>
+	<!-- accessType 1:从gw_wan表中查询   2：从tab_devicetype_info表中查询 -->
+	<accessTypeFrom>2</accessTypeFrom>
+	
+	<!-- 电信运营商信息 CTC/CUC/CMC, default:CTC -->
+	<telecom>CUC</telecom>
+	
+	<LoidFilePath>/temp/</LoidFilePath>
+	<!-- 是否使用软件升级模块 2：拆分配置模块模式的软件升 1：使用单独软件升级 0：不使用 -->
+	<isOpenSoftUpModule>0</isOpenSoftUpModule>
+	<cqBatchSoftMaxActive>100</cqBatchSoftMaxActive>
+		<!-- 安徽软件升级    数据入库后发送MQ通知软件升级模块  begin -->
+	<mqSoftUpTask>
+		<!-- enable. 0:false,default; 1:yes. -->
+		<enab>1</enab>
+		<url>tcp://192.168.28.16:61616</url>
+		<topic>picUp.task</topic>
+	</mqSoftUpTask>
+	
+	<!-- ITV终端开通  业务类型和操作类型 -->
+	<ITVTerminal>
+		<authUser>fangchao</authUser>
+		<authPwd>123456</authPwd>
+		<servTypeId>21</servTypeId>
+		<operateId>1</operateId>
+		<socketIP>192.168.4.81</socketIP>
+		<socketpwd>9092</socketpwd>
+	</ITVTerminal>
+	
+	<!-- 机顶盒运营画面  数据入库后发送MQ通知配置模块  begin -->
+	<mqPicUpTask>
+		<!-- enable. 0:false,default; 1:yes. -->
+		<enab>1</enab>
+		<url>tcp://192.168.28.16:61616</url>
+		<topic>soft.task</topic>
+	</mqPicUpTask>
+	<mqLoid>
+		<!-- enable. 0:false,default; 1:yes. -->
+		<enab>1</enab>
+		<url>tcp://172.16.7.109:61616</url>
+		<topic>setLoid.task</topic>
+	</mqLoid>
+	<!-- 批量节点参数配置 激活后发送MQ通知配置模块 -->
+	<stbBatchCon>
+		<!-- enable. 0:false,default; 1:yes. -->
+		<enab>0</enab>
+		<url>tcp://192.168.28.16:61616</url>
+		<topic>stbBatchCon.task</topic>
+	</stbBatchCon>
+	<!-- 机顶盒运营画面  数据入库后发送MQ通知配置模块  end -->
+	<!-- 江西机顶盒开机画面 -->
+    <attachmentsDir>
+            <boot>/picture/boot/</boot>
+            <start>/picture/start/</start>
+            <auth>/picture/auth/</auth>
+            <ftpremoteip>192.168.28.21</ftpremoteip>
+            <ftp>/export/home/process</ftp>
+            <accountFile>/export/home/process/lims/accountFile/</accountFile>
+            <web>117.21.209.57:8080/</web>
+            <otherweb>192.168.44.33</otherweb>
+    </attachmentsDir>
+    <fileServer>
+    	<enable>0</enable>
+    	<path>http://192.168.0.1:8080</path>
+    </fileServer>
+    
+    <!-- 1是生效,2是失效 -->
+    <status>1</status>
+    <!-- 江西机顶盒开机画面 -->
+	<!-- Eserver url websercice -->
+	<webServiceUri>http://localhost:20001/EServer4WS/services/GtmsAxis</webServiceUri>
+	<!-- 添加安徽电信ITMS+与预检预修子系统接口地址 -->
+	<IDSServiceUri>http://61.191.44.237:7070/ItmsService/services/CallService</IDSServiceUri>
+	<!-- 湖南测试ITMSSERVICE接口 -->
+	<HnItmsService>http://134.161.35.198:8001/iptv/services/GtmsAxis?wsdl</HnItmsService>
+	<!-- MGC访问地址 -->
+	<MGCQueryUrl>http://202.102.39.141:7070/dataexport/demos/exportData.do</MGCQueryUrl>
+	<MGCPaceUrl>http://202.102.39.141:7070/dataexport/demos/getPercent.do</MGCPaceUrl>
+	<!-- 江苏电信定时生成报表下载路劲 -->
+	<jsdxDownLoadURL>/export/home/itms/WEBtodo/downloadfile</jsdxDownLoadURL>
+	
+	<strategy_tabname>
+	    <serv>
+	    	<tabname>gw_serv_strategy_serv</tabname>
+	    	<serviceId>1001,1002,1101,1110,1401,17</serviceId>
+	    </serv> 
+	    <soft>
+	    	<tabname>gw_serv_strategy_soft</tabname>
+	    	<serviceId>5</serviceId>
+	    </soft> 
+	    <batch>
+	    	<tabname>gw_serv_strategy_batch</tabname>
+	    	<serviceId>2001,2003,116,117,118,8001,8005,1411,1111,101,911,913,7,101,2004,2301,2302,2401,2601,2602</serviceId>
+	    </batch> 
+	    <strategy>
+	    	<tabname>gw_serv_strategy</tabname>
+	    	<serviceId></serviceId>
+	    </strategy> 
+	    <stb>
+	    	<serv>stb_gw_strategy_serv</serv> 
+	   		<soft>stb_gw_strategy_soft</soft> 
+	    	<batch>stb_gw_strategy_batch</batch> 
+	    	<strategy>stb_gw_strategy</strategy>
+	    </stb>
+	</strategy_tabname>
+	
+	 <stb_strategy_tabname>
+            <serv>
+                <tabname>stb_gw_strategy_serv</tabname>
+                <serviceId>120</serviceId>
+            </serv>
+            <soft>
+                <tabname>stb_gw_strategy_soft</tabname>
+                <serviceId>5</serviceId>
+            </soft>
+                <pic>
+                <tabname>stb_gw_strategy_pic</tabname>
+                <serviceId>10</serviceId>
+            </pic>
+            <batch>
+                <tabname>stb_gw_strategy_batch</tabname>
+                <serviceId></serviceId>
+            </batch>
+            <strategy>
+                <tabname>stb_gw_strategy</tabname>
+                <serviceId>4</serviceId>
+            </strategy>
+    </stb_strategy_tabname>
+	<!-- 是否是新版码流 0:不是   1:是 -->
+	<isNewStream>0</isNewStream>
+	
+	<!-- 江苏电信终端版本发布流程接口 -->
+	<jsdxVersionRelease>http://132.228.78.225:8080/eoms/services/PatchManageService?wsdl</jsdxVersionRelease>
+	<!-- 江苏电信主设备厂家数据上报存储路径-->
+	<uploaddir>/export/home/itms/data</uploaddir>
+	<downloadTXT>/案例模板.txt</downloadTXT>
+	<downloadXLS>/案例模板.xls</downloadXLS>
+
+	<!-- 江苏e8-c终端版本上传下载 -->
+	<ftp>
+		<ip>192.168.208.102</ip>
+		<port>21</port>
+		<username>root</username>
+		<password>Jstest@(!@</password>
+		<localDir>/export/home/itms/dataIns/</localDir>
+		<ftpDir>/export/home/itms/FileServer/FILE/SOFT/</ftpDir>
+	</ftp>
+	<!--现网系统页面权限分配后，不需要重启现网WEB-->
+	<after_setPermission>
+		<!-- 权限分配后的同步开关 1:同步  	其他:不同步 -->
+		<switch>1</switch>
+		<!-- 除本web外其余web的ip及端口号 ,程序访问路径 -->
+		<web_http>http://192.168.2.20:9090/itms</web_http>
+	</after_setPermission>
+
+	<!-- 宁夏机顶盒节点参数配置 激活后发送MQ通知配置模块 -->
+	<stbParamNodeBatchCon>
+		<!-- enable. 0:false,default; 1:yes. -->
+		<enab>0</enab>
+		<url>tcp://192.168.18.54:51515</url>
+		<topic>stbBatchCon.task</topic>
+	</stbParamNodeBatchCon>
+	<bathConfig>
+		<saveDir>/itms</saveDir>
+	</bathConfig>
+	<!-- 江苏批量采集节点下载 -->
+	<nodeftp>
+		<ip>192.168.2.20</ip>
+		<port>21</port>
+		<username>test2016</username>
+		<password>aa123exp</password>
+		<localDir>/export/home/itms/data/</localDir>
+		<ftpDir></ftpDir>
+	</nodeftp>
+	<!-- 是否使用corba心跳 -->
+	<isSendCorbaHeartBeat>0</isSendCorbaHeartBeat>
+	<!-- corba心跳时间 -->
+	<sendCorbaHeartBeatPeriod>20</sendCorbaHeartBeatPeriod>
+	<!-- 调用配置模块类型1：corba，2：发送消息 -->
+	<preProcessType>2</preProcessType>
+	<!-- 调用绑定模块类型1：corba，2：发送消息 -->
+	<resourceBindType>2</resourceBindType>
+	<!-- 调用配置模块类型1：corba，2：发送消息 -->
+	<stbPreProcessType>2</stbPreProcessType>
+	<!-- 调用绑定模块类型1：corba，2：发送消息 -->
+	<stbResourceBindType>2</stbResourceBindType>
+	<!-- 预检预修报表下载文件路径 -->
+	<webPath>/export/home/itms/WEB/downReportFile</webPath>
+	<!-- loid是否开启模糊查询   0：否 ； 1：是   默认 0-->
+	<isLikeQuery>0</isLikeQuery>
+	<!-- 是否删除tr111参数表   0：否 ； 1：是   默认 0-->
+	<isDelTr111Table>0</isDelTr111Table>
+	<alarmMonitor>
+		<allType>17</allType>
+		<displayType>2</displayType>
+		<monitorSpace>125</monitorSpace>
+		<cpuType>1</cpuType>
+		<memType>2</memType>
+		<hardType>3</hardType>
+	</alarmMonitor>
+	<!-- 河北仿真测速宽带速率 -->
+	<SimNetRate>2,4,6,8,10,20,30,40,50,100,200,300,500,1000</SimNetRate>
+	<testSpeedReportUrl>http://121.28.169.98:8084/services/contractrate/results/insert/</testSpeedReportUrl>
+	<testSpeedDownUrl>http://121.28.169.98:8084/services/contractrate/contract/rate/</testSpeedDownUrl>
+	<!-- HBLT-RMS-20170828-LH-008(新增批量ping功能） -->
+	<bathPing>
+	    <user>root</user>
+	    <pswd>aiNSG2$^</pswd>
+	    <ip>192.168.28.72</ip>
+	    <cmds>source /etc/profile;cd /export/home/rms/BatchPing/bin/;sh runBatchPing.sh</cmds>
+	</bathPing>
+	<!-- 批量组播下移-每天最大数量 -->
+	<MaxMulticast>80000</MaxMulticast>
+	<!-- 新疆电信批量重启 -->
+	<batchRestart>
+	<!-- 单个文件限制行数 -->
+	<fileRow>5000</fileRow>
+	<!-- 每天可配置的总数 -->
+	<restartCount>400000</restartCount>
+	</batchRestart>
+	<uploaddir>/export/home/itms/WEB/data</uploaddir>
+	<!-- 工程名-重庆机顶盒上传开机图片ftp到其他web服务器，审核时浏览图片用  -->
+	<projectName>/stb</projectName>
+	
+	<!-- 机顶盒软件升级FTP方式存储文件路径 -->
+	<stbSoftUpgrade>
+		<ftpEnable>1</ftpEnable>
+		<ftpIp>192.168.44.33</ftpIp>
+		<ftpName>asiainfo</ftpName>
+		<ftpPasswd>Yxiposs!35</ftpPasswd>
+		<ftpPath>/export/home/stb/WEB/softAccount</ftpPath>
+	</stbSoftUpgrade>
+	<cqBatchSoftMaxActive>100</cqBatchSoftMaxActive>
+	<cqBatchConfMaxActive>400000</cqBatchConfMaxActive>
+	
+	<!-- 重庆批量定制开机广告任务 -->
+	<batchImportAdv>
+		<tablename>stb_gw_strategy_pic</tablename>
+		<logtablename>stb_gw_strategy_pic_log</logtablename>
+		<logo_con>10</logo_con>
+	</batchImportAdv>
+	
+	<!-- 新老web切换 -->
+	<newWeb>
+		<!-- 1：存在新版本得web,0:不存在 -->
+		 <exist>1</exist>
+		 <!-- 存在时url必填 -->
+		 <url>http://60.217.44.33:7170/itms/LoginAction!checkUser.action</url>
+	</newWeb>
+	<!-- 用户密码重置时的默认密码 目前黑龙江和江西用-->
+	<DefaultKey>123456</DefaultKey>
+	<TestDeviceAccFTP>
+	</TestDeviceAccFTP>
+	<!-- 江西自动化检测web负载集群时用来同步文件 -->
+	<FTP>
+		<HOST>192.168.0.203</HOST>
+		<USERNAME>linkage</USERNAME>
+		<PASSWORD>KuPui074*)&amp;</PASSWORD>
+		<PORT>21</PORT>
+	</FTP>
+	
+	<!-- 桥接路由统计方式2不包含的城市,以逗号分隔 -->
+	<bridgeToRouteNoCityList>02000001</bridgeToRouteNoCityList>
+	<!-- 甘肃电信查询下发情况信息展示,是否开启采集ijk通道 -->
+	<gatherConfig>1</gatherConfig>
+	<!-- 分地市服务器，从tab_stb_file_path_city_ip取数据-->
+	<isDistributeCity>1</isDistributeCity>
+	<!-- 机顶盒是否通过download命令下发-->
+	<isStbDownload>1</isStbDownload>
+
+	<importFileMaxNum>10000</importFileMaxNum>
+
+	<batchHttp>
+		<ftpHost>192.168.0.213</ftpHost>
+		<ftpPort>22</ftpPort>
+		<ftpUserName>batchHttpUser</ftpUserName>
+		<ftpPwd></ftpPwd>
+		<ftpPath>/export/home/clustertest/</ftpPath>
+	</batchHttp>
+	
+	<!-- 业务下发模板化 -->
+	<isCmTemplate>0</isCmTemplate>
+	<zkAddress></zkAddress>
+	<!-- #bss历史下发过程查询功能中：tab_sheet_para表是否按月拆分，当月下发数据记录至当月表中，甘肃配置成1,默认为0 -->
+	<IsSplitTabSheetPara>1</IsSplitTabSheetPara>
+	<!-- web调用云网超宽带接口 -->
+	<cloudNetService>http://172.30.16.19:8087/cloudbroadband</cloudNetService>
+	<X_APP_ID>8e2e851373a4a7e3a0b37c05a46119e1</X_APP_ID>
+	<X_APP_KEY>e0332af56a9239ef77ccb1fa6ac2aae4</X_APP_KEY>
+</liposs-config>
+

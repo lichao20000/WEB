@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="resource_bbms" extends="linkage_security,linkage-pdf-default" namespace="/bbms/resource">
+		<!-- 显示EVDO卡信息和状态 -->
+		<action name="showCardInfo" class="ShowCardInfoACT">
+			<result name="success">/bbms/resource/showCardInfo.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- 模拟工单 -->
+		<action name="sendBssSheet" class="SendBssSheetACT">
+			<result name="success">/bbms/resource/sendBssSheet.jsp</result>
+			<result name="evdoOpen">/bbms/resource/evdoOpenSheet.jsp</result>
+			<result name="evdoPause">/bbms/resource/pauseSheet.jsp</result>
+			<result name="evdoStop">/bbms/resource/pauseSheet.jsp</result>
+			<result name="evdoRestart">/bbms/resource/pauseSheet.jsp</result>
+			<result name="sheetResult">/bbms/resource/sendSheetResult.jsp</result>
+			<result name="netOpen">/bbms/resource/netOpenSheet.jsp</result>
+			<result name="netPause">/bbms/resource/pauseSheet.jsp</result>
+			<result name="netStop">/bbms/resource/pauseSheet.jsp</result>
+			<result name="netRestart">/bbms/resource/pauseSheet.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		<!-- 云南删除未使用定制终端的用户 -->
+		<action name="deleteBBMSUser" class="DeleteBBMSUserACT">
+			<result name="list">/bbms/resource/deleteUserList.jsp</result>
+			<result name="ajax" type="ajax"/>
+		</action>
+		
+		<action name="uploadByNX" class="UploadNXACT">
+			
+			<result name="response">/bbms/resource/FileUploadResult.jsp</result>
+			
+		</action>
+		
+	</package>	
+</struts>

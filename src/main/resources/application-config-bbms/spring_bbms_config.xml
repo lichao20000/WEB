@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- 配置上网连接 -->
+	<bean id="EVDOWanBIO" class="com.linkage.module.bbms.config.bio.EVDOWanBIO" scope="prototype">
+		<property name="devDAO">
+			<ref bean="DevDAO"/>
+		</property>
+		<property name="wanDAO">
+			<ref bean="WanDAO"/>
+		</property>
+		<property name="wanConnDAO">
+			<ref bean="WanConnDAO"/>
+		</property>
+		<property name="wanConnSessDAO">
+			<ref bean="WanConnSessDAO"/>
+		</property>
+		<property name="wanCAO">
+			<ref bean="WanRelatedCAO"/>
+		</property>
+		<property name="localServParamDAO">
+			<ref bean="LocalServParamDAO"/>
+		</property>
+		<property name="wlanDAO">
+			<ref bean="WlanDAO"/>
+		</property>
+		<property name="lanEthDAO">
+			<ref bean="LanEthDAO"/>
+		</property>
+	</bean>
+	<bean id="EVDOWanACT" class="com.linkage.module.bbms.config.act.EVDOWanACT" scope="prototype">
+		<property name="bio">
+			<ref bean="EVDOWanBIO"/>
+		</property>
+	</bean>
+	
+	<!-- NTP配置 -->
+	<bean id="NtpConfigBIO" class="com.linkage.module.bbms.config.bio.NtpConfigBIO"  scope="prototype">
+		<property name="deviceDao">
+			<ref bean="DeviceDAO"/>
+		</property>
+		<property name="timeNtpDao">
+			<ref bean="TimeNtpDAO"/>
+		</property>
+	</bean>
+	<bean id="NtpConfigACT" class="com.linkage.module.bbms.config.act.NtpConfigACT"  scope="prototype">
+		<property name="ntpConfigBio">
+			<ref bean="NtpConfigBIO"/>
+		</property>
+	</bean>
+	
+	<!-- SNMP配置 -->
+	<bean id="SNMPConfigBIO" class="com.linkage.module.bbms.config.bio.SNMPConfigBIO" scope="prototype">
+		<property name="sgwSecurityDAO">
+			<ref bean="SgwSecurityDAO"/>
+		</property>
+	</bean>
+	<bean id="SNMPConfigACT" class="com.linkage.module.bbms.config.act.SNMPConfigACT" scope="prototype">
+		<property name="sumpConfigBio">
+			<ref bean="SNMPConfigBIO"/>
+		</property>
+	</bean>
+	
+	<!-- Vlan DHCP配置 -->
+	<bean id="VlanDhcpConfigBIO" class="com.linkage.module.bbms.config.bio.VlanDhcpConfigBIO" scope="prototype">
+		<property name="lanVlanDao">
+			<ref bean="LanVlanDAO"/>
+		</property>
+		<property name="lanEthDao">
+			<ref bean="LanEthDAO"/>
+		</property>
+		<property name="wlanDao">
+			<ref bean="WlanDAO"/>
+		</property>
+		
+	</bean>
+	<bean id="VlanDhcpConfigACT" class="com.linkage.module.bbms.config.act.VlanDhcpConfigACT" scope="prototype">
+		<property name="vlanDhcpConfigBio">
+			<ref bean="VlanDhcpConfigBIO"/>
+		</property>
+	</bean>
+	
+	<!-- FTP -->
+	<bean id="FTPConfigBIO" class="com.linkage.module.bbms.config.bio.FTPConfigBIO" scope="prototype">
+		<property name="serviceManageDao">
+			<ref bean="ServiceManageDAO"/>
+		</property>
+	</bean>
+	<bean id="FTPConfigACT" class="com.linkage.module.bbms.config.act.FTPConfigACT" scope="prototype">
+		<property name="ftpConfigBio">
+			<ref bean="FTPConfigBIO"/>
+		</property>
+	</bean>
+	
+	<!-- TR069 -->
+	<bean id="TR069ConfigBIO" class="com.linkage.module.bbms.config.bio.TR069ConfigBIO" scope="prototype">
+		<property name="gwTr069Dao">
+			<ref bean="GwTr069DAO"/>
+		</property>
+	</bean>
+	<bean id="TR069ConfigACT" class="com.linkage.module.bbms.config.act.TR069ConfigACT" scope="prototype">
+		<property name="tr069ConfigBio">
+			<ref bean="TR069ConfigBIO"/>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!--start 增加ids公共查询组件 -->
+	<bean id="IdsDeviceQueryDAO" class="com.linkage.module.ids.dao.IdsDeviceQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="IdsDeviceQueryBIO" class="com.linkage.module.ids.bio.IdsDeviceQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="IdsDeviceQueryDAO" />
+		</property>
+	</bean>
+	<bean id="IdsDeviceQueryACT" class="com.linkage.module.ids.act.IdsDeviceQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="IdsDeviceQueryBIO" />
+		</property>
+	</bean>
+ 
+	<!--end 增加ids公共查询组件 -->
+
+	<!--start ping查询 -->
+
+	<bean id="PingDeviceQueryDAO" class="com.linkage.module.ids.dao.PingDeviceQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="PingDeviceQueryBIO" class="com.linkage.module.ids.bio.PingDeviceQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="PingDeviceQueryDAO" />
+		</property>
+	</bean>
+	<bean id="PingDeviceQueryACT" class="com.linkage.module.ids.act.PingDeviceQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="PingDeviceQueryBIO" />
+		</property>
+	</bean>
+	<!--end ping查询 -->
+
+	<!--start HTTP查询 -->
+
+	<bean id="HTTPDeviceQueryDAO" class="com.linkage.module.ids.dao.HTTPDeviceQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="HTTPDeviceQueryBIO" class="com.linkage.module.ids.bio.HTTPDeviceQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="HTTPDeviceQueryDAO" />
+		</property>
+	</bean>
+	<bean id="HTTPDeviceQueryACT" class="com.linkage.module.ids.act.HTTPDeviceQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="HTTPDeviceQueryBIO" />
+		</property>
+	</bean>
+	<!--end HTTP查询 -->
+
+	<!--start PPPoE查询 -->
+
+	<bean id="PPPoEDeviceQueryDAO" class="com.linkage.module.ids.dao.PPPoEDeviceQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="PPPoEDeviceQueryBIO" class="com.linkage.module.ids.bio.PPPoEDeviceQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="PPPoEDeviceQueryDAO" />
+		</property>
+	</bean>
+	<bean id="PPPoEDeviceQueryACT" class="com.linkage.module.ids.act.PPPoEDeviceQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="PPPoEDeviceQueryBIO" />
+		</property>
+	</bean>
+	<!--end PPPoE查询 -->
+	
+	<!-- add by chenzj5 at 20150714 for VoiceTest start -->
+	<bean id="VoiceDeviceQueryDAO" class="com.linkage.module.ids.dao.VoiceDeviceQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="VoiceDeviceQueryBIO" class="com.linkage.module.ids.bio.VoiceDeviceQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceDeviceQueryDAO" />
+		</property>
+	</bean>
+	<bean id="VoiceDeviceQueryACT" class="com.linkage.module.ids.act.VoiceDeviceQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceDeviceQueryBIO" />
+		</property>
+	</bean>
+	
+	<!-- 语音质量监控 -->
+	<bean id="VoiceQualityMonitoringBIO" class="com.linkage.module.ids.bio.VoiceQualityMonitoringBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceQualityMonitoringDAO" />
+		</property>
+	</bean>
+	<bean id="VoiceQualityMonitoringACT" class="com.linkage.module.ids.act.VoiceQualityMonitoringACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceQualityMonitoringBIO" />
+		</property>
+	</bean>
+
+	<bean id="VoiceQualityMonitoringDAO" class="com.linkage.module.ids.dao.VoiceQualityMonitoringDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- add by chenzj5 at 20150714 for VoiceTest end -->
+
+	<bean id="StatusMesUploadDAO" class="com.linkage.module.ids.dao.StatusMesUploadDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="StatusMesUploadBIO" class="com.linkage.module.ids.bio.StatusMesUploadBio"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="StatusMesUploadDAO" />
+		</property>
+	</bean>
+	<bean id="StatusMesUploadACT" class="com.linkage.module.ids.act.StatusMesUploadAct"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="StatusMesUploadBIO" />
+		</property>
+	</bean>
+
+	<bean id="IdsStatusQueryACT" class="com.linkage.module.ids.act.IdsStatusQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="IdsStatusQueryBIO" />
+		</property>
+	</bean>
+	<bean id="IdsStatusQueryBIO" class="com.linkage.module.ids.bio.IdsStatusQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="IdsStatusQueryDAO" />
+		</property>
+
+	</bean>
+	<bean id="IdsStatusQueryDAO" class="com.linkage.module.ids.dao.IdsStatusQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!--  -->
+	<bean id="IdsQueryACT" class="com.linkage.module.ids.act.IdsQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="IdsQueryBIO" />
+		</property>
+	</bean>
+	<bean id="IdsQueryBIO" class="com.linkage.module.ids.bio.IdsQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="IdsQueryDAO" />
+		</property>
+	</bean>
+	<bean id="IdsQueryDAO" class="com.linkage.module.ids.dao.IdsQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="DeviceMonitoringDAO" class="com.linkage.module.ids.dao.DeviceMonitoringDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceMonitoringBIO" class="com.linkage.module.ids.bio.DeviceMonitoringBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceMonitoringDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceMonitoringACT" class="com.linkage.module.ids.act.DeviceMonitoringACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceMonitoringBIO" />
+		</property>
+	</bean>
+	<bean id="VoiceRegisterDAO" class="com.linkage.module.ids.dao.VoiceRegisterDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="VoiceRegisterBIO" class="com.linkage.module.ids.bio.VoiceRegisterBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceRegisterDAO" />
+		</property>
+	</bean>
+	<bean id="VoiceRegisterACT" class="com.linkage.module.ids.act.VoiceRegisterACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceRegisterBIO" />
+		</property>
+	</bean>
+
+	<!-- start 预检预修报表1：网络质量检测分析报表 -->
+	<bean id="NetWorkQualityTestDAO" class="com.linkage.module.ids.dao.NetWorkQualityTestDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="NetWorkQualityTestBIO" class="com.linkage.module.ids.bio.NetWorkQualityTestBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="NetWorkQualityTestDAO" />
+		</property>
+	</bean>
+	<bean id="NetWorkQualityTestACT" class="com.linkage.module.ids.act.NetWorkQualityTestACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="NetWorkQualityTestBIO" />
+		</property>
+	</bean>
+	<!-- end 预检预修报表1：网络质量检测分析报表 -->
+	<!-- 江苏预检预修采集查询 -->
+	<bean id="DeviceGatherQueryACT" class="com.linkage.module.ids.act.DeviceGatherQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DeviceGatherQueryBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceGatherQueryBIO" class="com.linkage.module.ids.bio.DeviceGatherQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceGatherQueryDAO" />
+		</property>
+	</bean>
+	<bean id="DeviceGatherQueryDAO" class="com.linkage.module.ids.dao.DeviceGatherQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 江苏预检预修采集查询 -->
+
+	<!--gaoyi start PPPOE失败原因统计报表 -->
+
+	<bean id="PPPoEFailReasonCountACT" class="com.linkage.module.ids.act.PPPoEFailReasonCountACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="PPPoEFailReasonCountBIO" />
+		</property>
+	</bean>
+	<bean id="PPPoEFailReasonCountBIO" class="com.linkage.module.ids.bio.PPPoEFailReasonCountBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="PPPoEFailReasonCountDAO" />
+		</property>
+	</bean>
+	<bean id="PPPoEFailReasonCountDAO" class="com.linkage.module.ids.dao.PPPoEFailReasonCountDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!--gaoyi end PPPOE失败原因统计报表 -->
+
+
+	<!--gaoyi start 预检预修告警信息设计新增查询条件 -->
+
+	<bean id="IdsAlarmInfoACT" class="com.linkage.module.ids.act.IdsAlarmInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="IdsAlarmInfoBIO" />
+		</property>
+	</bean>
+	<bean id="IdsAlarmInfoBIO" class="com.linkage.module.ids.bio.IdsAlarmInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="IdsAlarmInfoDAO" />
+		</property>
+	</bean>
+	<bean id="IdsAlarmInfoDAO" class="com.linkage.module.ids.dao.IdsAlarmInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!--gaoyi end 预检预修告警信息设计新增查询条件 -->
+
+	<bean id="NetWorkQualityAnalyseACT" class="com.linkage.module.ids.act.NetWorkQualityAnalyseACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="NetWorkQualityAnalyseBIO" />
+		</property>
+	</bean>
+	<bean id="NetWorkQualityAnalyseBIO" class="com.linkage.module.ids.bio.NetWorkQualityAnalyseBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="NetWorkQualityAnalyseDAO" />
+		</property>
+	</bean>
+	<bean id="NetWorkQualityAnalyseDAO" class="com.linkage.module.ids.dao.NetWorkQualityAnalyseDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="DegradationPathsACT" class="com.linkage.module.ids.act.DegradationPathsACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="DegradationPathsBIO" />
+		</property>
+	</bean>
+	<bean id="DegradationPathsBIO" class="com.linkage.module.ids.bio.DegradationPathsBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DegradationPathsDAO" />
+		</property>
+	</bean>
+	<bean id="DegradationPathsDAO" class="com.linkage.module.ids.dao.DegradationPathsDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+
+	<bean id="AlarmQueryACT" class="com.linkage.module.ids.act.AlarmQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="AlarmQueryBIO" />
+		</property>
+	</bean>
+	<bean id="AlarmQueryBIO" class="com.linkage.module.ids.bio.AlarmQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="AlarmQueryDAO" />
+		</property>
+	</bean>
+	<bean id="AlarmQueryDAO" class="com.linkage.module.ids.dao.AlarmQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 安徽：上报周期变更 -->
+	<bean id="ReportPeroidACT" class="com.linkage.module.ids.act.ReportPeroidUpateACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ReportPeroidUpateBIO"/>
+		</property>
+	</bean>
+	<bean id="ReportPeroidUpateBIO" class="com.linkage.module.ids.bio.ReportPeroidUpateBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ReportPeroidUpateDAO"/>
+		</property>
+	</bean>
+	<bean id="ReportPeroidUpateDAO" class="com.linkage.module.ids.dao.ReportPeroidUpateDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 安徽：上报周期变更 -->
+	<!-- 安徽报表优化 -->
+	<bean id="VoiceRegStatusAnalysisRepACT" 
+		  class="com.linkage.module.ids.act.VoiceRegStatusAnalysisRepACT" 
+		  scope="prototype">
+		<property name="bio">
+			<ref bean="VoiceRegStatusAnalysisRepBIO"/>
+		</property>
+	</bean>
+	<bean id="VoiceRegStatusAnalysisRepBIO" 
+		  class="com.linkage.module.ids.bio.VoiceRegStatusAnalysisRepBIO" 
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="VoiceRegStatusAnalysisRepDAO"/>
+		</property>
+	</bean>
+	<bean id="VoiceRegStatusAnalysisRepDAO" 
+		  class="com.linkage.module.ids.dao.VoiceRegStatusAnalysisRepDAO" 
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="TaskMonitorACT"
+		  class="com.linkage.module.ids.act.TaskMonitorACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="TaskMonitorBIO"/>
+		  </property>
+	</bean>
+	<bean id="TaskMonitorBIO"
+		  class="com.linkage.module.ids.bio.TaskMonitorBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="TaskMonitorDAO"/>
+		  </property>
+	</bean>
+	<bean id="TaskMonitorDAO"
+		  class="com.linkage.module.ids.dao.TaskMonitorDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<!-- 安徽报表 优化-->
+	
+	<bean id="HTTPDownloadDAO"
+		  class="com.linkage.module.ids.dao.HTTPDownloadDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="HTTPDownloadBIO"
+		  class="com.linkage.module.ids.bio.HTTPDownloadBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="HTTPDownloadDAO"/>
+		  </property>
+	</bean>
+	<bean id="HttpDownloadACT"
+		  class="com.linkage.module.ids.act.HttpDownloadACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="HTTPDownloadBIO"/>
+		  </property> 
+	</bean>
+	
+	<bean id="HttpUploadACT"
+		  class="com.linkage.module.ids.act.HttpUploadACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="HTTPUploadBIO"/>
+		  </property> 
+	</bean>
+	<bean id="HTTPUploadBIO"
+		  class="com.linkage.module.ids.bio.HTTPUploadBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="HTTPUploadDAO"/>
+		  </property>
+	</bean>
+	<bean id="HTTPUploadDAO"
+		  class="com.linkage.module.ids.dao.HTTPUploadDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	
+	<bean id="FileUpload" class="com.linkage.module.ids.act.FileUploadAction" scope="prototype">
+	</bean>
+	<bean id="ElasticUserStatusDAO" class="com.linkage.module.ids.dao.ElasticUserStatusDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="UserStateRatingBIO" class="com.linkage.module.ids.bio.UserStateRatingBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ElasticUserStatusDAO" />
+		</property>
+	</bean>
+	<bean id="UserStateRatingACT" class="com.linkage.module.ids.act.UserStateRatingACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="UserStateRatingBIO" />
+		</property>
+	</bean>
+	<bean id="DeviceTVBDAO"
+		  class="com.linkage.module.ids.dao.DeviceTVBDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="DeviceTVBBIO"
+		  class="com.linkage.module.ids.bio.DeviceTVBBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="DeviceTVBDAO"/>
+		  </property>
+	</bean>
+	<bean id="DeviceTVBACT"
+		  class="com.linkage.module.ids.act.DeviceTVBACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="DeviceTVBBIO"/>
+		  </property> 
+	</bean>
+	
+	<bean id="BatchPingTestDAO"
+		  class="com.linkage.module.ids.dao.BatchPingTestDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="BatchPingTestBIO"
+		  class="com.linkage.module.ids.bio.BatchPingTestBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="BatchPingTestDAO"/>
+		  </property>
+	</bean>
+	<bean id="BatchPingTestACT"
+		  class="com.linkage.module.ids.act.BatchPingTestACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="BatchPingTestBIO"/>
+		  </property> 
+	</bean>
+	<bean id="CityDroopDAO"
+		  class="com.linkage.module.ids.dao.ElasticCityDroopDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="CityDroopBIO"
+		  class="com.linkage.module.ids.bio.CityDroopBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="CityDroopDAO"/>
+		  </property>
+	</bean>
+	<bean id="CityDroopACT"
+		  class="com.linkage.module.ids.act.CityDroopACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="CityDroopBIO"/>
+		  </property> 
+	</bean>
+	<bean id="QueryUserInfoACT"
+		  class="com.linkage.module.ids.act.QueryUserInfoACT"
+		  scope="prototype"> 
+		  <property name="bio">
+		  	<ref bean="QueryUserInfoBIO"/>
+		  </property>
+	</bean>
+	<bean id="QueryUserInfoDAO"
+		  class="com.linkage.module.ids.dao.QueryUserInfoDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="QueryUserInfoBIO"
+		  class="com.linkage.module.ids.bio.QueryUserInfoBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="QueryUserInfoDAO"/>
+		  </property>
+	</bean>
+	<bean id="BytesReceivedDetectionACT"
+		  class="com.linkage.module.ids.act.BytesReceivedDetectionACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="BytesReceivedDetectionBIO"/>
+		  </property> 
+	</bean>
+	<bean id="BytesReceivedDetectionBIO"
+                  class="com.linkage.module.ids.bio.BytesReceivedDetectionBIO"
+                  scope="prototype">
+     </bean>
+	<bean id="HttpQualityTestDAO"
+		  class="com.linkage.module.ids.dao.HttpQualityTestDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="HttpQualityTestBIO"
+		  class="com.linkage.module.ids.bio.HttpQualityTestBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="HttpQualityTestDAO"/>
+		  </property>
+	</bean>
+	<bean id="HttpQualityTestACT"
+		  class="com.linkage.module.ids.act.HttpQualityTestACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="HttpQualityTestBIO"/>
+		  </property> 
+	</bean>
+	<bean id="PPPoECountDAO"
+		  class="com.linkage.module.ids.dao.PPPoECountDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="PPPoECountBIO"
+		  class="com.linkage.module.ids.bio.PPPoECountBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="PPPoECountDAO"/>
+		  </property>
+	</bean>
+	<bean id="PPPoECountACT"
+		  class="com.linkage.module.ids.act.PPPoECountACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="PPPoECountBIO"/>
+		  </property> 
+	</bean>
+	<bean id="HttpCustomMadeQueryDAO"
+		  class="com.linkage.module.ids.dao.HttpCustomMadeQueryDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="HttpCustomMadeQueryBIO"
+		  class="com.linkage.module.ids.bio.HttpCustomMadeQueryBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="HttpCustomMadeQueryDAO"/>
+		  </property>
+	</bean>
+	<bean id="HttpCustomMadeQueryACT"
+		  class="com.linkage.module.ids.act.HttpCustomMadeQueryACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="HttpCustomMadeQueryBIO"/>
+		  </property> 
+	</bean>
+	<bean id="HttpQualityCheckDAO"
+		  class="com.linkage.module.ids.dao.HttpQualityCheckDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="HttpQualityCheckBIO"
+		  class="com.linkage.module.ids.bio.HttpQualityCheckBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="HttpQualityCheckDAO"/>
+		  </property>
+	</bean>
+	<bean id="HttpQualityCheckACT"
+		  class="com.linkage.module.ids.act.HttpQualityCheckACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="HttpQualityCheckBIO"/>
+		  </property> 
+	</bean>
+	
+	<bean id="TestSpeedTaskDAO"
+		  class="com.linkage.module.ids.dao.TestSpeedTaskDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="TestSpeedTaskBIO"
+		  class="com.linkage.module.ids.bio.TestSpeedTaskBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="TestSpeedTaskDAO"/>
+		  </property>
+	</bean>
+	<bean id="TestSpeedTaskACT"
+		  class="com.linkage.module.ids.act.TestSpeedTaskACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="TestSpeedTaskBIO"/>
+		  </property> 
+	</bean>
+	<bean id="AddSimSpeedAccACT"
+		  class="com.linkage.module.ids.act.AddSimSpeedAccACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="AddSimSpeedAccBIO"/>
+		  </property> 
+	</bean>
+	<bean id="AddSimSpeedAccBIO"
+		  class="com.linkage.module.ids.bio.AddSimSpeedAccBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="AddSimSpeedAccDAO"/>
+		  </property>
+	</bean>
+	<bean id="AddSimSpeedAccDAO"
+		  class="com.linkage.module.ids.dao.AddSimSpeedAccDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+	<bean id="TerminalVoipModelACT"
+		  class="com.linkage.module.ids.act.TerminalVoipModelACT"
+		  scope="prototype">
+		  <property name="bio">
+		  	<ref bean="TerminalVoipModelBIO"/>
+		  </property> 
+	</bean>
+	<bean id="TerminalVoipModelBIO"
+		  class="com.linkage.module.ids.bio.TerminalVoipModelBIO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="TerminalVoipModelDAO"/>
+		  </property>
+	</bean>
+	<bean id="TerminalVoipModelDAO"
+		  class="com.linkage.module.ids.dao.TerminalVoipModelDAO"
+		  scope="prototype">
+		  <property name="dao">
+		  	<ref bean="mainDataSource"/>
+		  </property>
+	</bean>
+</beans>

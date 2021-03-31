@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="ImportUser" class="action.resource.ImportUserAction"
+		scope="prototype">
+		<property name="importUser">
+			<ref local="ImportUserDAO" />
+		</property>
+	</bean>
+	<bean id="ImportUserDAO" class="dao.resource.ImportUserDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ExportUserAction" class="action.resource.ExportUserAction"
+		scope="prototype">
+		<property name="exportUser">
+			<ref local="ExportUserDAO" />
+		</property>
+	</bean>
+	<bean id="ExportUserDAO" class="dao.resource.ExportUserDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="CountDeviceNewDAO" class="dao.resource.CountDeviceDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="CountDeviceNewBIO" class="bio.resource.CountDeviceBIO"
+		scope="prototype">
+		<property name="countDao">
+			<ref local="CountDeviceNewDAO" />
+		</property>
+	</bean>
+	<bean id="CountDeviceAction"
+		class="action.resource.CountDeviceAction" scope="prototype">
+		<property name="countDeviceBio">
+			<ref local="CountDeviceNewBIO" />
+		</property>
+	</bean>
+	<bean id="ImportDeviceDAO" class="dao.resource.ImportDeviceDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ImportDeviceAction"
+		class="action.resource.ImportDeviceAction" scope="prototype">
+		<property name="importDev">
+			<ref local="ImportDeviceDAO" />
+		</property>
+	</bean>
+	<bean id="ImportUsersBBMS"
+		class="action.resource.ImportUsersBBMSAction" scope="prototype">
+		<property name="importUsersBBMS">
+			<ref local="ImportUsersBBMSDAO" />
+		</property>
+	</bean>
+	<bean id="ImportUsersBBMSDAO"
+		class="dao.resource.ImportUsersBBMSDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 定制终端模板管理 -->
+	<bean id="TerminalTemplateDAO"
+		class="dao.resource.TerminalTemplateDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="TerminalTemplateBIO"
+		class="bio.resource.TerminalTemplateBIO" scope="prototype">
+		<property name="terminalTemplateDao">
+			<ref bean="TerminalTemplateDAO" />
+		</property>
+	</bean>
+	<bean id="TerminalTemplateAction"
+		class="action.resource.TerminalTemplateAction" scope="prototype">
+		<property name="terminalTemplateBio">
+			<ref bean="TerminalTemplateBIO" />
+		</property>
+	</bean>
+	<!-- 家庭网关按绑定率统计 begin 此配置文件已转移到 spring_itms_report.xml 中
+	<bean id="BindReportDAO" class="dao.resource.BindReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BindReportBIO" class="bio.resource.BindReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="BindReportDAO" />
+		</property>
+	</bean>
+	<bean id="BindReportAction" class="action.resource.BindReportAction"
+		scope="prototype">
+		<property name="bio">
+			<ref local="BindReportBIO" />
+		</property>
+	</bean>
+	家庭网关按绑定率统计 end -->
+	<bean id="DeviceModelDao" class="dao.resource.DeviceModelDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceModelInfoAction"
+		class="action.resource.DeviceModelInfoAction" scope="prototype">
+		<property name="modelDao">
+			<ref bean="DeviceModelDao" />
+		</property>
+	</bean>
+	<bean id="DeviceVendorModelDao"
+		class="dao.resource.DeviceVendorModelDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DevVenderModelAction"
+		class="action.resource.DevVenderModelAction" scope="prototype">
+		<property name="devDao">
+			<ref bean="DeviceVendorModelDao" />
+		</property>
+		<property name="itvConfigBIO">
+			<ref bean="ItvConfigBIO" />
+		</property>
+	</bean>
+	<bean id="ItvConfigDAO" class="dao.resource.ItvConfigDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ItvConfigBIO" class="bio.resource.ItvConfigBIO"
+		scope="prototype">
+		<property name="itvConfigDAO">
+			<ref bean="ItvConfigDAO" />
+		</property>
+	</bean>
+	<bean id="ItvConfigAction" class="action.resource.ItvConfigAction"
+		scope="prototype">
+		<property name="itvConfigBIO">
+			<ref bean="ItvConfigBIO" />
+		</property>
+		<property name="devDao">
+			<ref bean="DeviceVendorModelDao" />
+		</property>
+	</bean>
+	<bean id="ItvConfigByWlanAction" class="action.resource.ItvConfigByWlanAction"
+		scope="prototype">
+		<property name="itvConfigBIO">
+			<ref bean="ItvConfigBIO" />
+		</property>
+	</bean>
+	
+	<!-- 设备批量软件升级 -->
+	<bean id="UpgradeBatchDAO" class="dao.resource.UpgradeBatchDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="UpgradeBatchAction" class="action.resource.UpgradeBatchAction" scope="prototype">
+		<property name="upgradeBatchDAO">
+			<ref bean="UpgradeBatchDAO"/>
+		</property>
+		<property name="selectDeviceTagDAO">
+			<ref bean="SelectDeviceTagDAO"/>
+		</property>
+		<property name="itvConfigDAO">
+			<ref bean="ItvConfigDAO"/>
+		</property>
+	</bean>
+	<!-- 现场安装单台设备查询 -->
+	<bean id="QueryDeviceByAllDao" class="dao.resource.QueryDeviceByAllDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="QueryDeviceByAllCityAction" class="action.resource.QueryDeviceByAllCityAction"
+		scope="prototype">
+		<property name="queryDeviceByAllDao">
+			<ref bean="QueryDeviceByAllDao" />
+		</property>
+	</bean>
+	<!-- 设备性能流量查看,设备查询 -->
+	<bean id="AdvancedDevInfoDAO" class="dao.resource.AdvancedDevInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="AdvancedDevInfoAction" class="action.resource.AdvancedDevInfoAction"
+		scope="prototype">
+		<property name="devDAO">
+			<ref bean="AdvancedDevInfoDAO" />
+		</property>
+	</bean>
+	
+	<!-- 未确认设备查询 -->
+	<!--
+	<bean id="QueryDeviceDao" class="dao.resource.QueryDeviceDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="QueryDeviceBio" class="action.resource.QueryDeviceBio" scope="prototype">
+		<property name="queryDeviceDao">
+			<ref bean="QueryDeviceDao" />
+		</property>
+	</bean>
+	
+	<bean id="UnValidatedDeviceAction" class="action.resource.UnValidatedDeviceAction" scope="prototype">
+		<property name="queryDeviceBio">
+			<ref bean="QueryDeviceBio" />
+		</property>
+	</bean>
+	-->
+	<bean id="DeviceManageDataDAO" class="dao.resource.DeviceManageDataDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="DeviceManageDataAction" class="action.resource.DeviceManageDataAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="DeviceManageDataDAO" />
+		</property>
+	</bean>
+</beans>

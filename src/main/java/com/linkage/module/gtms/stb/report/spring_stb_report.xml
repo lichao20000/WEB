@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- 新疆导入查询设备信息报表 -->
+	<bean id="BatchImpQryStbInfoACT" class="com.linkage.module.gtms.stb.report.act.BatchImpQryStbInfoACT" 
+		scope="prototype">
+		<property name="bio"> <ref bean="BatchImpQryStbInfoBIO" /> </property>
+	</bean>
+	<bean id="BatchImpQryStbInfoBIO" class="com.linkage.module.gtms.stb.report.bio.BatchImpQryStbInfoBIO" 
+		scope="prototype"> <property name="dao"> <ref bean="BatchImpQryStbInfoDAO" /> </property>
+	</bean> 
+	<bean id="BatchImpQryStbInfoDAO" class="com.linkage.module.gtms.stb.report.dao.BatchImpQryStbInfoDAO" 
+		scope="prototype"> <property name="dao"> <ref bean="mainDataSource" /> </property> 
+	</bean>
+	
+	
+	<!-- 工单统计报表 -->
+	<bean id="SheetReportACT" class="com.linkage.module.gtms.stb.report.act.SheetReportACT" 
+		scope="prototype">
+		<property name="bio"> <ref bean="SheetReportBIO" /> </property>
+	</bean>
+	<bean id="SheetReportBIO" class="com.linkage.module.gtms.stb.report.bio.SheetReportBIO" 
+		scope="prototype"> <property name="dao"> <ref bean="SheetReportDAO" /> </property>
+	</bean> 
+	<bean id="SheetReportDAO" class="com.linkage.module.gtms.stb.report.dao.SheetReportDAO" 
+		scope="prototype"> <property name="dao"> <ref bean="mainDataSource" /> </property> 
+	</bean>
+	
+	<!-- 工单原因统计报表 -->
+	<bean id="SheetReasonReportACT" class="com.linkage.module.gtms.stb.report.act.SheetReasonReportACT" 
+		scope="prototype">
+		<property name="bio"> <ref bean="SheetReasonReportBIO" /> </property>
+	</bean>
+	<bean id="SheetReasonReportBIO" class="com.linkage.module.gtms.stb.report.bio.SheetReasonReportBIO" 
+		scope="prototype"> <property name="dao"> <ref bean="SheetReasonReportDAO" /> </property>
+	</bean> 
+	<bean id="SheetReasonReportDAO" class="com.linkage.module.gtms.stb.report.dao.SheetReasonReportDAO" 
+		scope="prototype"> <property name="dao"> <ref bean="mainDataSource" /> </property> 
+	</bean>
+	
+	<!-- hgw 开通成功率统计报表 -->
+	<bean id="SheetCustReportACT" class="com.linkage.module.gtms.stb.report.act.SheetCustReportACT" 
+		scope="prototype">
+		<property name="bio"> <ref bean="SheetCustReportBIO" /> </property>
+	</bean>
+	<bean id="SheetCustReportBIO" class="com.linkage.module.gtms.stb.report.bio.SheetCustReportBIO" 
+		scope="prototype"> <property name="dao"> <ref bean="SheetCustReportDAO" /> </property>
+	</bean> 
+	<bean id="SheetCustReportDAO" class="com.linkage.module.gtms.stb.report.dao.SheetCustReportDAO" 
+		scope="prototype"> <property name="dao"> <ref bean="mainDataSource" /> </property> 
+	</bean>
+	
+	<!-- 设备终端统计报表 -->
+	<bean id="SheetDeviceReportACT" class="com.linkage.module.gtms.stb.report.act.SheetDeviceReportACT" 
+		scope="prototype">
+		<property name="bio"> <ref bean="SheetDeviceReportBIO" /> </property>
+	</bean>
+	<bean id="SheetDeviceReportBIO" class="com.linkage.module.gtms.stb.report.bio.SheetDeviceReportBIO" 
+		scope="prototype"> <property name="dao"> <ref bean="SheetDeviceReportDAO" /> </property>
+	</bean> 
+	<bean id="SheetDeviceReportDAO" class="com.linkage.module.gtms.stb.report.dao.SheetDeviceReportDAO" 
+		scope="prototype"> <property name="dao"> <ref bean="mainDataSource" /> </property> 
+	</bean>
+	
+	<!-- 每日激活用户-->
+	<bean id="SheetDailyCustReportACT" class="com.linkage.module.gtms.stb.report.act.SheetDailyCustReportACT" 
+		scope="prototype">
+		<property name="bio"> <ref bean="SheetDailyCustReportBIO" /> </property>
+	</bean>
+	<bean id="SheetDailyCustReportBIO" class="com.linkage.module.gtms.stb.report.bio.SheetDailyCustReportBIO" 
+		scope="prototype"> <property name="dao"> <ref bean="SheetDailyCustReportDAO" /> </property>
+	</bean> 
+	<bean id="SheetDailyCustReportDAO" class="com.linkage.module.gtms.stb.report.dao.SheetDailyCustReportDAO" 
+		scope="prototype"> <property name="dao"> <ref bean="mainDataSource" /> </property> 
+	</bean>
+</beans>

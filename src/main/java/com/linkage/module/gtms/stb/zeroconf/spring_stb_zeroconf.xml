@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="ZeroConfStatisticsReportDAOImp"
+		class="com.linkage.module.gtms.stb.zeroconf.dao.ZeroConfStatisticsReportDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ZeroConfStatisticsReportBIOImp"
+		class="com.linkage.module.gtms.stb.zeroconf.bio.ZeroConfStatisticsReportBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="ZeroConfStatisticsReportDAOImp" />
+		</property>
+	</bean>
+	<bean id="ZeroConfStatisticsReportAction"
+		class="com.linkage.module.gtms.stb.zeroconf.action.ZeroConfStatisticsReportAction"
+		scope="prototype">
+		<property name="bio">
+			<ref local="ZeroConfStatisticsReportBIOImp" />
+		</property>
+	</bean>
+
+	<bean id="ZeroFailReasonDAOImp"
+		class="com.linkage.module.gtms.stb.zeroconf.dao.ZeroFailReasonDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ZeroFailReasonBIOImp"
+		class="com.linkage.module.gtms.stb.zeroconf.bio.ZeroFailReasonBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref local="ZeroFailReasonDAOImp" />
+		</property>
+	</bean>
+	<bean id="zeroFailReasonAction"
+		class="com.linkage.module.gtms.stb.zeroconf.action.ZeroFailReasonAction"
+		scope="prototype">
+		<property name="bio">
+			<ref local="ZeroFailReasonBIOImp" />
+		</property>
+	</bean>
+</beans>

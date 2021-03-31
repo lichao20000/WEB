@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 系统名称 -->
+	<ServerName>XXXX终端综合管理系统</ServerName>
+	<!-- 系统类型（1:HGW(默认)，2:EGW，0:GTMS，3：STB） -->
+	<SystemType>0</SystemType>
+	<!-- 系统版本 -->
+	<Version>1.0</Version>
+	<!-- 所属运营商  CTC/CUC/CMC -->
+	<telecom>CTC</telecom>
+	<!-- 异步调用的最大线程数 -->
+	<callBackThreadPoolNum>100</callBackThreadPoolNum>
+	<!-- 是否是测试，测试不掉WS接口，直接返回写死的数据 0不是，1是-->
+	<isTest>0</isTest>
+	<!-- 是否使用数据库记录交互内容 0不是，1是-->
+	<useDb>1</useDb>
+	<!-- 访问itms接口超时时间 ,默认5分钟-->
+	<wsTimeout>300000</wsTimeout>
+	<!-- 回调接口地址域名 -->
+	<!-- <aimUrl>http://172.16.90.108:9898</aimUrl> -->
+	<cfg>
+		<!--8+( 11       北京市          43       湖南省
+				12       天津市          44       广东省
+				13       河北省          45       广西壮族自治区
+				14       山西省          46       海南省
+				15       内蒙古自治区    50       重庆市
+				21       辽宁省          51       四川省
+				22       吉林省          52       贵州省
+				23       黑龙江省        53       云南省
+				31       上海市          54       西藏自治区
+				32       江苏省          61       陕西省
+				33       浙江省          62       甘肃省
+				34       安徽省          63       青海省
+				35       福建省          64       宁夏回族自治区
+				36       江西省          65       新疆维吾尔自治区
+				37       山东省          71       台湾省
+				41       河南省          81       香港特别行政区
+				42       湖北省          82       澳门特别行政区) -->
+		<WebServiceUri>
+			<dx>
+				<!-- 新疆电信 -->
+				<UriInfo>
+					<code>865</code>
+					<name>新疆维吾尔自治区</name>
+					<urls>
+						<eservurl>http://172.16.67.7:9008/ItmsService/services/CloudCallService?wsdl</eservurl>
+						<itmsserviceurl>http://172.16.67.7:9008/ItmsService/services/CloudCallService?wsdl</itmsserviceurl>
+					</urls>
+					<!-- <urls>
+						<eservurl>http://124.127.117.213:7070/ItmsService/services/CloudCallService?wsdl</eservurl>
+						<itmsserviceurl>http://124.127.117.213:7070/ItmsService/services/CloudCallService?wsdl</itmsserviceurl>
+					</urls> -->
+					<targetNameSpaces>
+						<eservtns>http://localhost:8080/RestAndWS/services/ws?wsdl</eservtns>
+						<itmsservicetns>http://localhost:8030/RestAndWS/services/ws?wsdl</itmsservicetns>
+					</targetNameSpaces>
+			    </UriInfo>
+			    <!-- 新疆电信 -->
+				<UriInfo>
+					<code>8651</code>
+					<name>新疆维吾尔自治区1</name>
+					<urls>
+						<eservurl>http://135.224.116.8:58080/ItmsService/services/CloudCallService?wsdl</eservurl>
+						<itmsserviceurl>http://135.224.116.8:58080/ItmsService/services/CloudCallService?wsdl</itmsserviceurl>
+					</urls>
+					<targetNameSpaces>
+						<eservtns>http://localhost:8080/RestAndWS/services/ws?wsdl</eservtns>
+						<itmsservicetns>http://localhost:8030/RestAndWS/services/ws?wsdl</itmsservicetns>
+					</targetNameSpaces>
+			    </UriInfo>
+			    <!-- 浙江电信 -->
+			    <UriInfo>
+					<code>833</code>
+					<name>浙江省 </name>
+					<urls>
+						<eservurl>http://localhost:8080/RestAndWS/services/ws?wsdl</eservurl>
+						<itmsserviceurl>http://135.251.218.22:16208/wsforward/services/CallService.CallServiceHttpSoap11Endpoint</itmsserviceurl>
+					</urls>
+					<targetNameSpaces>
+						<eservtns>http://localhost:8080/RestAndWS/services/ws?wsdl</eservtns>
+						<itmsservicetns>http://vpn.webservice.itms.nokia.com</itmsservicetns>
+					</targetNameSpaces>
+			    </UriInfo>
+			    <!-- 广东电信 -->
+			    <UriInfo>
+					<code>844</code>
+					<name>广东省</name>
+					<urls>
+						<eservurl></eservurl>
+						<itmsserviceurl></itmsserviceurl>
+					</urls>
+					<targetNameSpaces>
+						<eservtns></eservtns>
+						<itmsservicetns></itmsservicetns>
+					</targetNameSpaces>
+			    </UriInfo>
+			    <!-- 江苏电信 -->
+			    <UriInfo>
+					<code>832</code>
+					<name>江苏省</name>
+					<urls>
+						<eservurl>http://132.224.219.180:30002/ItmsService/services/CloudCallService?wsdl</eservurl>
+						<itmsserviceurl>http://132.224.219.180:30002/ItmsService/services/CloudCallService?wsdl</itmsserviceurl>
+					</urls>
+					<targetNameSpaces>
+						<eservtns></eservtns>
+						<itmsservicetns></itmsservicetns>
+					</targetNameSpaces>
+			    </UriInfo>
+			</dx>
+			<lt>
+				
+			</lt>
+		</WebServiceUri>
+		<restUrl>http://localhost:8080/RestAndWS/CallService/ServiceDoneReturn</restUrl>
+		
+		<!-- 对外接口地址 -->
+		<WebServiceUri>
+			<!-- 综调接口url -->
+			<ItmsServiceUri>http://192.168.2.20:30002/ItmsService/services/CallService</ItmsServiceUri>
+			<!-- 预检预修对外接口url -->
+			<IDSServiceUri>http://61.191.44.237:7070/IDSService/services/CallService</IDSServiceUri>
+		</WebServiceUri>
+		
+		<!-- 初始化线程池大小 -->
+		<threadPoolSize>100</threadPoolSize>
+	</cfg>
+	<!-- 调用配置模块类型1：corba，2：发送消息 -->
+	<preProcessType>1</preProcessType>
+	<!-- 调用绑定模块类型1：corba，2：发送消息 -->
+	<resourceBindType>1</resourceBindType>
+</config>

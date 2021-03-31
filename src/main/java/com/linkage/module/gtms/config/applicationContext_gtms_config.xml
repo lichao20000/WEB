@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 宁夏电信关闭光猫iTV无线业务 -->
+	<bean id="OperatSSIDACT" 
+		class="com.linkage.module.gtms.config.action.OperatSSIDACT" scope="prototype">
+		<property name="bio">
+			<ref bean="OperatSSIDBIO" />
+		</property>
+	</bean>
+	<bean id="OperatSSIDBIO" 
+		class="com.linkage.module.gtms.config.serv.OperatSSIDBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="OperatSSIDDAO" />
+		</property>
+	</bean>
+	<bean id="OperatSSIDDAO" 
+		class="com.linkage.module.gtms.config.dao.OperatSSIDDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+
+	<!-- 山东联通单台设备开通路由上网 -->
+	<bean id="UseParameterACT" 
+		class="com.linkage.module.gtms.config.action.UseParameterACT" scope="prototype">
+		<property name="bio">
+			<ref bean="UseParameterBIO" />
+		</property>
+	</bean>
+	<bean id="UseParameterBIO" 
+		class="com.linkage.module.gtms.config.serv.UseParameterBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="UseParameterDAO" />
+		</property>
+	</bean>
+	<bean id="UseParameterDAO" 
+		class="com.linkage.module.gtms.config.dao.UseParameterDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+
+	<bean id="controlTimeOfUserActionImpl" 
+		class="com.linkage.module.gtms.config.action.ControlTimeOfUserActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="controlTimeOfUserServImpl" />
+		</property>
+	</bean>
+	<bean id="controlTimeOfUserServImpl" 
+		class="com.linkage.module.gtms.config.serv.ControlTimeOfUserServImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="controlTimeOfUserDao" />
+		</property>
+	</bean>
+	<bean id="controlTimeOfUserDao" 
+		class="com.linkage.module.gtms.config.dao.ControlTimeOfUserDaoImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="VOIPParamConfigActionImpl" 
+		class="com.linkage.module.gtms.config.action.VOIPParamConfigActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="VOIPParamConfigServImpl"></ref>
+		</property>
+	</bean>
+	<bean id="VOIPParamConfigServImpl"
+		class="com.linkage.module.gtms.config.serv.VOIPParamConfigServImpl" scope="prototype">
+	</bean>
+	<bean id="VOIPDigitMapBatchActionImpl" class="com.linkage.module.gtms.config.action.VOIPDigitMapBatchActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="VOIPDigitMapBatchServImpl" />
+		</property>
+	</bean>
+	<bean id="VOIPDigitMapBatchServImpl" class="com.linkage.module.gtms.config.serv.VOIPDigitMapBatchServImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="VOIPDigitMapBatchDAOImpl" />
+		</property>
+	 </bean>
+	 <bean id="VOIPDigitMapBatchDAOImpl" class="com.linkage.module.gtms.config.dao.VOIPDigitMapBatchDAOImpl" scope="prototype">
+	 	<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	 </bean>
+	 <bean id="ParamNodeBatchConfigActionImpl"
+	       class="com.linkage.module.gtms.config.action.ParamNodeBatchConfigActionImpl" scope="prototype">
+	 	<property name="bio">
+	 		<ref bean="ParamNodeBatchConfigServImpl"/>
+	 	</property>
+	 </bean>
+	 <bean id="ParamNodeBatchConfigAction4QAImpl"
+	       class="com.linkage.module.gtms.config.action.ParamNodeBatchConfig4QAActionImpl" scope="prototype">
+	 </bean>
+	 <bean id="ParamNodeBatchConfigServImpl" 
+		 class="com.linkage.module.gtms.config.serv.ParamNodeBatchConfigServImpl" scope="prototype">
+		 <property name="dao">
+			<ref bean="ParamNodeBatchConfigDAOImpl" />
+		</property>
+	 </bean>
+	 <bean id="ParamNodeBatchConfigDAOImpl" class="com.linkage.module.gtms.config.dao.ParamNodeBatchConfigDAOImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	 
+	<bean id="WirelessConfigActionImpl"  class="com.linkage.module.gtms.config.action.WirelessConfigActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="WirelessConfigServImpl"/>
+		</property>		
+	</bean>
+	<bean id ="WirelessConfigServImpl"
+			class="com.linkage.module.gtms.config.serv.WirelessConfigServImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="WirelessConfigDAOImpl"/>
+		</property>
+	</bean>
+	<bean id="WirelessConfigDAOImpl"
+		   class="com.linkage.module.gtms.config.dao.WirelessConfigDAOImpl" scope="prototype">
+		   <property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	</bean>
+	
+	<bean id="ConfigMaxTerminalActionImp"
+		  class="com.linkage.module.gtms.config.action.ConfigMaxTerminalActionImp">
+		  <property name="configmtserv">
+		  	<ref bean="configmtserv"/>
+		  </property>
+	</bean>
+	<bean id="configmtserv"
+			 class="com.linkage.module.gtms.config.serv.ConfigMaxTerminalServImp" scope="prototype">
+			 <property name="configmtdaoimp">
+			 	<ref bean="configmtdao"/>
+			 </property>
+	</bean>
+	
+	<bean id="configmtdao" 
+			class="com.linkage.module.gtms.config.dao.ConfigMaxTerminalDaoImp">
+			<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	</bean>
+	<bean id="AlarmConfigActionImpl"
+		  class="com.linkage.module.gtms.config.action.AlarmConfigActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="AlarmConfigServImpl"/>
+		</property>
+		<property name="gwDeviceQueryBio">
+			<ref bean="GwDeviceQueryBIO"/>
+		</property>
+	</bean>
+	<bean id="AlarmConfigServImpl"
+		  class="com.linkage.module.gtms.config.serv.AlarmConfigServImpl" scope="prototype">
+	</bean>
+	<bean id="ServerConfigActionImpl" 
+		  class="com.linkage.module.gtms.config.action.ServerConfigActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="ServerConfigServImpl"/>
+		</property>
+	</bean>
+	<bean id="ServerConfigServImpl" 
+		class="com.linkage.module.gtms.config.serv.ServerConfigServImpl" scope="prototype">
+	</bean>
+	<bean id="SetLoidActionImpl"
+	      class="com.linkage.module.gtms.config.action.SetLoidActionImpl" scope="prototype">
+	      <property name="bio">
+			<ref bean="SetLoidServImpl"/>
+		</property>
+	</bean>
+	<bean id="SetLoidServImpl"
+	      class="com.linkage.module.gtms.config.serv.SetLoidServImpl" scope="prototype">
+	      <property name="dao">
+			<ref bean="SetLoidDAOImpl"/>
+		  </property>
+	 </bean>
+	 <bean id="SetLoidDAOImpl"
+	 	   class="com.linkage.module.gtms.config.dao.SetLoidDAOImpl" scope="prototype">
+	 	<property name="dao">
+			<ref bean="mainDataSource"/>
+		  </property>
+	 </bean>
+	 
+	 <bean id="OttConfigActionImpl"  class="com.linkage.module.gtms.config.action.OttConfigActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="OttConfigServImpl"/>
+		</property>		
+	</bean>
+	<bean id ="OttConfigServImpl"
+			class="com.linkage.module.gtms.config.serv.OttConfigServImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="OttConfigDaoImpl"/>
+		</property>
+	</bean>
+	<bean id="OttConfigDaoImpl"
+		   class="com.linkage.module.gtms.config.dao.OttConfigDaoImpl" scope="prototype">
+		   <property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	</bean>
+	<bean id="WirelessBusinessCtrlACT" 
+	      class="com.linkage.module.gtms.config.action.WirelessBusinessCtrlACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="WirelessBusinessCtrlServ"/>
+		</property>	
+	 </bean>
+	 <bean id="WirelessBusinessCtrlServ"
+	   		class="com.linkage.module.gtms.config.serv.WirelessBusinessCtrlServ"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="WirelessBusinessCtrlDAO"/>
+			</property>
+	 </bean>
+	 <bean id="WirelessBusinessCtrlDAO"
+	 		class="com.linkage.module.gtms.config.dao.WirelessBusinessCtrlDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <bean id="NetByDHCPStopACT" 
+	      class="com.linkage.module.gtms.config.action.NetByDHCPStopACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="NetByDHCPStopServ"/>
+		</property>	
+	 </bean>
+	 <bean id="NetByDHCPStopServ"
+	   		class="com.linkage.module.gtms.config.serv.NetByDHCPStopServ"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="NetByDHCPStopDAO"/>
+			</property>
+	 </bean>
+	 <bean id="NetByDHCPStopDAO"
+	 		class="com.linkage.module.gtms.config.dao.NetByDHCPStopDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <bean id="ParamNodeCfgACT" 
+	      class="com.linkage.module.gtms.config.action.ParamNodeCfgACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="ParamNodeCfgBIO"/>
+		</property>	
+	 </bean>
+	 <bean id="ParamNodeCfgBIO"
+	   		class="com.linkage.module.gtms.config.serv.ParamNodeCfgBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="ParamNodeCfgDAO"/>
+			</property>
+	 </bean>
+	 <bean id="ParamNodeCfgDAO"
+	 		class="com.linkage.module.gtms.config.dao.ParamNodeCfgDAO">
+	 		<property name="dao"> 
+		   		<ref bean="dynamicDataSource"/>
+		   </property>
+	 </bean>
+	 <bean id="getNodeBatchConfigActionImpl"
+	       class="com.linkage.module.gtms.config.action.GetNodeBatchConfigActionImpl" scope="prototype">
+	       <property name="bio">
+	 		<ref bean="getNodeBatchConfigServImpl"/>
+	 	</property>
+	 </bean>
+	 <bean id="getNodeBatchConfigServImpl" 
+		 class="com.linkage.module.gtms.config.serv.GetNodeBatchConfigServImpl" scope="prototype">
+		 <property name="dao">
+			<ref bean="getNodeBatchConfigDAOImpl" />
+		</property>
+	 </bean>
+	 <bean id="getNodeBatchConfigDAOImpl" class="com.linkage.module.gtms.config.dao.GetNodeBatchConfigDAOImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	  <bean id="qoeFunctionACT" 
+	      class="com.linkage.module.gtms.config.action.SetQOEACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="SetQOESERV"/>
+		</property>	
+	 </bean>
+	 <bean id="SetQOESERV"
+	   		class="com.linkage.module.gtms.config.serv.SetQOEServ"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="SetQOEDao"/>
+			</property>
+	 </bean>
+	 <bean id="SetQOEDao"
+	 		class="com.linkage.module.gtms.config.dao.SetQOEDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <!-- 江苏电信双栈刷新工具-->
+	 <bean id="StackRefreshToolsACT" 
+	      class="com.linkage.module.gtms.config.action.StackRefreshToolsACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="StackRefreshToolsBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="StackRefreshToolsBIO"
+	   		class="com.linkage.module.gtms.config.serv.StackRefreshToolsBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="StackRefreshToolsDAO"/>
+			</property>
+	 </bean>
+	 <bean id="StackRefreshToolsDAO"
+	 		class="com.linkage.module.gtms.config.dao.StackRefreshToolsDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <!-- 双栈刷新结果统计-->
+	 <bean id="StackRefreshCountACT" 
+	      class="com.linkage.module.gtms.config.action.StackRefreshCountACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="StackRefreshCountBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="StackRefreshCountBIO"
+	   		class="com.linkage.module.gtms.config.serv.StackRefreshCountBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="StackRefreshCountDAO"/>
+			</property>
+	 </bean>
+	 <bean id="StackRefreshCountDAO"
+	 		class="com.linkage.module.gtms.config.dao.StackRefreshCountDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	  <!-- 宁夏电信组播下移新增/删除工具-->
+	 <bean id="ModifyVlanToolsACT" 
+	      class="com.linkage.module.gtms.config.action.ModifyVlanToolsACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="ModifyVlanToolsBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="ModifyVlanToolsBIO"
+	   		class="com.linkage.module.gtms.config.serv.ModifyVlanToolsBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="ModifyVlanToolsDAO"/>
+			</property>
+	 </bean>
+	 <bean id="ModifyVlanToolsDAO"
+	 		class="com.linkage.module.gtms.config.dao.ModifyVlanToolsDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <!-- 重庆批量重启-->
+	 <bean id="RestartDeviceBatchACT" 
+	      class="com.linkage.module.gtms.config.action.RestartDeviceBatchACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="RestartDeviceBatchBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="RestartDeviceBatchBIO"
+	   		class="com.linkage.module.gtms.config.serv.RestartDeviceBatchBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="RestartDeviceBatchDAO"/>
+			</property>
+	 </bean>
+	 <bean id="RestartDeviceBatchDAO"
+	 		class="com.linkage.module.gtms.config.dao.RestartDeviceBatchDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <bean id="BatchConfigMaxTerminalActionImp"
+		  class="com.linkage.module.gtms.config.action.BatchConfigMaxTerminalActionImp">
+		  <property name="batchconfigmtserv">
+		  	<ref bean="batchconfigmtserv"/>
+		  </property>
+	</bean>
+	<bean id="batchconfigmtserv"
+			 class="com.linkage.module.gtms.config.serv.BatchConfigMaxTerminalServImp" scope="prototype">
+	</bean>
+	 <!-- 江西电信vlanid下发-->
+	 <bean id="BatchModifyVlanIdACT" 
+	      class="com.linkage.module.gtms.config.action.BatchModifyVlanIdACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="BatchModifyVlanidBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="BatchModifyVlanidBIO"
+	   		class="com.linkage.module.gtms.config.serv.BatchModifyVlanidBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="BatchModifyVlanidDAO"/>
+			</property>
+	 </bean>
+	 <bean id="BatchModifyVlanidDAO"
+	 		class="com.linkage.module.gtms.config.dao.BatchModifyVlanIdDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 
+	 <!-- HBLT-RMS-20190712LH-056光猫IPTV路由业务新增路由节点下发 -->
+	 <bean id="BatchAddIptvNodeACT" 
+	      class="com.linkage.module.gtms.config.action.BatchAddIptvNodeACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="BatchAddIptvNodeBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="BatchAddIptvNodeBIO"
+	   		class="com.linkage.module.gtms.config.serv.BatchAddIptvNodeBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="BatchAddIptvNodeDAO"/>
+			</property>
+	 </bean>
+	 <bean id="BatchAddIptvNodeDAO"
+	 		class="com.linkage.module.gtms.config.dao.BatchAddIptvNodeDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 <!-- XJDX-ITMS-20190926-LJ-001(光猫批量开关WiFi) -->
+	 <bean id="BatchConfigWifiACT" 
+	      class="com.linkage.module.gtms.config.action.BatchConfigWifiACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="BatchConfigWifiBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="BatchConfigWifiBIO"
+	   		class="com.linkage.module.gtms.config.serv.BatchConfigWifiBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="BatchConfigWifiDAO"/>
+			</property>
+	 </bean>
+	 <bean id="BatchConfigWifiDAO"
+	 		class="com.linkage.module.gtms.config.dao.BatchConfigWifiDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	
+	 <!-- NXDX-REQ-ITMS-20191008-LX-001全网终端设备单双栈统计和单个查询 -->
+	 <bean id="StackRefreshQueryACT" 
+	      class="com.linkage.module.gtms.config.action.StackRefreshQueryACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="StackRefreshQueryBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="StackRefreshQueryBIO"
+	   		class="com.linkage.module.gtms.config.serv.StackRefreshQueryBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="StackRefreshQueryDAO"/>
+			</property>
+	 </bean>
+	 <bean id="StackRefreshQueryDAO"
+	 		class="com.linkage.module.gtms.config.dao.StackRefreshQueryDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 
+	 <!-- JLLT-REQ-RMS-20200113-JH001【吉林联通RMS语音NGN割接IMS需求】-->
+	 <bean id="VoipChangeCountACT" 
+	      class="com.linkage.module.gtms.config.action.VoipChangeCountACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="VoipChangeCountBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="VoipChangeCountBIO"
+	   		class="com.linkage.module.gtms.config.serv.VoipChangeCountBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="VoipChangeCountDAO"/>
+			</property>
+	 </bean>
+	 <bean id="VoipChangeCountDAO"
+	 		class="com.linkage.module.gtms.config.dao.VoipChangeCountDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	  <bean id="VoipChangeConfigACT" class="com.linkage.module.gtms.config.action.VoipChangeConfigACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="VoipChangeConfigBio"/>
+		</property>	
+	 </bean>
+	  <bean id="VoipChangeConfigBio" class="com.linkage.module.gtms.config.serv.VoipChangeConfigBio"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="VoipChangeConfigDAO"/>
+			</property>
+	 </bean>
+	 <bean id="VoipChangeConfigDAO"	class="com.linkage.module.gtms.config.dao.VoipChangeConfigDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 
+	  <bean id="WifiPwdManageAction" class="com.linkage.module.gtms.config.action.WifiPwdManageAction"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="WifiPwdManageServ"/>
+		</property>	
+	 </bean>
+	  <bean id="WifiPwdManageServ" class="com.linkage.module.gtms.config.serv.WifiPwdManageServ"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="WifiPwdManageDAO"/>
+			</property>
+	 </bean>
+	 <bean id="WifiPwdManageDAO"	class="com.linkage.module.gtms.config.dao.WifiPwdManageDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+	 
+	   <bean id="DelWanConnToolsACT" class="com.linkage.module.gtms.config.action.DelWanConnToolsACT"
+	      scope="prototype">
+	      <property name="bio">
+			<ref bean="DelWanConnToolsBIO"/>
+		</property>	
+	 </bean>
+	  <bean id="DelWanConnToolsBIO" class="com.linkage.module.gtms.config.serv.DelWanConnToolsBIO"
+	   		scope="prototype">
+	   		<property name="dao">
+				<ref bean="DelWanConnToolsDAO"/>
+			</property>
+	 </bean>
+	 <bean id="DelWanConnToolsDAO"	class="com.linkage.module.gtms.config.dao.DelWanConnToolsDAO">
+	 		<property name="dao"> 
+		   		<ref bean="mainDataSource"/>
+		   </property>
+	 </bean>
+</beans>

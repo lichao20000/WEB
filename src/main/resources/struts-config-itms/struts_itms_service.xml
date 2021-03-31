@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="service_itms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/itms/service">
+		<action name="bssSheetServ" class="BssSheetServACT">
+			<result name="init">/itms/service/bssSheetServView.jsp</result>
+			<result name="init2">/itms/service/bssSheetServView2.jsp</result>
+			<result name="bssSheetServInfo">/itms/service/bssSheetServList.jsp</result>
+			<result name="bssSheetServInfo2">/itms/service/bssSheetServList2.jsp</result>
+			<result name="bssSheetServInfo3">/itms/service/bssSheetServList3.jsp</result>
+			<result name="configInfo">/itms/service/configInfoList.jsp</result>
+			<result name="configDetail">/itms/service/configInfoDetail.jsp</result>
+			<result name="configLogInfo">/itms/service/configInfoLogList.jsp</result>
+			<result name="configLogDetail">/itms/service/configInfoDetail.jsp</result>
+			<result name="bssSheet">/itms/service/bssSheetInfo.jsp</result>
+			<result name="internet">/itms/service/bssSheetInfoInternet.jsp</result>
+			<result name="schoolInternet">/itms/service/bssSheetInfoSchInternet.jsp</result>
+			<result name="iptv">/itms/service/bssSheetInfoIPTV.jsp</result>
+			<result name="vBox">/itms/service/bssSheetInfoVBox.jsp</result>
+			<result name="syjw">/itms/service/bssSheetInfoSyjw.jsp</result>
+			<result name="zysWifi">/itms/service/bssSheetInfoZsyWifi.jsp</result>
+			<result name="cloudNet">/itms/service/bssSheetInfoCloudNet.jsp</result>
+			<result name="router">/itms/service/bssSheetInfoLDKD.jsp</result>
+			<result name="sharedwifi">/itms/service/bssSheetInfoSharedWifi.jsp</result>
+			<result name="bssSheet2">/itms/service/bssSheetInfo2.jsp</result>
+			<result name="solutioninfo" >/itms/service/bssSolutionResult.jsp</result>
+			<result name="bssIssued">/itms/service/bssIssuedResult.jsp</result>
+			<result name="ahltSheetInfo">/itms/service/bssSheetUserListAHLT.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="simulateSheet" class="SimulateSheetACT">
+			<result name="success">/itms/service/simulate/simulateSheet.jsp</result>
+			<result name="open">/itms/service/simulate/e8cOpenSheet.jsp</result>
+			<result name="closeall">/itms/service/simulate/e8cStopSheet.jsp</result>
+			<result name="netopen">/itms/service/simulate/e8cNetOpenSheet.jsp</result>
+			<result name="netstop">/itms/service/simulate/e8cStopSheet1.jsp</result>
+			<result name="voipopen">/itms/service/simulate/e8cVoipOpenSheet.jsp</result>
+			<result name="voipopen1">/itms/service/simulate/e8cVoipOpenSheet1.jsp</result>
+			<result name="voipstop">/itms/service/simulate/e8cVoipStopSheet.jsp</result>
+			<result name="h248voipopen">/itms/service/simulate/H248VoipOpenSheet.jsp</result>
+			<result name="h248voipstop">/itms/service/simulate/H248VoipStopSheet.jsp</result>
+			<result name="iptvopen">/itms/service/simulate/e8cIptvOpenSheet.jsp</result>
+			<result name="iptvstop">/itms/service/simulate/e8cIptvStopSheet.jsp</result>
+			<result name="e8bnetopen">/itms/service/simulate/e8b/e8bNetOpenSheet.jsp</result>
+			<result name="e8bnetstop">/itms/service/simulate/e8b/e8bNetStopSheet.jsp</result>
+			<result name="e8biptvopen">/itms/service/simulate/e8b/e8bIptvOpenSheet.jsp</result>
+			<result name="e8biptvstop">/itms/service/simulate/e8b/e8bIptvStopSheet.jsp</result>
+			<result name="tianyiopen">/itms/service/simulate/tianyiOpenSheet.jsp</result>
+			<result name="tianyistop">/itms/service/simulate/tianyiStopSheet.jsp</result>
+			<result name="routeropen">/itms/service/simulate/routerOpenSheet.jsp</result>
+			<result name="routerstop">/itms/service/simulate/routerStopSheet.jsp</result>
+			<result name="sheetResult">/itms/service/simulate/sendSheetResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="BssSheetDelACT" class="BssSheetDelACT">
+			<result name="stpvoipstop">/itms/service/bssSheetSipVoipStop.jsp</result>
+			<result name="h248voipstop">/itms/service/bssSheetHVoipStop.jsp</result>
+			<result name="iptvstop">/itms/service/bssSheetIptvStop.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="simulateSheet4cq" class="SimulateSheetACT">
+			<result name="success">/itms/service/simulate/cq/simulateSheet.jsp</result>
+			<result name="netopen">/itms/service/simulate/cq/e8cNetOpenSheet.jsp</result>
+			<result name="netstop">/itms/service/simulate/cq/e8cNetStopSheet.jsp</result>
+			<result name="netAlterAccount">/itms/service/simulate/cq/e8cNetAlterAccountSheet.jsp</result>
+			<result name="netMsgAlter">/itms/service/simulate/cq/e8cNetMsgAlterSheet.jsp</result>
+			<result name="netUnbind">/itms/service/simulate/cq/e8cNetUnbindSheet.jsp</result>
+			<result name="netAlterDeviceid">/itms/service/simulate/cq/e8cNetAlterDeviceidSheet.jsp</result>
+			<result name="netAlterMode">/itms/service/simulate/cq/e8cNetAlterModeSheet.jsp</result>
+			<result name="netAlterPasswd">/itms/service/simulate/cq/e8cNetAlterPasswdSheet.jsp</result>
+			<result name="netAlterPcNum">/itms/service/simulate/cq/e8cNetAlterPcNumSheet.jsp</result>
+			<result name="iptvopen">/itms/service/simulate/cq/e8cIptvOpenSheet.jsp</result>
+			<result name="iptvstop">/itms/service/simulate/cq/e8cIptvStopSheet.jsp</result>
+			<result name="iptvMsgAlter">/itms/service/simulate/cq/e8cIptvMsgAlterSheet.jsp</result>
+			<result name="iptvAlterMulti">/itms/service/simulate/cq/e8cIptvAlterMultiSheet.jsp</result>
+			<result name="voipopen1">/itms/service/simulate/cq/e8cVoipOpenSheet.jsp</result>
+			<result name="voipstop">/itms/service/simulate/cq/e8cVoipStopSheet.jsp</result>
+			<result name="voipAlterMsg">/itms/service/simulate/cq/e8cVoipAlterMsgSheet.jsp</result>
+			<result name="voipAlterAuthpass">/itms/service/simulate/cq/e8cVoipAlterAuthpassSheet.jsp</result>
+			<result name="sheetResult">/itms/service/simulate/sendSheetResult.jsp</result>
+			<result name="netCustomerAlter">/itms/service/simulate/cq/e8cNetCustomerAlterSheet.jsp</result>
+			<result name="stbiptvOpen">/itms/service/simulate/cq/stbiptvOpenSheet.jsp</result>
+			<result name="stbimsOpen">/itms/service/simulate/cq/stbimsOpenSheet.jsp</result>
+			<result name="stbiptvStop">/itms/service/simulate/cq/stbiptvStopSheet.jsp</result>
+			<result name="stbimsStop">/itms/service/simulate/cq/stbimsStopSheet.jsp</result>
+			<result name="stbAlterDeviceid">/itms/service/simulate/cq/stbAlterDeviceidSheet.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<!-- 内蒙古的action -->
+		<action name="simulateNMGSheet" class="SimulateSheetNMGACT">
+            <result name="success">/itms/service/simulate/nmg/simulateSheet.jsp</result>
+            <result name="open">/itms/service/simulate/nmg/e8cOpenSheet.jsp</result>
+            <result name="closeall">/itms/service/simulate/nmg/e8cStopSheet.jsp</result>
+            <result name="netopen">/itms/service/simulate/nmg/e8cNetOpenSheet.jsp</result>
+            <result name="netstop">/itms/service/simulate/nmg/e8cStopSheet.jsp</result>
+            <result name="voipopen">/itms/service/simulate/nmg/e8cVoipOpenSheet.jsp</result>
+            <result name="voipstop">/itms/service/simulate/nmg/e8cVoipStopSheet.jsp</result>
+            <result name="h248voipopen">/itms/service/simulate/nmg/H248VoipOpenSheet.jsp</result>
+            <result name="h248voipstop">/itms/service/simulate/nmg/H248VoipStopSheet.jsp</result>
+            <result name="iptvopen">/itms/service/simulate/nmg/e8cIptvOpenSheet.jsp</result>
+            <result name="iptvstop">/itms/service/simulate/nmg/e8cStopSheet.jsp</result>
+            <result name="e8bnetopen">/itms/service/simulate/nmg/e8b/e8bNetOpenSheet.jsp</result>
+            <result name="e8bnetstop">/itms/service/simulate/nmg/e8b/e8bNetStopSheet.jsp</result>
+            <result name="e8biptvopen">/itms/service/simulate/nmg/e8b/e8bIptvOpenSheet.jsp</result>
+            <result name="e8biptvstop">/itms/service/simulate/nmg/e8b/e8bIptvStopSheet.jsp</result>
+            <result name="sheetResult">/itms/service/simulate/nmg/sendSheetResult.jsp</result>
+            <result name="ajax" type="ajax"></result>
+        </action>
+		
+		
+		
+		
+		<action name="errorSheet" class="ErrorBssSheetACT">
+			<result name="list">/itms/service/errBssSheetList.jsp</result>
+			<result name="init">/itms/service/errBssSheet.jsp</result>
+		</action>
+		
+		<!-- 江苏批量工单补录 -->
+		<action name="failedSheet" class="FailedSheetACT">
+                <result name="showReSendResult" type="ajax"></result>
+        </action>
+		
+		<!-- 江西电信手工工单 -->	
+		<action name="bssSheetByHand4jx" class="BssSheetByHand4JXACT">
+			<result name="success">/itms/service/bssSheetByHand4JX.jsp</result>
+            <result name="closeall">/itms/service/simulate/jx/e8cStopSheet.jsp</result>
+            <result name="netstop">/itms/service/simulate/jx/e8cNetStopSheet.jsp</result>
+             <result name="voipstop">/itms/service/simulate/jx/e8cVoipStopSheet.jsp</result>
+            <result name="h248voipstop">/itms/service/simulate/jx/H248VoipStopSheet.jsp</result>
+            <result name="iptvstop">/itms/service/simulate/jx/e8cIptvStopSheet.jsp</result>
+            <result name="sheetResult">/itms/service/simulate/jx/sendSheetResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- AH电信手工工单 -->	
+		<action name="bssSheetByHand4AH" class="BssSheetByHand4AHACT">
+			<result name="success">/itms/service/bssSheetByHand4AH.jsp</result>
+			<result name="voip">/itms/service/bssSheetByHand4AHVOIP.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- HB_LT -->
+        <action name="bssSheetByHand4HBLT" class="BssSheetByHand4HBLTACT">
+            <result name="success">/itms/service/bssSheetByHand4HBLT.jsp</result>
+            <result name="success_stb">/gtms/stb/resource/bssSheetByHand4HBLT_stb.jsp</result>
+            <result name="ajax" type="ajax"></result>
+        </action>
+         <!-- SX_LT -->
+        <action name="bssSheetByHand4SXLT" class="BssSheetByHand4SXLTACT">
+            <result name="success">/itms/service/bssSheetByHand4SXLTNew.jsp</result>
+			<result name="success_stb">/gtms/stb/resource/stbSheetByHand4SXLT.jsp</result>
+			<result name="ajax" type="ajax"></result>
+        </action>
+         <!-- GS_DX_STB -->
+        <action name="bssSheetByHand4GSDX_stb" class="BssSheetByHand4STBGSDXACT">
+			<result name="success_stb">/gtms/stb/resource/stbSheetByHand4GSDX.jsp</result>
+			<result name="ajax" type="ajax"></result>
+        </action>
+		<!-- HB_DX -->	
+		<action name="bssSheetByHand4HB" class="BssSheetByHand4HBACT">
+			<result name="success">/itms/service/bssSheetByHand4HB.jsp</result>
+			<result name="success_jllt">/itms/service/bssSheetByHand4JLLT.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- SDLT -->	
+		<action name="bssSheetByHand4SDLT" class="BssSheetByHand4SDLTACT">
+			<result name="success">/itms/service/bssSheetByHand4SDLT.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- YN_LT -->	
+		<action name="bssSheetByHand4ynlt" class="BssSheetByHand4ynltACT">
+			<result name="success">/itms/service/bssSheetByHand4ynlt.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!--GS_DX  -->
+		<action name="bssSheetByHand4GSDX" class="BssSheetByHand4GSDXACT">
+			<result name="success">/itms/service/bssSheetByHand4GSDX.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="operateByHistoryQuery" class="OperateByHistoryACT">
+			<result name="init">/itms/service/operateByHistoryQuery.jsp</result>
+			<result name="initStb">/gtms/stb/resource/operateByHistoryQuery.jsp</result>
+			<result name="list">/itms/service/operateByHistoryQueryList.jsp</result>
+			<result name="listStb">/gtms/stb/resource/operateByHistoryQueryList.jsp</result>
+			<result name="message">/itms/service/operateShow.jsp</result>
+		</action>
+		
+		<action name="operateByHistoryCQOldQuery" class="OperateByHistoryCQOldACT">
+			<result name="init">/itms/service/operateByHistoryCQOldQuery.jsp</result>
+			<result name="list">/itms/service/operateByHistoryCQOldQueryList.jsp</result>
+			<result name="message">/itms/service/operateShowCQOld.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="orderInfo" class="OrderQueryACT">
+			<result name="success">/itms/service/orderQuery.jsp</result>
+			<result name="list" >/itms/service/orderQueryList.jsp</result>
+		</action>
+		
+		<!-- start gaoyi =====江西电信监控端口流量情况需求(采集任务定制)======= -->
+		<action name="monitorFlowinfo" class="MonitorFlowACT">
+			<result name="init">/itms/service/monitorFlowInfo.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		
+		<!-- start gaoyi ==============江西电信监控端口流量情况需求 (查询任务的详情界面)================== -->
+		<action name="monitorFlowInfoQuery" class="MonitorFlowInfoQueryACT">
+			<result name="init">/itms/service/monitorFlowInfoQuery.jsp</result>
+			<result name="monitorList">/itms/service/monitorFlowInfoQueryList.jsp</result>
+			<result name="eponLanList">/itms/service/monitorEponLanInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- end gaoyi ================江西电信监控端口流量情况需求 (查询任务的详情界面)================ -->
+		
+		
+		<action name="manuallyconfigureportbusiness" class="ManuallyConfigurePortBusinessACT">
+			<result name="list">/itms/service/manuallyconfigureportbusiness/manuallyconfigureportbusinessList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="bssSheetServSDLT" class="BssSheetServStandardACT">
+			<result name="init">/itms/service/bssSheetServView_Standard.jsp</result>
+			<result name="init2">/itms/service/bssSheetServView2_Standard.jsp</result>
+			<result name="bssSheetServInfo">/itms/service/bssSheetServList_Standard.jsp</result>
+			<result name="bssSheetServInfo2">/itms/service/bssSheetServList2_Standard.jsp</result>
+			<result name="bssSheetServInfo3">/itms/service/bssSheetServList3_Standard.jsp</result>
+			<result name="configInfo">/itms/service/configInfoList_Standard.jsp</result>
+			<result name="configDetail">/itms/service/configInfoDetail_Standard.jsp</result>
+			<result name="configLogInfo">/itms/service/configInfoLogList_Standard.jsp</result>
+			<result name="configLogDetail">/itms/service/configInfoDetail_Standard.jsp</result>
+			<result name="bssSheet">/itms/service/bssSheetInfo_Standard.jsp</result>
+			<result name="internet">/itms/service/bssSheetInfoInternet_Standard.jsp</result>
+			<result name="iptv">/itms/service/bssSheetInfoIPTV_Standard.jsp</result>
+			<result name="router">/itms/service/bssSheetInfoLDKD_Standard.jsp</result>
+			<result name="cloudNet">/itms/service/bssSheetInfoCloudNet_Standard.jsp</result>
+			<result name="bssSheet2">/itms/service/bssSheetInfo2_Standard.jsp</result>
+			<result name="solutioninfo" >/itms/service/bssSolutionResult_Standard.jsp</result>
+			<result name="bssIssued">/itms/service/bssIssuedResult_Standard.jsp</result>
+			<result name="bssIssued_cuc">/itms/service/bssIssuedResult_Standard_cuc.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 黑龙江的action -->
+		<action name="simulateHLJSheet" class="SimulateSheetHLJACT">
+            <result name="success">/itms/service/simulate/hlj/simulateSheet.jsp</result>
+           	<result name="open">/itms/service/simulate/hlj/e8cOpenSheet.jsp</result>
+            <result name="closeall">/itms/service/simulate/hlj/e8cStopSheet.jsp</result>
+            <result name="netopen">/itms/service/simulate/hlj/e8cNetOpenSheet.jsp</result>
+            <result name="netstop">/itms/service/simulate/hlj/e8cStopSheet.jsp</result>
+            <result name="h248voipopen">/itms/service/simulate/hlj/H248VoipOpenSheet.jsp</result>
+            <result name="h248voipstop">/itms/service/simulate/hlj/e8cStopSheet.jsp</result>
+            <result name="sheetResult">/itms/service/simulate/hlj/sendSheetResult.jsp</result>
+            <result name="ajax" type="ajax"></result>
+        </action>
+        
+        <!-- 宁夏的action -->
+		<action name="simulateNxNewSheet" class="SimulateSheetNxNewACT">
+            <result name="success">/itms/service/simulate/nx/simulateSheet.jsp</result>
+            <result name="open">/itms/service/simulate/nx/e8cOpenSheet.jsp</result>
+            <result name="closeall">/itms/service/simulate/nx/e8cStopSheet.jsp</result>
+            <result name="netopen">/itms/service/simulate/nx/e8cNetOpenSheet.jsp</result>
+            <result name="netstop">/itms/service/simulate/nx/e8cStopSheet.jsp</result>
+            <result name="h248voipopen">/itms/service/simulate/nx/H248VoipOpenSheet.jsp</result>
+            <result name="sipopen">/itms/service/simulate/nx/SIPOpenSheet.jsp</result>
+            <result name="sipclose">/itms/service/simulate/nx/SIPCloseSheet.jsp</result>
+            <result name="h248voipstop">/itms/service/simulate/nx/H248VoipStopSheet.jsp</result>
+            <result name="iptvopen">/itms/service/simulate/nx/e8cIptvOpenSheet.jsp</result>
+            <result name="iptvstop">/itms/service/simulate/nx/e8cIptvStopSheet.jsp</result>
+            <result name="sheetResult">/itms/service/simulate/nx/sendSheetResult.jsp</result>
+            <result name="ajax" type="ajax"></result>
+        </action>
+        
+        <!-- 山西联通 -->
+		<action name="simulateSxNewSheet" class="SimulateSheetSxNewACT">
+            <result name="success">/itms/service/simulate/sx/simulateSheet.jsp</result>
+            <result name="open">/itms/service/simulate/sx/e8cOpenSheet.jsp</result>
+            <result name="modify">/itms/service/simulate/sx/e8cModifySheet.jsp</result>
+            <result name="closeall">/itms/service/simulate/sx/e8cStopSheet.jsp</result>
+            <result name="netopen">/itms/service/simulate/sx/e8cNetOpenSheet.jsp</result>
+            <result name="netstop">/itms/service/simulate/sx/e8cNetStopSheet.jsp</result>
+            <result name="h248voipopen">/itms/service/simulate/sx/H248VoipOpenSheet.jsp</result>
+            <result name="sipopen">/itms/service/simulate/sx/SIPOpenSheet.jsp</result>
+            <result name="sipupdate">/itms/service/simulate/sx/SIPUpdateSheet.jsp</result>
+            <result name="sipclose">/itms/service/simulate/sx/SIPCloseSheet.jsp</result>
+            <result name="h248voipstop">/itms/service/simulate/sx/H248VoipStopSheet.jsp</result>
+            <result name="iptvopen">/itms/service/simulate/sx/e8cIptvOpenSheet.jsp</result>
+            <result name="iptvstop">/itms/service/simulate/sx/e8cIptvStopSheet.jsp</result>
+            <result name="sheetResult">/itms/service/simulate/sx/sendSheetResult.jsp</result>
+            <result name="ajax" type="ajax"></result>
+        </action>
+        
+       <!-- 新疆零配置界面 -->
+		<action name="zeroconfiguration_XJ" class="ZeroconfigurationACT_XJ">
+            <result name="init">/itms/service/zeroConfiguration_XJ.jsp</result>
+            <result name="list">/itms/service/zeroConfiguration_XJ_list.jsp</result>
+        </action>
+        <!-- 江西电信ITV终端管理系统开通 -->
+        <action name="ItvHandWork" class="ItvHandWorkACT">
+        <result name="success">/itms/service/ItvHandWork.jsp</result>
+         <result name="ajax" type="ajax"></result>
+        </action>
+        
+         <action name ="ipsecSheetServ" class ="ipsecSheetServACT"> 
+            <result name ="init">/inmp/bss/ipsecSheetServ.jsp</result> 
+            <result name="list">/inmp/bss/ipsecSheetServList.jsp</result>
+            <result name="ajax" type="ajax"></result>
+            <result name="excel" type="excel"></result>
+            <result name="internet">/inmp/bss/ipsecSheetInfoInnternet.jsp</result>
+            <result name="SingleDeviceInfo">/inmp/bss/ipsecDeviceMessage.jsp</result>
+        </action> 
+        
+        
+		<action name="QueryDevsnCompareStatus" class="QueryDevsnCompareStatusACT">
+			<result name="statusInfo">/itms/service/QueryDevsnCompareStatusList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!--JX_LT/ZJ_LT 手工工单 -->
+		<action name="bssSheetByHand4JXLT" class="BssSheetByHand4JXLTACT">
+			<result name="success">/itms/service/bssSheetByHand4JXLT.jsp</result>
+			<result name="zjlt_success">/itms/service/bssSheetByHand4ZJLT.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- NX_LT -->	
+		<action name="bssSheetByHand4NXLT" class="BssSheetByHand4NXLTACT">
+			<result name="success">/itms/service/bssSheetByHand4NXLT.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="voipPortEdit" class="VoipPortEditACT">
+		    <result name="success">/itms/service/voipPortEdit.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<!-- hbdx-->
+		<action name="itvServConfig" class="ItvServConfigACT">
+			<result name="list">/itms/service/itvServConfigList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

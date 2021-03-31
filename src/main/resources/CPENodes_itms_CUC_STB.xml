@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GB18030"?>
+<!--
+attribute:
+name: name of node.
+type: type of node. 1,string; 2,int; 3,unsignedInt; 4,boolean .
+readonly:is readonly. 0,none; 1,read; 2,read and write.
+ -->
+<Device>
+	<ManagementServer>
+		<URL name="URL" type="1" readonly="2"/>
+		<PeriodicInformEnable name="周期上报开关" type="4" readonly="2"/>
+		<PeriodicInformInterval name="周期上报秒" type="3" readonly="2"/>
+	</ManagementServer>
+</Device>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- EVDO数据卡 -->
+	<bean id="DataCardDAO" class="com.linkage.module.bbms.dao.DataCardDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="CardDAO" class="com.linkage.module.bbms.resource.dao.CardDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- EVDOUIM卡 -->
+	<bean id="UimCardDAO" class="com.linkage.module.bbms.dao.UimCardDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+</beans>

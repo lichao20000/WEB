@@ -1,0 +1,1000 @@
+<public:component tagName="listview" lightweight=true>
+<public:attach event="oncontentready" onevent="oncontentready()" />
+
+<public:property name="width" />
+<public:property name="height" />
+<public:property name="dataXML" />
+<public:property name="XmlDoc" />
+<public:property name="text" >
+<public:property name="currentRow" />
+<public:property name="selectedRowBackgroundColour" value="steelblue" />
+<public:property name="selectedRowColour" value="white" />
+<public:property name="lvdata" />
+<public:property name="lvhead" />
+<public:property name="toolbarDisplay" value="" />
+<public:property name="toolbar" />
+<public:property name="table" />
+<public:property name="listTable" />
+<public:property name="displayToolbar" value="false" />
+<public:property name="wrapHeadings" value="true" /> 
+<public:property name="saveOptions" value="[['html','HTML'],['word','Word'],['excel','Excel'],['xml','XML']]"/> 
+<public:property name="smallButtons" value="false">
+<public:property name="pageSize" value="1"/> 
+<public:property name="pageNumber" value="1"/>
+<public:property name="pageCount" value="500"/>
+<public:property name="rowCount" value="0"/>
+<public:property name="maxRowCount" value="2000" />
+<public:property name="search" value="false" id="searchId"/>
+<public:property name="updateRow" value="false" id="updateRowId"/>
+<public:property name="insertRow" value="false" id="insertRowId"/>
+<public:property name="deleteRow" value="false" id="deleteRowId"/>
+<public:property name="save" value="false" id="saveId"/>
+<public:property name="print" value="false" id="printId"/>
+<public:property name="copy" value="false" id="copyId"/>
+<public:property name="help" value="false" id="helpId"/>
+<public:property name="columnPicker" value="false" id="columnPickerId"/>
+<public:property name="sort" value="false" id="sortId"/>
+<public:property name="rowInfo" value="true" id="rowInfoId"/>
+<public:property name="pageInfo" value="true" id="pageInfoId"/>
+<public:property name="editRow" value="true" id="editRowId"/>
+<public:property name="buttonNavigation" value="true" id="buttonNavigationId"/>
+<public:property name="orderColumn" value=""/>
+<public:property name="lvformat" />
+<public:property name="lvstyle" />
+<public:property name="filterRMPos" value="-1" />
+<public:property name="filterPattern" value="" />
+<!--增加的关于列名和列索引之间的对应关系-->
+<public:property name="HeadName_Index" />
+
+
+<public:method name="loadText" />
+<public:method name="loadData" />
+<public:method name="drawData" />
+<public:method name="selectRow" />
+<public:method name="deleteRow" />
+<public:method name="selectPage"/> 
+<public:method name="setRowStyle" />
+<public:method name="configureToolBar"/> 
+<public:method name="saveGrid">
+<public:method name="setColumnProperty" />
+<public:method name="reload" />
+<public:method name="formatColumnValue" />
+<public:method name="setSize" />
+<public:method name="setRemovePattern" />
+<public:method name="getMaxId" />
+
+<public:event name="onRowSelected" id="_lvevtRowSelected"/> 
+<public:event name="onListviewReady" id="_lvevtListviewReady"/> 
+</public:component>
+
+<SCRIPT LANGUAGE="JavaScript">
+//------------------------------------------------------------
+// Copyright (c) 2003-2004 LeadinSoft. All rights reserved.
+// Version 2.0.3
+// Ahthor dolphin
+// Modify Date 2005-10-21
+//------------------------------------------------------------
+var L_Loading_Text = "正在载入数据，请稍候...";
+var L_AbortControl_ErrorMessage = "控件初始化出错，不能够载入";
+var navButtons = ["first","prev","next","last"];
+var buttons = ['first','prev','next','last','search','updateBtn','insertBtn','deleteBtn','save','copy','help','columnPicker','sort','print'];
+
+//分组定义采集点编号和告警最大id结构
+function GatherIDEvent(_gather_id,_max_event_id){
+	this.gather_id = _gather_id;
+	this.max_event_id = _max_event_id;
+}
+var arrGE = new Array();
+//-------------------------------------------------------------
+
+/** 
+ * 初始化ListView
+ * 
+ * XMLDOM实例
+*/
+function oncontentready(){
+	element.innerHTML = "<span style='color:#8F8F8F'><b>"+ L_Loading_Text +"</b></span>";
+	XmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+	initialise();
+}
+/** 
+ * 初始化ListView框架 
+ * 
+ * 建立listview表头
+ * 初始化数据数组
+ * 建立listview的工具栏和全局变量
+*/
+function initialise(){
+	lvdata = new Array();			//存放数据的数组
+	lvhead = new Array();			//存放表头的数组
+	lvformat = new Object();		//存放格式化数据对象
+    lvstyle  = new Array();   //存放过滤条件的数组对象 
+	text = new Object();			//存放工具栏信息对象
+	saveOptions = eval(saveOptions);
+	maxRowCount = parseInt(maxRowCount);
+
+	//载入工具栏信息
+	loadText();
+	
+	//属性改变触发
+	element.onpropertychange = propertyChange;
+
+	var html = "";
+
+	//判断工具栏是否显示
+	if(toolbarDisplay == '')
+		toolbarDisplay = eval(displayToolbar) ? '' : 'none';
+	
+	//-------------------------- 建立工具栏 ----------------------------------
+	html = "<table id=toolbar class=lvtoolbar cellpadding=0 cellspacing=0 style='display:" + toolbarDisplay + "'><tr>";
+	html += "<td id=searchCell>" + makeButton('search') + "&nbsp;</td>";
+	html += "<td id=editRowCell><table cellpadding=0 cellspacing=0><tr>"
+	html += "<td id=updateRowCell>" + makeButton('updateBtn') + "</td>";
+	html += "<td id=insertRowCell>" + makeButton('insertBtn') + "</td>";
+	html += "<td id=deleteRowCell>" + makeButton('deleteBtn') + "&nbsp;</td>";
+	html += "</tr></table></td>"
+	
+	//建立Navigation栏
+	for(var i in navButtons){
+		html += "<td id=" + navButtons[i] + "Cell>" + makeButton( navButtons[i] ) + "</td>"
+		if (i==1)
+			html += "<td id=pageInfoCell>&nbsp;" + text['page'] + "&nbsp;<select class=lv id=pageNumber></select>&nbsp;" + text['of'] + "&nbsp;<input class=lv id=pageCount readonly type=text size=1></input>&nbsp;</td>";
+	}
+
+	html += "<td id=rowInfoCell>&nbsp;" + text['rows'] + "&nbsp;<input class=lv id=rowCount readonly type=text size=2></input></td>";
+	//Navigation栏结束
+
+	html += "<td id=saveCell><table cellpadding=0 cellspacing=0><tr><td>&nbsp;" + makeButton( 'save' ) + "</td>";
+
+	html += "<td><select class=lv id=saveFormat>";
+
+	for(var i=0;i<saveOptions.length;i++)
+		html += "<option value='"+ saveOptions[i][0] + "'>" + saveOptions[i][1]
+	
+	html += "</select>";
+	html += "</td></tr></table></td>";
+	html += "<td id=printCell>" + makeButton('print') + "&nbsp;</td>";
+	html += "<td id=copyCell>" + makeButton('copy') + "&nbsp;</td>";
+	html += "<td id=columnPickerCell>" + makeButton('columnPicker') + "&nbsp;</td>";
+	html += "<td id=sortCell>" + makeButton('sort') + "&nbsp;</td>";
+	html += "<td id=helpCell>" + makeButton('help') + "&nbsp;</td>";
+	html += "</tr></table>";
+
+	html = '<div id=' + element.id + '.toolbar style="padding:0px">' + html + '</div>';
+	//--------------------------------工具栏结束 ----------------------------------------------
+
+	//建立数据区域
+	html += '<div id=listTable style="width:'+width+';height:'+ height +';overflow:auto;padding:0px" onselectstart="return false;"></div>';
+	
+	//listview载入框架HTML
+	element.innerHTML = html;
+
+	toolbar = window.document.all[element.id + '.toolbar'];
+	
+	//载入工具栏按钮TITLE
+	for(var btn in buttons)	
+		toolbar.all[buttons[btn]].title = text[ buttons[btn].replace(/Btn/,'') + 'Title'];
+	
+	//载入数据到数组
+	loadHead();
+	loadData();
+	
+	//初始化Navigation栏按钮事件
+	toolbar.all.pageNumber.onchange = selectPage;
+	toolbar.all.first.onclick = selectPage;
+	toolbar.all.last.onclick = selectPage;
+	toolbar.all.next.onclick = selectPage;
+	toolbar.all.prev.onclick = selectPage;
+	
+	//工具栏按钮改变触发
+	searchId.fireChange();
+	updateRowId.fireChange();
+	insertRowId.fireChange();
+	deleteRowId.fireChange();
+	rowInfoId.fireChange();
+	pageInfoId.fireChange();
+	saveId.fireChange();
+	copyId.fireChange();
+	helpId.fireChange();
+	columnPickerId.fireChange();
+	sortId.fireChange();
+	editRowId.fireChange();
+	printId.fireChange();
+	buttonNavigationId.fireChange();
+
+	serviceAvailable();
+}
+
+function serviceAvailable(){
+	_lvevtListviewReady.fire();
+}
+
+/** 
+ * 载入工具栏信息
+ *
+ * 从lvlang.xml文件载入工具栏信息存放在text对象
+*/
+function loadText(){
+	XmlDoc.async = false;
+	XmlDoc.load("lvlang.xml");
+
+	var nodeList = XmlDoc.documentElement.childNodes;
+	for(var i=0;i<nodeList.length;i++){
+		text[nodeList[i].nodeName] = nodeList[i].text
+	}
+}
+
+/** 
+ * 根据按钮ID从text对象里数据生成其HTML
+ *
+ * 参数：
+		id: 按钮ID
+ * 返回：
+ *		按钮HTML
+*/
+function makeButton(id){	
+	var accessKey = '';
+	var html = '<img id=' + id + 'Img src=images/' + id.replace(/Btn/,'') + '.gif></img>';
+	if(!eval(element.smallButtons)){
+		var btnText = text[id.replace(/Btn/,'') + 'Text'];
+		html = '<table cellpadding=0 cellspacing=0><tr><td align=center>' + html + '<td></tr><tr><td style="font-size:8pt">' + btnText + '</td></tr></table>';
+
+		var key = btnText.toLowerCase().match(/<u>(.*)<\/u>/);
+		if(key)
+			accessKey = 'accessKey=' + key[1];
+	}
+	return '<button class=lv id=' + id + ' ' + accessKey + '>' + html + '</button>';
+}
+
+/** 
+ * listview属性改变时调用
+*/
+function propertyChange(){
+	switch(event.propertyName){
+		case 'updateRow':
+		case 'search':
+		case 'save':
+		case 'rowInfo':
+		case 'pageInfo':
+		case 'insertRow':
+		case 'deleteRow':
+		case 'editRow':
+		case 'copy':
+		case 'help':
+		case 'columnPicker':
+		case 'sort':
+		case 'print':
+			eval("toolbar.all." + event.propertyName + "Cell.style.display = (" + event.propertyName + ".toString().toLowerCase() == 'true') ? '' : 'none'");
+			break;
+		case 'buttonNavigation':	
+			for (var i in navButtons)
+				eval("toolbar.all." + navButtons[i] + "Cell.style.display = (buttonNavigation.toString().toLowerCase() == 'true') ? '' : 'none'");
+			break;
+		default:	
+	}
+
+	if(event.propertyName == 'displayToolbar')
+		toolbar.childNodes[0].style.display = eval(displayToolbar) ? '' : 'none';
+}
+
+/** 
+ * 显示listview数据
+ *
+ * 从lvdata和lvhead数组画listview
+*/
+function drawData(){
+	_lvElement('listTable').innerHTML = '<table width="100%" border=0 cellspacing=0 cellpadding=0 ><tr><td bgcolor="#999999"><table id="idlvData" border="0" cellspacing="1" cellpadding="2"  width="100%"></table></td></tr></table>';
+	
+	element.table = _lvElement('idlvData');
+	rowCount = lvdata.length;
+
+	//计算总页数
+	pageCount = Math.ceil(rowCount/pageSize);
+	
+	var oTR,oTD;
+	
+	//画listview表头
+	oTR = table.insertRow();
+	//alert(lvhead.length);
+	
+	var cell=0;
+	for(var i=0; i<lvhead.length; i++){
+		//如果该列的设置为非false的时候才进行列的生成		
+		if(lvhead[i]._visible!="false")
+		{
+			
+			oTD = oTR.insertCell(cell);
+			if(eval(wrapHeadings)) oTD.noWrap = true;
+			
+			oTD.className  = lvhead[i]._style;
+			oTD.innerHTML  = lvhead[i]._value;
+			
+			if(orderColumn != "" && lvhead[i]._columnName == lvhead[orderColumn]._columnName){
+				oTD.innerHTML += " <img src=images/" + lvhead[i]._orderSequence + ".gif>";
+			}
+			//增加单击事件
+			if(lvdata.length>0)
+			  oTD.onclick = reorder;
+
+			cell++;
+		}
+	}
+
+
+	//数据体为空时返回
+	if(lvdata.length == 0) return;
+	
+	//根据当前页数画显示listview数据
+	for(var r=(pageNumber-1)*pageSize; r<pageNumber*pageSize; r++){
+		if(r>=rowCount) break;
+		oTR = table.insertRow();
+		cell=0;
+		for(var c=0; c<lvdata[r].length; c++){
+			if(lvhead[c]._visible!="false")
+			{
+				oTD = oTR.insertCell(cell);
+				if(eval(wrapHeadings)) oTD.noWrap = true;
+				
+				//判断是否格式数据
+				if(typeof(lvformat[lvhead[c]._columnName]) != "undefined" && typeof(lvformat[lvhead[c]._columnName][lvdata[r][c]._value]) != "undefined"){
+					oTD.innerHTML = lvformat[lvhead[c]._columnName][lvdata[r][c]._value];
+				}
+				else{
+					oTD.innerHTML = lvdata[r][c]._value;
+				}
+				//设置该位置的样式
+				setStyle(oTD,lvdata[r][c]._style);
+				//设置改位置单击事件
+				oTD.onclick = selectRow;
+				cell++;
+			}
+		}
+	}
+	//修改工具栏数据
+	configureToolbar(pageCount);
+}
+
+/** 
+ * 设置某个具体数据格的样式
+ *
+ * 参数：
+ *		el: 数据格对象
+ *		style: 样式
+*/
+function setStyle(el,style){
+	try{
+		var arr_style = style.split(";");
+		for(var i=0;i<arr_style.length;i++){
+			var fields = arr_style[i].split(":");
+			el.style.setAttribute(fields[0],fields[1]);
+		}
+	}
+	catch(e){
+		//缺省样式
+		el.style.setAttribute("backgroundColor","white");
+		el.style.setAttribute("color","blank");
+		el.style.setAttribute("cursor","defaule");
+		alert(e);
+	}
+}
+
+/** 
+ * listview数据格对象
+ * 参数：
+ *		value: 数据值
+ *		style: 样式
+*/
+function data(value, style){
+	this._value   = value;	
+	this._style   = style;	
+}
+
+/** 
+ * listview表头对象
+ * 参数：
+ *		columnName: 字段名
+ *		dataType: 字段类型
+ *		value: 字段描述，实际显示用
+ *		style: 样式，调用外部样式表是 className
+ *      visible:该列是否显示
+ * 无参数的内部变量：
+ *		_bOrder: 是否已经排序
+ *		_orderSequence: 排序方式
+*/
+function head(columnName, dataType, value,visible,style){
+	this._columnName	= columnName;
+	this._dataType		= dataType;
+	this._value			= value;
+	this._style			= style;
+	this._bOrder		= false;
+	this._orderSequence = "";
+	this._visible       = visible;
+}
+
+/** 
+ * 载入表头数据到数组
+ *
+ * 将head.xml数据载入lvhead数组
+*/
+function loadHead(){
+	XmlDoc.load("head.xml");
+	HeadName_Index=new Object();
+	var nodes = XmlDoc.selectNodes("//Columns/Column");
+	var ln = nodes.length;
+	var node;
+	for(var i=0;i<ln;i++){
+		node = nodes.item(i).childNodes;
+		//alert(node[3].text);
+		lvhead[i] = new head(node[0].text,node[2].text,node[1].text,node[3].text,"green_title");
+		HeadName_Index[node[0].text]=i;
+	}
+}
+/** 
+ * 载入数据到数组
+ *
+ * 将dataXML数据载入lvdata数组
+*/
+function loadData(){
+	XmlDoc.load(dataXML);
+	var nodes = XmlDoc.selectNodes("//Rows/Row");
+	var ln = nodes.length;
+	var node;
+	for(var r=0; r<ln; r++){
+		if(r>maxRowCount){
+			//alert(text["maxRowCount"]);
+			break;
+		}
+		node = nodes.item(r).childNodes;
+		//载入数据
+		lvdata[r] = new Array();
+		
+		setMaxId(nodes.item(r).attributes.getNamedItem("gatherid").value,node[0].text);
+		
+		for(var i=0;i<node.length;i++){
+			lvdata[r][i] = new data(node[i].text,"backgroundColor:#ffffff;color:#000000;cursor:default");
+		}
+	}	
+}
+
+function setMaxId(gather_id,event_id){
+	var bln = true;
+	for(var i=0;i<arrGE.length;i++){
+		if(arrGE[i].gather_id == gather_id){
+			if(arrGE[i].max_event_id < event_id) arrGE[i].max_event_id=event_id;
+			bln = false;
+		}
+	}
+	if(bln) {
+		arrGE[arrGE.length] = new GatherIDEvent(gather_id,event_id);
+		//alert(arrGE[arrGE.length-1].gather_id);
+	}
+}
+
+function getMaxId(){
+	var re="";
+	for(var i=0;i<arrGE.length;i++){
+		if(re == ""){
+			re = arrGE[i].gather_id+","+arrGE[i].max_event_id;
+		}
+		else{
+			re += ";"+arrGE[i].gather_id+","+arrGE[i].max_event_id;
+		}
+	}	
+	return re;
+}
+/** 
+ * 格式化HTML Tag 对象
+ * 
+*/
+function _lvElement(id){
+	if (element.all[id].length)
+		return element.all[id][0]
+	else
+		return element.all[id]
+}
+
+/** 
+ * 选择listview一行
+ * 
+*/
+
+function selectRow(){
+	if(typeof(onRowSelected) != 'function')
+		return;
+
+	if(currentRow != null)
+		if(currentRow.sourceIndex > -1)
+			setRowStyle(currentRow, '', '');
+
+	row = window.event.srcElement;
+
+	while (row.tagName != 'TR'){
+		row = row.parentElement;
+		if (!row)
+			return;
+	}
+
+	setRowStyle(row, selectedRowBackgroundColour, selectedRowColour);
+	currentRow = row;
+
+	_lvevtRowSelected.fire();
+}
+
+/** 
+ * 设定选择行的样式
+ * 
+*/
+function setRowStyle(row, backgroundColor, color){
+	try{
+		if(backgroundColor == '' || color == ''){
+			for(i=0;i<row.cells.length;i++){
+				setStyle(row.cells[i],lvdata[row.rowIndex-1][i]._style);
+			}		
+		}
+		else{
+			for(i=0;i<row.cells.length;i++){
+				row.cells[i].style.backgroundColor = backgroundColor;
+				row.cells[i].style.color = color;
+			}
+		}
+	}
+	catch(e){
+		//alert(e.description);
+	}
+}
+
+/** 
+ * 设定工具栏数据
+ * 
+ * 参数：
+ *		newPageCount: 当前页
+*/
+function configureToolbar(newPageCount){
+	if (toolbar.all.pageCount.value != newPageCount){
+		toolbar.all.pageCount.value = newPageCount;
+
+		var html = new Array()
+
+		for (var i=0;i<newPageCount;i++)
+			html[i] = '<option value=' + (i+1) + '>' + (i+1)
+
+		toolbar.all.pageNumber.outerHTML = '<select class=lv id=pageNumber>' + html.join('') + '</select>'
+		toolbar.all.pageNumber.onchange = selectPage;
+	}
+
+	element.pageCount = newPageCount;
+
+	toolbar.all.rowCount.value = rowCount;
+	toolbar.all.pageNumber.value = pageNumber;
+	toolbar.all.first.disabled = eval( parseInt(pageNumber) <= 1 );
+	toolbar.all.prev.disabled = eval( parseInt(pageNumber) <= 1 );
+	toolbar.all.next.disabled = eval( parseInt(pageNumber) >= parseInt(toolbar.all.pageCount.value) );
+	toolbar.all.last.disabled = eval( parseInt(pageNumber) == parseInt(toolbar.all.pageCount.value) || parseInt(toolbar.all.pageCount.value) == 0);
+
+	toolbar.all.insertBtn.disabled = false;
+	toolbar.all.updateBtn.disabled = (newPageCount == 0);
+	toolbar.all.deleteBtn.disabled = eval(toolbar.all.updateBtn.disabled);
+
+	toolbar.all.deleteBtnImg.style.filter = toolbar.all.deleteBtn.disabled ? 'gray' : '';
+	toolbar.all.updateBtnImg.style.filter = toolbar.all.updateBtn.disabled ? 'gray' : '';
+
+	sizeInput(toolbar.all.pageCount);
+	sizeInput(toolbar.all.rowCount);
+
+	for (i in navButtons)
+	{
+		toolbar.all[navButtons[i]].all[ navButtons[i] + 'Img'].src = 'images/' + navButtons[i] + (toolbar.all[navButtons[i]].disabled ? 'off' : '') + '.gif';
+	}
+}
+
+/** 
+ * 数据页改变时调用
+*/
+function selectPage(){
+	var e = window.event.srcElement;
+
+	if (e.id == 'pageNumber')
+		element.pageNumber = toolbar.all.pageNumber.value;
+	if (e.id == 'first')
+		element.pageNumber = 1;
+	if (e.id == 'next')
+		element.pageNumber = parseInt(pageNumber) + 1;
+	if (e.id == 'prev')
+		element.pageNumber = parseInt(pageNumber) - 1;
+	if (e.id == 'last')
+		element.pageNumber = toolbar.all.pageCount.value;
+
+	element.drawData();
+}
+
+/** 
+ * 设定Form表单长度
+ * 
+ * 参数：
+ *		el: Form表单对象
+*/
+function sizeInput(el){
+	el.size = el.value.length;
+}
+
+/** 
+ * listview表头单击时调用，进行排序
+*/
+function reorder(){
+	if (element.table.rows.length == 1)
+		return;
+
+	var e = window.event.srcElement;
+	
+	//
+	if(e.tagName != "TD") e = e.parentElement;
+	var co = 0;
+	
+	//orderColumn = (e.cellIndex - co).toString();
+	orderColumn = findColumnByValue(e.innerText).toString();
+	//alert(orderColumn);
+
+	if(lvhead[orderColumn]._bOrder){		//该表头已经排过序
+		lvhead[orderColumn]._orderSequence = (lvhead[orderColumn]._orderSequence == "asc") ? "desc" : "asc";
+	}
+	else{
+		//该表头第一次排序
+		lvhead[orderColumn]._orderSequence = "asc";
+		lvhead[orderColumn]._bOrder = true;
+	}
+	//排序
+	lvdata.sort(sortRows);
+
+	//重画listview
+	drawData();
+}
+
+	
+ /**
+ * 将时间进行转换
+ *
+ **/
+ function formatDate(strValue)
+  {
+	var str=strValue.split(" ");
+
+	var tempValue=str[0].substring(str[0].indexOf("-")+1)+"-"+str[0].substring(0,str[0].indexOf("-"))+" "+str[1];
+	
+	return tempValue;
+  }	
+
+/** 
+ * 数据排序用的，判断大小
+ * 
+*/
+function sortRows(x,y){
+	var x1 = x[orderColumn]._value;
+	var x2 = y[orderColumn]._value;
+
+	if(lvhead[orderColumn]._dataType.toUpperCase() == "INTEGER"){	//数据类型是整形
+		x1 = eval(x1);
+		x2 = eval(x2);
+	}
+	else if(lvhead[orderColumn]._dataType.toUpperCase() == "DATE"){	//数据类型是日期		
+		x1 = parseInt(Date.parse(formatDate(x1))/1000,10);
+		x2 = parseInt(Date.parse(formatDate(x2))/1000,10);		
+	}
+	
+	if(x1>x2){
+		if(lvhead[orderColumn]._orderSequence == "asc")
+			return 1;
+		else
+			return -1;
+	}
+	else if(x1<x2){
+		if(lvhead[orderColumn]._orderSequence == "asc")
+			return -1;
+		else
+			return 1;
+	}
+	else return 0;
+}
+
+/** 
+ * listview列样式对象
+ * 参数：
+ *		columnName: 字段名
+ *		property: 字段样式
+ *		pattern: 过滤条件
+ *		applyToRow: 是否整行改变
+*/
+function columnStyle(columnName,property,pattern,applyToRow){
+  this._columnName = columnName;
+  this._property   = property;
+  this._pattern    = pattern;
+  this._applyToRow = applyToRow;
+}
+
+/** 
+ * 根据字段名设置数据格属性
+ * 参数：
+ *		columnName: 字段名
+ *		property: 新属性
+ *		pattern: 过滤条件
+ *		applyToRow: 是否整行改变
+*/
+function setColumnProperty(columnName,property,pattern,applyToRow){
+	var columnIndex = findColumn(columnName);
+	if(columnIndex == -1) return;
+	for(var r=0; r<lvdata.length; r++){
+		for(var c=0; c<lvdata[r].length; c++){
+			if(lvhead[columnIndex]._dataType.toUpperCase() == "INTEGER"){
+				if(eval(lvdata[r][columnIndex]._value == pattern)){
+					if(typeof(applyToRow) != "undefined" && applyToRow){
+						lvdata[r][c]._style = property;
+					}
+					else{
+						lvdata[r][columnIndex]._style = property;
+						break;
+					}
+				}
+			}
+			else{
+				if(lvdata[r][columnIndex]._value.indexOf(pattern) != -1){
+					if(typeof(applyToRow) != "undefined" && applyToRow){
+						lvdata[r][c]._style = property;
+					}
+					else{
+						lvdata[r][columnIndex]._style = property;
+						break;
+					}
+				}
+			}
+		}
+	}
+  lvstyle[lvstyle.length] = new columnStyle(columnName,property,pattern,applyToRow);
+}
+
+/** 
+ * 根据字段名格式化数据,并将格式化数据存放lvformat对象
+ * 参数：
+ *		columnName: 字段名
+ *		arrHTML: 要替换的数据二维数组
+*/
+function formatColumnValue(columnName,arrHTML){
+	var columnIndex = findColumn(columnName);
+	if(columnIndex == -1) return;
+	
+	if(typeof(arrHTML) != "object") return;
+
+	var tmp = new Object();
+	for(var i=0; i<arrHTML.length; i++){
+		tmp[arrHTML[i][0]] = arrHTML[i][1];
+	}
+
+	lvformat[columnName] = tmp;
+}
+
+/**
+*  
+**/
+function findColumnByValue(columnText)
+{	
+	columnText=columnText.replace(/(^\s*)|(\s*$)/g, "");
+	var result = -1;
+	for(var i=0; i<lvhead.length; i++){
+		if(lvhead[i]._value==columnText){
+			result = i;
+			break;
+		}
+	}
+	return result;
+
+
+}
+
+/** 
+ * 根据字段名查找位置索引
+ * 参数：
+ *		columnName: 字段名
+ * 返回：
+		字段名位置索引值
+*/
+function findColumn(columnName){
+	//alert(columnName);
+	var result = -1;
+	for(var i=0; i<lvhead.length; i++){
+		//alert(lvhead[i]._columnName);
+		if(lvhead[i]._columnName == columnName){
+			result = i;
+			break;
+		}
+	}
+	return result;
+}
+
+/** 
+ * 根据newXMLStr数据动态增加数据数组，并重画listview
+ * 参数：
+ *		newXMLStr: 新XML数据
+ *		mode: 更新数据模式[add:增加数据 overlay:覆盖数据]
+*/
+function reload(newXMLStr,mode){
+	XmlDoc.loadXML(newXMLStr);
+	var nodes = XmlDoc.selectNodes("//Rows/Row");
+	
+	var ln = nodes.length;
+	var node;
+	
+	if(ln==0){
+		removeData(lvdata.length);
+		return;
+	}
+	//载入新数据
+	var new_lvdata = new Array();
+	for(var r=0; r<ln; r++){
+		if(r>maxRowCount){
+			//alert(text["maxRowCount"]);
+			break;
+		}
+		node = nodes.item(r).childNodes;
+		//载入数据
+		new_lvdata[r] = new Array();
+
+		//原先处理告警的地方，获取最大的告警id的地方,需要修改smf
+		//setMaxId(nodes.item(r).attributes.getNamedItem("gatherid").value,node[0].text);
+		var pos;
+		for(var i=0;i<node.length;i++){
+			pos = findColumnProperty(i,node[i].text);
+			if(pos != -1){
+				for(var j=0;j<node.length;j++){
+					new_lvdata[r][j] = new data(node[j].text,lvstyle[pos]._property);
+				}
+				break;
+			}
+			else
+				new_lvdata[r][i] = new data(node[i].text,"backgroundColor:#ffffff;color:#000000;cursor:default");			
+		}
+	}	
+	
+	if(typeof(mode) != "undefined" && mode == "add"){	//按规则保留旧数据，增加新数据
+		orderColumn = 0;
+		lvhead[orderColumn]._orderSequence = "desc";
+		lvhead[orderColumn]._bOrder = true;
+		//new_lvdata.sort(sortRows);
+		
+		var totalRow = lvdata.length+new_lvdata.length;
+		if(totalRow > maxRowCount){	//假如总数据大于最大数目则截断多余的旧数据
+			var trunLn = totalRow - maxRowCount;
+			var start = lvdata.length-trunLn-1;
+			if(start<0) start = 0;
+			//JScript5.5支持，不过滤任何数据
+			//lvdata.splice(start,trunLn);
+			//按过滤规则删除旧数据
+			
+			var realLn = removeData(trunLn);
+			//alert(lvdata.length+"\n"+new_lvdata.length+"\n realLn: "+realLn+" trunLn: "+trunLn);
+			if(realLn<trunLn){
+				//按过滤规则删除新数据
+				new_lvdata = removeNewData(new_lvdata,(trunLn-realLn));
+			}
+			
+		}
+		//将新数据加入lvdata数组
+		new_lvdata.sort(sortRows);
+		lvdata = new_lvdata.concat(lvdata);
+		
+		//数据过滤之后还是大于最大数目，强制删除多余数据
+		if(lvdata.length>maxRowCount){
+			//alert("强制删除多余数据")
+			lvdata.length = maxRowCount;
+		}
+	}
+	else{
+		lvdata = new_lvdata;
+	}
+	new_lvdata = null;
+	drawData();
+}
+
+/**
+ *	删除lvdata里的数据，过滤pattern数组中值的的数据不删除 
+ * 参数：
+ *		pos: 当前列索引序号
+ *		pattern: 要过滤值的数组
+ *		ln: 要删除数据条数
+ * 返回：实际删除数据条数，但是lvdata被删除过多余数据
+*/
+function removeData(ln){
+	if(eval(filterRMPos) == -1) return 0;
+
+	var tmp_lvdata = new Array();
+	var tmpStr = ","+filterRMPattern+",";
+	var i=0,real_ln=0;
+	for(var r=(lvdata.length-1);r>=0;r--){
+		if(real_ln<ln){
+			if(tmpStr.indexOf(","+ lvdata[r][filterRMPos]._value +",") != -1 && real_ln<ln){
+				tmp_lvdata[i]=lvdata[r];
+				i++;
+			}
+			else
+				real_ln++;
+		}
+		else{
+			tmp_lvdata[i]=lvdata[r];
+			i++;
+		}
+	}
+	tmp_lvdata.sort(sortRows);
+	lvdata = tmp_lvdata;
+	tmp_lvdata = null;
+	return real_ln;
+}
+
+function removeNewData(newdata, ln){
+	if(eval(filterRMPos) == -1) return 0;
+	var tmpStr = ","+filterRMPattern+",";
+	var i=0,real_ln=0;
+	var arrLn = newdata.length-ln;
+	if(arrLn<1){
+		//alert("newdata length: "+ newdata.length+"\n"+ln);
+		return newdata;
+	}
+	var tmp_lvdata = new Array(newdata.length-ln);
+	for(var r=(newdata.length-1);r>=0;r--){
+		if(real_ln<ln){
+			if(tmpStr.indexOf(","+ newdata[r][filterRMPos]._value +",") != -1 && real_ln<ln){
+				tmp_lvdata[i]=newdata[r];
+				i++;
+			}
+			else
+				real_ln++;
+		}
+		else{
+			tmp_lvdata[i]=newdata[r];
+			i++;
+		}
+	}
+
+	return tmp_lvdata;
+}
+
+function setRemovePattern(pos,pattern){
+	this.filterRMPos = pos;
+	this.filterRMPattern = pattern;
+}
+/** 
+ * 根据pos，value在过滤条件数组对象查找列的Property
+ * 参数：
+ *		pos: 当前列索引序号
+ *    value: 当前列的值
+ * 返回：
+		找到返回索引序号，否则返回-1
+*/
+function findColumnProperty(pos,value){
+	for(var i=0; i<lvstyle.length; i++){
+		if(lvhead[pos]._columnName == lvstyle[i]._columnName){
+			if(lvhead[pos]._dataType.toUpperCase() == "INTEGER"){
+				if(eval(value == lvstyle[i]._pattern)) return i;
+			}
+			else{
+				if(value.indexOf(lvstyle[i]._pattern) != -1) return i;
+			}
+		}
+	}
+	return -1;
+}
+
+function setSize(){
+	_lvElement('listTable').style.width = width;
+	_lvElement('listTable').style.height = height;
+}
+
+/**删除currentRow所在当前行得数据,currentRow为tr对象
+ * 
+*/
+function deleteRow(){
+	try{
+		var index = currentRow.rowIndex;
+		currentRow.removeNode(true);
+		lvdata.splice(index-1,1);	
+	}catch(e){
+		alert(e.description);
+	}
+}
+</SCRIPT>

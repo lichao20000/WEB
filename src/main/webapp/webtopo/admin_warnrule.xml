@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GB2312"?> 
+<WarnRule>
+	<Rule>
+		<content>
+			<name>jinan</name>
+			<priority>0</priority>
+			<desc>济南告警过滤规则</desc>
+			<text>设备类型=102/Cisco 6509/7609 or 设备类型=702/SE800 or 设备类型=2107/Alpine3804 or 设备类型=2101/BD6808 or 设备类型=3001/Shasta 5000 or 设备类型=2105/Summit48Si</text>
+			<result>继续下一规则</result>
+		</content>
+		<content>
+			<name>test</name>
+			<priority>1</priority>
+			<desc>test</desc>
+			<text>告警级别=恢复日志 or 告警级别=正常日志 or 告警级别=提示告警</text>
+			<result>过滤</result>
+		</content>
+	</Rule>
+</WarnRule>

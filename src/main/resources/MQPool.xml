@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MQPool>
+	<!-- 每个模块唯一的标识，目前暂定：web、PreProcess、SuperGather -->
+	<clientId>WEB</clientId>
+	<itms>
+		<!--enable 0:false,default; 1:yes. -->
+		<enable>1</enable>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>acs.alive</topic>
+			<activeMQ>
+				<url>failover:(tcp://192.168.2.26:61616,tcp://192.168.2.4:61616)?randomize=false&amp;priorityBackup=true</url>
+			</activeMQ>
+			<kafka>
+				<autoCommitInterval>1000</autoCommitInterval>
+				<groupId>itmsWeb.alive</groupId>
+				<sessionTimeout>60000</sessionTimeout>
+				<syncTime>2000</syncTime>
+				<zooKeeper>192.168.0.213:2181,192.168.0.213:2182</zooKeeper>
+			</kafka>
+		</mq>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>dev.rpc</topic>
+			<activeMQ>
+				<url>failover:(tcp://192.168.2.26:61616,tcp://192.168.2.4:61616)?randomize=false&amp;priorityBackup=true</url>
+			</activeMQ>
+			<kafka>
+				<autoCommitInterval>1000</autoCommitInterval>
+				<groupId>itmsWEB.rpc</groupId>
+				<sessionTimeout>60000</sessionTimeout>
+				<syncTime>2000</syncTime>
+				<zooKeeper>192.168.0.213:2181,192.168.0.213:2182</zooKeeper>
+			</kafka>
+		</mq>
+				
+		<!-- 向绑定模块发送消息 -->
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>res.Interface</topic>
+			<activeMQ>
+				<url>tcp://192.168.2.14:22222</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.0.213:9091,192.168.0.213:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>
+		
+		<!-- 向配置模块发送消息 -->
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>cm</topic>
+			<activeMQ>
+				<url>tcp://192.168.2.14:22222</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.0.213:9091,192.168.0.213:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>
+	</itms>
+	<bbms>
+		<!--enable 0:false,default; 1:yes. -->
+		<enable>1</enable>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>acs.alive</topic>
+			<activeMQ>
+				<url>failover:(tcp://192.168.2.26:61616,tcp://192.168.2.4:61616)?randomize=false&amp;priorityBackup=true</url>
+			</activeMQ>
+			<kafka>
+				<autoCommitInterval>1000</autoCommitInterval>
+				<groupId>bbmsWEB.alive</groupId>
+				<sessionTimeout>60000</sessionTimeout>
+				<syncTime>2000</syncTime>
+				<zooKeeper>192.168.0.213:2181,192.168.0.213:2182</zooKeeper>
+			</kafka>
+		</mq>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>dev.rpc</topic>
+			<activeMQ>
+				<url>failover:(tcp://192.168.2.26:61616,tcp://192.168.2.4:61616)?randomize=false&amp;priorityBackup=true</url>
+			</activeMQ>
+			<kafka>
+				<autoCommitInterval>1000</autoCommitInterval>
+				<groupId>bbmsWEB.rpc</groupId>
+				<sessionTimeout>60000</sessionTimeout>
+				<syncTime>2000</syncTime>
+				<zooKeeper>192.168.0.213:2181,192.168.0.213:2182</zooKeeper>
+			</kafka>
+		</mq>
+					
+		<!-- 向绑定模块发送消息 -->
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>res.Interface</topic>
+			<activeMQ>
+				<url>tcp://192.168.2.14:22222</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.0.213:9091,192.168.0.213:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>
+		
+		<!-- 向配置模块发送消息 -->
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>cm</topic>
+			<activeMQ>
+				<url>tcp://192.168.2.14:22222</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.0.213:9091,192.168.0.213:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>
+	</bbms>
+	<stb>
+		<!--enable 0:false,default; 1:yes. -->
+		<enable>1</enable>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>acs.alive</topic>
+			<activeMQ>
+				<url>failover:(tcp://192.168.2.26:61616,tcp://192.168.2.4:61616)?randomize=false&amp;priorityBackup=true</url>
+			</activeMQ>
+			<kafka>
+				<autoCommitInterval>1000</autoCommitInterval>
+				<groupId>stbWEB.alive</groupId>
+				<sessionTimeout>60000</sessionTimeout>
+				<syncTime>2000</syncTime>
+				<zooKeeper>192.168.0.213:2181,192.168.0.213:2182</zooKeeper>
+			</kafka>
+		</mq>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>dev.rpc</topic>
+			<activeMQ>
+				<url>failover:(tcp://192.168.2.26:61616,tcp://192.168.2.4:61616)?randomize=false&amp;priorityBackup=true</url>
+			</activeMQ>
+			<kafka>
+				<autoCommitInterval>1000</autoCommitInterval>
+				<groupId>stbWEB.rpc</groupId>
+				<sessionTimeout>60000</sessionTimeout>
+				<syncTime>2000</syncTime>
+				<zooKeeper>192.168.0.213:2181,192.168.0.213:2182</zooKeeper>
+			</kafka>
+		</mq>
+		
+	</stb>
+	
+	
+	<publisher>
+		<enable>1</enable>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>term.newestinfo</topic>
+			<activeMQ>
+				<url>tcp://192.168.2.14:22222</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.0.213:9091,192.168.0.213:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>1</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>soft.task</topic>
+			<activeMQ>
+				<url>tcp://192.168.28.16:61616</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.0.213:9091,192.168.0.213:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>0</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>setLoid.task</topic>
+			<activeMQ>
+				<url>tcp://192.168.2.14:22222</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.2.14:9092,192.168.2.20:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>
+		<mq>
+			<!--enable 0:false,default; 1:yes. -->
+			<enable>0</enable>
+			<!--主题使用哪种消息中心发送消息 1:使用activemq 2:使用kafka -->
+			<type>2</type>
+			<topic>stbBatchCon.task</topic>
+			<activeMQ>
+				<url>tcp://192.168.2.14:22222</url>
+			</activeMQ>
+			<kafka>
+				<brokerList>192.168.2.14:9092,192.168.2.20:9092</brokerList>
+	            <type>sync</type>
+	            <serializer>kafka.serializer.StringEncoder</serializer>
+	            <partitioner>kafka.producer.DefaultPartitioner</partitioner>
+	            <acks>1</acks>		
+			</kafka>
+		</mq>		
+	</publisher>
+	
+</MQPool>
+ 

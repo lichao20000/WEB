@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="MaintainInfoActionImpl" class="com.linkage.module.gtms.blocTest.action.MaintainAppInfoAct" scope="prototype">
+		<property name="bio">
+			<ref bean="MaintainAppInfoBIOImpl" />
+		</property>
+	</bean>
+	<bean id="MaintainAppInfoBIOImpl" class="com.linkage.module.gtms.blocTest.serv.MaintainAppInfoBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="MaintainAppInfoDAOImpl" />
+		</property>
+	</bean>
+	<bean id="MaintainAppInfoDAOImpl" 
+		class="com.linkage.module.gtms.blocTest.dao.MaintainAppInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="SoftwareActionImpl" class="com.linkage.module.gtms.blocTest.action.SoftwareActionImpl" scope="prototype">
+		<property name="serv">
+			<ref bean="SoftwareServImpl" />
+		</property>
+	</bean>
+	<bean id="SoftwareServImpl" 
+		class="com.linkage.module.gtms.blocTest.serv.SoftwareServImpl" scope="prototype">
+	</bean>
+	
+	<bean id="gtms_blocTest_apDeviceSoftUpGradeAction" 
+		class="com.linkage.module.gtms.blocTest.action.ApDeviceSoftUpGradeActionImp" scope="prototype">
+		<property name="bio">
+			<ref bean="ApDeviceSoftUpGradeServImp" />
+		</property>
+	</bean>
+	<bean id="ApDeviceSoftUpGradeServImp" 
+		class="com.linkage.module.gtms.blocTest.serv.ApDeviceSoftUpGradeServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="ApDeviceSoftUpGradeDaoImp" />
+		</property>
+	</bean>
+	<bean id="ApDeviceSoftUpGradeDaoImp" 
+		class="com.linkage.module.gtms.blocTest.dao.ApDeviceSoftUpGradeDaoImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="gtms_blocTest_apDeviceBusinessConfigAction" 
+		class="com.linkage.module.gtms.blocTest.action.ApDeviceBusinessConfigActionImp" scope="prototype">
+		<property name="bio">
+			<ref bean="ApDeviceBusinessConfigServImp" />
+		</property>
+	</bean>
+	<bean id="ApDeviceBusinessConfigServImp" 
+		class="com.linkage.module.gtms.blocTest.serv.ApDeviceBusinessConfigServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="ApDeviceBusinessConfigDaoImp" />
+		</property>
+	</bean>
+	<bean id="ApDeviceBusinessConfigDaoImp" 
+		class="com.linkage.module.gtms.blocTest.dao.ApDeviceBusinessConfigDaoImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="gtms_blocTest_deviceBlocTestAction" 
+	    class="com.linkage.module.gtms.blocTest.action.DeviceBlocTestActionImpl" scope="prototype">
+		<property name="serv">
+			<ref bean="gtms_blocTest_DeviceBlocTestServImp" />
+		</property>
+	</bean>
+	<bean id="gtms_blocTest_DeviceBlocTestServImp"
+		class="com.linkage.module.gtms.blocTest.serv.DeviceBlocTestServImpl" scope="prototype">
+		<property name="deviceBlocTestDAO">
+			<ref bean="gtms_blocTest_DeviceBlocTestDAOImp" />
+		</property>
+	</bean>
+	<bean id="gtms_blocTest_DeviceBlocTestDAOImp"
+		class="com.linkage.module.gtms.blocTest.dao.DeviceBlocTestDAOImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	<bean id ="businessSheetDispatchAction" 
+		class="com.linkage.module.gtms.blocTest.action.BusinessSheetDispatchActionImpl" scope="prototype">
+		<property name="businessSheetDispatchServ">
+			<ref bean="businessSheetDispatchServ"/>
+		</property>
+	</bean>
+	<bean id ="businessSheetDispatchServ" 
+		class="com.linkage.module.gtms.blocTest.serv.BusinessSheetDispatchServImpl" scope="prototype">
+		<property name="busDao">
+			<ref bean="businessSheetDispatchDAO"/>
+		</property>
+	</bean>
+	<bean id ="businessSheetDispatchDAO" 
+		class="com.linkage.module.gtms.blocTest.dao.BusinessSheetDispatchDAOImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	
+	<bean id ="sellSupportCustomizeAction" 
+		class="com.linkage.module.gtms.blocTest.action.SellSupportCustomizeActionImp" scope="prototype">
+		<property name="serv">
+			<ref bean="sellSupportCustomizeServ"/>
+		</property>
+	</bean>
+	<bean id ="sellSupportCustomizeServ" 
+		class="com.linkage.module.gtms.blocTest.serv.SellSupportCustomizeServImp" scope="prototype">
+		<property name="dao">
+			<ref bean="sellSupportCustomizeDAO"/>
+		</property>
+	</bean>
+	<bean id ="sellSupportCustomizeDAO" 
+		class="com.linkage.module.gtms.blocTest.dao.SellSupportCustomizeDaoImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="SoftProbeACT" 
+                class="com.linkage.module.gtms.blocTest.action.SoftProbeACT"
+                scope="prototype">
+                <property name="queryDeviceBio">
+                        <ref bean="QueryDeviceBIO"/>
+                </property>
+    </bean>
+</beans>

@@ -1,0 +1,142 @@
+BODY {
+	font-family: Tahoma, Arial, sans-serif;
+	color: black;
+	background-color: white;
+}
+
+.bottom1 {
+	BORDER-RIGHT: 0px; 
+	BORDER-TOP: 0px; 
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 12px; 
+	BORDER-LEFT: 0px; 
+	WIDTH: 40px; 
+	COLOR: #1e4e8e; 
+	BORDER-BOTTOM: 0px; 
+	HEIGHT: 21px
+}
+
+.font1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #1e4e8e
+}
+
+A:active {
+	COLOR: #1e4e8e; TEXT-DECORATION: none;font-weight: bold;
+}
+A:link {
+	COLOR: #1e4e8e; TEXT-DECORATION: none;font-weight: bold;
+}
+A:visited {
+	COLOR: #1e4e8e; TEXT-DECORATION: none;font-weight: bold;
+}
+A:hover {
+	COLOR: #0099ff; TEXT-DECORATION: none;font-weight: bold;
+}
+
+td.header-left {
+	text-align: center;
+	vertical-align: top;
+	font-family: sans-serif, Tahoma, Arial;
+	font-weight: bold;
+	background: #efefef;
+	color: #1e4e8e;
+	line-height: 25px;
+	FONT-SIZE: 12px; 
+}
+
+td.page-title {
+	text-align: center;
+	vertical-align: top;
+	font-family: sans-serif, Tahoma, Arial;
+	font-weight: bold;
+	background: efefef;
+	color: #1e4e8e;
+	line-height: 25px;
+	FONT-SIZE: 12px; 
+}
+
+td.row-left {
+	text-align: left;
+	vertical-align: middle;
+	font-family: sans-serif, Tahoma, Arial;
+	background: #efefef;
+	color: #1e4e8e;
+	line-height: 25px;
+	FONT-SIZE: 12px; 
+}
+
+HR {
+	color: #525D76;
+}
+
+TH.thh {
+	background-color: #efefef;
+	font-size: 9pt;
+	color: #1e4e8e;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 22px;
+	text-align: center;
+
+}
+
+TR.trr {
+	background-color: '#FFFFFF';
+}
+
+TR.trh {
+	background-color: #B0E0E6;
+	font-size: 9pt;
+	color: #1e4e8e;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 22px;
+	text-align: center;
+}
+
+TD.ind {
+	FONT-FAMILY: '宋体', 'Tahoma';
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #1e4e8e;
+	background-color:#efefef;
+	line-height: 100px;
+	text-align: center;
+	
+}
+
+TD.tdd {
+	FONT-FAMILY: '宋体', 'Tahoma';
+	FONT-SIZE: 12px;
+	text-align: left;
+	background-color:#efefef;
+}
+
+TD.tdd_A {
+	FONT-FAMILY: '宋体', 'Tahoma';
+	FONT-SIZE: 12px;
+	text-align: center;
+}
+
+TD.tdd_B {
+	FONT-FAMILY: '宋体', 'Tahoma';
+	FONT-SIZE: 12px;
+	text-align: left;
+	background-color:#efefef;
+	width:20%;
+}
+
+TD.hd {
+	background-color: '#EEE8AA';
+	border:1px solid #999999;
+}
+
+
+
+
+
+
+
+
+
+
+
+

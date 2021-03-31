@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<include file="struts-default.xml" />
+	<include file="/struts-config-gwms/struts-plugin-gwms.xml" />
+	<!--need auth package,define exception for global and public result-->
+	<include file="/struts-config/struts_public.xml" />
+	<include file="/struts-config/struts_NetCutover.xml" />
+	<include file="/struts-config/struts_hgwipMgSys.xml" />
+	<include file="/struts-config/struts_Resource.xml" />
+	<include file="/struts-config/struts_WebTopo.xml" />
+	<include file="/struts-config/struts_bbms.xml" />
+	<include file="/struts-config/struts_warn.xml" />
+	<include file="/struts-config/struts_maintain.xml" />
+	<include file="/struts-config/struts_performance.xml" />
+	<include file="/struts-config/struts_inmp.xml" />
+	<include file="/struts-config/struts_intellspeaker.xml" />
+	<!-- <include file="/com/linkage/module/liposs/monitor/struts_liposs_monitor.xml" />  -->
+	
+	<!-- ids -->
+	<include file="/struts-config/struts_ids.xml"/>
+	<!-- 甘肃新登录主页 -->
+	<include file="/struts-config/struts_new_login.xml"/>
+	
+	<!-- sgwms -->
+	<include file="/struts-config/struts_AAA.xml" />
+	<include file="/struts-config/struts_security.xml" />
+	<include file="/struts-config/struts_securitygw.xml" />
+	<include file="/struts-config/struts_Report.xml" />
+	<include file="/struts-config/struts_flux.xml" />
+	<include file="/struts-config/struts_pmee.xml" />
+	<include file="/struts-config/struts_confTaskView.xml" />
+	<include file="/struts-config/struts_share.xml" />
+
+	<include file="/struts-config-gwms/struts_gwms_service.xml" />
+	<include file="/struts-config-gwms/struts_gwms_diagnostics.xml" />
+	<include file="/struts-config-gwms/struts_gwms_config.xml"></include>
+	<include file="/struts-config-gwms/struts_gwms_report.xml" />
+	<include file="/struts-config-gwms/struts_gwms_resource.xml" />
+
+	<include file="/struts-config-gwms/struts_gwms_share.xml" />
+	<include file="/struts-config-gwms/struts_gwms_system.xml" />
+	<include file="/struts-config-gwms/struts_gwms_sysConfig.xml" />
+	<include file="/struts-config-gwms/struts_gwms_blocTest.xml" />
+
+	<!-- bbms -->
+	<include file="/struts-config-bbms/struts_bbms_resource.xml" />
+	<include file="/struts-config-bbms/struts_bbms_config.xml" />
+	<include file="/struts-config-bbms/struts_bbms_report.xml" />
+	<include file="/struts-config-bbms/struts_bbms_diag.xml" />
+	<include file="/struts-config-bbms/struts_bbms_service.xml" />
+
+	<!-- itms -->
+	<include file="/struts-config-itms/struts_itms_report.xml" />
+	<include file="/struts-config-itms/struts_itms_resource.xml" />
+	<include file="/struts-config-itms/struts_itms_midware.xml" />
+	<include file="/struts-config-itms/struts_itms_service.xml" />
+	<include file="/struts-config-itms/struts_itms_config.xml" />
+	
+	<!-- inmp -->
+	<include file="/struts-config-inmp/struts_inmp_resource.xml" />
+	<include file="/struts-config-inmp/struts_inmp_bss.xml" />
+	<include file="/struts-config-inmp/struts_inmp_diagnostics.xml" />
+	<include file="/struts-config-inmp/struts_inmp_share.xml" />
+	<include file="/struts-config-inmp/struts_inmp_software.xml" />
+	<include file="/struts-config-inmp/struts_inmp_report.xml" />
+	
+	<include file="/com/linkage/module/gtms/struts_gtms.xml"/>
+</struts>

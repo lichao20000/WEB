@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="share_inmp" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/inmp/share">
+		<action name="selectDeviceTag" class="SelectDeviceTagAction">
+			<result name="INIT">/inmp/share/selectDevice.jsp</result>
+			<result name="initImport">/inmp/share/selectDeviceByImportUsername.jsp</result>
+			<result name="importList">/inmp/share/selectDeviceByImportUsernameResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- add by 参数实例管理页面 -->
+		<action name="gwDeviceQuery" class="GwDeviceQueryACT">
+			<result name="success">/inmp/share/gwShareDeviceQuery.jsp</result>
+			<result name="shareList0">/inmp/share/gwShareDeviceList0.jsp</result>
+			<result name="shareList">/inmp/share/gwShareDeviceList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

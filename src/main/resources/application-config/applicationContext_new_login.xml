@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<bean id="com.ai.itms.login.act.LoginAction" class="com.ai.itms.login.act.LoginAction"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="LoginActionBIO" />
+		</property>
+	</bean>
+
+	
+	<bean id="LoginActionBIO" class="com.ai.itms.login.bio.LoginActionBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="LoginActionDAO" />
+		</property>
+	</bean>
+	
+	<bean id="LoginActionDAO" class="com.ai.itms.login.dao.LoginActionDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+</beans>

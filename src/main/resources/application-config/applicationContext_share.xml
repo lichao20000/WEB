@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="SelectDeviceTagDAO" class="dao.share.SelectDeviceTagDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="SelectDeviceTagBIO" class="bio.share.SelectDeviceTagBIO" scope="prototype">
+		<property name="selectDeviceTagDAO">
+			<ref local="SelectDeviceTagDAO" />
+		</property>
+	</bean>
+	<bean id="SelectDeviceTagAction" class="action.share.SelectDeviceTagAction" scope="prototype">
+		<property name="selectDeviceTagBIO">
+			<ref bean="SelectDeviceTagBIO" />
+		</property>
+	</bean>
+	<bean id="ResultByRunAfterAction" class="action.share.ResultByRunAfterAction" scope="prototype">
+	</bean>
+</beans>

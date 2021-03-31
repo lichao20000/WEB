@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="pvcreport"
+		extends="jfreechart-default,linkage_security,linkage-pdf-default"
+		namespace="/itms/report">
+		
+		<!-- 重庆电信关闭21和23端口统计 -->
+		<action name="portCloseCount" class="PortCloseCountACT">
+			<result name="countList">/itms/report/PortCloseCountList.jsp</result>
+			<result name="devList">/itms/report/PortCloseDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- add by fanjm 20161111 -->
+		<action name="userDeviceClassifyACT" class="UserDeviceClassifyACT">
+			<result name="init">/itms/report/UserDeviceClassifyReport.jsp</result>
+			<result name="list">/itms/report/UserDeviceClassifyReportList.jsp</result>
+			<result name="devlist">/itms/report/UserDeviceClassifyDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+	        <action name ="fileUpload" class ="ItmsFileUpload"> 
+	            <interceptor-ref name ="fileUploadStack"/> 
+	            <result name ="success">/itms/report/ShowUpload.jsp</result> 
+	        </action> 
+		<action name="PVCDeploymentReport" class="PVCDeploymentReportACT">
+			<result name="list">/itms/report/PVCDeploymentReportList.jsp</result>
+			<result name="init">/itms/report/PVCDeploymentReport.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="hgwlist">/itms/report/PVCList.jsp</result>
+			<result name="packagelist">/itms/report/PVCPackageReportList.jsp</result>
+			<result name="packageinit">/itms/report/PVCPackageReport.jsp</result>
+			<result name="packeagehgwlist">/itms/report/PVCPackageList.jsp</result>
+		</action>
+		<action name="PVCReport" class="PVCReportACT">
+			<result name="newUserinit">/itms/report/PVCNewUserReport.jsp</result>
+			<result name="oldUserinit">/itms/report/PVCOldUserReport.jsp</result>
+			<result name="list">/itms/report/PVCReportList.jsp</result>
+			<result name="hgwlist">/itms/report/PVCUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="bindWay" class="BindWayReportACT">
+			<result name="init">/itms/report/bindWayReport.jsp</result>
+			<result name="list">/itms/report/bindWayReportList.jsp</result>
+			<result name="hgwlist">/itms/report/bindWayUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="allinit">/itms/report/allBindWayReport.jsp</result>
+			<result name="alllist">/itms/report/allBindWayReportList.jsp</result>
+			<result name="allhgwlist">/itms/report/allBindWayUserList.jsp</result>
+		</action>
+		<action name="bindException" class="BindExceptionReportACT">
+			<result name="init">/itms/report/bindExceptionReport.jsp</result>
+			<result name="list">/itms/report/bindExceptionReportList.jsp</result>
+			<result name="hgwlist">/itms/report/bindExceptionUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="iTVCount" class="ITVCountACT">
+			<result name="init">/itms/report/iTVCount.jsp</result>
+			<result name="list">/itms/report/iTVCountList.jsp</result>
+			<result name="hgwlist">/itms/report/iTVCountUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<!-- awifi业务开通情况统计 -->
+		<action name="aWifiResult" class="AWifiResultReportACT">
+			<result name="init">/itms/report/AWifiResultReport.jsp</result>
+			<!-- <result name="list">/itms/report/AWifiResultReportList.jsp</result> -->
+			<result name="jsList">/itms/report/AWifiResultReportList_js.jsp</result>
+			<result name="devlist">/itms/report/AWifiResultDevList.jsp</result>
+			<result name="jsdevlist">/itms/report/AWifiResultDevList_js.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="softUpResult" class="SoftUpResultReportACT">
+			<result name="init">/itms/report/softUpResultReport.jsp</result>
+			<result name="list">/itms/report/softUpResultReportList.jsp</result>
+			<result name="jsList">/itms/report/softUpResultReportList_js.jsp</result>
+			<result name="devlist">/itms/report/softUpResultDevList.jsp</result>
+			<result name="jsdevlist">/itms/report/softUpResultDevList_js.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 家庭网关按绑定率统计 begin -->
+		<action name="getBindRateByCityid" class="BindReportAction">
+			<result name="page">/itms/report/hgwUserBindReport.jsp</result>
+			<result name="list">/itms/report/hgwUserBindReportList.jsp</result>
+			<result name="hgwlist">/itms/report/hgwUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 家庭网关按绑定率统计 end -->
+
+		<!-- 新疆 工单统计报表查询 begin 为了不影响江苏电信升级 将此注释 -->
+		<action name="sheetStatsReport" class="SheetStatsReportACT"> <result 
+			name="init">/itms/report/sheetStatsReportView.jsp</result> <result name="result">/itms/report/sheetStatsReportResult.jsp</result> 
+			<result name="detail">/itms/report/sheetStatsReportDetail.jsp</result> </action>
+		<!-- 新疆 工单统计报表查询 end 为了不影响江苏电信升级 将此注释 -->
+
+		<!-- 用于新疆 FTTH用户绑定情况统计 begin 为了不影响江苏电信升级 将此注释 -->
+		<action name="FTTHBindWay" class="FTTHUserBindACT"> 
+			<result name="init">/itms/report/FTTHUserBind.jsp</result> 
+			<result name="allList">/itms/report/FTTHUserBindList.jsp</result> 
+			<result name="FTTHList">/itms/report/FTTHUserList.jsp</result> 
+			<result name="excel" type="excel"></result> 
+		</action>
+		<!-- 用于新疆 FTTH用户绑定情况统计 end -->
+
+		<!-- 用于查询终端版本规范率 start -->
+		<action name="terminalVersionNormQuery" class="TerminalVersionNormACT">
+			<result name="init">/itms/report/terminalVersionNorm.jsp</result>
+			<result name="list">/itms/report/terminalVersionNormList.jsp</result>
+			<result name="deviceList">/itms/report/terminalVersionNormSubList.jsp
+			</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 用于查询终端版本规范率 end -->
+		<!-- 用于自定义sql查询 start -->
+		<action name="customerSQLReport" class="CustomerSQLReportACT">
+			<result name="list">/itms/report/CustomerSQLReportList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 用于自定义sql查询 end -->
+		<!-- 用于查询业务一次下发成功率统计 start -->
+		<action name="busOnceDownSucRate" class="BusOnceDownSucACT">
+			<result name="list">/itms/report/busOnceDownSucList.jsp</result>
+			<result name="serInfoList">/itms/report/busOnceDownSucSubList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 用于查询业务一次下发成功率统计 end -->
+		<!-- 用于查询业务一次下发成功率统计(按厂商型号版本统计) start -->
+		<action name="busOnceDownSucACTNxdx" class="BusOnceDownSucACTNxdx">
+			<result name="list">/itms/report/busOnceDownSucListNxdx.jsp</result>
+			<result name="stblist">/itms/report/busOnceDownStbSucListNxdx.jsp</result>
+			<result name="serInfoList">/itms/report/busOnceDownSucSubListNxdx.jsp</result>
+			<result name="serInfoStbList">/itms/report/busOnceDownSucSubStbListNxdx.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="busOnceDownSucACTSxlt" class="BusOnceDownSucACTSxlt">
+			<result name="list">/itms/report/busOnceDownSucListSxlt.jsp</result>
+            <result name="stblist">/itms/report/busOnceDownStbSucListSxlt.jsp</result>
+            <result name="serInfoList">/itms/report/busOnceDownSucSubListSxlt.jsp</result>
+            <result name="serInfoStbList">/itms/report/busOnceDownSucSubStbListSxlt.jsp</result>
+            <result name="excel" type="excel"></result>
+		</action>
+		<!-- 用于查询业务一次下发成功率统计(按厂商型号版本统计)end -->
+		<action name="zeroAutoConfig" class="ZeroAutoConfigACT">
+			<result name="init">/itms/report/ZeroAutoConfigInfo.jsp</result>
+			<result name="list">/itms/report/ZeroAutoConfigInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="activeTerminal" class="ActiveTerminalACT">
+			<result name="init">/itms/report/ActiveTerminalInfo.jsp</result>
+			<result name="list">/itms/report/ActiveTerminalInfoList.jsp</result>
+			<result name="devlistall">/itms/report/ActiveTerminaDevListAll.jsp</result>
+			<result name="devlisttime">/itms/report/ActiveTerminalDevListTime.jsp
+			</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 机顶盒活跃用户统计-->
+		<action name="activeUserReport" class="ActiveUserReportACT">
+			<result name="init">/itms/report/ActiveUserInfo.jsp</result>
+			<result name="list">/itms/report/ActiveUserInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="noOnlineTerminal" class="NoOnlineTerminalACT">
+			<result name="init">/itms/report/NoOnlineTerminalInfo.jsp</result>
+			<result name="list">/itms/report/NoOnlineTerminalInfoList.jsp</result>
+			<result name="excelList">/itms/report/NoOnlineTerminal_prt.jsp</result>
+			<result name="devlist">/itms/report/NoOnlineTerminaDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="mothTerminalOrder" class="MothTerminalOrderACT">
+			<result name="init">/itms/report/MothTerminalOrder.jsp</result>
+			<result name="orderlist">/itms/report/MothTerminalOrderList.jsp</result>
+			<result name="devlist">/itms/report/MothTerminalOrderDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="userDeviceReport" class="UserDeviceReportACT">
+			<result name="query">/itms/report/UserDeviceReportOrder.jsp</result>
+			<result name="list">/itms/report/UserDeviceReportList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 零配置开通成功率按本地网统计结果前台展示 begin -->
+		<action name="ZeroConfigurationSuccessRateQuery" class="ZeroConfigurationSuccessRateACT">
+			<result name="page">/itms/report/ZeroConfigurationSuccessRate.jsp</result>
+			<result name="list">/itms/report/ZeroConfigurationSuccessRateList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 零配置开通成功率按本地网统计结果前台展示 end -->
+
+		<action name="ReportSubSystemAction" class="ReportSubSystemAction">
+			<result name="redirect" type="redirect">${url}?requestParam=${param}</result>
+		</action>
+		
+		
+		<action name="presetEquipmentAnalysisQuery" class="PresetEquipmentAnalysisACT">
+			<result name="init">/itms/report/presetEquipmentAnalysis.jsp</result>
+			<result name="prelist">/itms/report/presetEquipmentAnalysisList.jsp</result>
+			<result name="devlist">/itms/report/presetEquipmentAnalysisDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		
+		<action name="presetEquipmentNotImportQuery" class="PresetEquipmentNotImportACT">
+			<result name="init">/itms/report/presetEquipmentnotimport.jsp</result>
+			<result name="prelist">/itms/report/presetEquipmentnotimportList.jsp</result>
+			<result name="devlist">/itms/report/presetEquipmentnotimportDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="tianyiStoreBusinessQuery" class="TianyiStoreBusinessACT">
+			<result name="init">/itms/report/tianyiStoreBusiness.jsp</result>
+			<result name="list">/itms/report/tianyiStoreBusinessList.jsp</result>
+			<result name="deviceList">/itms/report/tianyiStoreBusinessDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="moreBroadbandBusinessQuery" class="MoreBroadbandBusinessACT">
+			<result name="init">/itms/report/moreBroadbandBusiness.jsp</result>
+			<result name="list">/itms/report/moreBroadbandBusinessList.jsp</result>
+			<result name="deviceList">/itms/report/moreBroadbandBusinessDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="bsslogQuery" class="BssLogACT">
+			<result name="init">/itms/report/bsslog.jsp</result>
+			<result name="list">/itms/report/bsslogList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="statisticalLordMGCAddressQuery" class="StatisticalLordMGCAddressACT">
+			<result name="init">/itms/report/statisticalLordMGCAddress.jsp</result>
+			<result name="list">/itms/report/statisticalLordMGCAddressList.jsp</result>
+			<result name="deviceList">/itms/report/statisticalLordMGCAddressDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="sipUserInfo" class="ExportSipUserReportACT">
+			<result name="init">/itms/report/sipUserReport.jsp</result>
+			<result name="hgwlist">/itms/report/sipUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 山东联通RMS设备统计报表 -->
+		<action name="deviceCountReport" class="DeviceCountReportACT">
+			<result name="init">/itms/report/DeviceCountReport.jsp</result>
+            <result name="countList">/itms/report/DeviceCountReportList.jsp</result>
+            <result name="detail">/itms/report/DeviceCountReportDetailList.jsp</result>
+            <result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!--wanghong5 按业务类型统计 -->
+		<action name="countServ" class="CountServReportACT">
+			<result name="init">/itms/report/countServReport.jsp</result>
+			<result name="list">/itms/report/countServReportList.jsp</result>
+			<result name="details_list">/itms/report/countServUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!--wanghong5 无线业务策略查询 -->
+		<action name="strategyQuery" class="StrategyQueryACT">
+			<result name="init">/itms/report/strategyQuery.jsp</result>
+			<result name="list">/itms/report/strategyQueryList.jsp</result>
+		</action>
+
+		<action name="exportUser" class="ExportUserACT">
+			<result name="init">/itms/report/ExportUserInfo.jsp</result>
+			<result name="userList">/itms/report/UserReportList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="E8CActiveReport" class="E8CActiveReportACT">
+			<result name="init">/itms/report/E8CActiveReport.jsp</result>
+			<result name="dataList">/itms/report/E8CActiveReportList.jsp</result>
+			<result name="cusList">/itms/report/E8CUserList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="memcachedManageACT" class="MemcachedManageACT">
+			<result name="init">/itms/report/memcachedManage.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 当日用户开通数查询 -->
+		<action name="queryOpenBusiness" class="QueryOpenBusinessACT">
+			<result name="init">/itms/report/queryOpenBusinessbyday.jsp</result>
+			<result name="userList">/itms/report/queryOpenBusinessList.jsp</result>
+			<result name="detailList">/itms/report/queryOpenBusinessDetailList.jsp
+			</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- mq监控 add by wangyan 20161012 -->
+		<action name="queryMq" class="QueryMqACT">
+			<result name="init">/itms/report/queryMqView.jsp</result>
+			<result name="initEcharts">/itms/report/queryMqEcharts.jsp</result>
+			<result name="list">/itms/report/queryMqForm.jsp</result>
+			<result name="detail">/itms/report/queryMqDetail.jsp</result>
+			<result name="detailList">/itms/report/queryMqDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- JXDX-REQ-ITMS-20190722-WWF-003	ITMS+家庭网关对外接口普通用户测速报表  -->
+		<action name="httpTest" class="HttpTestReportACT">
+			<result name="init">/itms/report/httpTestReport.jsp</result>
+			<result name="list">/itms/report/httpTestReportList.jsp</result>
+			<result name="detail">/itms/report/httpTestReportDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- JXDX-REQ-ITMS-20191224-WWF-001(ITMS+家庭网关后台批量测速需求)-修改  -->
+		<action name="httpTestBatch" class="HttpTestBatchReportACT">
+			<result name="init">/itms/report/httpTestBatchReport.jsp</result>
+			<result name="list">/itms/report/httpTestBatchReportList.jsp</result>
+			<result name="detail">/itms/report/httpTestBatchReportDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		
+		<action name="netAccSpeedAction" class="NetAccSpeedAction"> 
+			<result name="init">/itms/report/netAccSpeed.jsp</result> 
+			<result name="allList">/itms/report/netAccSpeedList.jsp</result> 
+			<result name="detailList">/itms/report/netAccSpeedDetailList.jsp</result> 
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- JXDX-REQ-ITV-20191010-WWF-001(ITV终端管理平台新增集团光宽批量重启查询页面需求)  -->
+		<action name="batchRestart" class="BatchRestartJXACT">
+			<result name="init">/itms/report/batchRestartReportForJx.jsp</result>
+			<result name="list">/itms/report/batchRestartReportForJxList.jsp</result>
+			<result name="detail">/itms/report/batchRestartReportForJxDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 湖北电信长时间光猫批量重启成功率报表统计  add by songxiaoqiang  -->
+		<action name="batchRestartResult" class="BatchRestartResultACT">
+			<result name="init">/itms/report/BatchRestartResultReport.jsp</result>
+			<result name="list">/itms/report/BatchRestartResultReportList.jsp</result>
+			<result name="detail">/itms/report/AreaServiceDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 带宽对应设备统计-->
+		<action name="bandwidthDeviceReport" class="BandwidthDeviceReportACT">
+			<result name="list">/itms/report/bandwidthDeviceInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+
+		<!-- 报表下载统计-->
+		<action name="fileExportReport" class="FileExportACT">
+			<result name="init">/itms/report/fileExportInfoView.jsp</result>
+			<result name="list">/itms/report/fileExportInfoList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+
+		<!-- 吉林联通VOIP修改IP工单统计-->
+		<action name="VoipXIPBSSReportJL" class="VoipXIPBSSReportJLACT">
+			<result name="voipBSSReport">/itms/report/voipIpBSSReportListJLLT.jsp</result>
+			<result name="voipBSSDownReport">/itms/report/voipIpBSSDownReportListJLLT.jsp</result>
+			<result name="voipBSSReportInfo">/itms/report/voipIpBSSReportInfoJLLT.jsp</result>
+			<result name="voipBSSDownReportInfo">/itms/report/voipIpBSSDownReportInfoJLLT.jsp</result>
+			<result name="loidVoipBSS">/itms/report/voipIpBSSLoidListReportJLLT.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<!-- 吉林联通VOIP修改IP工单统计-->
+		<action name="VoipXIPBSSReportJL" class="VoipXIPBSSReportJLACT">
+			<result name="voipBSSReport">/itms/report/voipIpBSSReportListJLLT.jsp</result>
+			<result name="voipBSSDownReport">/itms/report/voipIpBSSDownReportListJLLT.jsp</result>
+			<result name="voipBSSReportInfo">/itms/report/voipIpBSSReportInfoJLLT.jsp</result>
+			<result name="voipBSSDownReportInfo">/itms/report/voipIpBSSDownReportInfoJLLT.jsp</result>
+			<result name="loidVoipBSS">/itms/report/voipIpBSSLoidListReportJLLT.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<!-- 新疆电信新增新开户绑定终端情况报表-->
+		<action name="userOpenBindACT" class="userOpenBindACT">
+			<result name="init">/itms/report/userOpenBindReport.jsp</result>
+			<result name="list">/itms/report/userOpenBindList.jsp</result>
+			<result name="listForPage">/itms/report/userOpenBindReport.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+	
+		<!-- 报表下载统计-->
+		<action name="delWanConnReportACT" class="DelWanConnReportACT">
+			<result name="init">/itms/report/DelWanConnResultReport.jsp</result>
+			<result name="list">/itms/report/DelWanConnResultReportList.jsp</result>
+			<result name="devlist">/itms/report/DelWanConnResultDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="bridgeAndRouteRecord" class="BridgeAndRouteRecordACT">
+			<result name="init">/itms/report/bridgeAndRouteRecord.jsp</result>
+			<result name="list">/itms/report/bridgeAndRouteRecordList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

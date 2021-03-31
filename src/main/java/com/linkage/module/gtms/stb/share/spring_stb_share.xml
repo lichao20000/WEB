@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="FileUploadAction" class="com.linkage.module.gtms.stb.share.action.FileUploadAction" scope="prototype">
+	</bean>
+	<bean id="ShareDeviceQueryACT" class="com.linkage.module.gtms.stb.share.action.ShareDeviceQueryACT" scope="prototype">
+		<property name="gwDeviceBio">
+			<ref bean="ShareDeviceQueryBIO" />
+		</property>
+		<property name="pingBio">
+			<ref bean="PingInfoBIO" />
+		</property>
+	</bean>
+	<bean id="ShareDeviceQueryBIO" class="com.linkage.module.gtms.stb.share.serv.ShareDeviceQueryBIO" scope="prototype">
+		<property name="vmvStbDao">
+			<ref bean="GwStbVendorModelVersionDAO" />
+		</property>
+		<property name="gwDeviceDao">
+			<ref bean="ShareDeviceQueryDAO" />
+		</property>
+	</bean>
+	<bean id="ShareDeviceQueryDAO" class="com.linkage.module.gtms.stb.share.dao.ShareDeviceQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>

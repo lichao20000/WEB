@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!--package about system's config-->
+	<package name="system" extends="linkage_security"
+		namespace="/system">
+		<action name="areaSelect" class="AreaSelect">
+			<result name="success">/system/areaResult.jsp</result>
+		</action>
+		<action name="dialing" class="DialingConfigAction">
+			<interceptor-ref name="exception" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/work/DialingList.jsp</result>
+			<result name="add">/work/DialingEdit.jsp</result>
+			<result name="result">/work/operResult.jsp</result>
+		</action>
+		<action name="msgSend" class="RTMsgSendAction">
+			<result name="add">/Warn/RealMsgSend.jsp</result>
+			<result name="edit">/Warn/RealMsgSend.jsp</result>
+			<result name="success">/Warn/RTMsgShowAll.jsp</result>
+		</action>
+		<action name="msgCfg" class="RTMsgConfigAction">
+			<result name="success">/system/RealMsgConfig.jsp</result>
+			<result name="add">/system/RTMsgCfgAddorEdit.jsp</result>
+			<result name="edit">/system/RTMsgCfgAddorEdit.jsp</result>
+		</action>
+		<action name="msgLog" class="MsgLogAction">
+			<interceptor-ref name="linkage_default" />
+			<interceptor-ref name="execAndWait" />
+			<result name="success">/Warn/msgLogQuery.jsp</result>
+		</action>
+		<action name="MsgTemplateCus" class="MsgTemplateCusAction">
+			<result name="success">/Warn/msgTemplate.jsp</result>
+			<result name="add">/Warn/AddOrEditMSGTemplate.jsp</result>
+			<result name="del" type="ajax"></result>
+			<result name="edit">/Warn/AddOrEditMSGTemplate.jsp</result>
+		</action>
+		<action name="Export" class="Export">
+			<result name="success" type="excel"></result>
+		</action>
+		<action name="ImportCustomer" class="ImportCustomerAction">
+			<result name="success" type="redirect">
+				/Report/customerOperate.action
+			</result>
+			<result name="input">/model_vip/login.jsp</result>
+		</action>
+		<action name="ExportCustomer" class="ExportCustomerAction">
+			<result name="success" type="excel"></result>
+		</action>
+	</package>
+</struts>

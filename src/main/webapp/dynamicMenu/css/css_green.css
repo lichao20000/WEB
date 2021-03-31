@@ -1,0 +1,87 @@
+.blue_title {
+	font-size: 13px;
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #C5E3B9;
+}
+.set_blue_samll {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+}
+.black_small {
+	font-size: 12px;
+	color: #003300;
+}
+.trOver {
+	background-color: #C5E3B9;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	cursor: hand;
+}
+.title3 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 16px;
+}
+.table_back {
+	font-size: 12px;
+	background-color: #E4F1FA;
+}
+.trOut {
+	background-color: #E4F1FA;
+	cursor: hand;
+}
+.trOverglory {
+	background-color: #B0B0B0;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	cursor: hand;
+}
+.trOutglory {
+	background-color: #DDDDFF;
+	cursor: hand;
+}
+.trOverred {
+	background-color: #CCDDEE;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	cursor: hand;
+}
+.trOutred {
+	background-color: #FFFFFF;
+	cursor: hand;
+}
+.trOveryellow {
+	background-color: #F4D97B;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	cursor: hand;
+}
+.trOutyellow {
+	background-color: #F9E9B3;
+	cursor: hand;
+}
+.trOverblue {
+	background-color: #9CB2E7;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	cursor: hand;
+}
+.trOutblue {
+	background-color: #D6DBEF;
+	cursor: hand;
+	border: none;
+}

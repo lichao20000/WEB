@@ -1,0 +1,44 @@
+// JavaScript Document
+$(document).ready(function(){
+	$('.stainfo').hide();
+	//配置信息
+	$('#show_pz').click(function(){
+		$('#pz_content').show();
+	})
+	//绑定
+	$('#btn_bd').click(function(){
+		$('#bd_content').show();
+	})
+	$('#btn_msbd').click(function(){
+		$('#bd_content').hide();
+	})
+	$('.sta_close').click(function(){
+		$(this).parents('.stainfo').hide();
+	})
+	//业务下发
+	$('.give_list').hide();
+	$('.give_btn').click(function(){
+		$('.give_list').show();
+	})
+	//wifi开通
+	$('#btn_wifi').click(function(){
+		$('#wifi_content1,#wifi_content2').show();
+	})
+	$('#btn_ly').click(function(){
+		$('#luyou_content1,#luyou_content2').show();
+	})
+	$('.dialog').hide();
+	$('.wall').hide();
+	$('.itta_bbxz').click(function(){
+		$('.dialog_tip').show();
+		$('.wall').show();
+	})
+	$('.itta_more').click(function(){
+		$('.dialog_table').show();
+		$('.wall').show();
+	})
+	$('.dialog_close').click(function(){
+		$(this).parents('.dialog').hide();
+		$('.wall').hide();
+	})
+});

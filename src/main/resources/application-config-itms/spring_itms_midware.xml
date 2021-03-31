@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="MidWareDAO"
+		class="com.linkage.module.itms.midware.dao.MidWareDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="MidWareBIO"
+		class="com.linkage.module.itms.midware.bio.MidWareBIO"
+		scope="prototype">
+		<property name="midWareDAO">
+			<ref bean="MidWareDAO" />
+		</property>
+	</bean>
+	<bean id="MidWareACT"
+		class="com.linkage.module.itms.midware.act.MidWareACT"
+		scope="prototype">
+		<property name="midWareBio">
+			<ref bean="MidWareBIO" />
+		</property>
+	</bean>
+	<bean id="BusinessOpenDAO"
+		class="com.linkage.module.itms.midware.dao.BusinessOpenDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BusinessOpenBIO"
+		class="com.linkage.module.itms.midware.bio.BusinessOpenBIO"
+		scope="prototype">
+		<property name="businessOpenDao">
+			<ref bean="BusinessOpenDAO" />
+		</property>
+		<property name="midWareDAO">
+			<ref bean="MidWareDAO" />
+		</property>
+		<property name="midWareBIO">
+			<ref bean="MidWareBIO" />
+		</property>
+	</bean>
+	<bean id="BusinessOpenACT"
+		class="com.linkage.module.itms.midware.act.BusinessOpenACT"
+		scope="prototype">
+		<property name="businessOpenBio">
+			<ref bean="BusinessOpenBIO" />
+		</property>
+	</bean>
+</beans>

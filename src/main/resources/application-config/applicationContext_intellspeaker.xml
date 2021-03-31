@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="IntelSpeakerConfigMgrDao"
+		class="com.linkage.module.intelspeaker.verconfigfile.dao.IntelSpeakerConfigMgrDao"
+		scope="prototype">
+	</bean>
+	<bean id="IntelSpeakerConfigMgrBio"
+		class="com.linkage.module.intelspeaker.verconfigfile.bio.IntelSpeakerConfigMgrBio"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="IntelSpeakerConfigMgrDao" />
+		</property>
+	</bean>
+	<bean id="IntelSpeakerConfigMgrAction"
+		class="com.linkage.module.intelspeaker.verconfigfile.act.IntelSpeakerConfigMgrAction"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="IntelSpeakerConfigMgrBio" />
+		</property>
+	</bean>
+</beans>

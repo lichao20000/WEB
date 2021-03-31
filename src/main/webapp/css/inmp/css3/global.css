@@ -1,0 +1,77 @@
+body{
+	margin: 0px;
+	font-size: 12px;
+	text-align: center;
+	font-family: Arial, "Arial Black","宋体";
+}
+table{
+	padding:0px;
+	margin:0px;
+	font-size: 12px;
+	width:95%;
+	font-family: Arial, "Arial Black","宋体","黑体";
+	border:none;
+	background-color: #ffffff;
+}
+table,tr,thead,th,td{
+	border-spacing:0px;
+	border-collapse:collapse;
+	padding:0px;
+}
+A:visited {
+	COLOR: #006790; TEXT-DECORATION: none;
+}
+A:link {
+	COLOR: #0045aa; TEXT-DECORATION: none;
+}
+A:hover {
+	COLOR: #ff8a00; TEXT-DECORATION: none;
+}
+
+input  {
+	BACKGROUND-COLOR: #fff;
+	
+	
+	
+	BORDER: #8a8a8a 1px solid; 
+	COLOR: #0000cc; 
+	FONT-FAMILY: "宋体","Arial";
+}
+select {
+	BACKGROUND-COLOR: #fff;
+	BORDER: #8a8a8a 1px solid; 
+	
+	
+	
+	COLOR: #333; 
+	FONT-FAMILY: "宋体","Arial";
+}
+input.onread {
+	color: #6a6a6a;
+	background-color: #DFDFFF;
+}
+input[type="radio"]  {
+	color: #6a6a6a;
+}
+input[type="checkbox"]  {
+	color: #6a6a6a;
+}
+button {
+ 	background-color: #5181e0; 
+	font-size: 14px; 
+	text-align:center;
+	height:28px;
+	color: #fff; 
+	borde: 0; 
+	padding:0 15px;
+	line-height:28px;
+	font-family:"微软雅黑";
+	
+	
+	cursor: hand; 
+	
+}
+label
+{
+cursor:hand;
+}

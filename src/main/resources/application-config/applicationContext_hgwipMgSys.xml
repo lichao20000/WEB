@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="hgwBrasVbrasManageDAO" class="dao.hgwip.BrasVbrasManageDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="PSQL">
+			<ref bean="pSQL" />
+		</property>
+	</bean>
+	<bean id="hgwBrasVbrasManageBIO" class="bio.hgwip.BrasVbrasManageBIO" scope="prototype">
+		<property name="brasVbrasManageDAO">
+			<ref local="hgwBrasVbrasManageDAO" />
+		</property>
+	</bean>	
+	<bean id="hgwBrasVbrasManageACT" class="action.hgwip.BrasVbrasManagAction" scope="prototype">
+		<property name="brasVbrasManageBIO">
+			<ref local="hgwBrasVbrasManageBIO" />
+		</property>
+	</bean>
+	<bean id="hgwSubnetOperationDAO" class="dao.hgwip.SubnetOperationDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="PSQL">
+			<ref bean="pSQL" />
+		</property>
+		<property name="ipManagerDao">
+			<ref local="hgwIPManagerDAO" />
+		</property>
+	</bean>
+	<bean id="hgwIPManagerDAO" class="dao.hgwip.IPManagerDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>	
+	<bean id="hgwSubnetTreeBIO" class="bio.hgwip.SubnetTreeBIO" scope="prototype">
+		<property name="subnetOperationDao">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+	</bean>	
+	<bean id="hgwipManagerAction" class="action.hgwip.IpManagerAction" scope="prototype">
+		<property name="ipmdao">
+			<ref local="hgwIPManagerDAO" />
+		</property>
+		<property name="sopdao">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+	</bean>
+	<bean id="itvIPManagerDAO" class="dao.hgwip.ItvIPManagerDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>	
+	<bean id="itvIpManagerAction" class="action.hgwip.ItvIpManagerAction" scope="prototype">
+		<property name="itvdao">
+			<ref local="itvIPManagerDAO" />
+		</property>
+	</bean>
+	<bean id="hgwGetIpInfoAction" class="action.hgwip.GetIpInfoAction" scope="prototype">
+		<property name="subdio">
+			<ref local="hgwSubnetTreeBIO" />
+		</property>
+	</bean>
+	<bean id="hgwGetSubnetDetailAction" class="action.hgwip.GetSubnetDetailAction" scope="prototype">
+		<property name="sbdao">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+	</bean>	
+	<bean id="hgwDispaterAction" class="action.hgwip.DispachterAction" scope="prototype"></bean>
+	<bean id="hgwAssignIPAction" class="action.hgwip.AssignIPAction" scope="prototype">
+		<property name="sbdao">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+		<property name="ipdao">
+			<ref local="hgwIPManagerDAO" />
+		</property>
+	</bean>
+	<bean id="hgwUnAssignIPAction" class="action.hgwip.UnAssignIPAction" scope="prototype">
+		<property name="ipdao">
+			<ref local="hgwIPManagerDAO" />
+		</property>
+		<property name="sbdao">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+	</bean>	
+	<bean id="hgwUserAppIpUploadAction" class="action.hgwip.UserAppIpUploadAction" scope="prototype">
+		<property name="sbdao">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+	</bean>
+	<bean id="hgwIpQuickModifyAction" class="action.hgwip.IpQuickModifyAction" scope="prototype">
+		<property name="snoDao">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+		<property name="ipmDao">
+			<ref local="hgwIPManagerDAO" />
+		</property>
+	</bean>
+	<bean id="hgwBatchModifyIPAction" class="action.hgwip.BatchModifyIPAction" scope="prototype">
+		<property name="sod">
+			<ref local="hgwSubnetOperationDAO" />
+		</property>
+	</bean>
+	<bean id="hgwGetChildCityAction" class="action.hgwip.GetChildCityAction" scope="prototype">
+		<property name="ipmDao">
+			<ref local="hgwIPManagerDAO" />
+		</property>
+	</bean>
+</beans>

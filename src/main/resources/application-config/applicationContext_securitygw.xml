@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>	
+	<bean id="SgwPerformanceDao" class="com.linkage.liposs.buss.dao.securitygw.SgwPerformanceDao" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>	
+		<property name="ppSQL">
+			<ref bean="pSQL" />
+		</property>				
+	</bean>	
+	<bean id="SgwPMJFChar" class="com.linkage.liposs.buss.bio.securitygw.SgwPMJFChar" scope="prototype">
+	  <property name="sgwPerformanceDao">
+			<ref bean="SgwPerformanceDao" />
+		</property>	
+		<property name="cu">
+			<ref bean="ChartUtil" />
+		</property>		
+	</bean>	
+	<bean id="SgwPerformanceAction" class="com.linkage.liposs.action.securitygw.SgwPerformanceAction" scope="prototype">
+		<property name="sgwPerformanceDao">
+			<ref bean="SgwPerformanceDao" />
+		</property>		
+		<property name="sgwPMJFChar">
+			<ref bean="SgwPMJFChar" />
+		</property>	
+		<property name="netMaintenanceSub">
+			<ref bean="NetMaintenanceSub" />
+		</property>
+	</bean>
+	<bean id="EntSecStatDAO" class="com.linkage.liposs.buss.dao.securitygw.EntSecStatDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>	
+	</bean>
+	<bean id="EntSecStatBIO" class="com.linkage.liposs.buss.bio.securitygw.EntSecStatBIO" scope="prototype">
+		<property name="entSecStatDAO">
+			<ref bean="EntSecStatDAO" />
+		</property>
+		<property name="cu">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="EntSecStatAction" class="com.linkage.liposs.action.securitygw.EntSecStatAction" scope="prototype">
+		<property name="entSecDAO">
+			<ref bean="EntSecStatDAO" />
+		</property>	
+		<property name="entSecStatBIO">
+			<ref bean="EntSecStatBIO" />
+		</property>	
+		<property name="sgwPerformanceDao">
+			<ref bean="SgwPerformanceDao"/>
+		</property>
+	</bean>
+	<bean id="BehaviorAnalyseDAO" class="com.linkage.liposs.buss.dao.securitygw.BehaviorAnalyseDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="NetFluxAnalyseAction"
+		class="com.linkage.liposs.action.securitygw.NetFluxAnalyseAction" scope="prototype">
+		<property name="baDao">
+			<ref local="BehaviorAnalyseDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+
+	<bean id="EntWebTopnDAO" class="com.linkage.liposs.buss.dao.securitygw.EntWebTopnDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="EntWebTopnAction" class="com.linkage.liposs.action.securitygw.EntWebTopnAction"
+		scope="prototype">
+		<property name="entWebDAO">
+			<ref local="EntWebTopnDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+
+	<bean id="EntFtpSiteDAO" class="com.linkage.liposs.buss.dao.securitygw.EntFtpSiteDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="EntFtpSiteTopnAction"
+		class="com.linkage.liposs.action.securitygw.EntFtpSiteTopnAction" scope="prototype">
+		<property name="entFtpDAO">
+			<ref local="EntFtpSiteDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="PBTopNDAO" class="com.linkage.liposs.action.securitygw.PBTopNDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="AdvNetBehaviorAction" class="com.linkage.liposs.action.securitygw.AdvNetBehaviorAction" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="cu">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="PBTopN" class="com.linkage.liposs.action.securitygw.PBTopN" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="sgwPerformanceDao">
+			<ref bean="SgwPerformanceDao" />
+		</property>
+	</bean>
+	<bean id="PBTopNAction" class="com.linkage.liposs.action.securitygw.PBTopNAction" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="cu">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="PBWebTopN" class="com.linkage.liposs.action.securitygw.PBWebTopN" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="sgwPerformanceDao">
+			<ref bean="SgwPerformanceDao" />
+		</property>
+	</bean>
+	<bean id="PBWebTopNAction" class="com.linkage.liposs.action.securitygw.PBWebTopNAction" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="cu">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="PBMailTopN" class="com.linkage.liposs.action.securitygw.PBMailTopN" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="sgwPerformanceDao">
+			<ref bean="SgwPerformanceDao" />
+		</property>
+	</bean>
+	<bean id="PBMailTopNAction" class="com.linkage.liposs.action.securitygw.PBMailTopNAction" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="cu">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="PBDetailAction" class="com.linkage.liposs.action.securitygw.PBDetailAction" scope="prototype">
+		<property name="pbTopN">
+			<ref bean="PBTopNDAO" />
+		</property>
+		<property name="sgwPerformanceDao">
+			<ref bean="SgwPerformanceDao" />
+		</property>
+	</bean>
+	<bean id="getWebTopNHighQueryDAO" class="com.linkage.liposs.buss.dao.securitygw.GetWebTopNHighQueryDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<!-- <bean id="webTopNHighQuery" class="com.linkage.liposs.action.securitygw.WebTopNHighQueryAction" scope="prototype">
+		<property name="cu">
+			<ref bean="ChartUtil"/>
+		</property>
+		<property name="webTopNHighQueryDAO">
+			<ref local="getWebTopNHighQueryDAO"/>
+		</property>
+	</bean>
+	 -->
+	<bean id="getPBMailTopNHighDAO" class="com.linkage.liposs.buss.dao.securitygw.GetPBMailTopNHighDAOImp" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- <bean id="pBMaiHighQuery" class="com.linkage.liposs.action.securitygw.PBMaiHighQueryAction" scope="prototype">
+		<property name="cu">
+			<ref bean="ChartUtil"/>
+		</property>
+		<property name="getPBMailTopNHighDAO">
+			<ref local="getPBMailTopNHighDAO"/>
+		</property>
+	</bean> -->
+	<bean id="virusReportDAO" class="com.linkage.liposs.buss.dao.securitygw.VirusReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="trashMailReportDAO" class="com.linkage.liposs.buss.dao.securitygw.TrashMailReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="attackReportDAO" class="com.linkage.liposs.buss.dao.securitygw.AttackReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="filterReportDAO" class="com.linkage.liposs.buss.dao.securitygw.FilterReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="safeReportDAO" class="com.linkage.liposs.buss.dao.securitygw.SafeReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 病毒-->
+	<bean id="VirusReportAction" class="com.linkage.liposs.action.securitygw.VirusReportAction" scope="prototype">
+		<property name="vrrDAO">
+			<ref bean="virusReportDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+		<property name="utrDAO">
+			<ref bean="UserTopReportDAO" />
+		</property>
+	</bean>
+	<!-- 垃圾邮件 -->
+	<bean id="TrashMailReportAction" class="com.linkage.liposs.action.securitygw.TrashMailReportAction" scope="prototype">
+		<property name="tmrDAO">
+			<ref bean="trashMailReportDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+		<property name="utrDAO">
+			<ref bean="UserTopReportDAO" />
+		</property>
+	</bean>
+	<!-- 攻击事件 -->
+	<bean id="AttackReportAction" class="com.linkage.liposs.action.securitygw.AttackReportAction" scope="prototype">
+		<property name="attrDAO">
+			<ref bean="attackReportDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+		<property name="utrDAO">
+			<ref bean="UserTopReportDAO" />
+		</property>
+	</bean>
+	<!--安全-->
+	<bean id="SafeReportAction" class="com.linkage.liposs.action.securitygw.SafeReportAction" scope="prototype">
+		<property name="sfDAO">
+			<ref bean="safeReportDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+		<property name="utrDAO">
+			<ref bean="UserTopReportDAO" />
+		</property>
+	</bean>
+	<!--过滤事件-->
+	<bean id="FilterReportAction" class="com.linkage.liposs.action.securitygw.FilterReportAction" scope="prototype">
+		<property name="fltDAO">
+			<ref bean="filterReportDAO" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+		<property name="utrDAO">
+			<ref bean="UserTopReportDAO" />
+		</property>
+	</bean>
+	<bean id="UserTopReportDAO" class="com.linkage.liposs.buss.dao.securitygw.UserTopReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="ppSql">
+			<ref bean="pSQL" />
+		</property>
+		<property name="chartUtil">
+			<ref bean="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="UserTopReportAction" class="com.linkage.liposs.action.securitygw.UserTopReportAction" scope="prototype">
+		<property name="utrDAO">
+			<ref bean="UserTopReportDAO" />
+		</property>
+	</bean>
+
+</beans>

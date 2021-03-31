@@ -1,0 +1,99 @@
+
+BODY {
+    font-size : 100%;
+}
+BODY, TH, TD {
+    font-family :  宋体,arial, sans-serif;
+    font-size : 12px;
+}
+PRE, TT {
+    font-size : 100%;
+    font-family : 宋体,arial;
+}
+LABEL {
+    font-weight : bold;
+}
+A {}
+A:link {
+    color : #039;
+}
+A:visited {
+    color : #039;
+}
+A:hover {
+    color : #f00;
+    text-decoration : none;
+}
+A:active {
+    color : #9cf;
+}
+
+.jive-setup-header TABLE {
+    border : 1px #333 solid;
+}
+.jive-setup-header TD {
+    font-family : 宋体,arial, sans-serif;
+    font-size : 18px;
+    color : #ffffff;
+    background-color : #369;
+}
+.jive-setup-footer {
+    text-align : center;
+}
+.jive-setup-page-header {
+    font-size : 14px;
+    font-weight : bold;
+}
+.jive-setup-page-subheader {
+    font-weight : bold;
+}
+.jive-setup-error-text {
+    color : #f00;
+}
+.jive-setup-sidebar {
+    border : 1px #ccc solid;
+    background-color : #eee;
+}
+.jive-setup-header .jive-info {
+    color : #333;
+    font-size : 12px;
+    font-family : 宋体,arial, sans-serif;
+    font-weight : bold;
+}
+.jive-setup-category-header {
+    font-weight : bold;
+    background-color : #eee;
+    border-bottom : 1px #ccc solid;
+    border-right : 1px #ccc solid;
+}
+.btn{
+BACKGROUND-COLOR: #ccc; BORDER-BOTTOM: #333333 1px solid; BORDER-LEFT: #eeeeee 1px solid; BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #eeeeee 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 12px; TEXT-DECORATION: none;width:100px;font-weight: bold	
+}
+.jive-setup-category .jive-info {
+    font-size :12px;
+}
+.jive-setup-category {
+    padding-left : 20px;
+}
+.jive-setup-checklist-box {
+    border-width : 0px 1px 1px 0px;
+    border-color : #ccc;
+    border-style : solid;
+    padding-left : 13px;
+    padding-right : 13px;
+}
+.jive-error-text {
+    color : #f00;
+}
+.jive-label {
+    padding-right : 10px;
+    padding-top : 6px;
+}
+.jive-description {
+    font-family : 宋体,arial;
+    font-size : 12px;
+}
+.jive-custom-datasource .jive-label {
+    font-size : 12px;
+    font-family : 宋体,arial;
+}

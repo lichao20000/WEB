@@ -1,0 +1,18 @@
+WEB FOR GTMS(BBMS&ITMS)
+
+****************************************************************************
+ALL RIGHTS RESERVED BY ：Linkage Technology (NanJing) Co., Ltd    
+
+****************************************************************************
+
+安装时基于WEB服务安装，如TOMCAT/WEBLOGIC等，注意配置端口及最大连接数等，
+程序安装配置及使用可以参考相关文档，涉及配置文件如下：
+
+1.WEB-INF/web.xml  WEB配置文件,默认不要修改
+2.WEB-INF/log4j.properties 日志配置文件
+3.WEB-INF/proxool.xml 数据库配置文件
+4.WEB-INF/client.xml  ITMS中间件配置文件
+5.WEB-INF/classes/liposs_cfg.xml 系统配置文件
+
+
+如有疑问请联系作者。

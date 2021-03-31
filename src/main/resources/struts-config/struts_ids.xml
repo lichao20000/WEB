@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="ids" extends="linkage_security,linkage-pdf-default"
+		namespace="/ids">
+		<!-- 安徽电信ITMS+与预检预修子系统(web) -->
+		<action name="IdsShareDevice" class="IdsDeviceQueryACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="getDevice">/ids/HTTPQueryDeviceList.jsp</result>
+		</action>
+
+		<action name="PingDeviceQuery" class="PingDeviceQueryACT">
+			<result name="init">/ids/PingQueryInfo.jsp</result>
+			<result name="list">/ids/PingQueryInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="HTTPDeviceQuery" class="HTTPDeviceQueryACT">
+			<result name="init">/ids/HTTPQueryInfo.jsp</result>
+			<result name="initForHBLT">/ids/HTTPQueryInfoForHBLT.jsp</result>
+			<result name="initForJLLT">/ids/HTTPQueryInfoForJLLT.jsp</result>
+			<result name="initForNXLT">/ids/HTTPQueryInfoForNXLT.jsp</result>
+			<result name="initForAHLT">/ids/HTTPQueryInfoForAHLT.jsp</result>
+			<result name="initForAH">/ids/HTTPQueryInfoForAH.jsp</result>
+			<result name="list">/ids/HTTPQueryInfoList.jsp</result>
+			<result name="listForAH">/ids/HTTPQueryInfoForAHList.jsp</result>
+			<result name="listForJX">/ids/HTTPQueryInfoForJXList.jsp</result>
+			<result name="listForHBLT">/ids/HTTPQueryInfoForHBLTList.jsp</result>
+			<result name="listForJLLT">/ids/HTTPQueryInfoForJLLTList.jsp</result>
+			<result name="listForAHLT">/ids/HTTPQueryInfoForAHLTList.jsp</result>
+			<result name="listForSDLT">/ids/HTTPQueryInfoForSDLTList.jsp</result>
+			<result name="listForNXLT">/ids/HTTPQueryInfoForNXLTList.jsp</result>
+			<result name="listForSDDX">/ids/HTTPQueryInfoForSDDXList.jsp</result>
+			<result name="uploadSpeedByHTTP">/ids/uploadSpeedByHTTPInfo.jsp</result>
+			<result name="uploadHTTPQueryInfoList">/ids/UploadHTTPQueryInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="PPPoEDeviceQuery" class="PPPoEDeviceQueryACT">
+			<result name="init">/ids/PPPoEQueryInfo.jsp</result>
+			<result name="list">/ids/PPPoEQueryInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="VoiceDeviceQuery" class="VoiceDeviceQueryACT">
+			<result name="init">/ids/VoiceQueryInfo.jsp</result>
+			<result name="list">/ids/VoiceQueryInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 语音质量监控 -->
+		<action name="VoiceQualityMonitoring" class="VoiceQualityMonitoringACT">
+			<result name="init">/ids/VoiceQualityMonitoring.jsp</result>
+			<result name="list">/ids/VoiceQualityMonitoringList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 安徽电信ITMS+与预检预修子系统(web) -->
+
+
+		<action name="statusMsgUpload" class="StatusMesUploadACT">
+			<result name="init">/ids/statusmegList.jsp</result>
+		</action>
+
+		<action name="idsStatusQuery" class="IdsStatusQueryACT">
+			<result name="queryList">/ids/IdsStatusQueryList.jsp</result>
+			<result name="devInfo">/ids/IdsDevInfoList.jsp</result>
+			<result name="excel" type="excel" />
+		</action>
+		
+		<!-- 宁夏电信ITMS+预检预修查询 -->
+		<action name="idsQuery" class="IdsQueryACT">
+			<result name="queryList">/ids/IdsQueryList.jsp</result>
+			<result name="excel" type="excel" />
+		</action>
+		
+		
+		<action name="DeviceMonitoringQuery" class="DeviceMonitoringACT">
+			<result name="ajax" type="ajax" />
+			<result name="success">/ids/deviceMonitoringQuery.jsp</result>
+			<result name="ponstatusdetail">/ids/ponstatusDetail.jsp</result>
+			<result name="netparamdetail">/ids/netparamDetail.jsp</result>
+			<result name="voicestatusdetail">/ids/voicestatusDetail.jsp</result>
+			<result name="landetail">/ids/lanDetail.jsp</result>
+			<result name="pondetail">/ids/ponDetail.jsp</result>
+		</action>
+
+
+		<action name="VoiceRegisterQuery" class="VoiceRegisterACT">
+			<result name="ajax" type="ajax" />
+			<result name="success">/ids/voiceRegisterList.jsp</result>
+			<result name="error">/ids/voiceRegisterError.jsp</result>
+		</action>
+
+		<!-- start 预检预修报表1：网络质量检测分析报表 -->
+		<action name="NetWorkQualityTest" class="NetWorkQualityTestACT">
+			<result name="init">/ids/NetWorkQualityTestInfo.jsp</result>
+			<result name="list">/ids/NetWorkQualityTestList.jsp</result>
+			<result name="listinfo">/ids/NetWorkQualityTestInfoList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		
+		<!-- end 预检预修报表1：网络质量检测分析报表 -->
+		<action name="deviceGatherQuery" class="DeviceGatherQueryACT">
+			<result name="queryList">/ids/DeviceGatherQueryList.jsp</result>
+		</action>
+		
+		<!--gaoyi start PPPOE失败原因统计报表  -->
+		<action name="PPPoEFailReasonCount" class="PPPoEFailReasonCountACT">
+			<result name="init">/ids/PPPoEFailReasonCountInfo.jsp</result>
+			<result name="list">/ids/PPPoEFailReasonCountList.jsp</result>
+			<result name="pppoeInfo">/ids/PPPoEFailReasonCountInfoList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		<!--gaoyi end PPPOE失败原因统计报表  -->
+		
+		<!--gaoyi start 预检预修告警信息设计新增查询条件 -->
+		<action name="IdsAlarmInfo" class="IdsAlarmInfoACT">
+			<result name="init">/ids/IdsAlarmInfo.jsp</result>
+			<result name="alarmList">/ids/IdsAlarmInfoList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		<!--gaoyi end 预检预修告警信息设计新增查询条件 -->
+		
+		<action name="NetWorkQualityAnalyseInfo" class="NetWorkQualityAnalyseACT">
+			<result name="success">/ids/NetWorkQualityAnalyseInfo.jsp</result>
+			<result name="list">/ids/NetWorkQualityAnalyseInfoList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		
+		<action name="DegradationPathsQuery" class="DegradationPathsACT">
+			<result name="init">/ids/DegradationPaths.jsp</result>
+			<result name="list">/ids/DegradationPathsList.jsp</result>
+			<result name="info">/ids/DegradationPathsInfo.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		
+		
+		<action name="AlarmQuery" class="AlarmQueryACT">
+			<result name="alarmList">/ids/AlarmQueryList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		<action name="reportPeroid" class="ReportPeroidACT">
+			<result name="success">/ids/ReportPeriodResult.jsp</result>
+			<result name="queryList">/ids/ReportPeroidList.jsp</result>
+			<result name="devInfo">/ids/ReportPeroidDevInfoList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		<action name="voiceRegStatusAnanlyReport" class="VoiceRegStatusAnalysisRepACT">
+			<result name="initVoiceCity">/ids/VoiceRegStatusAnlysisRepByCity.jsp</result>
+			<result name="initVoiceModel">/ids/VoiceRegStatusAnlysisRepByModel.jsp</result>
+			<result name="initPPPOE">/ids/PPPOEFailedReasonOptimize.jsp</result>
+			<result name="initVoiceRegFail">/ids/VoiceRegFailedReason.jsp</result>
+			<result name="initDeviceTemperature">/ids/DeviceTempature.jsp</result>
+			<result name="voiceCityList">/ids/VoiceRegStatusAnalysisRepByCityList.jsp</result>
+			<result name="voiceModelList">/ids/VoiceRegStatusAnalysisRepByModelList.jsp</result>
+			<result name="pppoeList">/ids/PPPOEFailedReasonOptimizeList.jsp</result>
+			<result name="voiceRegList">/ids/VoiceRegFailedReasonList.jsp</result>
+			<result name="deviceTemp">/ids/DeviceTempatureList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		<action name="taskMonitor" class="TaskMonitorACT">
+			<result name="ajax" type="ajax"/>
+		</action>
+		<action name="fileUpload" class="FileUpload">
+			<result name="success">/ids/ShowUpload.jsp</result>
+			<result name="ajax" type="ajax" />
+		</action>
+		<action name="httpDownload" class="HttpDownloadACT">
+			<result name="success">/ids/HttpDownloadInfo.jsp</result>
+			<result name="success4NX">/ids/HttpDownloadInfo4NX.jsp</result>
+			<result name="success4JX">/ids/HttpDownloadInfo4JX.jsp</result>
+			<result name="taskInfo">/ids/HttpQueryTask.jsp</result>
+			<result name="taskList">/ids/HttpTaskList.jsp</result>
+			<result name="taskDetail">/ids/HttpTaskDetail.jsp</result>
+			<result name="devList">/ids/HttpDeviceList.jsp</result>
+			<result name="httppert">/ids/HttpQueryDevPert.jsp</result>
+			<result name="httppertlist">/ids/HttpDevPertList.jsp</result>
+			<result name="singleHttp">/ids/SingleHttpReport.jsp</result>
+			<result name="singleHttpList">/ids/SingleHttpList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		
+		<action name="httpUpload" class="HttpUploadACT">
+			<result name="success4NX">/ids/HttpUploadInfo4NX.jsp</result>
+			<result name="taskInfo">/ids/HttpQueryTask_upLoad.jsp</result>
+			<result name="taskList">/ids/HttpTaskList_upLoad.jsp</result>
+			<result name="taskDetail">/ids/HttpTaskDetail_upLoad.jsp</result>
+			<result name="devList">/ids/HttpDeviceList.jsp</result>
+			<result name="httppert">/ids/HttpQueryDevPert_upLoad.jsp</result>
+			<result name="httppertlist">/ids/HttpDevPertList_upLoad.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		
+		<action name="UserStateRating" class="UserStateRatingACT">
+			<result name="ajax" type="ajax" />
+			<result name="success">/ids/UserStateRating.jsp</result>
+			<result name="usertatusList">/ids/UserStateRatingList.jsp</result>
+		</action>
+		<action name="deviceTVB" class="DeviceTVBACT">
+			<result name="success">/ids/DeviceTVB.jsp</result>
+			<result name="list">/ids/DeviceTVBList.jsp</result>
+			<result name="rlist">/ids/DeviceTVBrList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		
+		<action name="batchPingTest" class="BatchPingTestACT">
+			<result name="success">/ids/BatchPingTest.jsp</result>
+			<result name="taskInfo">/ids/BatchPingTestQueryTask.jsp</result>
+			<result name="taskList">/ids/BatchPingTestTaskList.jsp</result>
+			<result name="taskDetail">/ids/BatchPingTestTaskDetail.jsp</result>
+			<result name="devList">/ids/BatchPingTestDevList.jsp</result>
+			<result name="pingResult">/ids/BatchPingResult.jsp</result>
+			<result name="pingResultList">/ids/BatchPingResultList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		<!-- 江西电信光衰地市达标数统计 -->
+		<action name="cityDroop" class="CityDroopACT">
+			<result name="init">/ids/CitiesDroopQuery.jsp</result>
+			<result name="list">/ids/CitiesDroopList.jsp</result>
+			<result name="rlist">/ids/CitiesDrooprList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+		<action name="httpQualityTest" class="HttpQualityTestACT">
+			<result name="taskInfo">/ids/HttpQualityQueryTask.jsp</result>
+			<result name="taskList">/ids/HttpQualityTaskList.jsp</result>
+			<result name="taskDetail">/ids/HttpQualityTaskDetail.jsp</result>
+			<result name="devList">/ids/HttpQualityDeviceList.jsp</result>
+			<result name="shareList0">/gwms/share/gwShareDeviceList0.jsp</result>
+			<result name="excel" type="excel" />
+			<result name="ajax" type="ajax" />
+		</action>
+
+		<action name="bytesReceivedDetection" class="BytesReceivedDetectionACT">
+			<result name="success">/ids/BytesReceivedDetection.jsp</result>
+			<result name="list">/ids/BytesReceivedDetectionList.jsp</result>
+			<result name="excel" type="excel" />
+			<result name="ajax" type="ajax" />
+		</action>
+		<action name="queryUserInfo" class="QueryUserInfoACT">
+			<result name="ajax" type="ajax" />
+		</action>
+		<!-- 江西电信poe拨号错误原因统计 -->
+		<action name="pppoeCount" class="PPPoECountACT">
+			<result name="init">/ids/PPPoECount.jsp</result>
+			<result name="list">/ids/PPPoECountList.jsp</result>
+			<result name="rlist">/ids/PPPoECountrList.jsp</result>
+			<result name="ajax" type="ajax" />
+			<result name="excel" type="excel" />
+		</action>
+
+		<!-- 江苏电信HTTP下载质量检测策略查询 -->
+		<action name="httpCustomMadeQuery" class="HttpCustomMadeQueryACT">
+			<result name="taskInfo">/ids/httpCustomMadeQuery.jsp</result>
+			<result name="taskList">/ids/httpCustomMadeList.jsp</result>
+			<result name="devList">/ids/httpCustomMadeDetail.jsp</result>
+		</action>
+
+		<action name="httpQualityCheck" class="HttpQualityCheckACT">
+			<result name="init">/ids/HttpQualityCheck.jsp</result>
+			<result name="list">/ids/HttpQualityCheckList.jsp</result>
+		</action>
+
+		<!-- 山东联通RMS平台宽带IPTV测速支持需求 -->
+		<action name="testSpeedTask" class="testSpeedTask">
+		<result name="ajax" type="ajax" />	
+		<result name="initImport">/ids/testSpeedTaskQuery.jsp</result>
+		<result name="taskResult">/ids/showTestSpeedTaskResult.jsp</result>
+		<result name="toExportCustExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchCustUPtemplate.xls"</param>
+				<param name="inputName">exportCustStreamExcel</param>
+		</result>
+		<result name="toExportCustTxt" type="stream">
+				<param name="contentType">application/vnd.ms-txt</param>
+				<param name="contentDisposition">attachment;filename="batchCustUPtemplate.txt"</param>
+				<param name="inputName">exportCustStreamTxt</param>
+		</result>
+		</action>
+		<action name="addSimSpeedAcc" class="AddSimSpeedAccACT">
+				<result name="init">/ids/AddSimSpeedAcc.jsp</result>
+				<result name="updateInit">/ids/UpdateSpeed.jsp</result>
+				<result name="ajax" type="ajax" />
+		</action>
+		<action name="TerminalVoipModelACT" class="TerminalVoipModelACT">
+			<result name="changeModelResult">/ids/TerminalVoipModelResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

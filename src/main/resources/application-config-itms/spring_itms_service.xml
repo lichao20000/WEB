@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="BssSheetServDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetServDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetServBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetServBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetServDAO" />
+		</property>
+	</bean>
+	<bean id="BssSheetServACT"
+		class="com.linkage.module.itms.service.act.BssSheetServACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetServBIO" />
+		</property>
+	</bean>
+	<bean id="BssSheetDelDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetDelDao"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetDelBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetDelBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetDelDAO" />
+		</property>
+	</bean>
+	<bean id="BssSheetDelACT"
+		class="com.linkage.module.itms.service.act.BssSheetDelACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetDelBIO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetDAO"
+		class="com.linkage.module.itms.service.dao.SimulateSheetDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetBIO"
+		class="com.linkage.module.itms.service.bio.SimulateSheetBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SimulateSheetDAO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetACT"
+		class="com.linkage.module.itms.service.act.SimulateSheetACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SimulateSheetBIO" />
+		</property>
+	</bean>
+
+	<bean id="SimulateSheetNMGBIO" class="com.linkage.module.itms.service.bio.SimulateSheetNMGBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="SimulateSheetDAO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetNMGACT" class="com.linkage.module.itms.service.act.SimulateSheetNMGACT" scope="prototype">
+		<property name="bio">
+			<ref bean="SimulateSheetNMGBIO" />
+		</property>
+	</bean>
+		
+	<bean id="ErrorBssSheetDAO"
+		class="com.linkage.module.itms.service.dao.ErrorBssSheetDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ErrorBssSheetBIO"
+		class="com.linkage.module.itms.service.bio.ErrorBssSheetBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ErrorBssSheetDAO" />
+		</property>
+	</bean>
+	<bean id="ErrorBssSheetACT"
+		class="com.linkage.module.itms.service.act.ErrorBssSheetACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ErrorBssSheetBIO" />
+		</property>
+	</bean>
+	
+	<!-- 江苏批量工单补录 -->
+	<bean id="FailedSheetDAO"
+            class="com.linkage.module.itms.service.dao.FailedSheetOptDao"
+            scope="prototype">
+            <property name="dao">
+                    <ref bean="mainDataSource" />
+            </property>
+    </bean>
+    <bean id="FailedSheetBIO"
+            class="com.linkage.module.itms.service.bio.FailedSheetBIO"
+            scope="prototype">
+            <property name="dao">
+                    <ref bean="FailedSheetDAO" />
+            </property>
+    </bean>
+    <bean id="FailedSheetACT"
+            class="com.linkage.module.itms.service.act.FailedSheetACT"
+            scope="prototype">
+            <property name="bio">
+                    <ref bean="FailedSheetBIO" />
+            </property>
+    </bean>
+	<!-- 江西电信手工工单 -->
+	<bean id="BssSheetByHandDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetByHandDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4JXBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4JXBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetByHandDAO" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4JXACT"
+		class="com.linkage.module.itms.service.act.BssSheetByHand4JXACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetByHand4JXBIO" />
+		</property>
+	</bean>
+	<!-- AH电信手工工单 -->
+	<bean id="BssSheetByHand4AHDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetByHand4AHDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4AHBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4AHBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetByHand4AHDAO" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4AHACT"
+		class="com.linkage.module.itms.service.act.BssSheetByHand4AHACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetByHand4AHBIO" />
+		</property>
+	</bean>
+	<!-- HBLT -->
+    <bean id="BssSheetByHand4HBLTDAO"
+        class="com.linkage.module.itms.service.dao.BssSheetByHand4HBLTDAO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="mainDataSource" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4HBLTBIO"
+        class="com.linkage.module.itms.service.bio.BssSheetByHand4HBLTBIO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="BssSheetByHand4HBLTDAO" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4HBLTACT"
+        class="com.linkage.module.itms.service.act.BssSheetByHand4HBLTACT"
+        scope="prototype">
+        <property name="bio">
+                <ref bean="BssSheetByHand4HBLTBIO" />
+        </property>
+    </bean>
+    <!-- SXLT -->
+    <bean id="BssSheetByHand4SXLTDAO"
+        class="com.linkage.module.itms.service.dao.BssSheetByHand4SXLTDAO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="mainDataSource" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4SXLTBIO"
+        class="com.linkage.module.itms.service.bio.BssSheetByHand4SXLTBIO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="BssSheetByHand4SXLTDAO" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4SXLTACT"
+        class="com.linkage.module.itms.service.act.BssSheetByHand4SXLTACT"
+        scope="prototype">
+        <property name="bio">
+                <ref bean="BssSheetByHand4SXLTBIO" />
+        </property>
+    </bean>
+	<!-- HB -->
+	<bean id="BssSheetByHand4HBDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetByHand4HBDAO" 
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4HBBIOServ" 
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4HBBIOServ" 
+		scope="prototype">
+	</bean>
+	<bean id="BssSheetByHand4HBBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4HBBIO" 
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetByHand4HBDAO" />
+		</property>
+		<property name="serv">
+			<ref bean="BssSheetByHand4HBBIOServ" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4HBACT"
+		class="com.linkage.module.itms.service.act.BssSheetByHand4HBACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetByHand4HBBIO" />
+		</property>
+	</bean>
+	
+	<!-- GS_DX -->
+	<bean id="BssSheetByHand4GSDXACT"
+		class="com.linkage.module.itms.service.act.BssSheetByHand4GSDXACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetByHand4GSDXBIO" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4GSDXBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4GSDXBIO" 
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetByHand4GSDXDAO" />
+		</property>
+		<property name="serv">
+			<ref bean="BssSheetByHand4GSDXBIOServ" />
+		</property>
+	</bean>
+	
+	<bean id="BssSheetByHand4GSDXDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetByHand4GSDXDAO" 
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4GSDXBIOServ" 
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4GSDXBIOServ" 
+		scope="prototype">
+	</bean>
+	
+	
+	<!-- SDLT -->
+	<bean id="BssSheetByHand4SDLTDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetByHand4SDLTDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4SDLTBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4SDLTBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetByHand4SDLTDAO" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4SDLTACT"
+		class="com.linkage.module.itms.service.act.BssSheetByHand4SDLTACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetByHand4SDLTBIO" />
+		</property>
+	</bean>
+	<!-- YNLT -->
+	<bean id="BssSheetByHand4ynltDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetByHand4ynltDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4ynltBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4ynltBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetByHand4ynltDAO" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4ynltACT"
+		class="com.linkage.module.itms.service.act.BssSheetByHand4ynltACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetByHand4ynltBIO" />
+		</property>
+	</bean>
+	
+	<bean id="OperateByHistoryDAO"
+		class="com.linkage.module.itms.service.dao.OperateByHistoryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="OperateByHistoryBIO"
+		class="com.linkage.module.itms.service.bio.OperateByHistoryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="OperateByHistoryDAO" />
+		</property>
+	</bean>
+	<bean id="OperateByHistoryACT"
+		class="com.linkage.module.itms.service.act.OperateByHistoryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="OperateByHistoryBIO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="OperateByHistoryCQOldDAO"
+		class="com.linkage.module.itms.service.dao.OperateByHistoryCQOldDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="OperateByHistoryCQOldBIO"
+		class="com.linkage.module.itms.service.bio.OperateByHistoryCQOldBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="OperateByHistoryCQOldDAO" />
+		</property>
+	</bean>
+	<bean id="OperateByHistoryCQOldACT"
+		class="com.linkage.module.itms.service.act.OperateByHistoryCQOldACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="OperateByHistoryCQOldBIO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="OrderQueryDAO"
+		class="com.linkage.module.itms.service.dao.OrderQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="OrderQueryBIO"
+		class="com.linkage.module.itms.service.bio.OrderQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="OrderQueryDAO" />
+		</property>
+	</bean>
+	<bean id="OrderQueryACT"
+		class="com.linkage.module.itms.service.act.OrderQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="OrderQueryBIO" />
+		</property>
+	</bean>
+	
+	<!--start gaoyi =================================江西电信监控端口流量情况需求(采集任务定制)===========================  -->
+	<bean id="MonitorFlowDAO"
+		class="com.linkage.module.itms.service.dao.MonitorFlowDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="MonitorFlowBIO"
+		class="com.linkage.module.itms.service.bio.MonitorFlowBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="MonitorFlowDAO" />
+		</property>
+	</bean>
+	<bean id="MonitorFlowACT"
+		class="com.linkage.module.itms.service.act.MonitorFlowACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="MonitorFlowBIO" />
+		</property>
+	</bean>
+	<!-- end gaoyi  ====================================江西电信监控端口流量情况需求(采集任务定制)=============================== -->
+	
+	<!--  start ============================================江西电信监控端口流量情况需求 (查询任务的详情界面)=========================== -->
+	<bean id="MonitorFlowInfoQueryDAO"
+		class="com.linkage.module.itms.service.dao.MonitorFlowInfoQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="MonitorFlowInfoQueryBIO"
+		class="com.linkage.module.itms.service.bio.MonitorFlowInfoQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="MonitorFlowInfoQueryDAO" />
+		</property>
+	</bean>
+	<bean id="MonitorFlowInfoQueryACT"
+		class="com.linkage.module.itms.service.act.MonitorFlowInfoQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="MonitorFlowInfoQueryBIO" />
+		</property>
+	</bean>
+	<!-- end ============================================江西电信监控端口流量情况需求(查询任务的详情界面)================================== -->
+	
+	
+	<bean id="ManuallyConfigurePortBusinessACT"
+		class="com.linkage.module.itms.service.act.ManuallyConfigurePortBusinessACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ManuallyConfigurePortBusinessBIO" />
+		</property>
+	</bean>
+	<bean id="ManuallyConfigurePortBusinessBIO"
+		class="com.linkage.module.itms.service.bio.ManuallyConfigurePortBusinessBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ManuallyConfigurePortBusinessDAO" />
+		</property>
+	</bean>
+	<bean id="ManuallyConfigurePortBusinessDAO"
+		class="com.linkage.module.itms.service.dao.ManuallyConfigurePortBusinessDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="BssSheetServStandardDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetServStandardDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetServStandardBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetServStandardBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetServStandardDAO" />
+		</property>
+	</bean>
+	<bean id="BssSheetServStandardACT"
+		class="com.linkage.module.itms.service.act.BssSheetServStandardACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetServStandardBIO" />
+		</property>
+	</bean>
+	
+	<!-- 黑龙江家庭网关手动工单 -->
+	<bean id="SimulateSheetHLJACT"
+		class="com.linkage.module.itms.service.act.SimulateSheetHLJACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SimulateSheetHLJBIO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetHLJBIO"
+		class="com.linkage.module.itms.service.bio.SimulateSheetHLJBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SimulateSheetHLJDAO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetHLJDAO"
+		class="com.linkage.module.itms.service.dao.SimulateSheetHLJDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 宁夏家庭网关手动工单 -->
+	<bean id="SimulateSheetNxNewACT"
+		class="com.linkage.module.itms.service.act.SimulateSheetNxNewACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SimulateSheetNxNewBIO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetNxNewBIO"
+		class="com.linkage.module.itms.service.bio.SimulateSheetNxNewBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SimulateSheetNxNewDAO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetNxNewDAO"
+		class="com.linkage.module.itms.service.dao.SimulateSheetNxNewDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 山西家庭网关手动工单 -->
+	<bean id="SimulateSheetSxNewACT"
+		class="com.linkage.module.itms.service.act.SimulateSheetSxNewACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="SimulateSheetSxNewBIO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetSxNewBIO"
+		class="com.linkage.module.itms.service.bio.SimulateSheetSxNewBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="SimulateSheetSxNewDAO" />
+		</property>
+	</bean>
+	<bean id="SimulateSheetSxNewDAO"
+		class="com.linkage.module.itms.service.dao.SimulateSheetSxNewDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 新疆零配置界面 -->
+	<bean id="ZeroconfigurationACT_XJ"
+		class="com.linkage.module.itms.service.act.ZeroconfigurationACT_XJ"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ZeroconfigurationBIO_XJ" />
+		</property>
+	</bean>
+	<bean id="ZeroconfigurationBIO_XJ"
+		class="com.linkage.module.itms.service.bio.ZeroconfigurationBIO_XJ"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ZeroconfigurationDAO_XJ" />
+		</property>
+	</bean>
+	<bean id="ZeroconfigurationDAO_XJ"
+		class="com.linkage.module.itms.service.dao.ZeroconfigurationDAO_XJ"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	
+	<!-- 江西电信ITV终端管理系统开通 -->
+	<bean id="ItvHandWorkACT"
+	class="com.linkage.module.itms.service.act.ItvHandWorkACT" scope="prototype">
+	<property name="bio">
+	<ref bean="ItvHandWorkBIO"/>
+	</property>
+	</bean>
+	<bean id="ItvHandWorkBIO"
+	class="com.linkage.module.itms.service.bio.ItvHandWorkBIO" scope="prototype">
+	<property name="dao">
+	<ref bean="ItvHandWorkDAO"/>
+	</property>
+	</bean>
+	<bean id="ItvHandWorkDAO"
+	class="com.linkage.module.itms.service.dao.ItvHandWorkDAO" scope="prototype">
+	<property name="dao">
+	<ref bean="mainDataSource"/>
+	</property>
+	</bean>
+	
+	<bean id="ipsecSheetServDAO"
+		class="com.linkage.module.itms.service.dao.ipsecSheetServDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	<bean id="ipsecSheetServBIO"
+		class="com.linkage.module.itms.service.bio.ipsecSheetServBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="ipsecSheetServDAO" />
+		</property>
+	</bean>
+	<bean id="ipsecSheetServACT"
+		class="com.linkage.module.itms.service.act.ipsecSheetServACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="ipsecSheetServBIO" />
+		</property>
+	</bean>
+	<bean id="QueryDevsnCompareStatusDAO"
+		class="com.linkage.module.itms.service.dao.QueryDevsnCompareStatusDAO"
+		scope="prototype">
+	</bean>
+	<bean id="QueryDevsnCompareStatusBIO"
+		class="com.linkage.module.itms.service.bio.QueryDevsnCompareStatusBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="QueryDevsnCompareStatusDAO" />
+		</property>
+	</bean>
+	<bean id="QueryDevsnCompareStatusACT"
+		class="com.linkage.module.itms.service.act.QueryDevsnCompareStatusACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="QueryDevsnCompareStatusBIO" />
+		</property>
+	</bean>
+	
+	<!-- JX_LT -->
+	<bean id="BssSheetByHand4JXLTACT"
+		class="com.linkage.module.itms.service.act.BssSheetByHand4JXLTACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BssSheetByHand4JXLTBIO" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4JXLTBIO"
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4JXLTBIO" 
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BssSheetByHand4JXLTDAO" />
+		</property>
+		<property name="serv">
+			<ref bean="BssSheetByHand4JXLTBIOServ" />
+		</property>
+	</bean>
+	
+	<bean id="BssSheetByHand4JXLTDAO"
+		class="com.linkage.module.itms.service.dao.BssSheetByHand4JXLTDAO" 
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BssSheetByHand4JXLTBIOServ" 
+		class="com.linkage.module.itms.service.bio.BssSheetByHand4JXLTBIOServ" 
+		scope="prototype">
+	</bean>
+	<!-- NXLT -->
+    <bean id="BssSheetByHand4NXLTDAO"
+        class="com.linkage.module.itms.service.dao.BssSheetByHand4NXLTDAO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="mainDataSource" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4NXLTBIO"
+        class="com.linkage.module.itms.service.bio.BssSheetByHand4NXLTBIO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="BssSheetByHand4NXLTDAO" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4NXLTACT"
+        class="com.linkage.module.itms.service.act.BssSheetByHand4NXLTACT"
+        scope="prototype">
+        <property name="bio">
+                <ref bean="BssSheetByHand4NXLTBIO" />
+        </property>
+    </bean>
+    <!-- 安徽电信 -->
+    <bean id="VoipPortEditDAO"
+        class="com.linkage.module.itms.service.dao.VoipPortEditDAO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="mainDataSource" />
+        </property>
+    </bean>
+    <bean id="VoipPortEditTBIO"
+        class="com.linkage.module.itms.service.bio.VoipPortEditBIO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="VoipPortEditDAO" />
+        </property>
+    </bean>
+    <bean id="VoipPortEditACT"
+        class="com.linkage.module.itms.service.act.VoipPortEditACT"
+        scope="prototype">
+        <property name="bio">
+                <ref bean="VoipPortEditTBIO" />
+        </property>
+    </bean>
+     <!-- GSDXSTB -->
+    <bean id="BssSheetByHand4STBGSDXDAO"
+        class="com.linkage.module.itms.service.dao.BssSheetByHandSTBGSDXDAO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="mainDataSource" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4STBGSDXBIO"
+        class="com.linkage.module.itms.service.bio.BssSheetByHand4STBGSDXBIO"
+        scope="prototype">
+        <property name="dao">
+                <ref bean="BssSheetByHand4STBGSDXDAO" />
+        </property>
+    </bean>
+    <bean id="BssSheetByHand4STBGSDXACT"
+        class="com.linkage.module.itms.service.act.BssSheetByHand4STBGSDXACT"
+        scope="prototype">
+        <property name="bio">
+                <ref bean="BssSheetByHand4STBGSDXBIO" />
+        </property>
+    </bean>
+
+	<bean id="ItvServConfigDAO"
+		  class="com.linkage.module.itms.service.dao.ItvServConfigDAO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ItvServConfigBIO"
+		  class="com.linkage.module.itms.service.bio.ItvServConfigBIO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="ItvServConfigDAO" />
+		</property>
+	</bean>
+	<bean id="ItvServConfigACT"
+		  class="com.linkage.module.itms.service.act.ItvServConfigACT"
+		  scope="prototype">
+		<property name="bio">
+			<ref bean="ItvServConfigBIO" />
+		</property>
+	</bean>
+
+
+</beans>

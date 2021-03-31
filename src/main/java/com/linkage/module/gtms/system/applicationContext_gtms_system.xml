@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- add by zhangsb 超级权限 -->
+	<bean id="superRoleActionImpl"
+		class="com.linkage.module.gtms.system.action.SuperRoleActionImpl"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="superRoleServImpl" />
+		</property>
+	</bean>
+	<bean id="superRoleServImpl"
+		class="com.linkage.module.gtms.system.serv.SuperRoleServImpl"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="superRoleDAOImpl" />
+		</property>
+	</bean>
+	<bean id="superRoleDAOImpl"
+		class="com.linkage.module.gtms.system.dao.SuperRoleDAOImpl">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="LogManageAction" class="com.linkage.module.gtms.system.action.LogManageAction"
+		scope="prototype">
+		<property name="logManageServ">
+			<ref bean="LogManageServ" />
+		</property>
+	</bean>
+	<bean id="LogManageServ" class="com.linkage.module.gtms.system.serv.LogManageServ"
+		scope="prototype">
+		<property name="itemDao">
+			<ref local="ItemDAO" />
+		</property>
+		<property name="logDao">
+			<ref local="SystemLogDAO" />
+		</property>
+	</bean>
+	<bean id="ItemDAO" class="com.linkage.module.gtms.system.dao.ItemDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="SystemLogDAO" class="com.linkage.module.gtms.system.dao.SystemLogDAO">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>

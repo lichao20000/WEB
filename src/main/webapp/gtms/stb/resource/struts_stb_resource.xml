@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="resource_stb_gtms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/stb/resource">
+		<action name="gwDeviceQueryStb" class="gtms_stb_resource_gwDeviceQueryACT">
+			<result name="success">/gtms/stb/resource/gwDeviceInfoQuery.jsp</result>
+			<result name="list">/gtms/stb/resource/gwDeviceList.jsp</result>
+			<result name="shareList">/gtms/stb/resource/gwShareDeviceList.jsp</result>
+			<result name="detail">/gtms/stb/resource/deviceDetail.jsp</result>
+			<result name="zeroSuccess">/gtms/stb/resource/zerogwDeviceInfoQuery.jsp</result>
+			
+			<result name="zerolist">/gtms/stb/resource/zerogwDeleteDeviceList.jsp</result>
+			<result name="noDeleteZerolist">/gtms/stb/resource/zerogwDeviceList.jsp</result>
+			<result name="zeroDetailPage">/gtms/stb/resource/zerogwDetailPage.jsp</result>
+			<result name="zeroshareList">/gtms/stb/resource/zerogwShareDeviceList.jsp</result>
+			<result name="zerodetail">/gtms/stb/resource/zerodeviceDetail.jsp</result>
+			<result name="edit">/gtms/stb/resource/deviceEdit.jsp</result>
+			<result name="xinneng">/gtms/stb/resource/deviceXinneng.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="deviceVersion" class="gtms_stb_resource_DeviceVersionACT">
+			<result name="list">/gtms/stb/resource/deviceVersionList.jsp</result>
+			<result name="stsList">/gtms/stb/resource/stsDeviceVersionList.jsp</result>
+			<result name="response">/gtms/stb/resource/FileUploadResult.jsp</result>
+			<result name="add">/gtms/stb/resource/deviceVersion_add.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="stbDeviceTypeInfo" class="gtms_stb_resource_DeviceTypeInfoACT">
+			<result name="ajax" type="ajax"/>
+			<result name="stb">/gtms/stb/resource/DeviceType_info_new.jsp</result>
+			<result name="stbqueryList">/gtms/stb/resource/DeviceType_info_list.jsp</result>
+			<result name="stbEditionList">/gtms/stb/resource/EditorList.jsp</result>
+		</action>
+		
+		<action name="stbSoftUpgrade" class="gtms_stb_resource_SoftUpgradeACT">
+			<result name="initTask">/gtms/stb/resource/stbUpgradeTask.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="result">/gtms/stb/resource/softUpgradeResult.jsp</result>
+			<result name="resultList">/gtms/stb/resource/softUpgradeResultList.jsp</result>
+			<result name="message">/gtms/stb/resource/batchSoftUpgradeMessage.jsp</result>
+			<result name="init">/gtms/stb/resource/batchSoftUpgrade.jsp</result>
+			<result name="initImport">/gtms/stb/resource/excelbatchsoftupLimited.jsp</result>
+			<result name="taskResult">/gtms/stb/resource/CountTaskResult.jsp</result>
+			<result name="batchsuccess">/gtms/stb/resource/batchexcelsuccess.jsp</result>
+			<result name="initexcel">/gtms/stb/resource/excelbatchsoftup.jsp</result>
+			<result name="taskupresult">/gtms/stb/resource/upresult.jsp</result>
+			<result name="validateCurUser">/gtms/stb/resource/picValidateCurUser.jsp</result>
+			<result name="taskDetail">/gtms/stb/resource/taskDetail.jsp</result>
+			<result name="batchexcel">/gtms/stb/resource/batchexcelquery.jsp</result>
+			<result name="exceltaskResult">/gtms/stb/resource/excelCountTaskResult.jsp</result>
+			<result name="exceltaskupresult">/gtms/stb/resource/excelupresult.jsp</result>
+			<result name="exceltaskdetail">/gtms/stb/resource/exceltaskDetail.jsp</result>
+			<result name="initImportSoftUp">/gtms/stb/resource/excelbatchsoftupLimNew.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchUPtemplate.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+		</action>
+		
+		<!-- 用户业务查询 -->
+		<action name="stbCustomer" class="gtms_stb_resource_CustomerAction">
+			<result name="query">/gtms/stb/resource/CustomerQuery.jsp</result>
+			<result name="list">/gtms/stb/resource/CustomerList.jsp</result>
+			<result name="detail">/gtms/stb/resource/CustomerDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 用户业务查询 -->
+		
+		<!-- STB模拟工单 -->
+		<action name="stbSimulateSheet" class="gtms_stb_resource_SimulateSheetAction">
+			<result name="openAccount">/gtms/stb/resource/StbOpenSheet.jsp</result>
+			<result name="closeAccount">/gtms/stb/resource/StbCloseSheet.jsp</result>
+			<result name="changeBussAccount">/gtms/stb/resource/changeBussAccount.jsp</result>
+			<result name="changeBussPassword">/gtms/stb/resource/changeBussPassword.jsp</result>
+			<result name="changeStb">/gtms/stb/resource/changeStb.jsp</result>
+			<result name="sheetStbResult">/gtms/stb/resource/sendSheetStbResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- STB模拟工单 -->
+		
+		
+		<!-- BSS工单查询 -->
+		<action name="stbBssQuery" class="gtms_stb_resource_BSSStatisticsAction">
+			<result name="cities" type="ajax"></result>
+			<result name="success">/gtms/stb/resource/BSSContent.jsp</result>
+			<result name="enter">/gtms/stb/resource/BSSStatistics.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- BSS工单查询 -->
+		
+		<action name="serverManage" class="ServerManageACT">
+			<result name="queryForm">/gtms/stb/resource/zeroServerQuery.jsp</result>
+			<result name="queryList">/gtms/stb/resource/zeroServerList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="picStrategyQuery" class="PicTaskQueryACT">
+			<result name="init">/gtms/stb/resource/picTaskInit.jsp</result>
+			<result name="list">/gtms/stb/resource/picTaskList.jsp</result>
+			<result name="detail">/gtms/stb/resource/picTaskDetail.jsp</result>
+			<result name="result">/gtms/stb/resource/picTaskResult.jsp</result>
+			<result name="detailResult">/gtms/stb/resource/picTaskDetailResult.jsp</result>
+			<result name="validateCurUser">/gtms/stb/resource/picValidateCurUser.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="stbInst" class="gtms_stb_resource_StbInstACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="init">/gtms/stb/resource/stbInst.jsp</result>
+			<result name="userInst">/gtms/stb/resource/stbInstUserInfo.jsp</result>
+		</action>
+
+		<action name="zeroconfManual" class="gtms_stb_resource_ZeroconfManualAction">
+			<result name="success">/gtms/stb/resource/zeroconfManual.jsp</result>
+			<result name="topBox">/gtms/stb/resource/topBoxList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="configInfo" class="gtms_stb_resource_ConfigInfoACT">
+			<result name="success">/gtms/stb/resource/configInfoQuery.jsp</result>
+			<result name="list">/gtms/stb/resource/configInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="detail">/gtms/stb/resource/configInfoDetail.jsp</result>
+		</action>
+
+		<action name="macQueryInfo" class="gtms_stb_resource_MacQueryACT">
+			<result name="init">/gtms/stb/resource/macQueryInfo.jsp</result>
+			<result name="list">/gtms/stb/resource/macQueryInfoList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="importMac" class="gtms_stb_resource_ImportMacInitACT">
+			<result name="init">/gtms/stb/resource/ImportMacInit.jsp</result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchImportMacTemplate.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+		</action>
+
+		<action name="batchConfigNode" class="gtms_stb_resource_BatchConfigNodeACT">
+			<result name="initImport">/gtms/stb/resource/batchConfigNode.jsp</result>
+			<result name="taskresult">/gtms/stb/resource/batchConfigNodeResult.jsp</result>
+			<result name="taskdetail">/gtms/stb/resource/batchConfigNodeDetail.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+			<result name="validateCurUser">/gtms/stb/resource/picValidateCurUser.jsp</result>
+			<result name="toExport" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchVodUPtemplate.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+		</action>
+		<action name="openDeviceShowPic" class="OpenDeviceShowPictureACT">
+			<result name="initOpenDevice">/gtms/stb/resource/OpenDeviceShowPictureConfig.jsp</result>
+			<result name="initForEdition">/gtms/stb/resource/AddEditor.jsp</result>
+			<result name="initImport">/gtms/stb/resource/OpenDeviceShowPictureQuery.jsp</result>
+			<result name="taskResult">/gtms/stb/resource/OpenDeviceShowPictureResult.jsp</result>
+			<result name="taskDetail">/gtms/stb/resource/OpenDeviceShowPictureDetail.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+			<result name="toExportAdd" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchPicUPtemplate.xls"</param>
+				<param name="inputName">exportExcelStream</param>
+			</result>
+			<result name="toExportCust" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchCustUPtemplate.xls"</param>
+				<param name="inputName">exportCustStream</param>
+			</result>
+		</action>
+
+		<action name="showAdver" class="ShowAdverACT">
+			<result name="initShowAdver">/gtms/stb/resource/ShowAdverQuery.jsp</result>
+			<result name="adverResultList">/gtms/stb/resource/ShowAdverList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="taskDetail">/gtms/stb/resource/ShowAdverDetail.jsp</result>
+		</action>
+		<action name="openAdvertQuery" class="OpenAdvertQueryACT">
+			<result name="result">/gtms/stb/resource/OpenAdvertResult.jsp</result>
+			<result name="list">/gtms/stb/resource/OpenAdvertResultList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 零配置成功率统计 -->
+		<action name="zeroConfigRateCount" class="ZeroConfigRateCountACT">
+			<result name="success">/gtms/stb/resource/zeroConfigRateCount.jsp</result>
+			<result name="countList">/gtms/stb/resource/zeroConfigRateCountList.jsp</result>
+			<result name="detail">/gtms/stb/resource/zeroConfigRateCountDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 零配置机顶盒历史配置查询 -->
+		<action name="zeroConfigHistory" class="ZeroConfigHistoryACT">
+			<result name="success">/gtms/stb/resource/zeroConfigHistory.jsp</result>
+			<result name="zeroHistoryQuery">/gtms/stb/resource/zeroConfigHistoryList.jsp</result>
+			<result name="zeroDeviceHistoryQuery">/gtms/stb/resource/zeroConfigHistoryDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<!-- 零配置失败原因统一 -->
+		<action name="zeroConfigFailReason" class="ZeroConfigFailReasonACT">
+			<result name="init">/gtms/stb/resource/zeroConfigFailReason.jsp</result>
+			<result name="list">/gtms/stb/resource/zeroConfigFailReasonList.jsp</result>
+			<result name="detail">/gtms/stb/resource/zeroConfigFailReasonDetail.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		<action name="softupgradByImport" class="SoftupgradByImportACT">
+			<result name="init">/gtms/stb/resource/softupgradByImport.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>	
+		
+		<!-- JXDX-ITV-(根据业务账号进行批量业务下发功能需求)  -->
+		<action name="batchSendUserInfo" class="BatchSendUserInfoACT">
+			<result name="ajax" type="ajax" />	
+			<result name="initImport">/gtms/stb/resource/batchSendUserInfoTaskQuery.jsp</result>
+			<result name="taskResult">/gtms/stb/resource/batchSendUserInfoTaskResult.jsp</result>
+			<result name="taskDetail">/gtms/stb/resource/batchSendUserInfoTaskDetail.jsp</result>
+			<result name="toExportCustExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="batchCustUPtemplate.xls"</param>
+				<param name="inputName">exportCustStreamExcel</param>
+			</result>
+			<result name="toExportCustTxt" type="stream">
+				<param name="contentType">application/vnd.ms-txt</param>
+				<param name="contentDisposition">attachment;filename="batchCustUPtemplate.txt"</param>
+				<param name="inputName">exportCustStreamTxt</param>
+			</result>
+		</action>
+		<!-- 修改业务账号和接入账号 -->
+		<action name="revisePasswoed" class="revisePasswoedACT">
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 江西机顶盒检测结果查询 -->
+		<action name="CheckFruitQuery" class="CheckFruitQueryACT">
+		<result name="init">/gtms/stb/report/CheckFruitQuery.jsp</result>
+		<result name="excel" type="excel"/>
+		<result name="ajax" type="ajax"/>
+		<result name="success">/gtms/stb/report/CheckFruitQueryList.jsp</result>
+		</action>
+		
+		
+		<action name="batchPingAction" class="gtms_stb_resource_batchPingAction">
+			<result name="init">/gtms/stb/resource/batchPingQuery.jsp</result>
+			<result name="list">/gtms/stb/resource/batchPingDataList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="customerGroupACT" class="CustomerGroupACT">
+			<result name="list">/gtms/stb/resource/customerGroupList.jsp</result>
+			<result name="edit">/gtms/stb/resource/customerGroupAdd.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="stbReport" class="stbReportACT">
+			<result name="success">/gtms/stb/resource/stbReportQueryList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- mac前缀反推机顶盒消息 -->
+		<action name="PreMacDeviceACT" class="PreMacDeviceACT">
+			<result name="init">/gtms/stb/resource/preMacDevice.jsp</result>
+			<result name="list">/gtms/stb/resource/preMacDeviceList.jsp</result>
+			<result name="add">/gtms/stb/resource/preMacDeviceAdd.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 用户图像 -->
+		<action name="UserImage" class="UserImageACT">
+		<result name="list">/gtms/stb/resource/Userimage.jsp</result>
+		<result name="phone">/gtms/stb/resource/phoneList.jsp</result>
+		</action>
+		
+		<!-- 河北联通新增机顶盒版本配置 -->
+		<action name="stbUpgradeVersion" class="StbUpgradeVersionACT">
+			<result name="init">/gtms/stb/resource/stbUpgradeFilePathConfig.jsp</result>
+			<result name="queryList">/gtms/stb/resource/stbUpgradeVersionList.jsp</result>
+			<result name="filePathList">/gtms/stb/resource/stbUpgradeFilePathList.jsp</result>
+			<result name="filePathList_hnlt">/gtms/stb/resource/stbUpgradeFilePathList_hnlt.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 湖南联通业务平台类型管理 -->
+		<action name="stbservplatform" class="stbservplatformACT">
+			<result name="list">/gtms/stb/resource/servPlatformList.jsp</result>
+			<result name="success">/gtms/stb/resource/servPlatformUpdate.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 湖南联通机顶盒信息查询 -->
+		<action name="stbGwDeviceQuery" class="StbGwDeviceQueryACT">
+			<result name="queryList">/gtms/stb/resource/stbGwDeviceQueryList.jsp</result>
+			<result name="deviceDetail">/gtms/stb/resource/stbGwDeviceQueryUpdate.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 湖南联通用户信息管理 -->
+		<action name="userMessage" class="userMessageACT">
+			<result name="init">/gtms/stb/resource/userMessageManage.jsp</result>
+			<result name="list">/gtms/stb/resource/userMessageManageList.jsp</result>
+			<result name="add">/gtms/stb/resource/userMessageManageAdd.jsp</result>
+			<result name="look">/gtms/stb/resource/userMessageManageLook.jsp</result>
+			<result name="show">/gtms/stb/resource/userMessageManageUpdate.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 湖南联通绑定页面 -->
+		<action name="bindPage" class="bindPageACT">
+			<result name="init">/gtms/stb/resource/bindPage.jsp</result>
+			<result name="list">/gtms/stb/resource/bindPageList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 湖南联通更换机顶盒 -->
+		<action name="stbChange" class="StbChangeACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="queryList">/gtms/stb/resource/stbChangeInfo.jsp</result>
+		</action>
+		
+		<!-- 湖南联通解绑页面 -->
+		<action name="removeBindPage" class="removeBindPageACT">
+			<result name="init">/gtms/stb/resource/removeBindPage.jsp</result>
+			<result name="list">/gtms/stb/resource/removeBindPageList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 山东开机画面 -->
+		<action name="stbBootAdvertisement" class="stbBootAdvertisementACT">
+			<result name="init">/gtms/stb/resource/stbBootAdvertisement.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="btachImportAdvertisement" class="btachImportAdvertisementACT">
+			<result name="init">/gtms/stb/resource/btachImportAdvertisement.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="OpenDeviceShowPictureNew" class="OpenDeviceShowPictureNewACT">
+			<result name="initImport">/gtms/stb/resource/OpenDeviceShowPictureQueryNew.jsp</result>
+			<result name="init">/gtms/stb/resource/OpenDeviceShowPictureQueryNewCqList.jsp</result>
+			<result name="taskResult">/gtms/stb/resource/OpenDeviceShowPictureResultNew.jsp</result>
+			<result name="taskDetail">/gtms/stb/resource/OpenDeviceShowPictureDetailNew.jsp</result>
+			<result name="validateCurUser">/gtms/stb/resource/picValidateCurUser.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${view_url}</param>
+            </result>
+		</action>
+		
+		<action name="cityAll" class="cityAllACT">
+			<result name="init">/gtms/stb/resource/cityAll.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 设备信息查询 -->
+		<action name="DeviceMessageQuery" class="DeviceMessageQueryACT">
+			<result name="success">/gtms/stb/resource/deviceMessageQueryList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Output>
+<Rows>
+<Row>
+<ID>1</ID>
+<CreatorName>hwlscheck</CreatorName>
+<SourceIP>218.2.117.198_0.0.1.0</SourceIP>
+<acknowledged>false</acknowledged>
+<CreationTime>Fri Dec 05 14:42:53 CST 2003</CreationTime>
+<Severity>2</Severity>
+<EventNo>2</EventNo>
+<DeviceType>2</DeviceType>
+<SourceName>218.2.117.198_0.0.1.0</SourceName>
+<DisplayTitle>设备告警</DisplayTitle>
+<DisplayString>交换机5端口的状态变为enable/up</DisplayString>
+</Row>
+<Row>
+<ID>2</ID>
+<CreatorName>Trap Probe 1</CreatorName>
+<SourceIP>172.20.0.51</SourceIP>
+<acknowledged>true</acknowledged>
+<CreationTime>Fri Dec 05 14:43:07 CST 2003</CreationTime>
+<Severity>4</Severity>
+<EventNo>1.3.6.1.6.3.1.1.5.4</EventNo>
+<DeviceType>1</DeviceType>
+<SourceName>172.20.0.51</SourceName>
+<DisplayTitle>linkUp 描述:通信链路恢复正常</DisplayTitle>
+<DisplayString>harbourSlotNumber(槽号)--6. ifIndex(接口索引号)--14.</DisplayString>
+</Row>
+<Row>
+<ID>3</ID>
+<CreatorName>hwlscheck</CreatorName>
+<SourceIP>218.2.118.202_0.0.0.4</SourceIP>
+<acknowledged>false</acknowledged>
+<CreationTime>Fri Dec 05 14:42:22 CST 2003</CreationTime>
+<Severity>2</Severity>
+<EventNo>2</EventNo>
+<DeviceType>2</DeviceType>
+<SourceName>218.2.118.202_0.0.0.4</SourceName>
+<DisplayTitle>设备告警</DisplayTitle>
+<DisplayString>交换机6端口的状态变为enable/up</DisplayString>
+</Row>
+<Row>
+<ID>4</ID>
+<CreatorName>Trap Probe 1</CreatorName>
+<SourceIP>218.2.116.74</SourceIP>
+<acknowledged>true</acknowledged>
+<CreationTime>Fri Dec 05 14:42:36 CST 2003</CreationTime>
+<Severity>3</Severity>
+<EventNo>1.3.6.1.4.1.2011.2.6.2.0.268503561</EventNo>
+<DeviceType>0</DeviceType>
+<SourceName>218.2.116.74</SourceName>
+<DisplayTitle>unknown trap event.</DisplayTitle>
+<DisplayString>hwIPPoolName--adsl.</DisplayString>
+</Row>
+<Row>
+<ID>5</ID>
+<CreatorName>hwlscheck</CreatorName>
+<SourceIP>61.155.233.230_0.0.1.3</SourceIP>
+<acknowledged>false</acknowledged>
+<CreationTime>Fri Dec 05 14:42:30 CST 2003</CreationTime>
+<Severity>3</Severity>
+<EventNo>2</EventNo>
+<DeviceType>2</DeviceType>
+<SourceName>61.155.233.230_0.0.1.3</SourceName>
+<DisplayTitle>设备告警</DisplayTitle>
+<DisplayString>交换机13端口的状态变为enable/up</DisplayString>
+</Row>
+<Row>
+<ID>6</ID>
+<CreatorName>hwlscheck</CreatorName>
+<SourceIP>218.2.117.198_0.0.1.0</SourceIP>
+<acknowledged>false</acknowledged>
+<CreationTime>Fri Dec 05 14:42:53 CST 2003</CreationTime>
+<Severity>2</Severity>
+<EventNo>2</EventNo>
+<DeviceType>2</DeviceType>
+<SourceName>218.2.117.198_0.0.1.0</SourceName>
+<DisplayTitle>设备告警</DisplayTitle>
+<DisplayString>交换机5端口的状态变为enable/up</DisplayString>
+</Row>
+<Row>
+<ID>7</ID>
+<CreatorName>Trap Probe 1</CreatorName>
+<SourceIP>172.20.0.51</SourceIP>
+<acknowledged>true</acknowledged>
+<CreationTime>Fri Dec 05 14:43:07 CST 2003</CreationTime>
+<Severity>4</Severity>
+<EventNo>1.3.6.1.6.3.1.1.5.4</EventNo>
+<DeviceType>1</DeviceType>
+<SourceName>172.20.0.51</SourceName>
+<DisplayTitle>linkUp 描述:通信链路恢复正常</DisplayTitle>
+<DisplayString>harbourSlotNumber(槽号)--6. ifIndex(接口索引号)--14.</DisplayString>
+</Row>
+<Row>
+<ID>8</ID>
+<CreatorName>hwlscheck</CreatorName>
+<SourceIP>218.2.118.202_0.0.0.4</SourceIP>
+<acknowledged>false</acknowledged>
+<CreationTime>Fri Dec 05 14:42:22 CST 2003</CreationTime>
+<Severity>2</Severity>
+<EventNo>2</EventNo>
+<DeviceType>2</DeviceType>
+<SourceName>218.2.118.202_0.0.0.4</SourceName>
+<DisplayTitle>设备告警</DisplayTitle>
+<DisplayString>交换机6端口的状态变为enable/up</DisplayString>
+</Row>
+<Row>
+<ID>9</ID>
+<CreatorName>Trap Probe 1</CreatorName>
+<SourceIP>218.2.116.74</SourceIP>
+<acknowledged>true</acknowledged>
+<CreationTime>Fri Dec 05 14:42:36 CST 2003</CreationTime>
+<Severity>3</Severity>
+<EventNo>1.3.6.1.4.1.2011.2.6.2.0.268503561</EventNo>
+<DeviceType>0</DeviceType>
+<SourceName>218.2.116.74</SourceName>
+<DisplayTitle>unknown trap event.</DisplayTitle>
+<DisplayString>hwIPPoolName--adsl.</DisplayString>
+</Row>
+</Rows>
+</Output>

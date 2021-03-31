@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="BaseInfoViewDAO"
+		class="com.linkage.module.gwms.blocTest.dao.BaseInfoViewDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BaseInfoViewBIO"
+		class="com.linkage.module.gwms.blocTest.bio.BaseInfoViewBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BaseInfoViewDAO" />
+		</property>
+	</bean>
+	<bean id="BaseInfoViewACT"
+		class="com.linkage.module.gwms.blocTest.act.BaseInfoViewACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BaseInfoViewBIO" />
+		</property>
+	</bean>
+
+
+
+
+	<!-- wuchao -->
+	<bean id="deviceInfoQueryDAO"
+		class="com.linkage.module.gwms.blocTest.dao.DeviceInfoQueryDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="deviceInfoQueryBIO"
+		class="com.linkage.module.gwms.blocTest.bio.DeviceInfoQueryBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="deviceInfoQueryDAO" />
+		</property>
+	</bean>
+
+	<bean id="deviceInfoQueryAction"
+		class="com.linkage.module.gwms.blocTest.act.DeviceInfoQueryACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="deviceInfoQueryBIO" />
+		</property>
+	</bean>
+
+
+
+
+
+	<bean id="QueryCustomerInfoDAO"
+		class="com.linkage.module.gwms.blocTest.dao.QueryCustomerInfoDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="QueryCustomerInfoBIO"
+		class="com.linkage.module.gwms.blocTest.bio.QueryCustomerInfoBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="QueryCustomerInfoDAO" />
+		</property>
+	</bean>
+
+	<bean id="QueryCustomerInfoACT"
+		class="com.linkage.module.gwms.blocTest.act.QueryCustomerInfoACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="QueryCustomerInfoBIO" />
+		</property>
+	</bean>
+
+
+
+
+
+
+
+<bean id="EgwExpertDAO"
+		class="com.linkage.module.gwms.blocTest.dao.EgwExpertDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="EgwExpertBIO"
+		class="com.linkage.module.gwms.blocTest.bio.EgwExpertBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="EgwExpertDAO" />
+		</property>
+	</bean>
+
+	<bean id="EgwExpertACT"
+		class="com.linkage.module.gwms.blocTest.act.EgwExpertACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="EgwExpertBIO" />
+		</property>
+	</bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- 设备状态监视 -->
+	<bean id="DeviceStatusDAO"
+		class="com.linkage.module.gwms.blocTest.dao.DeviceStatusDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+	<bean id="QueryDeviceStatusBIO"
+		class="com.linkage.module.gwms.blocTest.bio.QueryDeviceStatusBIO"
+		scope="prototype">
+		<property name="deviceStatusDAO">
+			<ref bean="DeviceStatusDAO" />
+		</property>
+	</bean>
+	<bean id="QueryDeviceStatusACT"
+		class="com.linkage.module.gwms.blocTest.act.QueryDeviceStatusACT"
+		scope="prototype">
+		<property name="queryDeviceStatusBio">
+			<ref bean="QueryDeviceStatusBIO" />
+		</property>
+	</bean>
+
+	<bean id="BbmsDiagACT"
+		class="com.linkage.module.gwms.blocTest.act.BbmsDiagACT"
+		scope="prototype">
+		<property name="bio">
+			<ref bean="BbmsDiagBIO" />
+		</property>
+	</bean>
+	<bean id="BbmsDiagBIO"
+		class="com.linkage.module.gwms.blocTest.bio.BbmsDiagBIO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="BbmsDiagDAO" />
+		</property>
+	</bean>
+	<bean id="BbmsDiagDAO"
+		class="com.linkage.module.gwms.blocTest.dao.BbmsDiagDAO"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+
+<!-- 手机移动端导入 -->
+	<bean id="BatchAdditionPhone" class="com.linkage.module.gwms.blocTest.act.BatchAdditionPhoneACT" scope="prototype">
+		<property name="bio">
+			<ref bean="BatchAdditionPhoneBIO" />
+		</property>
+	</bean>
+	<bean id="BatchAdditionPhoneBIO" class="com.linkage.module.gwms.blocTest.bio.BatchAdditionPhoneBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="BatchAdditionPhoneDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BatchAdditionPhoneDAO" class="com.linkage.module.gwms.blocTest.dao.BatchAdditionPhoneDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

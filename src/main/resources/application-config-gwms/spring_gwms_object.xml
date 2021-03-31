@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- gw -->
+	<bean id="WireInfoDAO" class="com.linkage.module.gwms.dao.gw.WireInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="WanConnDAO" class="com.linkage.module.gwms.dao.gw.WanConnDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="WanConnSessDAO" class="com.linkage.module.gwms.dao.gw.WanConnSessDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="LanHostDAO" class="com.linkage.module.gwms.dao.gw.LanHostDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="LanEthDAO" class="com.linkage.module.gwms.dao.gw.LanEthDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- ALG -->
+	<bean id="AlgDAO" class="com.linkage.module.gwms.dao.gw.AlgDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="AlgCAO" class="com.linkage.module.gwms.cao.gw.AlgCAO" scope="prototype">
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	<!-- MWBAND -->
+	<bean id="MwbandDAO" class="com.linkage.module.gwms.dao.gw.MwbandDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="MwbandCAO" class="com.linkage.module.gwms.cao.gw.MwbandCAO" scope="prototype">
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	<!-- WLAN -->
+	<bean id="WlanDAO" class="com.linkage.module.gwms.dao.gw.WlanDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="WlanCAO" class="com.linkage.module.gwms.cao.gw.WlanCAO" scope="prototype">
+		<property name="acsCorba">
+			<ref bean="ACSCorba"/>
+		</property>
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	<!-- X_COM_PASSWD -->
+	<bean id="XcompasswdDAO" class="com.linkage.module.gwms.dao.gw.XcompasswdDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="XcompasswdCAO" class="com.linkage.module.gwms.cao.gw.XcompasswdCAO" scope="prototype">
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+	</bean>
+	<!-- tabquery -->
+	<bean id="HgwCustDAO" class="com.linkage.module.gwms.dao.tabquery.HgwCustDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="HgwServUserDAO" class="com.linkage.module.gwms.dao.tabquery.HgwServUserDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	<!-- 配置上网参数 -->
+	<bean id="WanDAO" class="com.linkage.module.gwms.dao.gw.WanDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="WanRelatedCAO" class="com.linkage.module.gwms.cao.gw.WanRelatedCAO" scope="prototype">
+		<property name="acsCorba">
+			<ref bean="ACSCorba"/>
+		</property>
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	
+	<!-- 配置IPTV -->
+	<bean id="IptvCAO" class="com.linkage.module.gwms.cao.gw.IptvCAO" scope="prototype">
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	
+	<!-- 配置VOIP -->
+	<bean id="VoiceServiceProfileLineDAO" class="com.linkage.module.gwms.dao.gw.VoiceServiceProfileLineDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="VoiceServiceProfileDAO" class="com.linkage.module.gwms.dao.gw.VoiceServiceProfileDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="VoipCAO" class="com.linkage.module.gwms.cao.gw.VoipCAO" scope="prototype">
+		<property name="acsCorba">
+			<ref bean="ACSCorba"/>
+		</property>
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	
+	<!-- pvc config table -->
+	<bean id="LocalServParamDAO" class="com.linkage.module.gwms.dao.gw.LocalServParamDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	<!-- sheet and versionFile-->
+	<bean id="VersionFileDAO" class="com.linkage.module.gwms.dao.gw.VersionFileDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	<!-- tr069 -->
+	<bean id="GwTr069DAO" class="com.linkage.module.gwms.dao.gw.GwTr069DAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	<!-- 码流 -->
+	<bean id="AcsStreamDAO" class="com.linkage.module.gwms.dao.gw.AcsStreamDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+
+	<!-- QoS -->
+	<bean id="QosDAO" class="com.linkage.module.gwms.dao.gw.QosDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="QosCAO" class="com.linkage.module.gwms.cao.gw.QosCAO" scope="prototype">
+		<property name="ppCorba">
+			<ref bean="PreProcessCorba"/>
+		</property>
+		<property name="sgCorba">
+			<ref bean="SuperGatherCorba"/>
+		</property>
+	</bean>
+	<!-- 专家库 expert -->
+	<bean id="ExpertDAO" class="com.linkage.module.gwms.dao.tabquery.ExpertDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 局向,VOIP服务器 -->
+	<bean id="OfficeDAO" class="com.linkage.module.gwms.dao.tabquery.OfficeDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 属地局向小区对应关系 -->
+	<bean id="CityOfficeZoneDAO" class="com.linkage.module.gwms.dao.tabquery.CityOfficeZoneDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 设备表 -->
+	<bean id="DeviceDAO" class="com.linkage.module.gwms.dao.gw.DeviceDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource"/>
+		</property>
+	</bean>
+	<!-- 时区NTP -->
+	<bean id="TimeNtpDAO" class="com.linkage.module.gwms.dao.gw.TimeNtpDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- SNMP -->
+	<bean id="SgwSecurityDAO" class="com.linkage.module.gwms.dao.tabquery.SgwSecurityDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- Vlan DHCP -->
+	<bean id="LanVlanDAO" class="com.linkage.module.gwms.dao.gw.LanVlanDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 现场安装 -->
+	<bean id="UserInstReleaseDAO" class="com.linkage.module.gwms.resource.dao.UserInstReleaseDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- ITMS设备转BBMS设备 -->
+	<bean id="DevManageDAO" class="com.linkage.module.gwms.config.dao.DevManageDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- FTP -->
+	<bean id="ServiceManageDAO" class="com.linkage.module.gwms.dao.gw.ServiceManageDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+</beans>

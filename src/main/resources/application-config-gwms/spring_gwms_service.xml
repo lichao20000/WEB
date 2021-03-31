@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>	
+	<bean id="SheetStateViewDAO" class="com.linkage.module.gwms.service.dao.SheetStateViewDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="SheetStateViewBIO" class="com.linkage.module.gwms.service.bio.SheetStateViewBIO" scope="prototype">
+		<property name="sheetStateViewDAO">
+			<ref bean="SheetStateViewDAO" />
+		</property>
+	</bean>
+	<bean id="SheetStateViewACT" class="com.linkage.module.gwms.service.act.SheetStateViewACT" scope="prototype">
+		<property name="sheetStateViewBIO">
+			<ref local="SheetStateViewBIO" />
+		</property>
+	</bean>
+	
+	<bean id="ServStrategyConfigDAO" class="com.linkage.module.gwms.service.dao.ServStrategyConfigDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ServStrategyConfigBIO" class="com.linkage.module.gwms.service.bio.ServStrategyConfigBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="ServStrategyConfigDAO" />
+		</property>
+	</bean>
+	<bean id="ServStrategyConfigACT" class="com.linkage.module.gwms.service.act.ServStrategyConfigACT" scope="prototype">
+		<property name="bio">
+			<ref local="ServStrategyConfigBIO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="ServStrategyLogDAO" class="com.linkage.module.gwms.service.dao.ServStrategyLogDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="ServStrategyLogACT" class="com.linkage.module.gwms.service.act.ServStrategyLogACT" scope="prototype">
+		<property name="dao">
+			<ref local="ServStrategyLogDAO" />
+		</property>
+	</bean>
+</beans>

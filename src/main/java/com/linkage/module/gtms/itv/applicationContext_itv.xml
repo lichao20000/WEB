@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="gtms_itv_MenuManagerDAO" class="com.linkage.module.gtms.itv.dao.MenuManagerDAOImp">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="gtms_itv_MenuManagerBIO" class="com.linkage.module.gtms.itv.bio.MenuManagerBIOImp">
+		<property name="menuManager">
+			<ref bean="gtms_itv_MenuManagerDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_itv_MenuManagerAction" class="com.linkage.module.gtms.itv.action.MenuManagerAction" scope="prototype">
+		<property name="menuManager">
+			<ref local="gtms_itv_MenuManagerBIO" />
+		</property>
+	</bean>
+	<!-- 
+	<bean id="gtms_itv_InitMenu" class="com.linkage.module.gtms.itv.dao.MenuInit">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="gtms_itv_GetMenu" class="com.linkage.module.gtms.itv.action.GetMenu" scope="prototype">
+		<property name="menuInit">
+			<ref local="gtms_itv_InitMenu" />
+		</property>
+	</bean>-->
+	<!-- 
+	<bean id="gtms_itv_firstPage_Dao" class="com.linkage.module.gtms.itv.dao.FirstPageDAOImp" >
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="gtms_itv_firstPage_Bio" class="com.linkage.module.gtms.itv.bio.FirstPageBIOImp">
+		<property name="firstPageDao">
+			<ref bean="gtms_itv_firstPage_Dao" />
+		</property>
+	</bean>
+	<bean id="gtms_itv_firstPage_Action" class="com.linkage.module.gtms.itv.action.FirstPageAction" scope="prototype">
+		<property name="firstPageBIO">
+			<ref local="gtms_itv_firstPage_Bio" />
+		</property>
+	</bean> -->
+	<!-- 
+	<bean id="gtms_itv_ISAPicDAO" class="com.linkage.module.gtms.itv.dao.ISAPicDAOImp">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="gtms_itv_ISAPicBIO" class="com.linkage.module.gtms.itv.bio.ISAPicBIOImp">
+		<property name="ISAPicDao">
+			<ref bean="gtms_itv_ISAPicDAO" />
+		</property>
+	</bean>
+	<bean id="gtms_itv_ISAPicAction" class="com.linkage.module.gtms.itv.action.ISAPicAction" scope="prototype">
+		<property name="ISAPicBio">
+			<ref bean="gtms_itv_ISAPicBIO" />
+		</property>
+	</bean> -->
+</beans>

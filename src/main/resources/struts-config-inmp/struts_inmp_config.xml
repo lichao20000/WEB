@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="config_inmp" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/inmp/config">
+
+		<!-- add by wangyan  宽带DHCP关闭 -->
+		<action name="netByDHCPStop" class="NetByDHCPStopACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="init">/inmp/paramConfig/NetByDHCPQuery.jsp</result>
+			<result name="list">/inmp/paramConfig/NetByDHCPList.jsp</result>
+		</action>
+		
+		<!-- add by wangyan 江苏无线 -->
+		<action name="wirelessBusnissCtrl" class="WirelessBusinessCtrlACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="list">/inmp/paramConfig/WirelessBusList.jsp</result>
+		</action>
+
+		<!-- add by wangyan 江西批量节点配置 -->
+		<action name="paramNodeCfg" class="ParamNodeCfgACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="list">/paramConfig/paramNodeDevList.jsp</result>
+			<result name="paramNodeList">/paramConfig/paramNodeConfList.jsp</result>
+			<result name="configSuccess">/paramConfig/paramNodeResult.jsp</result>
+			<result name="uploadSuccess">/paramConfig/showUpload.jsp</result>
+		</action>
+		
+		<!-- add by wangyan 故障诊断配置检测  -->
+		<action name="preConfigDiag" class="PreConfigDiagACT">
+			<result name="baseInfo">/inmp/paramConfig/PreConfigDiagBaseInfo.jsp</result>
+			<result name="businessInfo">/inmp/paramConfig/PreConfigDiagBusinessInfo.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- add by wangyan    批量配置参数节点  -->		
+		<action name="paramNodeBatchConfigAction" class="ParamNodeBatchConfigActionImpl">
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<CODE>
+
+<DEPARTMENT sid="1" value="部门一" tid="0" />
+
+<DEPARTMENT sid="2" value="部门二" tid="0" />
+
+<DEPARTMENT sid="3" value="部门三" tid="0" />
+
+<DEPARTMENT sid="5" value="云网运营交付中心" tid="0" />
+
+<DEPARTMENT sid="4" value="其它" tid="0" />
+
+<MODEM_TYPE sid="21" value="华为MT810" tid="1" />
+
+<MODEM_TYPE sid="22" value="中达电通CT500" tid="2" />
+
+<MODEM_TYPE sid="23" value="华硕ASUS" tid="3" />
+
+<MODEM_TYPE sid="24" value="华勤Zytel" tid="4" />
+
+<MODEM_TYPE sid="25" value="神州数码" tid="5" />
+
+<MODEM_TYPE sid="26" value="大亚DB108系列" tid="6" />
+
+<MODEM_TYPE sid="27" value="阿尔卡特511" tid="7" />
+
+<MODEM_TYPE sid="28" value="UT斯达康300R" tid="8" />
+
+<MODEM_TYPE sid="29" value="实达STAR" tid="9" />
+
+<MODEM_TYPE sid="30" value="港湾HARBOUR10000" tid="10" />
+
+<MODEM_TYPE sid="31" value="大亚DB108-G" tid="11" />
+
+<MODEM_TYPE sid="32" value="其他" tid="12" />
+
+<OPER_TYPE sid="5" value="开户" tid="1" />
+
+<OPER_TYPE sid="6" value="状态暂停" tid="2" />
+
+<OPER_TYPE sid="7" value="状态销户" tid="3" />
+
+<OPER_TYPE sid="8" value="状态恢复" tid="4" />
+
+<OPER_TYPE sid="9" value="绑定属性修改" tid="5" />
+
+<OPER_TYPE sid="10" value="信息修改" tid="6" />
+
+<OPER_TYPE sid="11" value="打开" tid="21" />
+
+<OPER_TYPE sid="12" value="关闭" tid="22" />
+
+<OPER_TYPE sid="13" value="暂停" tid="23" />
+
+<OPER_TYPE sid="14" value="更改速率" tid="24" />
+
+<OPER_TYPE sid="15" value="移机" tid="25" />
+
+<OPER_TYPE sid="16" value="复机" tid="26" />
+
+<SERVICE_TYPE sid="17" value="客户" tid="1" />
+
+<SERVICE_TYPE sid="18" value="窄带服务" tid="2" />
+
+<SERVICE_TYPE sid="19" value="ADSL服务" tid="3" />
+
+<SERVICE_TYPE sid="20" value="LAN服务" tid="4" />
+
+</CODE>
+

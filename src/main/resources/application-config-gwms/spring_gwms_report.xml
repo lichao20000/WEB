@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>	
+	<!--  -->
+	<bean id="BssSheetReportACT" class="com.linkage.module.gwms.report.act.BssSheetReportACT" scope="prototype">
+		<property name="bssSheetReportBio">
+			<ref bean="BssSheetReportBIO"/>
+		</property>
+	</bean>
+	<bean id="BssSheetReportBIO" class="com.linkage.module.gwms.report.bio.BssSheetReportBIO" scope="prototype">
+		<property name="bssSheetReportDao">
+			<ref bean="BssSheetReportDAO"/>
+		</property>
+	</bean>
+	<bean id="BssSheetReportDAO" class="com.linkage.module.gwms.report.dao.BssSheetReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!--  -->
+	<bean id="ServPackageDeviceACT" class="com.linkage.module.gwms.report.act.ServPackageDeviceACT" scope="prototype">
+		<property name="servPackageDeviceBIO">
+			<ref bean="ServPackageDeviceBIO"/>
+		</property>
+	</bean>
+	<bean id="ServPackageDeviceBIO" class="com.linkage.module.gwms.report.bio.ServPackageDeviceBIO" scope="prototype">
+		<property name="servPackageDeviceDAO">
+			<ref bean="ServPackageDeviceDAO"/>
+		</property>
+	</bean>
+	<bean id="ServPackageDeviceDAO" class="com.linkage.module.gwms.report.dao.ServPackageDeviceDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!--  -->
+	<bean id="SheetFailureReasonACT" class="com.linkage.module.gwms.report.act.SheetFailureReasonACT" scope="prototype">
+		<property name="sheetFailureReasonBIO">
+			<ref bean="SheetFailureReasonBIO"/>
+		</property>
+	</bean>
+	<bean id="SheetFailureReasonBIO" class="com.linkage.module.gwms.report.bio.SheetFailureReasonBIO" scope="prototype">
+		<property name="sheetFailureReasonDAO">
+			<ref bean="SheetFailureReasonDAO"/>
+		</property>
+	</bean>
+	<bean id="SheetFailureReasonDAO" class="com.linkage.module.gwms.report.dao.SheetFailureReasonDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!--  -->
+	<bean id="OnlineDevStatACT" class="com.linkage.module.gwms.report.act.OnlineDevStatACT" scope="prototype">
+		<property name="onlineStatBio">
+			<ref bean="OnlineDevStatBIO"/>
+		</property>
+	</bean>
+	<bean id="OnlineDevStatBIO" class="com.linkage.module.gwms.report.bio.OnlineDevStatBIO" scope="prototype">
+		<property name="onlineStatDao">
+			<ref bean="OnlineDevStatDAO"/>
+		</property>
+	</bean>
+	<bean id="OnlineDevStatDAO" class="com.linkage.module.gwms.report.dao.OnlineDevStatDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!--  -->
+	<bean id="OnlineDevStatConfigACT" class="com.linkage.module.gwms.report.act.OnlineDevStatConfigACT" scope="prototype">
+		<property name="onlineDevStatConfigBIO">
+			<ref bean="OnlineDevStatConfigBIO"/>
+		</property>
+	</bean>
+	<bean id="OnlineDevStatConfigBIO" class="com.linkage.module.gwms.report.bio.OnlineDevStatConfigBIO" scope="prototype">
+		<property name="onlineDevStatConfigDao">
+			<ref bean="OnlineDevStatConfigDAO"/>
+		</property>
+	</bean>
+	<bean id="OnlineDevStatConfigDAO" class="com.linkage.module.gwms.report.dao.OnlineDevStatConfigDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="PingResultACT" class="com.linkage.module.gwms.report.act.PingResultACT" scope="prototype">
+		<property name="pingResultBio">
+			<ref bean="PingResultBIO"/>
+		</property>
+	</bean>
+	<bean id="PingResultBIO" class="com.linkage.module.gwms.report.bio.PingResultBIO" scope="prototype">
+		<property name="pingResultDao">
+			<ref bean="PingResultDAO"/>
+		</property>
+	</bean>
+	<bean id="PingResultDAO" class="com.linkage.module.gwms.report.dao.PingResultDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!--  -->
+	<bean id="DeviceStatusReportACT" class="com.linkage.module.gwms.report.act.DeviceStatusReportACT" scope="prototype">
+		<property name="deviceStatusReportBIO">
+			<ref bean="DeviceStatusReportBIO"/>
+		</property>
+	</bean>
+	<bean id="DeviceStatusReportBIO" class="com.linkage.module.gwms.report.bio.DeviceStatusReportBIO" scope="prototype">
+		<property name="deviceStatusReportDAO">
+			<ref bean="DeviceStatusReportDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceStatusReportDAO" class="com.linkage.module.gwms.report.dao.DeviceStatusReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!--  -->
+    <bean id="AutoBindReportDAO" class="com.linkage.module.gwms.report.dao.AutoBindReportDAO" scope="prototype">
+        <property name="dao">
+                <ref bean="mainDataSource"/>
+        </property>
+    </bean>
+    <bean id="AutoBindReportBIO" class="com.linkage.module.gwms.report.bio.AutoBindReportBIO" scope="prototype">
+        <property name="autoBindReportDao">
+                <ref bean="AutoBindReportDAO"/>
+        </property>
+    </bean>
+    <bean id="AutoBindReportACT" class="com.linkage.module.gwms.report.act.AutoBindReportACT" scope="prototype">
+        <property name="autoBindReportBio">
+                <ref bean="AutoBindReportBIO"/>
+        </property>
+    </bean>
+    
+    <!--  -->
+	<bean id="ZeroConfigStatisticalACT" class="com.linkage.module.gwms.report.act.ZeroConfigStatisticalACT" scope="prototype">
+		<property name="zeroConfigStatisticalBIO">
+			<ref bean="ZeroConfigStatisticalBIO"/>
+		</property>
+	</bean>
+	<bean id="ZeroConfigStatisticalBIO" class="com.linkage.module.gwms.report.bio.ZeroConfigStatisticalBIO" scope="prototype">
+		<property name="zeroConfigStatisticalDAO">
+			<ref bean="ZeroConfigStatisticalDAO"/>
+		</property>
+	</bean>
+	<bean id="ZeroConfigStatisticalDAO" class="com.linkage.module.gwms.report.dao.ZeroConfigStatisticalDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource"/>
+		</property>
+	</bean>
+	<!--  -->
+	
+	<bean id="DeviceExceptionReportACT" class="com.linkage.module.gwms.report.act.DeviceExceptionReportACT" scope="prototype">
+		<property name="deviceExceptionReportBIO">
+			<ref bean="DeviceExceptionReportBIO"/>
+		</property>
+	</bean>
+	<bean id="DeviceExceptionReportBIO" class="com.linkage.module.gwms.report.bio.DeviceExceptionReportBIO" scope="prototype">
+		<property name="deviceExceptionReportDAO">
+			<ref bean="DeviceExceptionReportDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceExceptionReportDAO" class="com.linkage.module.gwms.report.dao.DeviceExceptionReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="DeviceOnlineReportACT" class="com.linkage.module.gwms.report.act.DeviceOnlineReportACT" scope="prototype">
+		<property name="deviceOnlineReportBIO">
+			<ref bean="DeviceOnlineReportBIO"/>
+		</property>
+	</bean>
+	<bean id="DeviceOnlineReportBIO" class="com.linkage.module.gwms.report.bio.DeviceOnlineReportBIO" scope="prototype">
+		<property name="deviceOnlineReportDAO">
+			<ref bean="DeviceOnlineReportDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceOnlineReportDAO" class="com.linkage.module.gwms.report.dao.DeviceOnlineReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+
+	<!-- SQL语句 页面执行 -->
+	<bean id="ExecuteSqlDAO" class="com.linkage.module.gwms.report.dao.ExecuteSqlDAO" scope="prototype">
+		<property name="dao">
+		        <ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="ExecuteSqlBIO" class="com.linkage.module.gwms.report.bio.ExecuteSqlBIO" scope="prototype">
+		<property name="sqlDao">
+		        <ref bean="ExecuteSqlDAO"/>
+		</property>
+	</bean>
+	<bean id="ExecuteSqlACT" class="com.linkage.module.gwms.report.act.ExecuteSqlACT" scope="prototype">
+		<property name="sqlBio">
+		        <ref bean="ExecuteSqlBIO"/>
+		</property>
+	</bean>
+	
+	<bean id="DevicetypeNewestFindReportAction" class="com.linkage.module.gwms.report.act.DevicetypeNewestFindReportAction" scope="prototype">
+		<property name="bio">
+			<ref bean="DevicetypeNewestFindReportBIO"/>
+		</property>
+	</bean>
+	<bean id="DevicetypeNewestFindReportBIO" class="com.linkage.module.gwms.report.bio.DevicetypeNewestFindReportBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="DevicetypeNewestFindReportDAO"/>
+		</property>
+	</bean>
+	<bean id="DevicetypeNewestFindReportDAO" class="com.linkage.module.gwms.report.dao.DevicetypeNewestFindReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="BindMonthCountReportACT" class="com.linkage.module.gwms.report.act.BindMonthCountReportACT" scope="prototype">
+		<property name="bmcBIO">
+			<ref bean="BindMonthCountReportBIO"/>
+		</property>
+	</bean>
+	<bean id="BindMonthCountReportBIO" class="com.linkage.module.gwms.report.bio.BindMonthCountReportBIO" scope="prototype">
+		<property name="bmcDAO">
+			<ref bean="BindMonthCountReportDAO"/>
+		</property>
+	</bean>
+	<bean id="BindMonthCountReportDAO" class="com.linkage.module.gwms.report.dao.BindMonthCountReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="NoActiveDevACT" class="com.linkage.module.gwms.report.act.NoActiveDevACT" scope="prototype">
+		<property name="bio">
+			<ref bean="NoActiveDevBIO"/>
+		</property>
+	</bean>
+	<bean id="NoActiveDevBIO" class="com.linkage.module.gwms.report.bio.NoActiveDevBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="NoActiveDevDAO"/>
+		</property>
+	</bean>
+	<bean id="NoActiveDevDAO" class="com.linkage.module.gwms.report.dao.NoActiveDevDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource"/>
+		</property>
+	</bean>
+	<bean id="BridgeToRouteCountDAO" class="com.linkage.module.gwms.report.dao.BridgeToRouteCountDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="BridgeToRouteCountBIO" class="com.linkage.module.gwms.report.bio.BridgeToRouteCountBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="BridgeToRouteCountDAO" />
+		</property>
+	</bean>
+	<bean id="BridgeToRouteCountACT" class="com.linkage.module.gwms.report.act.BridgeToRouteCountACT" scope="prototype">
+		<property name="bio">
+			<ref bean="BridgeToRouteCountBIO" />
+		</property>
+	</bean>
+	
+	<!-- 新疆 终端绑定情况统计 begin add by zhangchy 2011-11-16  为了不影响江苏电信升级，将此注释-->
+	<!-- <bean id="DeviceBindReportACT" class="com.linkage.module.gwms.report.act.DeviceBindReportACT" scope="prototype">
+		<property name="deviceBindReportBIO">
+			<ref bean="DeviceBindReportBIO"/>
+		</property>
+	</bean>
+	<bean id="DeviceBindReportBIO" class="com.linkage.module.gwms.report.bio.DeviceBindReportBIO" scope="prototype">
+		<property name="deviceBindReportDAO">
+			<ref bean="DeviceBindReportDAO"/>
+		</property>
+		<property name="bindWayReportDAO">
+			<ref bean="BindWayReportDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceBindReportDAO" class="com.linkage.module.gwms.report.dao.DeviceBindReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean> -->
+	<!-- 终端绑定情况统计 end -->
+	<!-- 新疆绑定终端版本统计报表 -->
+	<bean id="BindDevTypeStatACT" class="com.linkage.module.gwms.report.act.BindDevTypeStatACT" scope="prototype">
+	 <property name="bindDevTypeStatBIO">
+	  <ref bean="BindDevTypeStatBIO"/>
+	 </property>
+	</bean>
+	<bean id="BindDevTypeStatBIO" class="com.linkage.module.gwms.report.bio.BindDevTypeStatBIO" scope="prototype">
+	 <property name="bindDevTypeStatDAO">
+	  <ref bean="BindDevTypeStatDAO"/>
+	 </property>
+	 </bean>
+	<bean id="BindDevTypeStatDAO" class="com.linkage.module.gwms.report.dao.BindDevTypeStatDAO" scope="prototype">
+	 <property name="dao">
+	  <ref bean="mainDataSource"/>
+	 </property>
+	</bean>
+	<!-- 新疆绑定终端版本统计报表end-->
+	
+	<!-- 江西电信天翼网关版本一致率 -->
+		<bean id="TyGateAgreeCountReportACT" class="com.linkage.module.gwms.report.act.TyGateAgreeCountReportACT" scope="prototype">
+		<property name="bio">
+			<ref bean="TyGateAgreeCountReportBIO"/>
+		</property>
+	</bean>
+	<bean id="TyGateAgreeCountReportBIO" class="com.linkage.module.gwms.report.bio.TyGateAgreeCountReportBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="TyGateAgreeCountReportDAO"/>
+		</property>
+	</bean>
+	<bean id="TyGateAgreeCountReportDAO" class="com.linkage.module.gwms.report.dao.TyGateAgreeCountReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 湖北天翼网关版本一致率报表统计,用得报表系统 -->
+	<bean id="TyGateAgreeCountReportHBACT" class="com.linkage.module.gwms.report.act.TyGateAgreeCountReportHBACT" scope="prototype">
+		<property name="bio">
+			<ref bean="TyGateAgreeCountReportHBBIO"/>
+		</property>
+	</bean>
+	<bean id="TyGateAgreeCountReportHBBIO" class="com.linkage.module.gwms.report.bio.TyGateAgreeCountReportHBBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="TyGateAgreeCountReportHBDAO"/>
+		</property>
+	</bean>
+	<bean id="TyGateAgreeCountReportHBDAO" class="com.linkage.module.gwms.report.dao.TyGateAgreeCountReportHBDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="hbCheckDataSource"/>
+		</property>
+	</bean>
+	
+	<bean id="VoipCountReportACT" class="com.linkage.module.gwms.report.act.VoipCountReportACT" scope="prototype">
+	<property name="bio">
+		<ref bean="VoipCountReportBIO"/>
+	</property>
+	</bean>
+	<bean id="VoipCountReportBIO" class="com.linkage.module.gwms.report.bio.VoipCountReportBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="VoipCountReportDAO"/>
+		</property>
+	</bean>
+	<bean id="VoipCountReportDAO" class="com.linkage.module.gwms.report.dao.VoipCountReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="hbCheckDataSource"/>
+		</property>
+	</bean>
+	
+	
+	<!-- XJDX-ITMS-20200409-LJ-001(终端与套餐不匹配和旧终端报表、用户绑定设备情况查询接口改造) -->
+	<bean id="TerminalNoMatchReportACT" class="com.linkage.module.gwms.report.act.TerminalNoMatchReportACT" scope="prototype">
+		<property name="bio">
+			<ref bean="TerminalNoMatchReportBIO"/>
+		</property>
+	</bean>
+	<bean id="TerminalNoMatchReportBIO" class="com.linkage.module.gwms.report.bio.TerminalNoMatchReportBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="TerminalNoMatchReportDAO"/>
+		</property>
+	</bean>
+	<bean id="TerminalNoMatchReportDAO" class="com.linkage.module.gwms.report.dao.TerminalNoMatchReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+
+
+	<!-- 分组管理 begin -->
+	<bean id="GroupManageDAO" class="com.linkage.module.itms.report.dao.GroupManageDAO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="GroupManageBIO" class="com.linkage.module.itms.report.bio.GroupManageBIO"
+		  scope="prototype">
+		<property name="dao">
+			<ref local="GroupManageDAO" />
+		</property>
+	</bean>
+	<bean id="GroupManageACT" class="com.linkage.module.itms.report.act.GroupManageACT"
+		  scope="prototype">
+		<property name="bio">
+			<ref local="GroupManageBIO" />
+		</property>
+	</bean>
+
+
+	<!-- HBDX-REQ-ITMS-20200618-XP-001（湖北电信ITMS+武电组播下移报表支持） -->
+	<bean id="MulticastDownReportACT" class="com.linkage.module.gwms.report.act.MulticastDownReportACT" scope="prototype">
+		<property name="bio">
+			<ref bean="MulticastDownReportBIO"/>
+		</property>
+	</bean>
+	<bean id="MulticastDownReportBIO" class="com.linkage.module.gwms.report.bio.MulticastDownReportBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="MulticastDownReportDAO"/>
+		</property>
+	</bean>
+
+	<bean id="MulticastDownReportDAO" class="com.linkage.module.gwms.report.dao.MulticastDownReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	
+	<!--JXDX-REQ-ITMS-20200803-WWF-001(ITMS+家庭网关不匹配速率报表)-->
+	<bean id="MismathSpeedACT" class="com.linkage.module.gwms.report.act.MismathSpeedACT" scope="prototype">
+		<property name="bio">
+			<ref bean="MismathSpeedBIO"/>
+		</property>
+	</bean>
+	<bean id="MismathSpeedBIO" class="com.linkage.module.gwms.report.bio.MismathSpeedBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="MismathSpeedDAO"/>
+		</property>
+	</bean>
+	<bean id="MismathSpeedDAO" class="com.linkage.module.gwms.report.dao.MismathSpeedDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+
+	<bean id="LanGatherInfoACT" class="com.linkage.module.gwms.report.act.LanGatherInfoACT" scope="prototype">
+		<property name="bio">
+			<ref bean="LanGatherInfoBIO"/>
+		</property>
+	</bean>
+	<bean id="LanGatherInfoBIO" class="com.linkage.module.gwms.report.bio.LanGatherInfoBIO" scope="prototype">
+		<property name="dao">
+			<ref bean="LanGatherInfoDAO"/>
+		</property>
+	</bean>
+
+	<bean id="LanGatherInfoDAO" class="com.linkage.module.gwms.report.dao.LanGatherInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+
+
+	<!-- 光宽批量重启列表查询 -->
+	<bean id="QueryBatchRestartDeviceDAO" class="com.linkage.module.gwms.report.dao.QueryBatchRestartDeviceDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="QueryBatchRestartDeviceBIO" class="com.linkage.module.gwms.report.bio.QueryBatchRestartDeviceBIO"
+		  scope="prototype">
+		<property name="queryBatchRestartDeviceDAO">
+			<ref bean="QueryBatchRestartDeviceDAO" />
+		</property>
+	</bean>
+	<bean id="QueryBatchRestartDeviceACT" class="com.linkage.module.gwms.report.act.QueryBatchRestartDeviceACT"
+		  scope="prototype">
+		<property name="queryBatchRestartDeviceBIO">
+			<ref bean="QueryBatchRestartDeviceBIO" />
+		</property>
+	</bean>
+
+	<!-- 批量测速列表查询 -->
+	<bean id="QueryBatchSpeedMeasureDAO" class="com.linkage.module.gwms.report.dao.QueryBatchSpeedMeasureDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="QueryBatchSpeedMeasureBIO" class="com.linkage.module.gwms.report.bio.QueryBatchSpeedMeasureBIO"
+		  scope="prototype">
+		<property name="queryBatchSpeedMeasureDAO">
+			<ref bean="QueryBatchSpeedMeasureDAO" />
+		</property>
+	</bean>
+	<bean id="QueryBatchSpeedMeasureACT" class="com.linkage.module.gwms.report.act.QueryBatchSpeedMeasureACT"
+		  scope="prototype">
+		<property name="queryBatchSpeedMeasureBIO">
+			<ref bean="QueryBatchSpeedMeasureBIO" />
+		</property>
+	</bean>
+
+	<!-- 单个业务统计设备资源报表 -->
+	<bean id="SingleBusEquipmentDAO" class="com.linkage.module.gwms.report.dao.SingleBusEquipmentDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="SingleBusEquipmentBIO" class="com.linkage.module.gwms.report.bio.SingleBusEquipmentBIO"
+		  scope="prototype">
+		<property name="singleBusEquipmentDAO">
+			<ref bean="SingleBusEquipmentDAO" />
+		</property>
+	</bean>
+	<bean id="SingleBusEquipmentACT" class="com.linkage.module.gwms.report.act.SingleBusEquipmentACT"
+		  scope="prototype">
+		<property name="singleBusEquipmentBIO">
+			<ref bean="SingleBusEquipmentBIO" />
+		</property>
+	</bean>
+	<!-- 多个业务统计设备资源报表 -->
+	<bean id="MultiBusEquipmentDAO" class="com.linkage.module.gwms.report.dao.MultiBusEquipmentDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="MultiBusEquipmentBIO" class="com.linkage.module.gwms.report.bio.MultiBusEquipmentBIO"
+		  scope="prototype">
+		<property name="multiBusEquipmentDAO">
+			<ref bean="MultiBusEquipmentDAO" />
+		</property>
+	</bean>
+	<bean id="MultiBusEquipmentACT" class="com.linkage.module.gwms.report.act.MultiBusEquipmentACT"
+		  scope="prototype">
+		<property name="multiBusEquipmentBIO">
+			<ref bean="MultiBusEquipmentBIO" />
+		</property>
+	</bean>
+
+	<!-- 终端注册、绑定和注销状态的统计报表 -->
+	<bean id="RegistBindCancelDAO" class="com.linkage.module.gwms.report.dao.RegistBindCancelDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="RegistBindCancelBIO" class="com.linkage.module.gwms.report.bio.RegistBindCancelBIO"
+		  scope="prototype">
+		<property name="registBindCancelDAO">
+			<ref bean="RegistBindCancelDAO" />
+		</property>
+	</bean>
+	<bean id="RegistBindCancelACT" class="com.linkage.module.gwms.report.act.RegistBindCancelACT"
+		  scope="prototype">
+		<property name="registBindCancelBIO">
+			<ref bean="RegistBindCancelBIO" />
+		</property>
+	</bean>
+
+	<!-- 业务配置工单结果的统计报表 -->
+	<bean id="OrderResultOfBusConfigDAO" class="com.linkage.module.gwms.report.dao.OrderResultOfBusConfigDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="OrderResultOfBusConfigBIO" class="com.linkage.module.gwms.report.bio.OrderResultOfBusConfigBIO"
+		  scope="prototype">
+		<property name="orderResultOfBusConfigDAO">
+			<ref bean="OrderResultOfBusConfigDAO" />
+		</property>
+	</bean>
+	<bean id="OrderResultOfBusConfigACT" class="com.linkage.module.gwms.report.act.OrderResultOfBusConfigACT"
+		  scope="prototype">
+		<property name="orderResultOfBusConfigBIO">
+			<ref bean="OrderResultOfBusConfigBIO" />
+		</property>
+	</bean>
+
+	
+	<!-- 山东电信v6开通情况 -->
+	<bean id="V6OpenStatDAO" class="com.linkage.module.gwms.report.dao.V6OpenStatDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="V6OpenStatBIO" class="com.linkage.module.gwms.report.bio.V6OpenStatBIO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="V6OpenStatDAO" />
+		</property>
+	</bean>
+	<bean id="V6OpenStatACT" class="com.linkage.module.gwms.report.act.V6OpenStatACT"
+		  scope="prototype">
+		<property name="bio">
+			<ref bean="V6OpenStatBIO" />
+		</property>
+	</bean>
+
+
+</beans>

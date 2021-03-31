@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="bss_inmp" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/inmp/bss">
+		<!-- bss -->
+		<action name="changeConnectionType" class="ChangeConnectionTypeACT">
+			<result name="ajax" type="ajax"></result>
+			<result name="internetInfos">/inmp/config/ChangeConnectionTypeAccountInfo.jsp</result>
+		</action>
+		<action name="gwDeviceQuery" class="GwDeviceQueryACT">
+			<result name="success">/inmp/bss/gwShareDeviceQuery.jsp</result>
+			<result name="shareList0">/inmp/bss/gwShareDeviceList0.jsp</result>
+			<result name="shareList">/inmp/bss/gwShareDeviceList.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<!-- 手工工单 -->
+		<action name="serviceManSheet" class="ServiceManSheetACT">
+			<result name="success">/gwms/config/ServiceManSheet.jsp</result>
+			<result name="sheetInfo">/gwms/config/ServSheetConfig.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<action name="bssSheetServ" class="BssSheetServACT">
+			<result name="init">/inmp/bss/bssSheetServView.jsp</result>
+			<result name="init2">/inmp/bss/bssSheetServView2.jsp</result>
+			<result name="bssSheetServInfo">/inmp/bss/bssSheetServList.jsp</result>
+			<result name="bssSheetServInfo2">/inmp/bss/bssSheetServList2.jsp</result>
+			<result name="bssSheetServInfo3">/inmp/bss/bssSheetServList3.jsp</result>
+			<result name="configInfo">/inmp/bss/configInfoList.jsp</result>
+			<result name="configDetail">/inmp/bss/configInfoDetail.jsp</result>
+			<result name="configLogInfo">/inmp/bss/configInfoLogList.jsp</result>
+			<result name="configLogDetail">/inmp/bss/configInfoDetail.jsp</result>
+			<result name="bssSheet">/inmp/bss/bssSheetInfo.jsp</result>
+			<result name="internet">/inmp/bss/bssSheetInfoInternet.jsp</result>
+			<result name="iptv">/inmp/bss/bssSheetInfoIPTV.jsp</result>
+			<result name="router">/inmp/bss/bssSheetInfoLDKD.jsp</result>
+			<result name="bssSheet2">/inmp/bss/bssSheetInfo2.jsp</result>
+			<result name="solutioninfo" >/inmp/bss/bssSolutionResult.jsp</result>
+			<result name="bssIssued">/inmp/bss/bssIssuedResult.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name ="fileUpload" class ="FileUploadAction"> 
+            <interceptor-ref name ="fileUploadStack"/> 
+            <result name ="success">/inmp/bss/ShowUpload.jsp</result> 
+        </action> 
+	</package>
+</struts>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="report" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gwms/report">
+		<action name="bssSheetReport" class="BssSheetReportACT">
+			<result name="success">/gwms/report/special_rpt_cal.jsp</result>
+			<result name="list">/gwms/report/special_rpt_cal_.jsp</result>
+			<result name="excelReport">/gwms/report/special_rpt_cal_Excel.jsp</result>
+			<result name="print">/gwms/report/special_rpt_cal_Print.jsp</result>
+			<result name="pdfByList" type="pdfByList"></result>
+		</action>
+		<action name="servPackageDevice" class="ServPackageDeviceACT">
+			<result name="success">/gwms/report/servPackageDevice.jsp</result>
+			<result name="list">/gwms/report/servPackageDeviceList.jsp</result>
+			<result name="excelReport">/gwms/report/servPackageDeviceListExcel.jsp</result>
+			<result name="print">/gwms/report/servPackageDeviceListPrint.jsp</result>
+			<result name="pdfByStr" type="pdfByStr"></result>
+		</action>
+		<action name="sheetFailureReason" class="SheetFailureReasonACT">
+			<result name="success">/gwms/report/sheetFailureReason.jsp</result>
+			<result name="list">/gwms/report/sheetFailureReasonList.jsp</result>
+			<result name="excelReport">/gwms/report/sheetFailureReasonListExcel.jsp</result>
+			<result name="print">/gwms/report/sheetFailureReasonListPrint.jsp</result>
+			<result name="pdfByStr" type="pdfByStr"></result>
+		</action>
+		<action name="onlineDevStat" class="OnlineDevStatACT">
+			<result>/gwms/report/onlineDevStat.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<result name="chart" type="chart"></result>
+			<result name="excel" type="excel"></result>
+			<result name="pdfByList" type="pdfByList"></result>
+		</action>
+		<action name="onlineDevStatConfig" class="OnlineDevStatConfigACT">
+			<result name="success">/gwms/report/onlineDevStatConfig.jsp</result>
+		</action>
+		<action name="pingResult" class="PingResultACT">
+			<result name="success">/gwms/report/pingResult.jsp</result>
+		</action>
+		<action name="deviceStatusReport" class="DeviceStatusReportACT">
+			<result name="success">/gwms/report/deviceStatusReport.jsp</result>
+			<result name="list">/gwms/report/deviceStatusReportList.jsp</result>
+			<result name="excelReport">/gwms/report/deviceStatusReportListExcel.jsp</result>
+			<result name="print">/gwms/report/deviceStatusReportListPrint.jsp</result>
+			<result name="pdfByStr" type="pdfByStr"></result>
+		</action>
+		<!--  -->
+		<action name="autoBindReport" class="AutoBindReportACT">
+			<result name="success">/gwms/report/autoBindQuery.jsp</result>
+			<result name="dataList">/gwms/report/autoBindData.jsp</result>
+		</action>
+		<action name="zeroConfigStatistical" class="ZeroConfigStatisticalACT">
+			<result name="success">/gwms/report/ZeroConfigStatistical.jsp</result>
+			<result name="list">/gwms/report/ZeroConfigStatisticalList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="print">/gwms/report/ZeroConfigStatisticalList.jsp</result>
+			<result name="pdfByList" type="pdfByList"></result>
+			<result name="bindData">/gwms/report/ZeroConfigStatisticalBind.jsp</result>
+			<result name="noBindData">/gwms/report/ZeroConfigStatisticalNoBind.jsp</result>
+			<result name="bindPrint">/gwms/report/ZeroConfigStatisticalBind.jsp</result>
+			<result name="noBndPrint">/gwms/report/ZeroConfigStatisticalNoBind.jsp</result>
+		</action>
+		<action name="deviceException" class="DeviceExceptionReportACT">
+			<result name="success">/gwms/report/deviceExceptionReport.jsp</result>
+			<result name="list">/gwms/report/deviceExceptionList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="pdfByList" type="pdfByList"></result>
+			<result name="print">/gwms/report/deviceExceptionPrint.jsp</result>
+		</action>
+		<action name="deviceOnline" class="DeviceOnlineReportACT">
+			<result name="success">/gwms/report/deviceOnlineReport.jsp</result>
+			<result name="list">/gwms/report/deviceOnlineList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="pdfByList" type="pdfByList"></result>
+			<result name="print">/gwms/report/deviceOnlinePrint.jsp</result>
+		</action>
+		<!-- SQL执行 -->
+		<action name="executeSql" class="ExecuteSqlACT">
+			<result name="success">/gwms/report/executeSQL.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="devicetypeNewestFind" class="DevicetypeNewestFindReportAction">
+			<result name="success">/gwms/report/devicetypeNewestFindReport.jsp</result>
+			<result name="list">/gwms/report/devicetypeNewestFindList.jsp</result>
+			<result name="excel">/gwms/report/devicetypeNewestFindExcel.jsp</result>
+		</action>
+		<action name="bindMonthCount" class="BindMonthCountReportACT">
+			<result name="success">/gwms/report/BindMonthCountReport.jsp</result>
+			<result name="list">/gwms/report/BindMonthCountList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="pdfByList" type="pdfByList"></result>
+			<result name="print">/gwms/report/deviceExceptionPrint.jsp</result>
+		</action>
+		<action name="noActiveDev" class="NoActiveDevACT">
+			<result name="init">/gwms/report/NoActiveDev.jsp</result>
+			<result name="list">/gwms/report/NoActiveDevList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="devlist">/gwms/report/NoActiveDevDevList.jsp</result>
+		</action>
+		<action name="bridgeToRoute" class="BridgeToRouteCountACT">
+			<result name="init">/gwms/report/bridgeToRouteCount.jsp</result>
+			<result name="list">/gwms/report/bridgeToRouteCountList.jsp</result>
+			<result name="hgwlist">/gwms/report/bridgeToRouteCountUserList.jsp</result>
+			<result name="list2">/gwms/report/bridgeToRouteCountList2.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		
+		<!-- 新疆 终端绑定情况统计 begin add by zhangchy 2011-11-16 为了不影响江苏电信升级，将此注释-->
+		<!-- <action name="deviceBindWay" class="DeviceBindReportACT">
+			<result name="init">/gwms/report/deviceBind.jsp</result>
+			<result name="alllist">/gwms/report/deviceBindList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="allDeviceList">/gwms/report/deviceBindSubList.jsp</result>
+			<result name="allUserList">/gwms/report/userBindWayList.jsp</result>
+		</action> -->
+		<!-- 终端绑定情况统计 end -->
+		
+		<!-- 新疆绑定终端版本统计报表 -->
+		<action name="bindDevTypeStat" class="BindDevTypeStatACT">
+		 <result name="init">bindDevTypeStat.jsp</result>
+		 <result name="bindList">bindDevTypeStatList.jsp</result>
+		 <result name="export">bindDevTypeStatExport.jsp</result>
+		 <result name="excel" type="excel"></result>
+		</action>
+		<!-- 新疆绑定终端版本统计报表end-->
+		
+		<!-- 江西天翼网关版本一致率报表统计 -->
+		<action name="tyGateAgreeCountReport" class="TyGateAgreeCountReportACT">
+			<result name="success">/gwms/report/TyGateAgreeCountReport.jsp</result>
+			<result name="list">/gwms/report/TyGateAgreeCountList.jsp</result>
+			<result name="detailList">/gwms/report/TyGateAgreeDetailCountList.jsp</result>
+			<result name="init">/gwms/report/EditionUnificationReport.jsp</result>
+			<result name="jxdxList">/gwms/report/UnificationReportListForJXDX.jsp</result>
+			<result name="unificationDetailList">/gwms/report/UnificationDetailList.jsp</result>
+			<result name="sddxList">/gwms/report/UnificationReportListForSDDX.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- 湖北天翼网关版本一致率报表统计 -->
+		<action name="tyGateAgreeCountReportForHb" class="TyGateAgreeCountReportHBACT">
+			<result name="init">/gwms/report/EditionUnificationReportForHB.jsp</result>
+			<result name="jxdxList">/gwms/report/UnificationReportListForHB.jsp</result>
+			<result name="unificationDetailList">/gwms/report/UnificationDetailForHBList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<action name="voipCountReportACT" class="VoipCountReportACT">
+			<result name="init">/gwms/report/voipCountReport.jsp</result>
+			<result name="queryDataList">/gwms/report/voipCountReportList.jsp</result>
+			<result name="queryDetailList">/gwms/report/voipCountDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+		
+		<!-- XJDX-ITMS-20200409-LJ-001(终端与套餐不匹配和旧终端报表、用户绑定设备情况查询接口改造) -->
+		<action name="terminalNoMatchReport" class="TerminalNoMatchReportACT">
+			<result name="init">/gwms/report/TerminalNoMatchReport.jsp</result>
+			<result name="devMisMatch">/gwms/report/TerminalNoMatchReport_V2.jsp</result>
+			<result name="devOld">/gwms/report/TerminalDevScrapReport.jsp</result>
+			<result name="detailList">/gwms/report/TerminalNoMatchDetailList.jsp</result>
+			<result name="devMisMathDetail">/gwms/report/TerminalNoMatchDetailList1.jsp</result>
+			<result name="detailList2">/gwms/report/TerminalNoMatchDetailList2.jsp</result>
+			<result name="oldDetail">/gwms/report/TerminalOldDevDetailList.jsp</result>
+			<result name="oldDetail1">/gwms/report/TerminalOldDevDetailList1.jsp</result>
+			<result name="pt921gDetail">/gwms/report/TerminalPt921gDetailList.jsp</result>
+			<result name="thrdDetail">/gwms/report/TerminalThrdDetailDetailList.jsp</result>
+			<result name="oldDayDetail1">/gwms/report/TerminalOldDayDetailList.jsp</result>
+			<result name="devMisMathDayDetail">/gwms/report/TerminalNoMatchDayDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+
+		<!-- 报表下载统计-->
+		<action name="groupManage" class="GroupManageACT">
+			<result name="init">/gwms/report/groupManageView.jsp</result>
+			<result name="list">/gwms/report/groupManageList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<!-- HBDX-REQ-ITMS-20200618-XP-001（湖北电信ITMS+武电组播下移报表支持） -->
+		<action name="multicastDownReport" class="MulticastDownReportACT">
+			<result name="deviceList">/gwms/report/multicastDownDevReport.jsp</result>
+			<result name="businessList">/gwms/report/multicastDownBusinessReport.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+
+		<action name="lanGatherInfo" class="LanGatherInfoACT">
+			<result name="init">/gwms/report/gatherLanInfoQuery.jsp</result>
+			<result name="lanInfoList">/gwms/report/gatherLanInfoList.jsp</result>
+			<result name="noMatchList">/gwms/report/gatherLanInfoNoMatchList.jsp</result>
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+
+		<!--JXDX-REQ-ITMS-20200803-WWF-001(ITMS+家庭网关不匹配速率报表) -->
+		<action name="MismathSpeed" class="MismathSpeedACT">
+			<result name="init">/gwms/report/mismatchingSpeed.jsp</result>
+			<result name="detail">/gwms/report/mismatchingSpeedDetailList.jsp</result>
+			<result name="initChanged">/gwms/report/mismatchCompltSpeed.jsp</result>
+			<result name="chagDetail">/gwms/report/mismatchCompltSpeedDetail.jsp</result>
+			<result name="initAdded">/gwms/report/mismatchAddSpeed.jsp</result>
+			<result name="addDetail">/gwms/report/mismatchAddSpeedDetail.jsp</result>
+			
+			<result name="excel" type="excel"></result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+
+		<action name="queryBatchRestartDevice" class="QueryBatchRestartDeviceACT">
+			<result name="init">/gwms/report/deviceBatchRestart.jsp</result>
+			<result name="deviceBatchRestart">/gwms/report/deviceBatchRestart.jsp</result>
+			<result name="deviceBatchRestartDetail">/gwms/report/deviceBatchRestartDevDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<!--批量测速查询统计 -->
+		<action name="queryBatchSpeedMeasure" class="QueryBatchSpeedMeasureACT">
+			<result name="init">/gwms/report/deviceBatchSpeedMeasure.jsp</result>
+			<result name="deviceBatchSpeedMeasure">/gwms/report/deviceBatchSpeedMeasure.jsp</result>
+			<result name="deviceBatchSpeedMeasureDetail">/gwms/report/deviceBatchSpeedMeasureDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<!--单个业务统计设备资源报表 -->
+		<action name="singleBusEquipment" class="SingleBusEquipmentACT">
+			<result name="init">/gwms/report/singleBusEquipment.jsp</result>
+			<result name="singleBusEquipment">/gwms/report/singleBusEquipment.jsp</result>
+			<result name="singleBusEquipmentDetail">/gwms/report/singleBusEquipmentDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<!--多个业务统计设备资源报表 -->
+		<action name="multiBusEquipment" class="MultiBusEquipmentACT">
+			<result name="init">/gwms/report/multiBusEquipment.jsp</result>
+			<result name="multiBusEquipment">/gwms/report/multiBusEquipment.jsp</result>
+			<result name="multiBusEquipmentDetail">/gwms/report/multiBusEquipmentDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<!--终端注册、绑定和注销状态的统计报表 -->
+		<action name="registBindCancel" class="RegistBindCancelACT">
+			<result name="init">/gwms/report/registBindCancel.jsp</result>
+			<result name="registBindCancel">/gwms/report/registBindCancel.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+		<!-- 业务配置工单结果的统计报表 -->
+		<action name="orderResultOfBusConfig" class="OrderResultOfBusConfigACT">
+			<result name="init">/gwms/report/orderResultOfBusConfig.jsp</result>
+			<result name="orderResultOfBusConfig">/gwms/report/orderResultOfBusConfig.jsp</result>
+			<result name="orderResultOfBusConfigDetail">/gwms/report/orderResultOfBusConfigDetailList.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+
+
+		<!--山东电信v6开通情况报表统计 -->
+		<action name="v6OpenStat" class="V6OpenStatACT">
+			<result name="init">/gwms/report/v6OpenStat.jsp</result>
+			<result name="excel" type="excel"></result>
+		</action>
+
+	</package>
+</struts>

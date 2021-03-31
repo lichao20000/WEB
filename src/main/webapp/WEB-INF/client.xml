@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<SERVERIP>218.80.221.103</SERVERIP>
+	<SERVERPORT>7888</SERVERPORT>
+	<TIMEOUT>50000</TIMEOUT>
+</config>

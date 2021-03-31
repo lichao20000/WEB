@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="gtms_diagnostic_faultDiagAction" 
+	    class="com.linkage.module.gtms.diagnostic.action.FaultDiagActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="diagTemlateServImpl" />
+		</property>
+		<property name="serv">
+			<ref bean="templateUnitManageServImpl" />
+		</property>
+	</bean>
+	<bean id="templateUnitManageActionImpl" 
+             class="com.linkage.module.gtms.diagnostic.action.TemplateUnitManageActionImpl" scope="prototype">
+             <property name="bio">
+                     <ref bean="templateUnitManageServImpl" />
+             </property>
+     </bean>
+     <bean id="templateUnitManageServImpl" 
+             class="com.linkage.module.gtms.diagnostic.serv.TemplateUnitManageServImpl" scope="prototype">
+             <property name="dao">
+                     <ref bean="templateUnitManageDaoImpl" />
+             </property>
+     </bean>
+     <bean id="templateUnitManageDaoImpl" 
+             class="com.linkage.module.gtms.diagnostic.dao.TemplateUnitManageDaoImpl" scope="prototype">
+             <property name="dao">
+                     <ref bean="mainDataSource" />
+             </property>
+     </bean>
+ 
+	<bean id="diagTemlateActionImpl" 
+		class="com.linkage.module.gtms.diagnostic.action.DiagTemlateActionImpl" scope="prototype">
+		<property name="bio">
+			<ref bean="diagTemlateServImpl" />
+		</property>
+	</bean>
+	<bean id="diagTemlateServImpl" 
+		class="com.linkage.module.gtms.diagnostic.serv.DiagTemlateServImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="diagTemlateDaoImpl" />
+		</property>
+	</bean>
+	<bean id="diagTemlateDaoImpl" 
+		class="com.linkage.module.gtms.diagnostic.dao.DiagTemlateDaoImpl" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>

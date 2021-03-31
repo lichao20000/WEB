@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>	
+	<!--  -->
+	<bean id="EVDOCountReportACT" class="com.linkage.module.bbms.report.act.EVDOCountReportACT" scope="prototype">
+		<property name="evdoBIO">
+			<ref bean="EVDOCountReportBIO"/>
+		</property>
+	</bean>
+	<bean id="EVDOCountReportBIO" class="com.linkage.module.bbms.report.bio.EVDOCountReportBIO" scope="prototype">
+		<property name="evdoDAO">
+			<ref bean="EVDOCountReportDAO"/>
+		</property>
+	</bean>
+	<bean id="EVDOCountReportDAO" class="com.linkage.module.bbms.report.dao.EVDOCountReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="EvdoPercentACT" class="com.linkage.module.bbms.report.act.EvdoPercentACT" scope="prototype">
+		<property name="evdoPercentBio">
+			<ref bean="EvdoPercentBIO"/>
+		</property>
+	</bean>
+	<bean id="EvdoPercentBIO" class="com.linkage.module.bbms.report.bio.EvdoPercentBIO" scope="prototype">
+		<property name="evdoPercentDao">
+			<ref bean="EvdoPercentDAO"/>
+		</property>
+	</bean>
+	<bean id="EvdoPercentDAO" class="com.linkage.module.bbms.report.dao.EvdoPercentDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<bean id="EVDOReportTemplateACT" class="com.linkage.module.bbms.report.act.EVDOReportTemplateACT" scope="prototype">
+		<property name="evdoBIO">
+			<ref bean="EVDOReportTemplateBIO"/>
+		</property>
+	</bean>
+	<bean id="EVDOReportTemplateBIO" class="com.linkage.module.bbms.report.bio.EVDOReportTemplateBIO" scope="prototype">
+		<property name="evdoDAO">
+			<ref bean="EVDOReportTemplateDAO"/>
+		</property>
+	</bean>
+	<bean id="EVDOReportTemplateDAO" class="com.linkage.module.bbms.report.dao.EVDOReportTemplateDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 业务统计 -->
+	<bean id="ServiceReportACT" class="com.linkage.module.bbms.report.act.ServiceReportACT" scope="prototype">
+		<property name="serviceReportBio">
+			<ref bean="ServiceReportBIO"/>
+		</property>
+	</bean>
+	<bean id="ServiceReportBIO" class="com.linkage.module.bbms.report.bio.ServiceReportBIO" scope="prototype">
+		<property name="serviceReportDao">
+			<ref bean="ServiceReportDAO"/>
+		</property>
+	</bean>
+	<bean id="ServiceReportDAO" class="com.linkage.module.bbms.report.dao.ServiceReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 业务使用查询 -->
+	<bean id="ServiceQueryACT" class="com.linkage.module.bbms.report.act.ServiceQueryACT" scope="prototype">
+		<property name="serviceQueryBio">
+			<ref bean="ServiceQueryBIO"/>
+		</property>
+	</bean>
+	<bean id="ServiceQueryBIO" class="com.linkage.module.bbms.report.bio.ServiceQueryBIO" scope="prototype">
+		<property name="serviceQueryDao">
+			<ref bean="ServiceQueryDAO"/>
+		</property>
+	</bean>
+	<bean id="ServiceQueryDAO" class="com.linkage.module.bbms.report.dao.ServiceQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 带宽占用率topN报表 -->
+	<bean id="BandwidthTopNACT" class="com.linkage.module.bbms.report.act.BandwidthTopNACT" scope="prototype">
+		<property name="bandwidthTopNBio">
+			<ref bean="BandwidthTopNBIO"/>
+		</property>
+	</bean>
+	<bean id="BandwidthTopNBIO" class="com.linkage.module.bbms.report.bio.BandwidthTopNBIO" scope="prototype">
+		<property name="bindwidthtopNDao">
+			<ref bean="BindwidthtopNDAO"/>
+		</property>
+	</bean>
+	<bean id="BindwidthtopNDAO" class="com.linkage.module.bbms.report.dao.BindwidthtopNDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 端口流量利用率 -->
+	<bean id="PortFluxQueryACT" class="com.linkage.module.bbms.report.act.PortFluxQueryACT" scope="prototype">
+		<property name="portFluxQueryBio">
+			<ref bean="PortFluxQueryBIO"/>
+		</property>
+	</bean>
+	<bean id="PortFluxQueryBIO" class="com.linkage.module.bbms.report.bio.PortFluxQueryBIO" scope="prototype">
+		<property name="portFluxQueryDao">
+			<ref bean="PortFluxQueryDAO"/>
+		</property>
+	</bean>
+	<bean id="PortFluxQueryDAO" class="com.linkage.module.bbms.report.dao.PortFluxQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 系统日志分析 -->
+	<bean id="SyslogQueryACT" class="com.linkage.module.bbms.report.act.SyslogQueryACT" scope="prototype">
+		<property name="syslogQueryBio">
+			<ref bean="SyslogQueryBIO"/>
+		</property>
+	</bean>
+	<bean id="SyslogQueryBIO" class="com.linkage.module.bbms.report.bio.SyslogQueryBIO" scope="prototype">
+		<property name="sysLogQueryDao">
+			<ref bean="SyslogQueryDAO"/>
+		</property>
+	</bean>
+	<bean id="SyslogQueryDAO" class="com.linkage.module.bbms.report.dao.SyslogQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 设备流量统计 -->
+	<bean id="DeviceFluxQueryACT" class="com.linkage.module.bbms.report.act.DeviceFluxQueryACT" scope="prototype">
+		<property name="deviceFluxQueryBio">
+			<ref bean="DeviceFluxQueryBIO"/>
+		</property>
+	</bean>
+	<bean id="DeviceFluxQueryBIO" class="com.linkage.module.bbms.report.bio.DeviceFluxQueryBIO" scope="prototype">
+		<property name="deviceFluxQueryDao">
+			<ref bean="DeviceFluxQueryDAO"/>
+		</property>
+	</bean>
+	<bean id="DeviceFluxQueryDAO" class="com.linkage.module.bbms.report.dao.DeviceFluxQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+	</bean>
+	<!-- 运行报告 -->
+	<bean id="RunReportQueryACT" class="com.linkage.module.bbms.report.act.RunReportQueryACT" scope="prototype">
+		<property name="runReportBIO">
+			<ref bean="RunReportQueryBIO"/>
+		</property>
+	</bean>
+	<bean id="RunReportQueryBIO" class="com.linkage.module.bbms.report.bio.RunReportQueryBIO" scope="prototype">
+		<property name="runReportQueryDao">
+			<ref bean="RunReportQueryDAO"/>
+		</property>
+	</bean>
+	<bean id="RunReportQueryDAO" class="com.linkage.module.bbms.report.dao.RunReportQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<!-- 需求挖掘和维挽预警 -->
+	<bean id="WarnReportACT" class="com.linkage.module.bbms.report.act.WarnReportACT" scope="prototype">
+		<property name="warnReportBio">
+			<ref bean="WarnReportBIO"/>
+		</property>
+	</bean>
+	<bean id="WarnReportBIO" class="com.linkage.module.bbms.report.bio.WarnReportBIO" scope="prototype">
+		<property name="warnReportDao">
+			<ref bean="WarnReportDAO"/>
+		</property>
+	</bean>
+	<bean id="WarnReportDAO" class="com.linkage.module.bbms.report.dao.WarnReportDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+</beans>

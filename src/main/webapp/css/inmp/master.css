@@ -1,0 +1,422 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body,table,th,tr,td,div,span,input,select,textarea,ul,li,dl,ol,dt,dd,form,p,hr,img,h1,h2,h3,h4,h5,h6{
+	padding:0;
+	margin:0;
+}
+img{
+	border:0;
+	vertical-align: bottom; 
+}
+html,body {
+	width:100%;
+	font-size:12px;
+	font-family:"宋体",Arial;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+li{list-style:none;}
+a{text-decoration:none; cursor:pointer;}
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+input{vertical-align:middle;}
+input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner{border:none;padding:0;}/* for firefox Button Bug*/
+/*-----------main-------------*/
+
+/*页面背景*/
+body{background-color:#eee;position:relative;color:#04143a;}
+/*----------导航---------------*/
+.nav{background: url(../../images/inmp/topbg.jpg) repeat-x;width:100%;margin-bottom:10px;}
+.nav_content{width:1100px;height:74px;margin:0 auto;position:relative;}
+/*logo*/
+.logo{position:absolute;top:13px;left:0;}
+/*导航第一栏*/
+.top1{width:100%;height:32px;position:relative;}
+.qLink{position:absolute;top:7px;right:0px;color:#fff;background-color:#2879d7;}
+.qLink li{float:left;margin:2px 10px;height:16px;line-height:16px;}
+.exit a{color:#04304d;}
+.exit a:hover{text-decoration:underline;}
+.help a{color:#ffffff;}
+.help a:hover{text-decoration:underline;}
+.system_manage a{color:#fff;background: url(../../images/inmp/system.png) no-repeat top left;padding-left:18px;height:16px;line-height:16px;display:block;}
+.system_manage a:hover{text-decoration: underline;}
+/*导航第二栏*/
+.top2{height:40px;position:relative;}
+.navBarBox{position:absolute;top:0;right:0;}
+.navBarBox li{float:left;}
+.navBarBox li a{display:block;width:124px;height:40px;text-align:center;line-height:40px;font-size:14px;color:#fff;font-family:"微软雅黑";font-weight:bold;}
+.navBarBox li a img{vertical-align:-7px;}
+.navBarBox li a:hover{background-color:#ff8933;border:0;}
+.navBarBox li.current a{background-color:#003b77;}
+
+/*操作切换悬浮按钮*/
+.operate{top:38px;right:650px;position:absolute;width:42px;height:26px;background: url(../../images/inmp/adminbg.png) no-repeat;text-align:center;padding:0 17px;}
+.changeContent{width:42px; overflow:hidden;}
+.changeContent_list{width:168px;}
+.changeContent .changeContent_list a{display:block;width:42px;float:left;color:#fff;font-weight:bold;height:26px;line-height:26px;}
+.changeLeft{width:6px;height:10px;background: url(../../images/inmp/left.png);border:0;position:absolute;top:8px;left:5px;cursor:pointer;}
+.changeLeft_hot{background: url(../../images/inmp/left1.png);}
+.changeRight{width:6px;height:10px;background: url(../../images/inmp/right1.png);border:0;position:absolute;top:8px;right:5px;cursor:pointer;}
+.changeRight_hot{background: url(../../images/inmp/right2.png);}
+/*-----------head-------------*/
+
+
+/* --------左侧菜单+页面主体部分----------- */
+.mainBox{width:1100px;margin:0 auto;position: relative;}
+
+/* 树形菜单开始 */
+.menu{width:190px;position:absolute;top:0;left:0;bottom:0;*bottom:10px;background-color:#fff;display:none; }
+/*菜单隐藏与显示*/
+.menuHide{position:absolute;left:0px;top:200px; z-index:200;}
+.menuHide a{display:block;width:10px;height:243px;background: url(../../images/inmp/menu_button2.png);}
+.menuHide a:hover{background: url(../../images/inmp/menu_button1_hover.png);}
+.menuShow{left:180px;}
+.menuShow a{background: url(../../images/inmp/menu_button1.png);}
+.menuShow a:hover{background: url(../../images/inmp/menu_button2_hover.png);}
+/*菜单主体*/
+.menuContent{ position:absolute;overflow-y:auto;top:10px;left:10px;right:10px;bottom:0;}
+
+/*一级菜单*/
+.menuList{width:170px;overflow:auto;  }
+.l1 a{ height:40px; color:#fff;padding-left:36px;background: url(../../images/inmp/+.png) no-repeat 19px center;line-height:40px;font-size:12px;font-weight:normal;display:block;font-weight:bold; background-color:#0059b3;margin-top:10px;}
+.currentl1 a{background: url(../../images/inmp/+.png) no-repeat 19px center;background-color:#0059b3;}
+/*二级菜单*/
+.slist{background-color:#eff4fe;display:none;}
+.slist a{color:#04143a;}
+.slist a:hover{background-color:#fffbdf;}
+.l2 a{font-size:12px;font-weight:bold;display:block;padding-left:20px;background: url(../../images/inmp/arrow.png) no-repeat 150px center;height:35px;line-height:35px;}
+.l2 img{vertical-align:-3px;}
+.currentl2 a{background: url(../../images/inmp/arrow_down.png) no-repeat 150px center;background-color:#e4e4e4;}
+.secondMenulist a{background:none;padding-left:28px;font-weight:normal;}
+.secondMenulist_current a:link,.secondMenulist_current a:visited{background-color:#fff;color:#ff6600;font-weight:bold;border-left:3px solid #ff6600;padding-left:25px;}
+/*三级菜单*/
+.sslist {display:none;}
+.l3 a{font-size:12px;display:block;padding-left:50px;line-height:30px;background: url(../../images/inmp/++.png) no-repeat 35px center;font-weight:normal;}
+.currentl3 a{background: url(../../images/inmp/--.png) no-repeat 35px center;}
+.listsl3 a{background:none;padding-left:40px;}
+.listsl3_current a{background-color:#fff;color:#ff6600;font-weight:bold;border-left:3px solid #ff6600;padding-left:37px;}
+/*四级菜单*/
+.ssslist {display:none;}
+.l4 a {font-size:12px;display:block;padding-left:60px;line-height:30px;background: url(../../images/inmp/s_arrow1.png) no-repeat 45px center;font-weight:normal;}
+.currentl4 a{background: url(../../images/inmp/s_arrow2.png)
+no-repeat 45px center;}
+.listsl4 a{padding-left:50px;background:none;cursor:pointer;}
+.listsl4_current a{background-color:#fff;color:#ff6600;font-weight:bold;border-left:3px solid #ff6600;padding-left:47px;}
+/*五级菜单*/
+.sssslist {display:none;}
+.l5 a{font-size:12px;display:block;padding-left:70px;line-height:30px;}
+.currentl5 a:link,.currentl5 a:visited{background-color:#fff;color:#ff6600;font-weight:bold;border-left:3px solid #ff6600;padding-left:67px;}
+
+/*-------------交换场景-----------------*/
+/*-------第一部分-待办任务-----*/
+.main{position:relative;height: auto;margin-left:20px;min-height:750px;}
+.main_open{margin-left:200px;}
+.mainContent{background-color:#FFF;padding:10px;margin-bottom:10px;}
+/*tab切换页*/
+#main1_content{height:300px;margin-top:12px;}
+.main1_nav ul{height:31px;}
+.main1_nav ul li{float:left;cursor:pointer;font-family:"微软雅黑";font-size:14px;}
+.main1_nav li a{ display:block;height:30px;line-height:30px;padding:0 7px;color:#04143a;border:1px solid #c3c2d4;border-bottom:0;float:left;background-color:#e4e4e4;}
+.main1_nav li a:hover{background-color:#ff9c00;color:#fff;height:31px;border:0;padding:0 8px;}
+.main1_nav li a:hover span{color:#fff;}
+.main1_nav span{color:#ff7c00;font-weight:bold;;}
+.main1_nav li.current a{height:31px;background-color:#5985de;color:#fff;border:0;padding:0 8px;}
+.main1_nav li.current span{color:#fff;}
+.navline{height:3px;background-color:#5985de;width:100%;}
+/*告警按钮*/
+.warning{position:absolute;top:15px;left:740px;}
+.warning a{display:block;width:47px;height:31px;line-height:31px;background: url(../../images/inmp/warn_icon.png) no-repeat left center;padding-left:15px;color:#396fde;font-family:"微软雅黑";font-size:14px;font-weight:bold;position:relative;}
+.warning a span{
+	display:block;
+	background: url(../../images/inmp/warnbg.png);
+	position:absolute;
+	top:6px;
+	right:4px;
+	width:17px;
+	height:13px;
+	line-height:13px;
+	text-align:center;
+	color:#fff;
+	font-size:12px;
+	font-weight:normal;
+}
+/*增加与刷新按钮*/
+.tab_button{position:absolute;right:15px;top:15px;}
+.tab_searchButton{width:23px;height:23px;background: url(../../images/inmp/search.jpg);border:0; cursor:pointer;}
+.tab_addButton{width:23px;height:23px;background: url(../../images/inmp/add.jpg);border:0; cursor:pointer;}
+.tab_flashButton{width:23px;height:23px; background: url(../../images/inmp/flash.jpg);border:0;cursor:pointer;}
+/*第一部分表格*/
+.dateTable{font-size:14px;width:100%;font-family:Arial;border-collapse:collapse;}
+.dateTable td{height:45px;text-align:center;line-height:16px;padding:0 6px;text-align:left;border:1px solid #ccc;}
+.dateTable th{height:45px;line-height:16px;background-color:#d2dff8;text-align:center;text-align:center;border:1px solid #CCC;}
+.colorTr{background-color:#f2f5ff;}
+.dateTable tr:hover{background-color:#fdfcd5;}
+.tablemore{margin:5px 20px 5px 0;text-align:right;}
+.tablemore a{color:#666;}
+.tablemore a:hover{text-decoration:underline;}
+.button_action{display:block;margin:0 auto;width:28px;height:28px;background: url(../../images/inmp/button_yes.png); cursor:pointer;}
+/*-------第二部分----资源分析模块-*/
+/*资源分析模块标题*/
+.mainTitle{font-family:"微软雅黑";font-size:14px;background-color:#eee;margin-bottom:10px;padding-left:10px;color:#1a3a77;}
+#main2_content{height:430px;margin-top:12px;}
+/*资源分析模分资源利用率图表部分*/
+.main2_slect{margin:0 0 10px 0;padding-left:10px;}
+.turntext{width:130px;height:22px;line-height:22px;vertical-align:-2px;}
+.slect_up{width:22px;height:22px;background: url(../../images/inmp/slect_up.png);border:0; cursor:pointer;}
+.slect_down{width:22px;height:22px;background: url(../../images/inmp/slect_down.png);border:0;cursor:pointer;}
+#columnchatA{min-width: 310px; height: 400px; margin: 0 auto;}/*柱形图本身*/
+/*-------第三部分-KPI/内控指标-----*/
+.mainContent3{padding:0;margin-top:20px;position:relative;}
+/*第三部分tab页切换*/
+.main3_nav{height:35px;width:100%;}
+.main3_nav li{float:left;width:50%;cursor:pointer;}
+.main3_nav li a{display:block;text-align:center;font-size:14px;font-family:"微软雅黑";color:#666;font-weight:bold;background-color:#FFF;height:32px;line-height:32px;border-top:3px solid #eee;background-color:#eee;}
+.main3_nav li a:hover{color:#1a367d;border-top:3px solid #f80;background-color:#FFF;}
+.main3_nav li.current a{color:#1a367d;border-top:3px solid #5985de;background-color:#FFF;}
+/*KPI指标*/
+.scroller {
+ overflow:hidden;
+ zoom:1;
+ font-size:14px;
+ position:relative;
+ margin:10px 0 0 0;
+ height:220px;
+}
+.scroller .pcont {
+ overflow:hidden;
+ padding:5px;
+ margin:0 50px;
+}
+.scroller .ScrCont {
+ width:1960px;
+ zoom:1;
+ margin-left:-5px;
+}
+.scroller #List1_1, .scroller #List2_1 {
+ float:left;
+}
+.scroller .LeftBotton, .scroller .RightBotton {position:absolute;
+ width:33px;
+ height:67px;
+background-color:#F00; z-index:1000; display:none;
+}
+.scroller .LeftBotton{top:58px;left:10px;background: url(../../images/inmp/left_button.jpg);}
+.scroller .RightBotton {top:58px;right:10px;background: url(../../images/inmp/right_button.jpg);}
+.scroller:hover .LeftBotton,.scroller:hover .RightBotton{display:block;}
+.scroller .LeftBotton:hover{background: url(../../images/inmp/left_button_hover.jpg);}
+.scroller .RightBotton:hover{background: url(../../images/inmp/right_button_hover.jpg);}
+.scroller .piechatBox {
+ width:163px;
+ height:190px;
+ float:left;
+ text-align:center;
+ line-height:24px;
+}
+.scroller a.piechatBox:hover {
+ border:1px solid #5dacec;
+ color:#5dacec;
+ background:#fff;
+ width:161px;
+ height:188px;
+}
+.scroller a.piechatBox:hover span{color:#000;}
+.scroller .piechatBox span{font-size:14px;color:#666;display:block;width:100px;margin:0 auto;line-height:18px;}
+.piechat{width:120px;height:120px;background-color:#ccc;margin:10px auto;}
+/*KPI指标弹出框*/
+.ui_dialog{width:100%;position:absolute;top:-200px;left:0;z-index:999;display:none;}
+.dialog_box{width:650px;height:500px;background-color:#fff;margin:0 auto;border:2px solid #567fd4;;}
+.dialog_title{background-color:#567fd4;font-size:14px;font-family:"微软雅黑";color:#fff;height:38px;line-height:38px;padding-left:10px;position:relative;}
+.dialog_close{display:block;position:absolute;right:10px;top:5px; cursor:pointer;}
+.dialog_close:hover{background-color:#F80;}
+.dialog_content{padding:15px 0 0 50px;}
+.dialog_list li{margin-bottom:10px;}
+.dialoglist_title{font-size:12px;color:#666;background: url(../../images/inmp/dialog_arrow.jpg) no-repeat left center
+;padding-left:8px;height:30px;line-height:30px;}
+.dialoglist_title1{background-position:left 16px;}
+.dialog_num{color:#f76e00;font-size:26px;font-family:Arial;font-weight:normal;}
+.dialog_chat{width:552px;height:150px;background-color:#ccc;}
+/*弹出框内表格*/
+#dialog_tabcontent li{width:552px; overflow-y:scroll;height:150px;margin-top:10px;}
+.dialog_datetable{color:#666;width:535px;}
+.dialog_datetable th,.dialog_datetable td{height:30px;line-height:30px;font-size:12px;}
+/*弹出框内tab切换*/
+#dialog_tab{position:absolute;top:2px;left:80px;}
+#dialog_tab li{ float:left;height:26px;width:38px;margin-right:15px; cursor:pointer;}
+#dialog_tab li a{display:block;width:36px;height:20px;text-align:center;line-height:20px;color:#999;border:1px dashed #999;}
+#dialog_tab li.current{background: url(../../images/inmp/dialog_tab.jpg) no-repeat bottom center;}
+#dialog_tab li.current a{border:1px solid #666;color:#666;}
+/*内控指标*/
+.matterTable td{width:25%; height:110px;}
+.matterTable td a{margin:15px;display:block;}
+.matterTable_num{font-size:34px;color:#666;font-family:Arial;}
+.matterTable_percent{font-size:24px;}
+.matterTable_name{margin-top:8px;padding:7px;background-color:#f1f0ec;font-size:12px;color:#04143a;}
+
+
+/*-------第四部分-网元列表-----*/
+/*--查询区域---*/
+.mian4Search{background-color:#f4f3f1;padding:15px 10px;position:relative;}
+/*更多选项点开内元素*/
+.mian4Search_table{margin:10px 0 0 10px;display:none;}
+.mian4Search_table td{line-height:25px;text-align:left;}
+.mian4Search_tabletitle{width:70px;vertical-align: text-top;font-weight:bold;}
+.mian4Search_tablecontent a{color:#666;height:25px;line-height:25px;display:inline;margin:0 20px 0 0; }
+.mian4Search_tablecontent a:hover{text-decoration:underline;}
+/*更多选项点开内元素结束*/
+.main4_input{width:380px;height:30px;line-height:30px;border:0;border:1px solid #cfced5;color:#666;padding-left:5px;}/*--搜索框---*/
+.mian4Search_button{width:100px;height:32px;line-height:32px;background: url(../../images/inmp/search_button.png) no-repeat 8px center;color:#fff;background-color:#5b87d8;border:0; cursor:pointer;padding-left:15px;}/*--查询按钮---*/
+/*--更多选项按钮按钮---*/
+.main4Search_more{display:block;position:absolute;width:100px;height:20px;line-height:20px;background: url(../../images/inmp/search_down.png) no-repeat 55px 0px;top:22px;left:520px;color:#666;font-weight:bold; cursor:pointer;}
+.main4Search_more:hover{color:#ff8a00;background: url(../../images/inmp/search_down_hover.png) no-repeat 55px 0px;}
+/*--更多选项按钮按钮弹出后---*/
+.main4Search_more_down{background: url(../../images/inmp/search_up.png) no-repeat 55px 0px;}
+.main4Search_more_down:hover{background: url(../../images/inmp/search_up_hover.png) no-repeat 55px 0px;}
+/*--网元列表表格---*/
+.table_attention{height:20px;margin:20px 0 5px 0;color:#666;}
+.table_attention_left{float:left;padding-left:5px;}
+.table_attention_right{float:right;text-align:right;padding-right:5px;}
+.table_attention_right span{font-size:20px;color:#F30;font-family:Arial;vertical-align:-2px;}
+.main4button_action{background: url(../../images/inmp/main4button_action.png);}
+.tablepage{text-align:right;margin:10px 0;}
+.previousPage,.nextPage{width:64px;height:26px;margin-right:15px;border:0; cursor:pointer;}
+.previousPage{background-color:#e2e5e7;color:#929eab;}
+.nextPage{background-color:#5181e0;color:#fff;}
+
+/*--------------数据场景-------------------*/
+/*-----------资源分析模块---------------*/
+
+.tabChoise{float:left;margin-left:10px;height:30px;line-height:30px;}
+.tabLine{height:30px;}
+.tabLine li{float:left;margin-left:15px;}
+.tabLine li a{display:block;position:relative;padding-left:15px;cursor:pointer;font-weight:bold;font-family:Arial;color:#545454;height:30px;line-height:30px;font-size:14px;}
+.tabLine2{margin-top:15px;*margin-top:3px;}
+.tabLine2 li a{font-size:12px;}
+.chatIcon{position:absolute;left:0;top:10px;width:8px;height:8px;border:1px solid #545454;background-color:#FFF;}
+.tabLine li.current a{color:#fd8a2d;}
+.tabLine li.current .chatIcon{width:10px;height:10px;border:0;background-color:#fd8a2d;}
+#tab_columnA,#tab_columnB,#tab_columnC{width:100%;}
+/*告警分析内tab页标题*/
+.warningTab{position:absolute;left:0;top:10px;}
+.warningTab li a{display:block;width:23px;height:149px;background-color:#f6f6f6;cursor:pointer;font-family:"微软雅黑";color:#545454;padding-left:12px;font-size:14px;border:1px solid #dadde2;}
+.warningTab li a span{display:block;width:15px;line-height:16px;padding-top:40px;}
+.warningTab li a:hover{background-color:#ff9c00;color:#fff;border:0;width:25px;height:151px;}
+.warningTab li.current a{background:url(../../images/inmp/tabarrow.png) no-repeat right center;background-color:#0076fe;font-weight:bold;color:#fff;border:0;width:25px;height:151px;}
+/*告警分析内tab页内容*/
+.leftChange{margin-left:50px;overflow-x:auto;position:relative;overflow-y:hidden;}
+.tabcon {
+	position:relative;/*必要元素*/
+	height:330px;
+	overflow:hidden;
+	width:1010px;	
+}
+.tabcon .subbox {
+	position:absolute;/*必要元素*/
+	left:0;
+	top:0;
+	width:9999em;
+}
+#warnTab_content .sublist{
+	float:left;
+	width:1010px;
+	height:330px;
+}
+.leftChatbox{float:left;width:520px; height:221px;padding:22px 0 22px 10px;border:1px solid #ccc;background-color:#F7F7F7;position:relative;overflow:hidden;}
+.percentChat_box{position:absolute;top:18px;left:245px;}
+.percentChat_box span{display:block;text-align:center;color:#fff;font-family:Arial, "黑体";margin:0;}
+.leftChat_num{ height:36px;line-height:36px;font-size:22px;width:60px;padding-left:12px;}
+.leftChat_name{font-size:14spx;font-weight:bold;height:20px;line-height:20px;width:72px;}
+.leftChat_list1{background: url(../../images/inmp/typebg01.png);}
+.leftChat_list2{background: url(../../images/inmp/typebg02.png);}
+.leftChat_list3{background: url(../../images/inmp/typebg03.png);}
+.leftChat_list4{background: url(../../images/inmp/typebg04.png);}
+.leftChat_list5{background: url(../../images/inmp/typebg05.png);}
+.leftChat_list6{background: url(../../images/inmp/typebg06.png);}
+.leftChat_list7{background: url(../../images/inmp/typebg07.png);}
+.leftChat_list8{background: url(../../images/inmp/typebg08.png);}
+.leftChat_list9{background: url(../../images/inmp/typebg09.png);}
+.rightChatbox{float:left;width:450px;height:267px;background-color:#ccc;margin-left:20px;}
+.typePie_chat{width:220px;height:220px;background-color:#0FF; }
+/*-----------网元操作与TOPO---------------*/
+.topo_slect{padding:10px;height:28px;line-height:28px;}
+#dateChat{width:100%;}
+#dateChat img{width:100%;height:auto;}
+.topo_turntext{height:26px;line-height:26px;width:100px;*vertical-align:-3px;}
+.topo_input{border:1px solid #5b87d8;height:26px;line-height:26px;width:350px;}
+.topo_button{width:80px;height:28px;line-height:28px;color:#fff;background-color:#5b87d8;border:0; cursor:pointer;font-size:14px;}/*--查询按钮---*/
+
+/*-----------系统管理---------------*/
+.systemMain{position:relative;}
+/*左侧查询*/
+.system_search{width:250px;position:absolute;top:0;left:0;bottom:0;background-color:#FFF;border:1px solid #ccc;}
+#searchTab{height:35px;}
+#searchTab li{float:left;}
+#searchTab li a{display:block;cursor:pointer;width:125px;height:35px;line-height:35px;text-align:center;font-weight:bold;color:#666;background-color:#eee;}
+#searchTab li.current a{background-color:#fff;color:#1a367d;}
+#searchTab_content{width:250px;}
+.system_searchTable{margin:25px 25px 0;}
+.systemS_input{width:140px;height:25px;border:1px solid #999;padding-left:5px;}
+.systemS_button{width:100px;height:32px;line-height:32px;color:#fff;background-color:#5b87d8;border:0; cursor:pointer;}
+.tw{color:#545454;width:60px;text-align:left;font-size:14px;}
+/*右侧内容*/
+.system_content{margin:0 0 0 260px; min-height:550px;border:1px solid #ccc;padding:0 15px 10px;background-color:#FFF;position:relative;}
+.allEdit{width:80px;height:26px;line-height:26px;color:#fff;background-color:#ff9c00;border:0; cursor:pointer;}
+.addLink{display:inline-block;margin-left:25px;color:#1052b5;background: url(../../images/inmp/adduser.png) no-repeat left 2px;padding-left:20px; cursor:pointer;font-family:"微软雅黑";font-size:14px;height:25px;vertical-align:-3px;}
+.addLink:hover{text-decoration: underline;}
+.systemTable{margin-top:20px;}
+.moreButton{color:#1052b5;font-size:12px;}
+.moreButton:hover{text-decoration: underline;}
+.actionBox{position:absolute;top:30px;right:0;width:144px;height:65px;background: url(../../images/inmp/actionbg.png);z-index:200;}/*操作内容弹出*/
+.boxTable{margin:15px auto;}
+.boxTable td{height:18px;border:0;}
+.boxTable tr:hover{background: none;}
+.boxTable a{color:#04143a;font-size:12px}
+.boxTable a:hover{text-decoration:underline;} 
+.system_dialog{top:150px;display:block;}/*弹出框*/
+.system_dialogBox{width:350px;height:210px;font-family:"微软雅黑"}
+.system_dialogTitle{height:30px;line-height:30px;}
+.system_dialogClose{top:3px;right:8px;}
+.dialogButton{width:90px;height:28px;line-height:28px;background-color:#ff9c00;color:#fff;margin:0px auto;display:block;border:0;}
+.keyword{margin:50px 0 50px 65px;height:23px;line-height:23px;}/*重置密码*/
+.keyword span{color:#F00;}
+/*修改密码*/
+.passwordTable{margin:10px auto 5px auto;text-align:right;}
+.password_input{width:130px;height:18px;line-height:18px;border:1px solid #666;}
+.view{color:#F00;width:300px;margin:0 auto 8px auto;line-height:16px;text-align:center;}
+.accountTable{margin:35px auto;}
+/*-----------系统管理2---------------*/
+.systemMain2{background-color:#FFF;min-height:600px;}
+.editContent{min-height:500px;}
+.editContent li{float:left;width:30%;margin:20px 1.6% 10px;}
+.editContent li h3{font-size:12px;color:#666;background: url(../../images/inmp/dialog_arrow.jpg) no-repeat left center
+;padding-left:8px;height:25px;line-height:25px;margin-left:10px;}/*框标题*/
+.editBox{border:1px solid #ccc;padding:20px;height:400px;}/*框*/
+.editTable{font-size:12px;width:100%;border-collapse: collapse;}/*表格*/
+.editTable th{background-color:#d2dff8;}
+.editTable th,.editTable td{height:30px;padding:0 6px;border:1px solid #ccc;}
+.editTable td span{color:#F00;}
+.editButton{width:120px;height:35px;line-height:35px;background-color:#5181e0;border:0;color:#fff; cursor:pointer;font-size:14px;margin:0 0 20px 0;}/*按钮*/
+.editButton:hover{background-color:#ff8a00;}
+.checkout{color:#00C;}
+.checkout:hover{text-decoration: underline;}
+.authority{display:block;}
+.rightlistBox{margin:10px 0;}
+.rightTree{padding:10px;border:1px solid #ccc; height:300px; overflow-y:scroll;}
+.rightList_arrow{background: url(../../images/inmp/up.png) no-repeat bottom center;height:10px;}
+.editWords{font-family:Arial;}
+/*-----------增加用户---------------*/
+.addBox{margin:0 auto;padding:40px 50px 0 50px;}
+.addTitle{font-size:14px;font-family:"微软雅黑";color:#333;margin-bottom:10px;}
+.addTable{width:100%;margin:0 auto;margin-bottom:20px;}
+.adinput{width:340px;border:0;height:26px;line-height:26px;}
+.importButton{width:100px;height:32px;line-height:32px;color:#fff;background-color:#ff9c00;border:0; cursor:pointer;margin-right:30px;}
+.addmoreBox{margin-bottom:20px;}
+
+@media all and (min-width: 1000px) {
+.mainBox{width:1000px;}
+}
+@media all and (min-width: 1100px) {
+
+.mainBox{width:1100px;}
+}

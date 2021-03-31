@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="mainDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+		</property>
+		<property name="url">
+			<value>proxool.xml-test</value>
+		</property>
+	</bean>
+	<bean id="reportDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+		</property>
+		<property name="url">
+			<value>proxool.xml-report</value>
+		</property>
+	</bean>
+	<bean id="stbDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+		</property>
+		<property name="url">
+			<value>proxool.xml-stb</value>
+		</property>
+	</bean>
+	<!-- 湖北集团检测新增数据源 -->
+	<bean id="hbCheckDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+		</property>
+		<property name="url">
+			<value>proxool.xml-ctc-group-check</value>
+		</property>
+	</bean>
+    <bean id="dynamicDataSource" class="com.linkage.module.gwms.dao.DynamicDataSource" >      
+	   <property name="targetDataSources">      
+	       <map>      
+	           <entry value-ref="mainDataSource" key="mainDataSource"></entry>      
+	           <entry value-ref="reportDataSource" key="reportDataSource"></entry>  
+	           <entry value-ref="stbDataSource" key="stbDataSource"></entry>      
+	           <entry value-ref="hbCheckDataSource" key="hbCheckDataSource"></entry>      
+	       </map>      
+	   </property>      
+	   <property name="defaultTargetDataSource" ref="mainDataSource" />      
+	</bean>  
+	
+	<bean id="ChartUtil" class="com.linkage.liposs.buss.util.ChartUtil" scope="prototype"></bean>
+	<bean id="pSQL" class="com.linkage.commons.db.PrepareSQL" scope="prototype" />
+	<bean id="devA" class="com.linkage.litms.resource.DeviceAct" scope="prototype" />
+	<bean id="NetMaintenance" class="com.linkage.liposs.buss.common.NetMaintenance" scope="prototype">
+		<property name="dao">
+			<ref local="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="NetMaintenanceSub" class="com.linkage.liposs.buss.common.NetMaintenanceSub" scope="prototype">
+		<property name="dao">
+			<ref local="mainDataSource" />
+		</property>
+		<property name="pingTest">
+			<ref local="PingTest" />
+		</property>
+	</bean>
+	<bean id="PingTest" class="com.linkage.liposs.buss.util.PingTest" scope="prototype">
+		<property name="dao">
+			<ref local="mainDataSource" />
+		</property>
+		<property name="PSQL">
+			<ref local="pSQL" />
+		</property>
+		<property name="cu">
+			<ref local="ChartUtil" />
+		</property>
+	</bean>
+	<bean id="CorbaUtil" class="com.linkage.liposs.buss.util.CorbaUtil">
+		<property name="dao">
+			<ref local="mainDataSource" />
+		</property>
+	</bean>
+	<!-- for security getway -->
+	<bean id="sgwMenuDAO" class="com.linkage.liposs.buss.menu.MenuSecurityGWDAO">
+		<property name="dao">
+			<ref local="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="getSGWMenuAction" class="com.linkage.liposs.action.menu.GetSecurityMenuAction" scope="prototype">
+		<property name="msDao">
+			<ref local="sgwMenuDAO" />
+		</property>
+	</bean>
+	<bean id="SGWListDAO" class="com.linkage.liposs.buss.dao.securitygw.SGWListDAO" scope="prototype">
+		<property name="dao">
+			<ref local="mainDataSource" />
+		</property>
+		<property name="ppSql">
+			<ref bean="pSQL" />
+		</property>
+	</bean>
+	<bean id="GotoAction" class="com.linkage.liposs.action.securitygw.GotoAction" scope="prototype">
+		<property name="sgwDao">
+			<ref local="SGWListDAO" />
+		</property>
+	</bean>
+	<!-- CORBA -->
+	<bean id="ACSCorba" class="com.linkage.module.gwms.util.corba.ACSCorba" scope="prototype"/>
+	<bean id="SuperGatherCorba" class="com.linkage.module.gwms.util.corba.SuperGatherCorba" scope="prototype"/>
+	<bean id="PreProcessCorba" class="com.linkage.module.gwms.util.corba.PreProcessCorba" scope="prototype"/>
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="software_inmp" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/inmp/software">
+		<action name="software" class="SoftwareACT">
+			<result name="success">/inmp/softwareUp/BatchSoftware.jsp</result>
+			<result name="result">/inmp/softwareUp/BatchResult.jsp</result>
+			<result name="response">/fileconfig/FileUploadResult.jsp</result>
+			<result name="batch4Ah">/gwms/resource/BatchSoftware4Ah.jsp</result>
+			<result name="ajax" type="ajax"></result>
+			<!-- 2013年6月5日 15:01:15 add by zhangsb 安徽软件升级 -->
+			<result name="batchAh">/gwms/resource/BatchSoftwareAh.jsp</result>
+			<result name="list">/gwms/resource/BatchSoftWareTaskList.jsp</result>
+		</action>
+		
+	</package>
+</struts>

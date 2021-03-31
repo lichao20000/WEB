@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="diagnostic_gtms" extends="jfreechart-default,linkage_security,linkage-pdf-default" namespace="/gtms/diagnostic">
+		<action name="templateUnitManage" class="templateUnitManageActionImpl">
+                <result name="init">/gtms/diagnostic/TemplateUnitManage.jsp</result>
+                <result name="preUpdate">/gtms/diagnostic/TemplateUnitUpdate.jsp</result>
+                <result name="ajax" type="ajax"></result>
+        </action>
+  
+		<action name="faultDiag" class="gtms_diagnostic_faultDiagAction">
+			<result name="init">/gtms/blocTest/faultDiagnosis.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+		<action name="diagTemplate" class="diagTemlateActionImpl">
+			<result name="init">/gtms/diagnostic/DiagTemplate.jsp</result>
+			<result name="preAdd">/gtms/diagnostic/DiagTemplateAdd.jsp</result>
+			<result name="preUpdate">/gtms/diagnostic/DiagTemplateUpdate.jsp</result>
+			<result name="ajax" type="ajax"></result>
+		</action>
+	</package>
+</struts>

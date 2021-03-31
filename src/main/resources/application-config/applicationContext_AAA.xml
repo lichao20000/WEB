@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="DevAuthenticationDAO" class="com.linkage.liposs.dao.aaa.DevAuthenticationDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+		<property name="PSQL">
+			<ref bean="pSQL"/>
+		</property>
+	</bean>	
+	<bean id="addTacDevAction" class="com.linkage.liposs.action.aaa.addTacDevAction" scope="prototype">
+		<property name="lqd">
+			<ref local="logQueryDAO"/>
+		</property>
+		<property name="da">
+			<ref local="DevAuthenticationDAO"/>
+		</property>
+	</bean>
+	<bean id="logQueryDAO" class="com.linkage.liposs.dao.aaa.LogQueryDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource"/>
+		</property>
+		<property name="PSQL">
+			<ref bean="pSQL"/>
+		</property>
+	</bean>
+	<bean id="logQueryAction" class="com.linkage.liposs.action.aaa.LogQueryAction" scope="prototype">
+		<property name="logDao">
+			<ref local="logQueryDAO"/>
+		</property>
+	</bean>
+	<bean id="searchDevAction" class="com.linkage.liposs.action.aaa.searchDevAction" scope="prototype">
+		<property name="lqd">
+			<ref local="logQueryDAO"/>
+		</property>
+		<property name="da">
+			<ref local="DevAuthenticationDAO"/>
+		</property>
+	</bean>
+	<bean id="devDetailshowAction" class="com.linkage.liposs.action.aaa.devDetailshowAction" scope="prototype">
+		<property name="lqd">
+			<ref local="logQueryDAO"/>
+		</property>
+	</bean>
+	<bean id="editDeviceAction" class="com.linkage.liposs.action.aaa.EditDeviceAction" scope="prototype">
+		<property name="lqd">
+			<ref local="logQueryDAO"/>
+		</property>
+		<property name="devAuthDao">
+			<ref local="DevAuthenticationDAO"/>
+		</property>
+	</bean>
+	<bean id="UserOperateDAO" class="com.linkage.liposs.dao.aaa.UserOperateDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="UserOperateAction" class="com.linkage.liposs.action.aaa.UserOperateAction" scope="prototype">
+		<property name="userOperate">
+			<ref local="UserOperateDAO" />
+		</property>
+	</bean>
+	<bean id="UserInfoDAO" class="com.linkage.liposs.dao.aaa.UserInfoDAO" scope="prototype">
+		<property name="dao">
+			<ref bean="mainDataSource" />
+		</property>
+	</bean>
+	<bean id="UserInfoAction" class="com.linkage.liposs.action.aaa.UserInfoAction" scope="prototype">
+		<property name="userInstance">
+			<ref local="UserInfoDAO" />
+		</property>
+	</bean>
+</beans>
