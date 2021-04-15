@@ -281,12 +281,15 @@ function getParam(){
 			return;
 		}
 		
+		var hand_name = document.frm.hand_name.value;
 		var para_name = document.frm.para_name.value;
 		var hint_para = document.frm.hid_para_name.value;
 		
 		var new_param = hint_para.split(",")[0];
+		if(hand_name!='') new_param = hand_name;
 		
 		showMsgDlg();
+		console.log("para_name="+para_name+",hint_para="+hint_para+",new_param="+new_param);
 		var page="para_configForm.jsp?param_name=" 
 			+new_param+ "&device_id=<%=device_id%>&gw_type=<%=gw_type%>&action=getValue&refresh=" + Math.random();
 		//window.open(page,"","left=100,top=100,width=550,height=400,resizable=no,scrollbars=yes");	
@@ -909,6 +912,13 @@ function writeableConfig(){
 						<TD colspan="3">
 							<INPUT TYPE="text" NAME="para_name" id="para_name" maxlength=255 class=bk size="50">&nbsp;<font color="#FF0000">*</font>
 							<input type="hidden" id="hid_para_name" name="hid_para_name" value="">
+						</TD>
+					</TR>
+					
+					<TR bgcolor="#FFFFFF">
+						<TD class=column align="right"  width=10%>手动输入参数名</TD>
+						<TD colspan="3">
+							<INPUT TYPE="text" NAME="hand_name" id="hand_name" maxlength=255 class=bk size="50">&nbsp;<font color="#FF0000">*</font>
 						</TD>
 					</TR>
 					
