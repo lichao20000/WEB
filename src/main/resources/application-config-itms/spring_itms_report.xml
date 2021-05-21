@@ -320,6 +320,27 @@
 			<ref bean="dynamicDataSource" />
 		</property>
 	</bean>
+	
+	<!-- 新增浙江稽核功能 -->
+	<bean id="CheckDeviceACT" class="com.linkage.module.itms.report.act.CheckDeviceACT"
+		  scope="prototype">
+		<property name="checkDeviceBIO">
+			<ref bean="CheckDeviceBIO" />
+		</property>
+	</bean>
+	<bean id="CheckDeviceBIO" class="com.linkage.module.itms.report.bio.CheckDeviceBIO"
+		  scope="prototype">
+		<property name="checkDeviceDAO">
+			<ref bean="CheckDeviceDAO" />
+		</property>
+	</bean>
+	<bean id="CheckDeviceDAO" class="com.linkage.module.itms.report.dao.CheckDeviceDAO"
+		  scope="prototype">
+		<property name="dao">
+			<ref bean="dynamicDataSource" />
+		</property>
+	</bean>
+	
 	<!-- 用于查询业务一次下发成功率统计(按厂商型号版本统计)end -->
 	<bean id="ZeroAutoConfigACT"
 		class="com.linkage.module.itms.report.act.ZeroAutoConfigInfoACT"

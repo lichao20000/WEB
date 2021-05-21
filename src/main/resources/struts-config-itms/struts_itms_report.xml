@@ -93,8 +93,9 @@
 		<!-- 家庭网关按绑定率统计 end -->
 
 		<!-- 新疆 工单统计报表查询 begin 为了不影响江苏电信升级 将此注释 -->
-		<action name="sheetStatsReport" class="SheetStatsReportACT"> <result 
-			name="init">/itms/report/sheetStatsReportView.jsp</result> <result name="result">/itms/report/sheetStatsReportResult.jsp</result> 
+		<action name="sheetStatsReport" class="SheetStatsReportACT"> 
+			<result name="init">/itms/report/sheetStatsReportView.jsp</result>
+			<result name="result">/itms/report/sheetStatsReportResult.jsp</result> 
 			<result name="detail">/itms/report/sheetStatsReportDetail.jsp</result> </action>
 		<!-- 新疆 工单统计报表查询 end 为了不影响江苏电信升级 将此注释 -->
 
@@ -145,6 +146,13 @@
             <result name="serInfoStbList">/itms/report/busOnceDownSucSubStbListSxlt.jsp</result>
             <result name="excel" type="excel"></result>
 		</action>
+		
+		
+		<!-- <action name="checkDeviceACT" class="CheckDeviceACT">
+			<result name="list">/itms/report/checkDeviceList.jsp</result>
+            <result name="serInfoList">/itms/report/checkDeviceDetail.jsp</result>
+            <result name="excel" type="excel"></result>
+		</action> -->
 		<!-- 用于查询业务一次下发成功率统计(按厂商型号版本统计)end -->
 		<action name="zeroAutoConfig" class="ZeroAutoConfigACT">
 			<result name="init">/itms/report/ZeroAutoConfigInfo.jsp</result>
