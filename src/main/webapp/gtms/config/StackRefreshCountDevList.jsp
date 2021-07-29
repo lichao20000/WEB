@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=GBK"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="lk" uri="/linkage"%>
+<%@taglib prefix="ms" uri="/ailk-itms-web-tags"%>
 
 <link rel="stylesheet" href="<s:url value="/css3/c_table.css"/>"
 	type="text/css">
@@ -57,6 +58,10 @@ function devInfo(device_id){
 			<th>
 				设备序列号
 			</th>
+			<ms:inArea areaCode="zj_lt" notInMode="false">
+				<th>LOID</th>
+				<th>宽带账号</th>
+			</ms:inArea>
 			<th>
 				IP或域
 			</th>
@@ -87,6 +92,14 @@ function devInfo(device_id){
 					<td>
 						<s:property value="device" />
 					</td>
+					<ms:inArea areaCode="zj_lt" notInMode="false">
+					<td>
+						<s:property value="loid" />
+					</td>
+					<td>	
+						<s:property value="username" />
+					</td>
+					</ms:inArea>
 					<td>
 						<s:property value="loopback_ip" />
 					</td>
@@ -103,7 +116,7 @@ function devInfo(device_id){
 		</s:if>
 		<s:else>
 			<tr>
-				<td colspan=8>
+				<td colspan=10>
 					系统没有相关的用户信息!
 				</td>
 			</tr>
@@ -111,7 +124,7 @@ function devInfo(device_id){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="8">
+			<td colspan="10">
 				<span style="float: right;"> <lk:pages
 						url="/gtms/config/stackRefreshCount!getDev.action" styleClass=""
 						showType="" isGoTo="true" changeNum="true" /> </span>
@@ -125,7 +138,7 @@ function devInfo(device_id){
 
 
 		<TR>
-			<TD align="center" colspan="8">
+			<TD align="center" colspan="10">
 				<button onclick="javascript:window.close();">
 					&nbsp;关 闭&nbsp;
 				</button>
@@ -134,7 +147,7 @@ function devInfo(device_id){
 	</tfoot>
 
 	<tr STYLE="display: none">
-		<td colspan="5">
+		<td colspan="10">
 			<iframe id="childFrm" src=""></iframe>
 		</td>
 	</tr>

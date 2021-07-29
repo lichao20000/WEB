@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.linkage.commons.db.PrepareSQL;
-import com.linkage.litms.LipossGlobals;
 import com.linkage.litms.common.util.StringUtils;
 import com.linkage.module.gwms.Global;
 import com.linkage.module.gwms.dao.SuperDAO;
@@ -106,6 +105,8 @@ public class StackRefreshCountDAO extends SuperDAO {
 				}
 				map.put("oui", rs.getString("oui"));
 				map.put("device_serialnumber", rs.getString("device_serialnumber"));
+				map.put("loid", rs.getString("loid"));
+				map.put("username", rs.getString("username"));
 				map.put("device", rs.getString("oui") + "-" + rs.getString("device_serialnumber"));
 				map.put("loopback_ip", rs.getString("loopback_ip"));
 				map.put("fault_desc", rs.getString("fault_desc"));
@@ -136,10 +137,15 @@ public class StackRefreshCountDAO extends SuperDAO {
 			sql.append("	AND t.task_id = a.task_id  ");
 			sql.append("	AND t.service_id = "+serviceId+" ");
 
-		}else {
-		// TODO wait (more table related)
-		sql.append("select b.device_id,b.city_id,b.vendor_id,b.devicetype_id,b.device_model_id,b.oui,b.device_serialnumber,b.loopback_ip,a.res fault_desc from tab_stack_task_dev a,tab_gw_device b,tab_stack_task t where a.device_id=b.device_id and a.task_id = t.task_id and t.service_id = "
-				+ serviceId + " ");
+		}
+		else if (Global.ZJLT.equals(Global.instAreaShortName)){
+			sql.append("select aa.username loid,serv.username,b.device_id,b.city_id,b.vendor_id,b.devicetype_id,b.device_model_id,b.oui,b.device_serialnumber,b.loopback_ip,a.res fault_desc from tab_stack_task_dev a,tab_stack_task t,tab_gw_device b left join tab_hgwcustomer aa on(aa.device_id=b.device_id) left join hgwcust_serv_info serv on(serv.user_id=aa.user_id and serv.serv_type_id=10) where a.device_id=b.device_id and a.task_id = t.task_id and t.service_id = "
+					+ serviceId + " ");
+		}
+		else {
+			// TODO wait (more table related)
+			sql.append("select b.device_id,b.city_id,b.vendor_id,b.devicetype_id,b.device_model_id,b.oui,b.device_serialnumber,b.loopback_ip,a.res fault_desc from tab_stack_task_dev a,tab_gw_device b,tab_stack_task t where a.device_id=b.device_id and a.task_id = t.task_id and t.service_id = "
+					+ serviceId + " ");
 		}
 		if ((!StringUtil.IsEmpty(cityId)) && (!CENTER_CITY.equals(cityId))) {
 			List cityIdList = CityDAO.getAllNextCityIdsByCityPid(cityId);
@@ -180,7 +186,8 @@ public class StackRefreshCountDAO extends SuperDAO {
 			sql.append("	AND t.task_id = a.task_id  ");
 			sql.append("	AND t.service_id = "+serviceId+" ");
 
-		}else {
+		}
+		else {
 		// TODO wait (more table related)
 		sql.append("select count(*) from tab_stack_task_dev a,tab_gw_device b,tab_stack_task t where a.device_id=b.device_id and a.task_id = t.task_id and t.service_id = "
 				+ serviceId + " ");
@@ -260,6 +267,8 @@ public class StackRefreshCountDAO extends SuperDAO {
 				}
 				map.put("oui", rs.getString("oui"));
 				map.put("device_serialnumber", rs.getString("device_serialnumber"));
+				map.put("loid", rs.getString("loid"));
+				map.put("username", rs.getString("username"));
 				map.put("device", rs.getString("oui") + "-" + rs.getString("device_serialnumber"));
 				map.put("loopback_ip", rs.getString("loopback_ip"));
 				map.put("fault_desc", rs.getString("fault_desc"));

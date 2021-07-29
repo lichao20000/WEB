@@ -13,6 +13,7 @@ import action.splitpage.splitPageAction;
 import com.linkage.litms.common.util.DateTimeUtil;
 import com.linkage.litms.system.UserRes;
 import com.linkage.module.gtms.config.serv.StackRefreshCountBIO;
+import com.linkage.module.gwms.Global;
 import com.linkage.module.gwms.dao.tabquery.CityDAO;
 
 /**
@@ -83,9 +84,17 @@ public class StackRefreshCountACT extends splitPageAction implements SessionAwar
 	    logger.debug("getDevExcel()");
 	    this.fileName = "双栈刷新统计详细信息";
 	    this.data = this.bio.getDevExcel(this.type, this.cityId, this.status);
-	    this.title = new String[] { "属 地", "厂商", "型号", "版本", "设备序列号", "IP或域", "失败原因" };
-	    this.column = new String[] { "city_name", "vendor_add", "device_model", "softwareversion", "device", "loopback_ip", 
-	      "fault_desc" };
+	    if (Global.ZJLT.equals(Global.instAreaShortName)){
+	    	this.title = new String[] { "属 地", "厂商", "型号", "版本", "设备序列号", "LOID", "宽带账号","IP或域", "失败原因" };
+		    this.column = new String[] { "city_name", "vendor_add", "device_model", "softwareversion", "device","loid","username","loopback_ip", 
+		      "fault_desc" };
+	    }
+	    else{
+	    	this.title = new String[] { "属 地", "厂商", "型号", "版本", "设备序列号","IP或域", "失败原因" };
+		    this.column = new String[] { "city_name", "vendor_add", "device_model", "softwareversion", "device", "loopback_ip", 
+		      "fault_desc" };
+	    }
+	    
 	    return "excel";
 	  }
 	/**
