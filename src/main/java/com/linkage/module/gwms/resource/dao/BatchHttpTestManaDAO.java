@@ -193,6 +193,18 @@ public class BatchHttpTestManaDAO extends SuperDAO
 			}
 			sql.append("order by b.update_time desc ");
 		}
+		else if(LipossGlobals.inArea(Global.ZJLT)){
+			sql.append(",serv.username,aa.username loid,r.times,r.pppoename,r.pppoeip,r.aspeed,r.bspeed,r.cspeed,r.maxspeed,r.starttime,r.endtime,r.testmode," +
+					"r.failcode,r.diagnosticsstate,r.result_desc from tab_batchhttp_task a,tab_batchhttp_task_dev b,tab_batchhttp_result r, tab_gw_device c left join tab_hgwcustomer aa on aa.device_id=c.device_id " +
+					" left join hgwcust_serv_info serv on (aa.user_id=serv.user_id and serv.serv_type_id=10) ");
+			sql.append("where a.task_id=b.task_id and a.task_id=r.task_id and a.task_id=? and c.device_id=b.device_id and c.device_id=r.device_id");
+			
+			if(!"all".equals(upResult)){
+				sql.append(" and b.times="+upResult);
+			}
+			
+			sql.append(" order by r.starttime desc ");
+		}
 		else
 		{
 		/**	if(DBUtil.GetDB()==3){
@@ -244,6 +256,22 @@ public class BatchHttpTestManaDAO extends SuperDAO
 						map.put("update_time",getTime(rs.getString("update_time")));
 						map.put("result", getResult(StringUtil.getStringValue(rs.getString("status"))));
 					}
+				}
+				else if(LipossGlobals.inArea(Global.ZJLT))
+				{
+					map.put("times", StringUtil.getStringValue(rs.getString("times")));
+					map.put("pppoename", StringUtil.getStringValue(rs.getString("pppoename")));
+					map.put("pppoeip", StringUtil.getStringValue(rs.getString("pppoeip")));
+					map.put("aspeed", StringUtil.getStringValue(rs.getString("aspeed")));
+					map.put("bspeed", StringUtil.getStringValue(rs.getString("bspeed")));
+					map.put("cspeed", StringUtil.getStringValue(rs.getString("cspeed")));
+					map.put("maxspeed", StringUtil.getStringValue(rs.getString("maxspeed")));
+					map.put("starttime", StringUtil.getStringValue(rs.getString("starttime")));
+					map.put("endtime", StringUtil.getStringValue(rs.getString("endtime")));
+					map.put("testmode", StringUtil.getStringValue(rs.getString("testmode")));
+					map.put("result_desc", StringUtil.getStringValue(rs.getString("result_desc")));
+					map.put("loid", StringUtil.getStringValue(rs.getString("loid")));
+					map.put("username", StringUtil.getStringValue(rs.getString("username")));
 				}
 				else
 				{
@@ -383,6 +411,15 @@ public class BatchHttpTestManaDAO extends SuperDAO
 				}
 			}
 		}
+		else if(LipossGlobals.inArea(Global.ZJLT)){
+			sql.append("from tab_batchhttp_task a,tab_batchhttp_task_dev b,tab_batchhttp_result r, tab_gw_device c ");
+			sql.append(" left join tab_hgwcustomer aa on aa.device_id=c.device_id left join hgwcust_serv_info serv on (aa.user_id=serv.user_id) ");
+			sql.append("where a.task_id=b.task_id and a.task_id=r.task_id and a.task_id="+taskId+" and c.device_id=b.device_id and c.device_id=r.device_id");
+			
+			if(!"all".equals(upResult)){
+				sql.append(" and b.times="+upResult);
+			}
+		}
 		else
 		{
 		/**	if(DBUtil.GetDB()==3){
@@ -514,7 +551,7 @@ public class BatchHttpTestManaDAO extends SuperDAO
 	public String doDelete(String taskId) 
 	{
 		// 逻辑删除，状态置为 9
-		PrepareSQL taskSql = new PrepareSQL("update tab_batchhttp_task set task_status =? where task_id=?");
+		/*PrepareSQL taskSql = new PrepareSQL("update tab_batchhttp_task set task_status =? where task_id=?");
 		taskSql.setInt(1, 9);
 		taskSql.setLong(2,  StringUtil.getLongValue(taskId));
 
@@ -527,18 +564,22 @@ public class BatchHttpTestManaDAO extends SuperDAO
 		else {
 			logger.debug("删除操作返：  失败");
 			return "0";
-		}
+		}*/
 			
-	/*	
+		
 		PrepareSQL taskSql = new PrepareSQL("delete from tab_batchhttp_task where task_id=?");
 		taskSql.setLong(1,  StringUtil.getLongValue(taskId));
 		
 		PrepareSQL taskdevSql = new PrepareSQL("delete from tab_batchhttp_task_dev where task_id=?");
 		taskdevSql.setLong(1,  StringUtil.getLongValue(taskId));
 		
+		PrepareSQL taskresSql = new PrepareSQL("delete from tab_batchhttp_result where task_id=?");
+		taskresSql.setLong(1,  StringUtil.getLongValue(taskId));
+		
 		ArrayList<String> sqlList = new ArrayList<String>();
 		sqlList.add(taskSql.getSQL());
 		sqlList.add(taskdevSql.getSQL());
+		sqlList.add(taskresSql.getSQL());
 		int res = DBOperation.executeUpdate(sqlList);
 		logger.warn("删除操作返回结果res = "+res);
 		if (res ==1) {
@@ -548,7 +589,7 @@ public class BatchHttpTestManaDAO extends SuperDAO
 			logger.debug("任务定制：  失败");
 			return "0";
 		}
-	*/	
+		
 	}
 
 	public Map<String, String> getCountResult(String taskId) 
@@ -613,8 +654,32 @@ public class BatchHttpTestManaDAO extends SuperDAO
 	}
 
 	/**
-	 * 统计总数
+	 * 统计各个次数的数量
 	 */
+	public List getTaskCountZJ(String taskId) 
+	{
+		logger.debug("countTaskResult");
+		StringBuffer sql = new StringBuffer();
+		if(DBUtil.GetDB()==3){
+			//TODO wait
+			sql.append("select count(*) num,b.times ");
+		}else{
+			sql.append("select count(1) num,b.times ");
+		}
+		sql.append("from tab_batchhttp_task a,tab_batchhttp_task_dev b, tab_gw_device c " +
+				" where a.TASK_ID=b.TASK_ID and b.device_id=c.device_id ");
+		
+		if (!StringUtil.IsEmpty(taskId)) {
+			sql.append(" and a.task_id=").append(taskId).append("");
+		}
+		sql.append(" group by b.times order by b.times asc");
+		
+		PrepareSQL psql = new PrepareSQL(sql.toString());
+		
+		return jt.queryForList(psql.getSQL());
+	}
+	
+	
 	public int countTaskResult(String taskId) 
 	{
 		logger.debug("countTaskResult");

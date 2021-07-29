@@ -116,6 +116,7 @@ public class FileUploadAction extends ActionSupport {
 
 	@Override
 	public String execute() {
+		logger.warn("execute");
 		//获取系统的绝对路径
 		String lipossHome = "";
 		String a = FileUploadAction.class.getResource("/").getPath();
@@ -127,6 +128,7 @@ public class FileUploadAction extends ActionSupport {
 		}
 		this.imageFileName = new Date().getTime() + "_" + fileName;
 		File imageFile = new File(lipossHome + "/temp/" + imageFileName);
+		logger.warn("myFile="+myFile+", imageFile="+imageFile);
 		copy(myFile, imageFile);
 		return SUCCESS;
 	}

@@ -52,6 +52,7 @@ public class BatchHttpTestManaACT extends splitPageAction
 	private String accName;
 	
 	private List tasklist;
+	private List taskcountlist;
 	private List taskResultList = null;
 	private Map<String, String> taskDetailMap = null;
 	private String ajax = "";
@@ -83,9 +84,16 @@ public class BatchHttpTestManaACT extends splitPageAction
 	 * @return String
 	 */
 	public String getTaskCount() {
-		taskResultMap = bio.getTaskCount(taskId);
-		return "taskResultCount";
+		if(Global.ZJLT.equals(Global.instAreaShortName)){
+			//浙江查询任务结果，展现各个次数的统计结果
+			taskcountlist = bio.getTaskCountZJ(taskId);
+			return "taskResultCountZJ";
+		}else{
+			taskResultMap = bio.getTaskCount(taskId);
+			return "taskResultCount";
+		}
 	}
+	
 	
 	/**
 	 * 查看结果
@@ -97,6 +105,10 @@ public class BatchHttpTestManaACT extends splitPageAction
 		
 		if("3".equals(upResult) && LipossGlobals.inArea(Global.JLLT)){
 			return "taskDoSuccResult";
+		}
+		
+		if(LipossGlobals.inArea(Global.ZJLT)){
+			return "taskResultZJ";
 		}
 		return "taskResult";
 	}
@@ -132,6 +144,12 @@ public class BatchHttpTestManaACT extends splitPageAction
 						"deviceSerialNumber","pppoe_name","rate","result","update_time"};
 				title = new String[]{"属 地","厂商","型号","软件版本","设备序列号","宽带账号","签约带宽","配置结果","操作时间"};
 			}
+		}
+		else if(LipossGlobals.inArea(Global.ZJLT)){
+			fileName = "测速结果列表";
+			column = new String[]{"cityName","vendorName","deviceModel","deviceTypeName",
+					"deviceSerialNumber","loid","username","times","pppoeip","aspeed","bspeed","cspeed","maxspeed","starttime","endtime","result_desc"};
+			title = new String[]{"属 地","厂商","型号","软件版本","设备序列号","LOID","账号","次数","测试IP","平均速率","签约速率","当前速率","最大速率","开始时间","结束时间","结果描述"};
 		}
 		else
 		{
@@ -352,6 +370,18 @@ public class BatchHttpTestManaACT extends splitPageAction
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	
+	public List getTaskcountlist()
+	{
+		return taskcountlist;
+	}
+
+	
+	public void setTaskcountlist(List taskcountlist)
+	{
+		this.taskcountlist = taskcountlist;
 	}
 
 	

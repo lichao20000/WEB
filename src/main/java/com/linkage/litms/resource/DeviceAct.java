@@ -22,8 +22,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.linkage.commons.db.DBOperation;
-import com.linkage.commons.db.DBUtil;
 import org.apache.struts2.ServletActionContext;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -38,6 +36,7 @@ import ACS.Rpc;
 import RemoteDB.DeviceStatusStruct;
 
 import com.ailk.tr069.devrpc.obj.rpc.DevRpcCmdOBJ;
+import com.linkage.commons.db.DBOperation;
 import com.linkage.commons.db.DBUtil;
 import com.linkage.commons.db.PrepareSQL;
 import com.linkage.litms.LipossGlobals;
@@ -7915,6 +7914,10 @@ public class DeviceAct
 							+ gw_type + " and 1=1");
 			sqlDevice += sqlCount.toString();
 		}
+		else if (Global.ZJLT.equals(Global.instAreaShortName)){
+			sqlDevice = "select * from tab_gw_device a left join tab_hgwcustomer h on (h.device_id=a.device_id),tab_devicetype_info t where a.devicetype_id=t.devicetype_id and a.device_status=1 and a.customer_id is not null and a.gw_type="
+					+ gw_type;
+		}
 		else
 		{
 			sqlDevice = "select * from tab_gw_device a,tab_devicetype_info t where a.devicetype_id=t.devicetype_id and a.device_status=1 and a.customer_id is not null and a.gw_type="
@@ -8274,6 +8277,11 @@ public class DeviceAct
 			{
 				sql1 = sqlDevice.replaceFirst("\\*",
 						" a.device_id,a.city_id,a.devicetype_id,a.device_serialnumber,t.area_id ,a.vendor_id, rownum rn ");
+			}
+			if (Global.ZJLT.equals(Global.instAreaShortName))
+			{
+				sql1 = sqlDevice.replaceFirst("\\*",
+						"h.username loid, a.device_id,a.device_id_ex,a.city_id,a.devicetype_id,a.device_serialnumber,t.area_id ,a.vendor_id, rownum rn ");
 			}
 			// String sql2=sqlDevice.replaceFirst("\\*","t.*,rownum rn" );
 			StringBuilder sb = new StringBuilder("select * from (");

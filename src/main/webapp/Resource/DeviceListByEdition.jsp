@@ -189,14 +189,14 @@ if (fields == null) {
 			strData += "<TD class=column2>" + city_parentname + "</TD>";
 		}
 		strData += "<TD class=column2>" + (String)fields.get("device_serialnumber") + "</TD>";
-		if("nx_dx".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")))
+		if("nx_dx".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))||"zj_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")))
 		{
 			strData += "<TD class=column2>" + String.valueOf(fields.get("loid")) + "</TD>";//LOID
 		}
 		else
 		{
 			if(!"hb_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")) && !"sx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))
-					&& !"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")))
+					&& !"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))&& !"zj_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")))
 			{
 				strData += "<TD class=column2>" + area_Map.get((String)fields.get("area_id")) + "</TD>";//管理域
 			}
@@ -434,13 +434,13 @@ document.location.href = page;
 							<%} %>
 							<TH>设备序列号</TH>
 							<%
-							if("nx_dx".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {%>
+							if("nx_dx".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")) || "zj_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {%>
 							<TH>LOID</TH>
 							<%} %>
 							
 							<%
 							if(!"nx_dx".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")) && !"hb_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")) && !"sx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))
-									&& !"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {%>
+									&& !"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName")) && !"zj_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {%>
 							<TH>管理域</TH>
 							<%} %>
 							

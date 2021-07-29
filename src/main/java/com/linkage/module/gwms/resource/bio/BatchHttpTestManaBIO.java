@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.linkage.commons.util.DateTimeUtil;
-import com.linkage.litms.LipossGlobals;
 import com.linkage.module.gwms.Global;
 import com.linkage.module.gwms.resource.dao.BatchHttpTestManaDAO;
 import com.linkage.module.gwms.util.StringUtil;
@@ -121,5 +120,20 @@ public class BatchHttpTestManaBIO {
 		return map;
 	}
 
-
+	public List getTaskCountZJ(String taskId) {
+		List<Map<String, String>> list = dao.getTaskCountZJ(taskId);
+		if(null != list){
+			int all = 0;
+			for(int i=0;i<list.size();i++){
+				Map<String, String> map = list.get(i);
+				all += StringUtil.getIntValue(map, "num", 0);
+			}
+			Map<String, String> allMap = new HashMap<String, String>();
+			allMap.put("times", "all");
+			allMap.put("num", StringUtil.getStringValue(all));
+			list.add(allMap);
+		}
+		
+		return list;
+	}
 }

@@ -183,7 +183,9 @@
 		<action name="batchHttpTestMana" class="BatchHttpTestManaACT">
 			<result name="init">/gwms/resource/BatchHttpTaskQuery.jsp</result>
 			<result name="taskResultCount">/gwms/resource/BatchHttpCountTaskResult.jsp</result>
+			<result name="taskResultCountZJ">/gwms/resource/BatchTaskCountResultZJ.jsp</result>
 			<result name="taskResult">/gwms/resource/showTestSpeedTaskResult.jsp</result>
+			<result name="taskResultZJ">/gwms/resource/showTestSpeedTaskResultZJ.jsp</result>
 			<result name="taskDoSuccResult">/gwms/resource/showSpeedTaskDoSuccResult.jsp</result>
 			<result name="ajax" type="ajax"></result>
 			<result name="excel" type="excel"></result>

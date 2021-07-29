@@ -482,7 +482,7 @@ public class StackRefreshToolsBIO {
 				
 				if ((LipossGlobals.inArea(Global.NMGDX) || LipossGlobals.inArea(Global.SDDX) || LipossGlobals.inArea(Global.AHDX)
 						|| LipossGlobals.inArea(Global.HBDX) || LipossGlobals.inArea(Global.SXLT) || LipossGlobals.inArea(Global.HBLT)
-						|| LipossGlobals.inArea(Global.GSDX) ||LipossGlobals.inArea(Global.SXDX)) && sqlSpell.contains("["))
+						|| LipossGlobals.inArea(Global.GSDX) ||LipossGlobals.inArea(Global.SXDX) || LipossGlobals.inArea(Global.ZJLT)) && sqlSpell.contains("["))
 				{
 					sqlSpell = sqlSpell.replaceAll("\\[", "\\'");
 				}
@@ -564,7 +564,7 @@ public class StackRefreshToolsBIO {
 			
 			logger.warn("taskid[{}]-devListNew.size[{}]", taskid, devListNew.size());
 			//陕西电信要求5万限制
-			if (LipossGlobals.inArea(Global.SXDX)) {
+			if (LipossGlobals.inArea(Global.SXDX) || LipossGlobals.inArea(Global.ZJLT)) {
 				if(devListNew.size()>50000){
 					logger.warn("taskid[{}] 定制设备超过50000条，程序结束==", taskid);
 					return "false50000";

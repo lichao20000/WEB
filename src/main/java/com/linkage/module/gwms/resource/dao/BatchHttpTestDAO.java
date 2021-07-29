@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.linkage.commons.db.DBUtil;
-import com.linkage.litms.LipossGlobals;
 import com.linkage.litms.common.database.DBOperation;
 import com.linkage.litms.common.database.PrepareSQL;
 import com.linkage.module.gwms.Global;
@@ -70,6 +69,9 @@ public class BatchHttpTestDAO extends SuperDAO
 		if (Global.HBLT.equals(Global.instAreaShortName)) {
 			sql.append(" ,type ");
 		}
+		else if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			sql.append(" ,BEGIN_TIME,END_TIME,TOTAL_TIMES,PERIOD ");
+		}
 		
 		sql.append(" ) values (?,?,?,?,?,?,?");
 		if(null != param[7]){
@@ -106,6 +108,9 @@ public class BatchHttpTestDAO extends SuperDAO
 		sql.append(",?");//描述
 		if (Global.HBLT.equals(Global.instAreaShortName)) {
 			sql.append(",?");//type
+		}
+		else if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			sql.append(",?,?,?,?");//type
 		}
 		sql.append(" )");
 		
@@ -153,8 +158,14 @@ public class BatchHttpTestDAO extends SuperDAO
 		if (Global.HBLT.equals(Global.instAreaShortName)) {
 			psql.setString(++index, (String)param[17]);//type 测速模式 1下行 2上行
 		}
+		else if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			psql.setLong(++index, StringUtil.getLongValue(param[17]));//type 测速模式 1下行 2上行
+			psql.setLong(++index, StringUtil.getLongValue(param[18]));
+			psql.setInt(++index, StringUtil.getIntegerValue(param[19]));
+			psql.setInt(++index, StringUtil.getIntegerValue(param[20]));
+		}
 		
-		logger.debug("插入批量测速任务表-->{}",psql.getSQL());
+		logger.warn("插入批量测速任务表-->{}",psql.getSQL());
 		return jt.update(psql.getSQL());
 	}
 
@@ -303,10 +314,16 @@ public class BatchHttpTestDAO extends SuperDAO
 			sql.append(",wan_type");
 			
 		}
+		if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			sql.append(",begin_time,end_time,total_times,period");
+		}
 		sql.append(") values (?,?,?,?,?,?,?");
 		if(null!=param[7]){
 			sql.append(",?");
 			
+		}
+		if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			sql.append(") values (,?,?,?,?");
 		}
 		sql.append(")");
 		
@@ -319,6 +336,12 @@ public class BatchHttpTestDAO extends SuperDAO
 		psql.setLong(6, (Long)param[5]);
 		psql.setString(7, (String)param[6]);
 		psql.setInt(8, StringUtil.getIntegerValue(param[7]));
+		if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			psql.setLong(9, (Long)param[8]);
+			psql.setLong(10, (Long)param[9]);
+			psql.setLong(11, (Long)param[10]);
+			psql.setLong(12, (Long)param[11]);
+		}
 		
 		logger.debug("生成插入批量测速任务明细表sql-->{}",psql.getSQL());
 		return psql.getSQL();

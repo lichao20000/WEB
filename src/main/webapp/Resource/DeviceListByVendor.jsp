@@ -22,6 +22,7 @@ String __debug = request.getParameter("__debug");
 List list  = null;
 String strData = "";
 list = DeviceAct.getDeviceListByVender(request);
+System.out.print("list.size="+list.size());
 String strBar = String.valueOf(list.get(0)); 
 Cursor cursor = (Cursor)list.get(1);
 Map fields = cursor.getNext();
@@ -113,10 +114,10 @@ if (fields == null) {
 		
 		strData += "<TD class=column2>" + city_name + "</TD>";
 		strData += "<TD class=column2>" + (String)fields.get("device_serialnumber") + "</TD>";
-		if(!"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {
+		/* if(!"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {
 			strData += "<TD class=column2>" + area_Map.get((String)fields.get("area_id")) + "</TD>";//管理域
-		}
-		
+		} */
+		strData += "<TD class=column2>" + (String)fields.get("loid") + "</TD>";
 		//strOper = "<a href=javascript:// onclick=\""+ StringUtils.replace(delStr,"?",device_id) +"\">删除</a>";
 		//strOper += "&nbsp;|&nbsp;<a href='#' onclick=\""+ StringUtils.replace(editStr,"?",device_id) +"\">编辑</a>";
 		strOper = "<a href=javascript:// onclick=\""+ StringUtils.replace(detailStr,"?",device_id) +"\">详细信息</a>";
@@ -344,11 +345,14 @@ document.location.href = page;
 									<TH>
 										设备序列号
 									</TH>
-									<%if(!"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {%>
+									<TH>
+										loid
+									</TH>
+									<%-- <%if(!"nx_lt".equals(LipossGlobals.getLipossProperty("InstArea.ShortName"))) {%>
 									<TH>
 										管理域
 									</TH>
-									<%} %>
+									<%} %> --%>
 									<TH>
 										操作
 									</TH>

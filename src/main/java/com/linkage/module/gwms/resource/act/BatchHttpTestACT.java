@@ -14,30 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import com.linkage.litms.LipossGlobals;
-import com.linkage.litms.system.UserRes;
-import com.linkage.module.gwms.Global;
-import com.linkage.module.gwms.resource.bio.BatchHttpTestBIO;
-import com.linkage.module.gwms.share.act.FileUploadAction;
-import com.linkage.module.gwms.share.bio.GwDeviceQueryBIO;
-import com.linkage.module.gwms.util.StringUtil;
-import com.opensymphony.xwork2.ActionSupport;
-import com.linkage.module.gwms.resource.utils.DateFilterTest;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -50,10 +30,15 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.linkage.litms.LipossGlobals;
+import com.linkage.litms.system.UserRes;
+import com.linkage.module.gwms.Global;
+import com.linkage.module.gwms.resource.bio.BatchHttpTestBIO;
+import com.linkage.module.gwms.resource.utils.DateFilterTest;
+import com.linkage.module.gwms.share.act.FileUploadAction;
+import com.linkage.module.gwms.share.bio.GwDeviceQueryBIO;
+import com.linkage.module.gwms.util.StringUtil;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * 批量Http业务质量下载测试
@@ -96,38 +81,35 @@ public class BatchHttpTestACT extends ActionSupport implements SessionAware
 	private String gwShare_fileName = null;
 	private String task_desc;
 	private String type;
-
-
-
 	private String instArea=Global.instAreaShortName;
 
 	// 公共界面 增加operType
 	// 目前 吉林联通 批量测速 限制一次的批量导入数量  operType : 1
 	// 可拓展 若拓展 增加注释维护对应关系，避免重复。
 	private String operType="";
-
 	/**
 	 * 测速任务超过三个标识
 	 */
 	private int taskNumFalg=0;
-
 	/**
 	 * 局点名称
 	 */
 	private String instAreaName;
-
 	/**
 	 * 任务名称
 	 */
 	private String task_name;
-
-
 	private String speed_frequency;
-
 	private String startDate;
-
 	private String endDate;
-
+	//开始时间段
+	private String BEGIN_TIME;
+	//结束时间段
+	private String END_TIME;
+	//总次数
+	private String TOTAL_TIMES;
+	//最小触发周期
+	private String PERIOD;
 
 	public String init()
 	{
@@ -216,6 +198,33 @@ public class BatchHttpTestACT extends ActionSupport implements SessionAware
 		return "result";
 	}
 	
+	/**
+	 * 浙江联通
+	 * @return
+	 */
+	public String speedTestZJLT()
+	{
+		logger.debug("speedTestZJLT begin()");
+		try
+		{
+			UserRes curUser = (UserRes) session.get("curUser");
+			if (true == StringUtil.IsEmpty(deviceIds))
+			{
+				logger.debug("任务中没有设备");
+			}
+			long accoid = curUser.getUser().getId();
+
+			insertTaskZJLT(param, curUser.getAreaId(), accoid,task_name,gw_type, task_desc);
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			logger.warn("Exception="+e.getMessage());
+			return "result";
+		}
+		return "result";
+	}
 	
 	/**
 	 * 上传文件ajax
@@ -355,6 +364,72 @@ public class BatchHttpTestACT extends ActionSupport implements SessionAware
 					logger.warn("数量大于100，将sql入任务表");
 					matchSQL = "select * from ("+(matchSQL.replace("[", "\'"))+") where rownum <= "+total;
 					bio.createHttpTaskSQLAHLT(http_url, report_url, accoid, matchSQL, null ,null, param, task_desc,type, task_name, speed_frequency, startDate, endDate);
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			logger.warn("Exception="+e.getMessage());
+		}
+
+	}
+	
+	
+	
+	/**
+	 * 插入任务表 文件名不为空则来源为导入，deviceIds不为0来源为直接radio查询，deviceIds也为空则来源为高级查询。
+	 * @param param  参数
+	 * @param areaId 操作员域id
+	 * @param accoid 操作员acc
+	 * @param gw_type 系统类型
+	 * @param task_desc 任务描述
+	 */
+	public void insertTaskZJLT(String param,long areaId,long accoid,String task_name,String gw_type, String task_desc)
+	{
+		logger.warn("insertTask({},{},{},{},{},{})开始", new Object[] {fileName_st, task_desc,BEGIN_TIME,END_TIME,TOTAL_TIMES,PERIOD});
+		try
+		{
+			//入任务表-文件查询
+			if(!StringUtil.IsEmpty(fileName_st)){
+				logger.warn("入任务表-文件名不为空则来源为导入");
+				bio.createHttpTaskSQL(http_url, report_url, accoid, null, null, fileName_st, null, task_desc,BEGIN_TIME,END_TIME,TOTAL_TIMES,PERIOD);
+			}
+			//入任务表-设备id列表(来源为直接radio查询,简单查询)
+			else if(!"0".equals(deviceIds))
+			{
+				logger.warn("入任务表-设备id列表(来源为直接radio查询,简单查询)");
+				String[] deviceId_array = deviceIds.split(",");
+				bio.createHttpTaskSQL(http_url, report_url, accoid, null, deviceId_array, null, null, task_desc,BEGIN_TIME,END_TIME,TOTAL_TIMES,PERIOD);
+			}
+			//入任务表-设备id列表/sql(高级查询)
+			else 
+			{
+				logger.warn("入任务表-设备id列表/sql(高级查询)");
+				if(StringUtil.IsEmpty(param))
+				{
+					logger.warn("param为空");
+				}
+				String[] _param = param.split("\\|");
+				String matchSQL = _param[10];
+				long total = StringUtil.getLongValue(_param[11]);
+				if(total < 100)
+				{
+					logger.warn("数量小于100，传deviceID数组");
+					List list = gwDeviceQueryBio.getDeviceList(gw_type,areaId, param);
+					String[] deviceId_array = new String[list.size()];
+					for (int i = 0; i < list.size(); i++)
+					{
+						Map map = (Map) list.get(i);
+						String device_id = StringUtil.getStringValue(map.get("device_id"));
+						deviceId_array[0] = device_id;
+					}
+					bio.createHttpTaskSQL(http_url, report_url, accoid, null, deviceId_array ,null, null, task_desc,BEGIN_TIME,END_TIME,TOTAL_TIMES,PERIOD);
+				}
+				else
+				{
+					logger.warn("数量大于100，将sql入任务表");
+					bio.createHttpTaskSQL(http_url, report_url, accoid, matchSQL.replace("[", "\'"), null ,null, param, task_desc,BEGIN_TIME,END_TIME,TOTAL_TIMES,PERIOD);
 				}
 			}
 		}
@@ -1223,5 +1298,77 @@ public class BatchHttpTestACT extends ActionSupport implements SessionAware
 
 	public void setOperType(String operType) {
 		this.operType = operType;
+	}
+
+
+
+	
+	public String getBEGIN_TIME()
+	{
+		return BEGIN_TIME;
+	}
+
+
+
+	
+	public void setBEGIN_TIME(String bEGIN_TIME)
+	{
+		BEGIN_TIME = bEGIN_TIME;
+	}
+
+
+
+	
+	public String getEND_TIME()
+	{
+		return END_TIME;
+	}
+
+
+
+	
+	public void setEND_TIME(String eND_TIME)
+	{
+		END_TIME = eND_TIME;
+	}
+
+
+
+	
+	public String getTOTAL_TIMES()
+	{
+		return TOTAL_TIMES;
+	}
+
+
+
+	
+	public void setTOTAL_TIMES(String tOTAL_TIMES)
+	{
+		TOTAL_TIMES = tOTAL_TIMES;
+	}
+
+
+
+	
+	public String getPERIOD()
+	{
+		return PERIOD;
+	}
+
+
+
+	
+	public void setPERIOD(String pERIOD)
+	{
+		PERIOD = pERIOD;
+	}
+
+
+
+	
+	public String getFileName_st()
+	{
+		return fileName_st;
 	}
 }

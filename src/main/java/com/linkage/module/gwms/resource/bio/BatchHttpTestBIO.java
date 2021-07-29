@@ -1,23 +1,31 @@
 
 package com.linkage.module.gwms.resource.bio;
 
-import com.linkage.commons.util.DateTimeUtil;
-import com.linkage.litms.LipossGlobals;
-import com.linkage.module.gwms.Global;
-import com.linkage.module.gwms.resource.dao.BatchHttpTestDAO;
-import com.linkage.module.gwms.resource.utils.FileUtil;
-import com.linkage.module.gwms.share.act.FileUploadAction;
-import com.linkage.module.gwms.util.StringUtil;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.*;
-import java.util.List;
-import java.util.Map;
+import com.linkage.commons.util.DateTimeUtil;
+import com.linkage.module.gwms.Global;
+import com.linkage.module.gwms.resource.dao.BatchHttpTestDAO;
+import com.linkage.module.gwms.resource.utils.FileUtil;
+import com.linkage.module.gwms.share.act.FileUploadAction;
+import com.linkage.module.gwms.util.StringUtil;
 
 public class BatchHttpTestBIO
 {
@@ -299,7 +307,120 @@ public class BatchHttpTestBIO
 			logger.debug("插入批量升级任务明细表执行完成，task_id={}", task_id);
 		}
 	}
+	
+	
+	/**
+	 * 浙江联通测速
+	 * @param http_url
+	 * @param report_url
+	 * @param accoid
+	 * @param sql
+	 * @param deviceId
+	 * @param fileName
+	 * @param param0
+	 * @param task_desc
+	 * @param BEGIN_TIME
+	 * @param END_TIME
+	 * @param TOTAL_TIMES
+	 * @param PERIOD
+	 */
+	public void createHttpTaskSQL(String http_url, String report_url, long accoid, String sql, String[] deviceId, String fileName, String param0, String task_desc,String BEGIN_TIME,String END_TIME,String TOTAL_TIMES,String PERIOD)
+	{
+		logger.warn("Global.instAreaShortName = "+Global.instAreaShortName+","+fileName+BEGIN_TIME+END_TIME+TOTAL_TIMES+PERIOD);
+		Object[] param= null;
+		//浙江联通增加了4个字段，用于区分上下行测速
+		if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			param= new Object[21];
+		}else {
+			param= new Object[17];
+		}
+		Long time = new DateTimeUtil().getLongTime();
+		String task_name = StringUtil.getStringValue(accoid) + StringUtil.getStringValue(time) + StringUtil.getStringValue((int)(Math.random()*999));
+		int task_status = 0;//未执行
+		param[0] = task_name;
+		param[1] = time;
+		logger.warn("task_id = "+time+",dao.getMaxTaskID()="+dao.getMaxTaskID());
+		param[2] = accoid;
+		param[3] = time;
+		param[4] = task_status;
+		param[5] = http_url;
+		param[6] = report_url;
+		param[7] = sql;
+		param[8] = fileName;
+		param[16] = task_desc;
+		
+		if (Global.ZJLT.equals(Global.instAreaShortName)) {
+			String[] begint = BEGIN_TIME.split(":");
+			param[17] = StringUtil.getLongValue(begint[0])*3600 + StringUtil.getLongValue(begint[1])*60 + StringUtil.getLongValue(begint[2]);
+			String[] endt = END_TIME.split(":");
+			param[18] = StringUtil.getLongValue(endt[0])*3600 + StringUtil.getLongValue(endt[1])*60 + StringUtil.getLongValue(endt[2]);;
+			param[19] = TOTAL_TIMES;
+			param[20] = PERIOD;
+		}
+		
+		for(int i=0;i<param.length;i++){
+			if(null!=param[i]){
+				logger.warn("param"+i+"="+param[i].toString());
+			}
+		}
+			
+		
+		if(null!=param0){
+			String[] _param = param0.split("\\|");
 
+			param[9] = _param[2].trim();
+			param[10] = _param[4].trim();
+			param[11] = _param[5].trim();
+			param[12] = _param[6].trim();
+			param[13] = _param[7].trim();
+			param[14] = _param[8].trim();
+			param[15] = _param[9].trim();
+		}
+		
+		//入任务表，多个设备也只入一条
+		int res = dao.createHttpTaskSQL(param, param0);
+		if(res!=1){
+			logger.error("插入批量升级任务表执行失败,param={}", param);
+		}
+		
+		//直接传设备id（非文件非sql方式）入任务表需直接入明细表，并将任务表的状态置为完成。
+		if(null == fileName && null == sql && res == 1 ){
+			String[] task_dev_sql = new String[deviceId.length];
+			Long task_id_dev  = time;
+			Object[] param_dev= new Object[12];
+			param_dev[0] = task_id_dev;
+			param_dev[4] = 0;
+			param_dev[5] = new DateTimeUtil().getLongTime();
+			param_dev[8] = BEGIN_TIME;
+			param_dev[9] = END_TIME;
+			param_dev[10] = TOTAL_TIMES;
+			param_dev[12] = PERIOD;
+			int res_devs[];
+			for(int i = 0;i<deviceId.length;i++){
+				param_dev[1] = deviceId[i];
+				Map map = dao.getOuiSerial((String)param_dev[1]);
+				
+				param_dev[2] = map.get("oui");
+				param_dev[3] = map.get("device_serialnumber");
+				param_dev[6] = map.get("city_id");
+				param_dev[7] = map.get("wan_type");
+				task_dev_sql[i] = dao.createHttpTask_devSQL(param_dev);
+			}
+			
+			//更新任务表状态
+			logger.warn("task_dev_sql.length=" + task_dev_sql.length);
+			res_devs = dao.batchUpdate(task_dev_sql);
+			//dao.updateHttpTask(task_id);
+			
+			logger.debug("插入批量升级任务明细表执行完成，task_id={}", time);
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		Object a = "2";
+		System.out.println(StringUtil.getIntegerValue(a));
+	}
 	/**
 	 * 生成任务表(插入sql) 1.数量小于100的设备ids，直接入任务表和明细表，2.数量大于100的入sql(任务表) 3.导入文件的一律入文件名(任务表)
 	 * @param accoid 操作员id

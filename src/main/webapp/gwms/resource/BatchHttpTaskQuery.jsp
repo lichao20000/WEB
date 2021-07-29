@@ -273,8 +273,8 @@
                                                       onclick="javascript:viewTask('<s:property value="task_id"/>')">
                                               		查看结果
                                               	</button>&nbsp;&nbsp;
-                                          	   <button  onclick="javascript:disableTask('<s:property value="task_id"/>')">
-                                          	   失效</button>
+                                          	  <%--  <button  onclick="javascript:disableTask('<s:property value="task_id"/>')">
+                                          	   失效</button> --%>
                                           	   <button  onclick="javascript:deleteTask('<s:property value="task_id"/>')">
                                           	  删除</button>
                                           	  <button  onclick="javascript:showDesc('<s:property value="task_id"/>','<s:property value="task_desc"/>')">
